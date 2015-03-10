@@ -1,4 +1,13 @@
 h1 Have your habit - Havit
 
 - if user_signed_in?
-  = link_to '초대하기', '#', class: 'btn btn-default'
+  button.btn.btn-primary[data-toggle="modal" data-target="#invite-modal"] 초대하기
+
+#invite-modal.modal.fade[tabindex="-1" role="dialog" aria-labelledby="inviteModalLabel" aria-hidden="true"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close[data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"] &times;
+        h4.modal-title#inviteModalLabel Havit에 초대하기
+      == render 'users/invite_form'

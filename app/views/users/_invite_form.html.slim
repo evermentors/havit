@@ -1,0 +1,11 @@
+= form_tag "/invite", method: "get"
+  .modal-body
+    .form-group
+      = label_tag :address, "초대하실 분의 이메일 주소"
+      input.form-control#address[type="email" placeholder="이메일 주소를 입력하세요."]
+    .form-group
+      = label_tag :message, "이메일 내용"
+      = text_area_tag :message, "해빗에 초대합니다", class: "form-control"
+  .modal-footer
+    button.btn.btn-default[data-dismiss="modal"] 취소하기
+    = submit_tag "초대 발송", class: "btn btn-primary"
