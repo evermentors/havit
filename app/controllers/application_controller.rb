@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def hello
-    render text: "Have your habit - Havit, by EverMentors"
-  end
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up).append [:name]
   end
