@@ -32,6 +32,7 @@ group :production do
 end
 
 group :development do
+  gem 'foreman'
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
