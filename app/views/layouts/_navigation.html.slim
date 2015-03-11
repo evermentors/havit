@@ -9,5 +9,13 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         span.icon-bar
       = link_to 'Home', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
-      ul.nav.navbar-nav
-        == render 'layouts/navigation_links'
+      - if user_signed_in?
+        ul.nav.navbar-nav
+          li = link_to 'Users', users_path
+        ul.nav.navbar-nav.navbar-right
+          li = link_to 'Edit account', edit_user_registration_path
+          li = link_to 'Sign out', destroy_user_session_path, method: 'delete'
+      - else
+        ul.nav.navbar-nav
+          li = link_to 'Sign in', new_user_session_path
+          li = link_to 'Sign up', new_user_registration_path
