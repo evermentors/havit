@@ -14,7 +14,7 @@ class MonthlyGoalsController < ApplicationController
 
   # GET /monthly_goals/new
   def new
-    @monthly_goal = MonthlyGoal.new
+    @monthly_goal = current_user.monthly_goals.build
   end
 
   # GET /monthly_goals/1/edit
@@ -24,7 +24,7 @@ class MonthlyGoalsController < ApplicationController
   # POST /monthly_goals
   # POST /monthly_goals.json
   def create
-    @monthly_goal = MonthlyGoal.new(monthly_goal_params)
+    @monthly_goal = current_user.monthly_goals.build(monthly_goal_params)
 
     respond_to do |format|
       if @monthly_goal.save
