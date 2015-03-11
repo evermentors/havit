@@ -19,9 +19,13 @@ ActiveRecord::Schema.define(version: 20150311054116) do
   create_table "monthly_goals", force: :cascade do |t|
     t.text     "description", default: "",           null: false
     t.date     "season",      default: '2015-03-01', null: false
+    t.integer  "user_id",                            null: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
+
+  add_index "monthly_goals", ["season"], name: "index_monthly_goals_on_season", using: :btree
+  add_index "monthly_goals", ["user_id"], name: "index_monthly_goals_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false
