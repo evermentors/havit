@@ -1,12 +1,12 @@
 h1 Have your habit - Havit
 
 = content_for :card_body do
-  - if MonthlyGoal.of(current_user).blank?
-    = render text: "이달의 목표를 설정하세요!"
+  - if no_goal?
+    = link_to '이 달의 목표를 설정해 봅시다!', new_monthly_goal_path, class: "btn btn-default"
   - else
-    = MonthlyGoal.of(current_user).description
+    = current_goal.description
 
 = content_for :card_footer do
-  = link_to 'more', '#', class: "btn btn-default"
+  = link_to 'edit', edit_monthly_goal_path(current_goal.id), class: "btn btn-default" unless no_goal?
 
 = render 'layouts/card'
