@@ -3,4 +3,6 @@ class MonthlyGoal < ActiveRecord::Base
 
   validates :description, presence: true
   validates :season, presence: true
+
+  scope :of, -> (user) { where(user_id: user.id) }
 end
