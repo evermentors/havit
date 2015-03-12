@@ -1,1 +1,12 @@
 h1 Have your habit - Havit
+
+= content_for :card_body do
+  - if MonthlyGoal.where(user_id: current_user.id).count.zero?
+    = render text: "이달의 목표를 설정하세요!"
+  - else
+    = MonthlyGoal.where(user_id: current_user.id).last.description
+
+= content_for :card_footer do
+  = link_to 'more', '#', class: "btn btn-default"
+
+= render 'layouts/card'
