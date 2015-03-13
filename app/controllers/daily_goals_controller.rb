@@ -14,7 +14,8 @@ class DailyGoalsController < ApplicationController
 
   # GET /daily_goals/new
   def new
-    @daily_goal = DailyGoal.new
+    @daily_goal = current_user.daily_goals.build
+    @daily_goal.weekday = _weekday
   end
 
   # GET /daily_goals/1/edit
@@ -24,7 +25,7 @@ class DailyGoalsController < ApplicationController
   # POST /daily_goals
   # POST /daily_goals.json
   def create
-    @daily_goal = DailyGoal.new(daily_goal_params)
+    @daily_goal = current_user.daily_goals.build(daily_goal_params)
 
     respond_to do |format|
       if @daily_goal.save
@@ -67,6 +68,9 @@ class DailyGoalsController < ApplicationController
       @daily_goal = DailyGoal.find(params[:id])
     end
 
+    def _weekday
+      Time.current.to_date.day%7
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def daily_goal_params
       params.require(:daily_goal).permit(:description, :weekday, :user_id)

@@ -15,7 +15,7 @@ class MonthlyGoalsController < ApplicationController
   # GET /monthly_goals/new
   def new
     @monthly_goal = current_user.monthly_goals.build
-    @monthly_goal.season = set_season
+    @monthly_goal.season = _season
   end
 
   # GET /monthly_goals/1/edit
@@ -26,7 +26,7 @@ class MonthlyGoalsController < ApplicationController
   # POST /monthly_goals.json
   def create
     @monthly_goal = current_user.monthly_goals.build(monthly_goal_params)
-    @monthly_goal.season = set_season
+    @monthly_goal.season = _season
 
     respond_to do |format|
       if @monthly_goal.save
@@ -69,7 +69,7 @@ class MonthlyGoalsController < ApplicationController
       @monthly_goal = MonthlyGoal.find(params[:id])
     end
 
-    def set_season
+    def _season
       Time.current.to_date.beginning_of_month.next_month
     end
     # Never trust parameters from the scary internet, only allow the white list through.

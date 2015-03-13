@@ -14,7 +14,8 @@ class WeeklyGoalsController < ApplicationController
 
   # GET /weekly_goals/new
   def new
-    @weekly_goal = WeeklyGoal.new
+    @weekly_goal = current_user.weekly_goals.build
+    @weekly_goal.weeknum = _weeknum
   end
 
   # GET /weekly_goals/1/edit
@@ -24,7 +25,7 @@ class WeeklyGoalsController < ApplicationController
   # POST /weekly_goals
   # POST /weekly_goals.json
   def create
-    @weekly_goal = WeeklyGoal.new(weekly_goal_params)
+    @weekly_goal = current_user.weekly_goals.build(weekly_goal_params)
 
     respond_to do |format|
       if @weekly_goal.save
@@ -65,6 +66,10 @@ class WeeklyGoalsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_weekly_goal
       @weekly_goal = WeeklyGoal.find(params[:id])
+    end
+
+    def _weeknum
+      (Time.current.to_date.day/7.0).ceil
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
