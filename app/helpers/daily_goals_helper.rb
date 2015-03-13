@@ -1,0 +1,2 @@
+module DailyGoalsHelper
+end

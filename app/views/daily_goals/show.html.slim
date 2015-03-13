@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Description:
+  = @daily_goal.description
+p
+  strong Weekday:
+  = @daily_goal.weekday
+p
+  strong User:
+  = @daily_goal.user.name
+
+= link_to 'Edit', edit_daily_goal_path(@daily_goal)
+'|
+= link_to 'Back', daily_goals_path
