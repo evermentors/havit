@@ -8,7 +8,7 @@ p
   = @weekly_goal.weeknum
 p
   strong User:
-  = @weekly_goal.user
+  = @weekly_goal.user.name
 
 = link_to 'Edit', edit_weekly_goal_path(@weekly_goal)
 '|

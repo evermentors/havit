@@ -15,7 +15,7 @@ table
       tr
         td = daily_goal.description
         td = daily_goal.weekday
-        td = daily_goal.user
+        td = daily_goal.user.name
         td = link_to 'Show', daily_goal
         td = link_to 'Edit', edit_daily_goal_path(daily_goal)
         td = link_to 'Destroy', daily_goal, data: {:confirm => 'Are you sure?'}, :method => :delete

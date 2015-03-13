@@ -13,10 +13,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         ul.nav.navbar-nav
           li = link_to 'Users', users_path
           li.monthly-goal
-            - if no_goal?
+            - if no_monthly_goal?
               = render 'monthly_goals/top_bar_form'
             - else
-              = current_goal.description
+              = current_monthly_goal.description
         ul.nav.navbar-nav.navbar-right
           li = link_to 'Edit account', edit_user_registration_path
           li = link_to 'Sign out', destroy_user_session_path, method: 'delete'
