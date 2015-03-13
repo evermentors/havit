@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :monthly_goals
 
   resources :weekly_goals
+
+  resources :daily_goals
 end
