@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311054116) do
+ActiveRecord::Schema.define(version: 20150313063228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "monthly_goals", force: :cascade do |t|
-    t.text     "description", default: "",           null: false
-    t.integer  "user_id",                            null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.text     "description", default: "", null: false
     t.date     "season",                   null: false
+    t.integer  "user_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "monthly_goals", ["season"], name: "index_monthly_goals_on_season", using: :btree
@@ -45,5 +45,16 @@ ActiveRecord::Schema.define(version: 20150311054116) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "weekly_goals", force: :cascade do |t|
+    t.text     "description", default: "", null: false
+    t.integer  "weeknum",                  null: false
+    t.integer  "user_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "weekly_goals", ["user_id"], name: "index_weekly_goals_on_user_id", using: :btree
+  add_index "weekly_goals", ["weeknum"], name: "index_weekly_goals_on_weeknum", using: :btree
 
 end

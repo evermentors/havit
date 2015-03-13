@@ -1,0 +1,10 @@
+= simple_form_for(@weekly_goal) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+    = f.input :weeknum
+    = f.input :user_id
+
+  .form-actions
+    = f.button :submit

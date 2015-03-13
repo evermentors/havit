@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :users
 
   resources :monthly_goals
+
+  resources :weekly_goals
 end
