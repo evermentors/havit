@@ -16,7 +16,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top
             - if no_monthly_goal?
               = render 'monthly_goals/top_bar_form'
             - else
-              = current_monthly_goal.description
+              span = current_monthly_goal.description
+              = link_to '인증', new_status_path, class: 'btn btn-default'
         ul.nav.navbar-nav.navbar-right
           li = link_to 'Edit account', edit_user_registration_path
           li = link_to 'Sign out', destroy_user_session_path, method: 'delete'
