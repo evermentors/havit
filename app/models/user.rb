@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  include Gravtastic
+  gravtastic
+
   has_many :monthly_goals, dependent: :destroy
   has_many :weekly_goals, dependent: :destroy
   has_many :daily_goals, dependent: :destroy
