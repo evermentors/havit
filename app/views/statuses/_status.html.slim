@@ -6,4 +6,8 @@
     .status-photo
       = image_tag status.photo.url(:thumb)
 
+= content_for :card_footer, flush:true do
+  - if status.user_id == current_user.id
+    = link_to 'edit', edit_status_path(status)
+
 = render 'layouts/card'
