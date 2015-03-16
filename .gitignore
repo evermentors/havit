@@ -21,3 +21,6 @@ Procfile
 
 # Ignore database.yml
 config/database.yml
+
+# Ignore paperclip attachments.
+/public/system/

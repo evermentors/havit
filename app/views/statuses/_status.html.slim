@@ -1,0 +1,13 @@
+= content_for :card_body, flush:true do
+  p.description == status.description
+  span.name => status.user.name
+  => timeago_tag status.created_at
+  - if status.photo?
+    .status-photo
+      = image_tag status.photo.url(:thumb)
+
+= content_for :card_footer, flush:true do
+  - if status.user_id == current_user.id
+    = link_to 'edit', edit_status_path(status)
+
+= render 'layouts/card'

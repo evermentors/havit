@@ -80,8 +80,10 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+
 .card-container {
     border:1px solid;
     width: 200px;
     min-height: 200px;
+    margin-top:20px;
 }

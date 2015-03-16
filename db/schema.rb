@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313063959) do
+ActiveRecord::Schema.define(version: 20150316072508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,19 @@ ActiveRecord::Schema.define(version: 20150313063959) do
 
   add_index "monthly_goals", ["season"], name: "index_monthly_goals_on_season", using: :btree
   add_index "monthly_goals", ["user_id"], name: "index_monthly_goals_on_user_id", using: :btree
+
+  create_table "statuses", force: :cascade do |t|
+    t.text     "description",        default: "", null: false
+    t.integer  "user_id",                         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "statuses", ["user_id"], name: "index_statuses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false

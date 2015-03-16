@@ -1,0 +1,12 @@
+= simple_form_for(@status) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+    .status-photo
+      - if @status.photo?
+        = image_tag @status.photo.url(:thumb)
+      = f.input :photo
+
+  .form-actions
+    = f.button :submit
