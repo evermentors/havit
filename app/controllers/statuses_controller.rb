@@ -4,7 +4,7 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.all
+    @statuses = Status.all.order(created_at: :desc)
   end
 
   # GET /statuses/1
@@ -28,7 +28,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
-        format.html { redirect_to @status, notice: 'Status was successfully created.' }
+        format.html { redirect_to statuses_url, notice: 'Status was successfully created.' }
         format.json { render :show, status: :created, location: @status }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class StatusesController < ApplicationController
   def update
     respond_to do |format|
       if @status.update(status_params)
-        format.html { redirect_to @status, notice: 'Status was successfully updated.' }
+        format.html { redirect_to statuses_url, notice: 'Status was successfully updated.' }
         format.json { render :show, status: :ok, location: @status }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class StatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:description, :user_id)
+      params.require(:status).permit(:description, :user_id, :photo)
     end
 end

@@ -2,5 +2,8 @@
   p.description == status.description
   span.name => status.user.name
   => timeago_tag status.created_at
+  - if status.photo?
+    .status-photo
+      = image_tag status.photo.url(:thumb)
 
 = render 'layouts/card'
