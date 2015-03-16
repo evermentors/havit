@@ -1,23 +1,19 @@
-h1 Listing statuses
+.container
+  - if user_signed_in?
+    = content_for :card_body do
+      - if no_monthly_goal?
+        = link_to '이 달의 목표를 설정해 봅시다!', new_monthly_goal_path, class: "btn btn-default"
+      - else
+        = link_to current_monthly_goal.description, edit_monthly_goal_path(current_monthly_goal.id)
 
-table
-  thead
-    tr
-      th Descrption
-      th User
-      th
-      th
-      th
+      - if no_weekly_goal?
+        = link_to '이번 주의 목표를 설정해 봅시다!', new_weekly_goal_path, class: "btn btn-default"
+      - else
+        = link_to current_weekly_goal.description, edit_weekly_goal_path(current_weekly_goal.id)
 
-  tbody
-    - @statuses.each do |status|
-      tr
-        td = status.descrption
-        td = status.user
-        td = link_to 'Show', status
-        td = link_to 'Edit', edit_status_path(status)
-        td = link_to 'Destroy', status, data: {:confirm => 'Are you sure?'}, :method => :delete
+      - if no_daily_goal?
+        = link_to '오늘의 목표를 설정해 봅시다!', new_daily_goal_path, class: "btn btn-default"
+      - else
+        = link_to current_daily_goal.description, edit_daily_goal_path(current_daily_goal.id)
 
-br
-
-= link_to 'New Status', new_status_path
+    = render 'layouts/card'

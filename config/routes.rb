@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-
-  resources :statuses
-
   devise_for :users
+
+  root 'statuses#index'
 
   resources :users
 
@@ -11,4 +10,7 @@ Rails.application.routes.draw do
   resources :weekly_goals
 
   resources :daily_goals
+
+  resources :statuses
+
 end
