@@ -1,0 +1,6 @@
+= content_for :card_body, flush:true do
+  p.description == status.description
+  span.name => status.user.name
+  => timeago_tag status.created_at
+
+= render 'layouts/card'

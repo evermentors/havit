@@ -1,0 +1,8 @@
+@import "bootstrap";
+
+.status {
+  .description {
+    @extend .lead;
+    margin-bottom: 5px;
+  }
+}
