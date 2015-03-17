@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316072508) do
+ActiveRecord::Schema.define(version: 20150317064358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20150316072508) do
 
   add_index "daily_goals", ["user_id"], name: "index_daily_goals_on_user_id", using: :btree
   add_index "daily_goals", ["weekday"], name: "index_daily_goals_on_weekday", using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "status_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "likes", ["status_id", "user_id"], name: "index_likes_on_status_id_and_user_id", unique: true, using: :btree
+  add_index "likes", ["status_id"], name: "index_likes_on_status_id", using: :btree
+  add_index "likes", ["user_id", "status_id"], name: "index_likes_on_user_id_and_status_id", unique: true, using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "monthly_goals", force: :cascade do |t|
     t.text     "description", default: "", null: false
@@ -47,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150316072508) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "likes_count",        default: 0,  null: false
   end
 
   add_index "statuses", ["user_id"], name: "index_statuses_on_user_id", using: :btree
@@ -81,4 +94,6 @@ ActiveRecord::Schema.define(version: 20150316072508) do
   add_index "weekly_goals", ["user_id"], name: "index_weekly_goals_on_user_id", using: :btree
   add_index "weekly_goals", ["weeknum"], name: "index_weekly_goals_on_weeknum", using: :btree
 
+  add_foreign_key "likes", "statuses", on_delete: :cascade
+  add_foreign_key "likes", "users", on_delete: :cascade
 end

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :daily_goals
 
-  resources :statuses
+  resources :statuses do
+    resources :likes, only: [:create]
+    resource :like, only: [:destroy]
+  end
 
 end
