@@ -2,12 +2,20 @@
   p.description == status.description
   span.name => status.user.name
   => timeago_tag status.created_at
+  ' ·
+  span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
   - if status.photo?
     .status-photo
       = image_tag status.photo.url(:thumb)
 
 = content_for :card_footer, flush:true do
+  .like-form data={ status_id: status.id }
+    - if current_user.likes?(status)
+      == render 'statuses/unlike', status: status
+    - else
+      == render 'statuses/like', status: status
   - if status.user_id == current_user.id
+    ' ·
     = link_to 'edit', edit_status_path(status)
 
 = render 'layouts/card'

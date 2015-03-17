@@ -11,7 +11,21 @@ class User < ActiveRecord::Base
   has_many :weekly_goals, dependent: :destroy
   has_many :daily_goals, dependent: :destroy
   has_many :statuses, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_statuses, through: :likes, source: :status
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+
+  def like!(status)
+    liked_statuses << status unless likes?(status)
+  end
+
+  def unlike!(status)
+    liked_statuses.destroy(status)
+  end
+
+  def likes?(status)
+    liked_statuses.include?(status)
+  end
 end
