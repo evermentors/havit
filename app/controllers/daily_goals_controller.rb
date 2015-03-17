@@ -1,4 +1,5 @@
 class DailyGoalsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_daily_goal, only: [:show, :edit, :update, :destroy]
 
   # GET /daily_goals

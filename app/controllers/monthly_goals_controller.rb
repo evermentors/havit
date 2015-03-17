@@ -1,4 +1,5 @@
 class MonthlyGoalsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_monthly_goal, only: [:show, :edit, :update, :destroy]
 
   # GET /monthly_goals

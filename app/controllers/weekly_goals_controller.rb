@@ -1,4 +1,5 @@
 class WeeklyGoalsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_weekly_goal, only: [:show, :edit, :update, :destroy]
 
   # GET /weekly_goals
