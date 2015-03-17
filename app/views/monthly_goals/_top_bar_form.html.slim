@@ -1,3 +1,6 @@
 = form_tag "/monthly_goals", method: "post"
-  = text_field_tag 'monthly_goal[description]', nil, placeholder: '이번달의 목표를 입력하세요.', required: true
-  = submit_tag "등록"
+  .navbar-form
+    = text_field_tag 'monthly_goal[description]', nil, placeholder: '이번달의 목표를 입력하세요.', required: true, class: 'form-control'
+    = submit_tag "등록", class: 'btn btn-primary'
+
+
