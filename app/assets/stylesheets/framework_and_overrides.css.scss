@@ -85,3 +85,7 @@ section {
     width: 200px;
     min-height: 200px;
 }
+.monthly-goals-show {
+  @extend .navbar-text;
+  font-size: 18px;
+}

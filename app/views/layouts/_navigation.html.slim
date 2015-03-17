@@ -16,7 +16,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
             - if no_goal?
               = render 'monthly_goals/top_bar_form'
             - else
-              = current_goal.description
+              span.monthly-goals-show 한 달 목표 : #{current_goal.description}
         ul.nav.navbar-nav.navbar-right
           li = link_to 'Edit account', edit_user_registration_path
           li = link_to 'Sign out', destroy_user_session_path, method: 'delete'
