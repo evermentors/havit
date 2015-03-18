@@ -1,14 +1,17 @@
-= content_for :card_body, flush:true do
+= content_for :card_photo, flush:true do
+  - if status.photo?
+    = image_tag status.photo.url(:thumb)
+= content_for :card_goals, flush:true do
+  p = current_monthly_goal.description
+  p = current_weekly_goal.description
+  p = current_daily_goal.description
+= content_for :card_message, flush:true do
   p.description == status.description
   span.name => status.user.name
   => timeago_tag status.created_at
   ' ·
   span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
-  - if status.photo?
-    .status-photo
-      = image_tag status.photo.url(:thumb)
-
-= content_for :card_footer, flush:true do
+= content_for :card_actions, flush:true do
   .like-form data={ status_id: status.id }
     - if current_user.likes?(status)
       == render 'statuses/unlike', status: status
