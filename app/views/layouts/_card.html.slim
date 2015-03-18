@@ -1,7 +1,10 @@
 .card-container
-  .card-header
-    = yield :card_header
-  .card-body
-    = yield :card_body
-  .card-footer
-    = yield :card_footer
+  .card-wrapper
+    .card-photo
+      = yield :card_photo
+    .card-goals
+      = yield :card_goals
+    .card-message
+      = yield :card_message
+    .card-actions
+      = yield :card_actions
