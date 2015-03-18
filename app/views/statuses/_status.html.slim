@@ -1,6 +1,6 @@
 = content_for :card_photo, flush:true do
   - if status.photo?
-    = image_tag status.photo.url(:thumb)
+    = image_tag status.photo.url(:medium)
 = content_for :card_goals, flush:true do
   p = current_monthly_goal.description
   p = current_weekly_goal.description
@@ -18,7 +18,6 @@
     - else
       == render 'statuses/like', status: status
   - if status.user_id == current_user.id
-    ' ·
-    = link_to 'edit', edit_status_path(status)
+    = link_to 'edit', edit_status_path(status), class: "status-edit-btn btn btn-link"
 
 = render 'layouts/card'
