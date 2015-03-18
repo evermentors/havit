@@ -1,11 +1,12 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+// import the CSS framework
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
+.current-monthly-goal {
+  @extend .navbar-text;
+  font-size: 18px;
+}
 
-.goal-container {
-    /*border:1px solid;*/
-
-    /*color :white;*/
+.verify-btn {
+  @extend .navbar-btn;
 }
