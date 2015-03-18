@@ -5,17 +5,17 @@
         - if no_monthly_goal?
           = link_to '이 달의 목표를 설정해 봅시다!', new_monthly_goal_path, class: "btn btn-default"
         - else
-          = link_to current_monthly_goal.description, edit_monthly_goal_path(current_monthly_goal.id)
+          = link_to current_monthly_goal.description, edit_monthly_goal_path(current_monthly_goal)
 
         - if no_weekly_goal?
           = link_to '이번 주의 목표를 설정해 봅시다!', new_weekly_goal_path, class: "btn btn-default"
         - else
-          = link_to current_weekly_goal.description, edit_weekly_goal_path(current_weekly_goal.id)
+          = link_to current_weekly_goal.description, edit_weekly_goal_path(current_weekly_goal)
 
         - if no_daily_goal?
           = link_to '오늘의 목표를 설정해 봅시다!', new_daily_goal_path, class: "btn btn-default"
         - else
-          = link_to current_daily_goal.description, edit_daily_goal_path(current_daily_goal.id)
+          = link_to current_daily_goal.description, edit_daily_goal_path(current_daily_goal)
 
       = render 'layouts/card'
 
