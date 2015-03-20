@@ -7,6 +7,7 @@
       - if @status.photo?
         = image_tag @status.photo.url(:thumb)
       = f.input :photo
+    = f.input :verified_at, value: Date.today
 
   .form-actions
     = f.button :submit
