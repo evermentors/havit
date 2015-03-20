@@ -3,28 +3,28 @@
     .list-group.set-goal-card
       span.list-group-item.monthly
         h4.list-group-item-heading 이번달 목표
-        - if no_monthly_goal?
+        - if no_monthly_goal?(current_user)
           = link_to '목표가 없습니다. 이 달의 목표를 설정해 보세요!', new_monthly_goal_path, class: "list-group-item-text"
         - else
-          a.modify-goal-link href=edit_monthly_goal_path(current_monthly_goal)
+          a.modify-goal-link href=edit_monthly_goal_path(monthly_goal(current_user))
             span.glyphicon.glyphicon-pencil
-          span.list-group-item-text = current_monthly_goal.description
+          span.list-group-item-text = monthly_goal(current_user).description
       span.list-group-item.weekly
         h4.list-group-item-heading 이번주 목표
-        - if no_weekly_goal?
+        - if no_weekly_goal?(current_user)
           = link_to '이번 주의 목표를 설정해 보세요!', new_weekly_goal_path, class: "list-group-item-text"
         - else
-          a.modify-goal-link href=edit_weekly_goal_path(current_weekly_goal)
+          a.modify-goal-link href=edit_weekly_goal_path(weekly_goal(current_user))
             span.glyphicon.glyphicon-pencil
-          span.list-group-item-text = current_weekly_goal.description
+          span.list-group-item-text = weekly_goal(current_user).description
       span.list-group-item.daily
         h4.list-group-item-heading 오늘 목표
-        - if no_daily_goal?
+        - if no_daily_goal?(current_user)
           = link_to '오늘의 목표를 설정해 봅시다!', new_daily_goal_path, class: "list-group-item-text"
         - else
-          a.modify-goal-link href=edit_daily_goal_path(current_daily_goal)
+          a.modify-goal-link href=edit_daily_goal_path(daily_goal(current_user))
             span.glyphicon.glyphicon-pencil
-          span.list-group-item-text = current_daily_goal.description
+          span.list-group-item-text = daily_goal(current_user).description
 
 
 

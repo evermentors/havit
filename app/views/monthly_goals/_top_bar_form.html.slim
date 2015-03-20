@@ -1,9 +1,9 @@
-- if no_monthly_goal?
+- if no_monthly_goal?(current_user)
   = form_tag "/monthly_goals", method: "post", class: "navbar-form navbar-left monthly-goal"
     .form-group
       = text_field_tag 'monthly_goal[description]', nil, placeholder: '이번달의 목표를 입력하세요.', required: true, class: 'form-control'
     = submit_tag "등록", class: 'btn btn-primary'
 - else
   .monthly-goal.navbar-left
-    = link_to "이번달 목표: #{current_monthly_goal.description}", edit_monthly_goal_path(current_monthly_goal), class: "current-monthly-goal"
+    = link_to "이번달 목표: #{monthly_goal(current_user).description}", edit_monthly_goal_path(monthly_goal(current_user)), class: "current-monthly-goal"
     = link_to '인증', new_status_path, class: 'btn btn-default verify-btn'

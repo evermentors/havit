@@ -1,28 +1,28 @@
 #encoding=utf-8
 
 module ApplicationHelper
-  def no_monthly_goal?
-    MonthlyGoal.of(current_user).count.zero?
+  def no_monthly_goal? (user)
+    MonthlyGoal.of(user).count.zero?
   end
 
-  def current_monthly_goal
-    MonthlyGoal.of(current_user).last
+  def monthly_goal (user)
+    MonthlyGoal.of(user).last
   end
 
-  def no_weekly_goal?
-    WeeklyGoal.of(current_user).count.zero?
+  def no_weekly_goal? (user)
+    WeeklyGoal.of(user).count.zero?
   end
 
-  def current_weekly_goal
-    WeeklyGoal.of(current_user).last
+  def weekly_goal (user)
+    WeeklyGoal.of(user).last
   end
 
-  def no_daily_goal?
-    DailyGoal.of(current_user).count.zero?
+  def no_daily_goal? (user)
+    DailyGoal.of(user).count.zero?
   end
 
-  def current_daily_goal
-    DailyGoal.of(current_user).last
+  def daily_goal (user)
+    DailyGoal.of(user).last
   end
 
   def datestring (date)
