@@ -9,9 +9,11 @@
   p = current_daily_goal.description unless no_daily_goal?
 = content_for :card_message, flush:true do
   p.description == status.description
-  span.name => status.user.name
-  => timeago_tag status.created_at
-  ' ·
+  span.name
+    = link_to status.user.name, status.user
+    '님의
+  span.time => datestring(status.verified_at)
+  ' 실천 ·
   span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
 = content_for :card_actions, flush:true do
   .like-form data={ status_id: status.id }
