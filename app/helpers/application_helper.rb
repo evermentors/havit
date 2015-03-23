@@ -1,13 +1,6 @@
 #encoding=utf-8
 
 module ApplicationHelper
-  def no_monthly_goal? (user)
-    MonthlyGoal.of(user).count.zero?
-  end
-
-  def monthly_goal (user)
-    MonthlyGoal.of(user).last
-  end
 
   def no_weekly_goal? (user)
     WeeklyGoal.of(user).count.zero?
