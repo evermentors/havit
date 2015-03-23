@@ -11,6 +11,7 @@ class WeeklyGoalsController < ApplicationController
 
   def new
     @weekly_goal = current_user.weekly_goals.build
+    @weekly_goal.weeknum = view_context.absolute_weeknum
   end
 
   def edit
@@ -55,9 +56,6 @@ class WeeklyGoalsController < ApplicationController
       @weekly_goal = WeeklyGoal.find(params[:id])
     end
 
-    def _weeknum
-      (Time.current.to_date.day/7.0).ceil
-    end
     def weekly_goal_params
       params.require(:weekly_goal).permit(:description, :weeknum, :user_id)
     end
