@@ -2,32 +2,22 @@ class MonthlyGoalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_monthly_goal, only: [:show, :edit, :update, :destroy]
 
-  # GET /monthly_goals
-  # GET /monthly_goals.json
   def index
     @monthly_goals = MonthlyGoal.all
   end
 
-  # GET /monthly_goals/1
-  # GET /monthly_goals/1.json
   def show
   end
 
-  # GET /monthly_goals/new
   def new
     @monthly_goal = current_user.monthly_goals.build
-    @monthly_goal.season = _season
   end
 
-  # GET /monthly_goals/1/edit
   def edit
   end
 
-  # POST /monthly_goals
-  # POST /monthly_goals.json
   def create
     @monthly_goal = current_user.monthly_goals.build(monthly_goal_params)
-    @monthly_goal.season = _season
 
     respond_to do |format|
       if @monthly_goal.save
@@ -40,8 +30,6 @@ class MonthlyGoalsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /monthly_goals/1
-  # PATCH/PUT /monthly_goals/1.json
   def update
     respond_to do |format|
       if @monthly_goal.update(monthly_goal_params)
@@ -54,8 +42,6 @@ class MonthlyGoalsController < ApplicationController
     end
   end
 
-  # DELETE /monthly_goals/1
-  # DELETE /monthly_goals/1.json
   def destroy
     @monthly_goal.destroy
     respond_to do |format|
@@ -65,15 +51,10 @@ class MonthlyGoalsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_monthly_goal
       @monthly_goal = MonthlyGoal.find(params[:id])
     end
 
-    def _season
-      Time.current.to_date.beginning_of_month.next_month
-    end
-    # Never trust parameters from the scary internet, only allow the white list through.
     def monthly_goal_params
       params.require(:monthly_goal).permit(:description, :season)
     end
