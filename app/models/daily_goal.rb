@@ -2,7 +2,7 @@ class DailyGoal < ActiveRecord::Base
   belongs_to :user
 
   validates :description, presence: true
-  validates :weekday, presence: true, inclusion: 1..7
+  validates :goal_date, presence: true
 
-  scope :of, -> (user) { where(user_id: user.id) }
+  scope :of, -> (user) { where(user_id: user.id, goal_date: DailyGoalsController.helpers.today) }
 end

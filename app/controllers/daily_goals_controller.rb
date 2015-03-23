@@ -11,7 +11,7 @@ class DailyGoalsController < ApplicationController
 
   def new
     @daily_goal = current_user.daily_goals.build
-    @daily_goal.weekday = _weekday
+    @daily_goal.goal_date = view_context.today
   end
 
   def edit
@@ -56,10 +56,7 @@ class DailyGoalsController < ApplicationController
       @daily_goal = DailyGoal.find(params[:id])
     end
 
-    def _weekday
-      Time.current.to_date.day%7
-    end
     def daily_goal_params
-      params.require(:daily_goal).permit(:description, :weekday, :user_id)
+      params.require(:daily_goal).permit(:description, :goal_date, :user_id)
     end
 end

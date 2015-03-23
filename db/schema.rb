@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20150320072450) do
 
   create_table "daily_goals", force: :cascade do |t|
     t.text     "description", default: "", null: false
-    t.integer  "weekday",                  null: false
+    t.date     "goal_date",                null: false
     t.integer  "user_id",                  null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
+  add_index "daily_goals", ["goal_date"], name: "index_daily_goals_on_goal_date", using: :btree
   add_index "daily_goals", ["user_id"], name: "index_daily_goals_on_user_id", using: :btree
-  add_index "daily_goals", ["weekday"], name: "index_daily_goals_on_weekday", using: :btree
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id",    null: false
