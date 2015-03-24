@@ -2,6 +2,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//make html and body has full height
+html, body {
+  height: 100%;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -38,6 +43,7 @@ main {
   background-color: #eee;
   padding-bottom: 80px;
   width: 100%;
+  height: 100%;
   margin-top: 51px; // accommodate the navbar
   }
 section {
