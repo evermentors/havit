@@ -2,7 +2,7 @@
   - if no_monthly_goal?
     .notice-container
       = render 'goals/form'
-  - else
-    .card-list
-      = render 'edit_goal' unless no_monthly_goal?
-  = render @statuses
+
+  .card-list
+    = render 'edit_goal' unless no_monthly_goal?
+    = render @statuses
