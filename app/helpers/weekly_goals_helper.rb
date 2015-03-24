@@ -1,9 +1,9 @@
 module WeeklyGoalsHelper
-  def no_weekly_goal? (user, date=Time.current.to_date)
+  def no_weekly_goal? (user=current_user, date=Time.current.to_date)
     WeeklyGoal.of(user, date.beginning_of_week).count.zero?
   end
 
-  def weekly_goal (user, date=Time.current.to_date)
+  def weekly_goal (user=current_user, date=Time.current.to_date)
     WeeklyGoal.of(user, date.beginning_of_week).last
   end
 

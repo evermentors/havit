@@ -2,7 +2,6 @@ h1 Editing daily_goal
 
 == render 'form'
 
-= link_to 'Show', @daily_goal
+= link_to 'Back', root_path
 '|
-= link_to 'Back', daily_goals_path
-
+= link_to 'Delete', @daily_goal, method: :delete

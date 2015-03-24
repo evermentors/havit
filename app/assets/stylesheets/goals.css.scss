@@ -1,0 +1,10 @@
+// import the CSS framework
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.topbar-goal {
+  .current-daily-goal {
+    @extend .navbar-text;
+    font-size: 18px;
+  }
+}

@@ -2,35 +2,9 @@
 
 class WeeklyGoalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_weekly_goal, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @weekly_goals = WeeklyGoal.all
-  end
-
-  def show
-  end
-
-  def new
-    @weekly_goal = current_user.weekly_goals.build
-    @weekly_goal.weeknum = Time.current.to_date.beginning_of_week
-  end
+  before_action :set_weekly_goal, only: [:edit, :update, :destroy]
 
   def edit
-  end
-
-  def create
-    @weekly_goal = current_user.weekly_goals.build(weekly_goal_params)
-
-    respond_to do |format|
-      if @weekly_goal.save
-        format.html { redirect_to root_url, notice: 'Weekly goal was successfully created.' }
-        format.json { render :show, status: :created, location: @weekly_goal }
-      else
-        format.html { render :new }
-        format.json { render json: @weekly_goal.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def update

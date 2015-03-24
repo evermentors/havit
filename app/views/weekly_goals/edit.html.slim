@@ -2,7 +2,6 @@ h1 Editing weekly_goal
 
 == render 'form'
 
-= link_to 'Show', @weekly_goal
+= link_to 'Back', root_path
 '|
-= link_to 'Back', weekly_goals_path
-
+= link_to 'Delete', @weekly_goal, method: :delete

@@ -1,0 +1,13 @@
+= form_tag "/goals", method: "post", class: "goals-altogether"
+  .panel.panel-success
+    .panel-heading
+      h3.panel-title #{current_user.name}님, #{seasonstring}의 목표들을 입력해 주세요!
+      = submit_tag "등록", class: 'btn btn-primary btn-sm notice-submit-btn'
+    .panel-body
+      .form-group.row
+        .col-lg-4
+          = text_area_tag 'monthly_goal[description]', nil, placeholder: "#{seasonstring}의 목표는 무엇인가요?", required: true, class: 'form-control'
+        .col-lg-4
+          = text_area_tag 'weekly_goal[description]', nil, placeholder: "이번 주(#{weekstring})의 목표를 입력하세요.", required: true, class: 'form-control'
+        .col-lg-4
+          = text_area_tag 'daily_goal[description]', nil, placeholder: "오늘은 무엇을 해보시겠어요?", required: true, class: 'form-control'
