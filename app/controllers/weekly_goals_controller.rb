@@ -1,3 +1,5 @@
+#encoding=utf-8
+
 class WeeklyGoalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_weekly_goal, only: [:show, :edit, :update, :destroy]
@@ -32,14 +34,11 @@ class WeeklyGoalsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @weekly_goal.update(weekly_goal_params)
-        format.html { redirect_to root_url, notice: 'Weekly goal was successfully updated.' }
-        format.json { render :show, status: :ok, location: @weekly_goal }
-      else
-        format.html { render :edit }
-        format.json { render json: @weekly_goal.errors, status: :unprocessable_entity }
-      end
+    notice_text = "이번 주의 목표를 변경했습니다: #{@weekly_goal.description} -> #{weekly_goal_params[:description]}"
+    if @weekly_goal.update(weekly_goal_params)
+      redirect_to root_url, notice: notice_text
+    else
+      render :edit
     end
   end
 

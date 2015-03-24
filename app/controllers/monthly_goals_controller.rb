@@ -1,3 +1,5 @@
+#encoding=utf-8
+
 class MonthlyGoalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_monthly_goal, only: [:show, :edit, :update, :destroy]
@@ -32,14 +34,11 @@ class MonthlyGoalsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @monthly_goal.update(monthly_goal_params)
-        format.html { redirect_to root_url, notice: 'Monthly goal was successfully updated.' }
-        format.json { render :show, status: :ok, location: @monthly_goal }
-      else
-        format.html { render :edit }
-        format.json { render json: @monthly_goal.errors, status: :unprocessable_entity }
-      end
+    notice_text = "이번 시즌의 목표를 변경했습니다: #{@monthly_goal.description} -> #{monthly_goal_params[:description]}"
+    if @monthly_goal.update(monthly_goal_params)
+      redirect_to root_url, notice: notice_text
+    else
+      render :edit
     end
   end
 
