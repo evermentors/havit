@@ -1,9 +1,9 @@
 module MonthlyGoalsHelper
-  def no_monthly_goal? (user, date=Time.current.to_date)
+  def no_monthly_goal? (user=current_user, date=Time.current.to_date)
     MonthlyGoal.of(user, season_start(date)).count.zero?
   end
 
-  def monthly_goal (user, date=Time.current.to_date)
+  def monthly_goal (user=current_user, date=Time.current.to_date)
     MonthlyGoal.of(user, season_start(date)).last
   end
 
