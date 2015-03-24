@@ -5,6 +5,7 @@ html
     title
       = content_for?(:title) ? yield(:title) : 'Havit'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Havit'}"
+    = favicon_link_tag 'favicon-2.ico'
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
     == javascript_include_tag 'application', 'data-turbolinks-track' => true
     == csrf_meta_tags
