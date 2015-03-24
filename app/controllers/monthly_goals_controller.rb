@@ -2,35 +2,9 @@
 
 class MonthlyGoalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_monthly_goal, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @monthly_goals = MonthlyGoal.all
-  end
-
-  def show
-  end
-
-  def new
-    @monthly_goal = current_user.monthly_goals.build
-  end
+  before_action :set_monthly_goal, only: [:edit, :update, :destroy]
 
   def edit
-  end
-
-  def create
-    @monthly_goal = current_user.monthly_goals.build(monthly_goal_params)
-    @monthly_goal.season = view_context.season_start(Time.current.to_date)
-
-    respond_to do |format|
-      if @monthly_goal.save
-        format.html { redirect_to root_url, notice: 'Monthly goal was successfully created.' }
-        format.json { render :show, status: :created, location: @monthly_goal }
-      else
-        format.html { render :new }
-        format.json { render json: @monthly_goal.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def update
