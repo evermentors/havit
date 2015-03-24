@@ -2,6 +2,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.navigation-logo > img {
+  height:50px;
+}
+
 .topbar-goal {
   .current-daily-goal {
     @extend .navbar-text;

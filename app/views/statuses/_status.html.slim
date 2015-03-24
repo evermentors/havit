@@ -2,7 +2,7 @@
   - if status.photo?
     = image_tag status.photo.url(:medium)
   - else
-    = image_tag "havit-logo-big.jpg"
+    = image_tag "havit-logo-big.png"
 = content_for :card_goals, flush:true do
   p = monthly_goal(status.user, status.verified_at).description unless no_monthly_goal?(status.user, status.verified_at)
   p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
