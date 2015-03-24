@@ -1,0 +1,22 @@
+.card-container
+  .card-wrapper
+    .list-group.edit-goal-card
+      span.list-group-item.monthly
+        h4.list-group-item-heading 이번달 목표
+        a.modify-goal-link href=edit_monthly_goal_path(monthly_goal)
+          span.glyphicon.glyphicon-pencil
+        span.list-group-item-text = monthly_goal.description
+      span.list-group-item.weekly
+        h4.list-group-item-heading 이번주 목표
+        a.modify-goal-link href=edit_weekly_goal_path(weekly_goal)
+          span.glyphicon.glyphicon-pencil
+        span.list-group-item-text = weekly_goal.description
+      span.list-group-item.daily
+        h4.list-group-item-heading 오늘 목표
+        a.modify-goal-link href=edit_daily_goal_path(daily_goal)
+          span.glyphicon.glyphicon-pencil
+        span.list-group-item-text = daily_goal.description
+
+
+
+

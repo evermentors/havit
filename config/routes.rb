@@ -5,9 +5,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resource :goals, only: [:create] do
-    get 'season', on: :new
-  end
+  resource :goals, only: [:create]
 
   resources :monthly_goals
 
