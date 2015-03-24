@@ -11,7 +11,7 @@ class DailyGoalsController < ApplicationController
 
   def new
     @daily_goal = current_user.daily_goals.build
-    @daily_goal.goal_date = view_context.today
+    @daily_goal.goal_date = Time.current.to_date
   end
 
   def edit

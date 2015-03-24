@@ -1,22 +1,22 @@
 module MonthlyGoalsHelper
-  def no_monthly_goal? (user)
-    MonthlyGoal.of(user).count.zero?
+  def no_monthly_goal? (user, date=Time.current.to_date)
+    MonthlyGoal.of(user, season_start(date)).count.zero?
   end
 
-  def monthly_goal (user)
-    MonthlyGoal.of(user).last
+  def monthly_goal (user, date=Time.current.to_date)
+    MonthlyGoal.of(user, season_start(date)).last
   end
 
-  def current_season
-    date = Time.current.to_date.beginning_of_month
-    wnum_today = Time.current.to_date.strftime("%W").to_i
-    wnum_beginning = date.strftime("%W").to_i
+  def season_start (date)
+    season_start = date.beginning_of_month
+    wnum_today = date.strftime("%W").to_i
+    wnum_beginning = season_start.strftime("%W").to_i
 
-    if date.wday != 1 and wnum_today - wnum_beginning == 0
-      date = date.prev_month
+    if season_start.wday != 1 and wnum_today - wnum_beginning == 0
+      season_start = season_start.prev_month
     end
 
-    date += 1 until date.wday == 1
-    return date
+    season_start += 1 until season_start.wday == 1
+    return season_start
   end
 end

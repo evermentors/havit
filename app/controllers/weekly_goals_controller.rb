@@ -11,7 +11,7 @@ class WeeklyGoalsController < ApplicationController
 
   def new
     @weekly_goal = current_user.weekly_goals.build
-    @weekly_goal.weeknum = view_context.absolute_weeknum
+    @weekly_goal.weeknum = Time.current.to_date.beginning_of_week
   end
 
   def edit

@@ -18,7 +18,7 @@ class MonthlyGoalsController < ApplicationController
 
   def create
     @monthly_goal = current_user.monthly_goals.build(monthly_goal_params)
-    @monthly_goal.season = view_context.current_season
+    @monthly_goal.season = view_context.season_start(Time.current.to_date)
 
     respond_to do |format|
       if @monthly_goal.save

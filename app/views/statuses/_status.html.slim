@@ -4,9 +4,9 @@
   - else
     = image_tag "havit-logo-big.jpg"
 = content_for :card_goals, flush:true do
-  p = monthly_goal(status.user).description unless no_monthly_goal?(status.user)
-  p = weekly_goal(status.user).description unless no_weekly_goal?(status.user)
-  p = daily_goal(status.user).description unless no_daily_goal?(status.user)
+  p = monthly_goal(status.user, status.verified_at).description unless no_monthly_goal?(status.user, status.verified_at)
+  p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
+  p = daily_goal(status.user, status.verified_at).description unless no_daily_goal?(status.user, status.verified_at)
 = content_for :card_message, flush:true do
   p.description == status.description
   span.name

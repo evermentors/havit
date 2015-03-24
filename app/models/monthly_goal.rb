@@ -4,5 +4,5 @@ class MonthlyGoal < ActiveRecord::Base
   validates :description, presence: true
   validates :season, presence: true
 
-  scope :of, -> (user) { where(user_id: user.id, season: MonthlyGoalsController.helpers.current_season) }
+  scope :of, -> (user, season) { where(user_id: user.id, season: season) }
 end
