@@ -1,13 +1,9 @@
 module DailyGoalsHelper
-  def no_daily_goal? (user)
-    DailyGoal.of(user).count.zero?
+  def no_daily_goal? (user, date=Time.current.to_date)
+    DailyGoal.of(user, date).count.zero?
   end
 
-  def daily_goal (user)
-    DailyGoal.of(user).last
-  end
-
-  def today
-    Time.current.to_date
+  def daily_goal (user, date=Time.current.to_date)
+    DailyGoal.of(user, date).last
   end
 end

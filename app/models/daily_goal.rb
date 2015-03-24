@@ -4,5 +4,5 @@ class DailyGoal < ActiveRecord::Base
   validates :description, presence: true
   validates :goal_date, presence: true
 
-  scope :of, -> (user) { where(user_id: user.id, goal_date: DailyGoalsController.helpers.today) }
+  scope :of, -> (user, date) { where(user_id: user.id, goal_date: date) }
 end
