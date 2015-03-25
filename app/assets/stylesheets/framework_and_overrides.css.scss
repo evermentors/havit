@@ -80,3 +80,11 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+
+// alert
+.alert {
+  margin-top:10px;
+  margin-bottom:0;
+  padding: 10px;
+  text-align: center;
+}

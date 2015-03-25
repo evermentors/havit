@@ -8,7 +8,7 @@ class WeeklyGoalsController < ApplicationController
   end
 
   def update
-    notice_text = "이번 주의 목표를 변경했습니다: #{@weekly_goal.description} -> #{weekly_goal_params[:description]}"
+    notice_text = "#{weekstring}의 목표를 변경했습니다: #{@weekly_goal.description} -> #{weekly_goal_params[:description]}"
     if @weekly_goal.update(weekly_goal_params)
       redirect_to root_url, notice: notice_text
     else

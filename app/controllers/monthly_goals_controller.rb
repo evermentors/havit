@@ -8,7 +8,7 @@ class MonthlyGoalsController < ApplicationController
   end
 
   def update
-    notice_text = "이번 시즌의 목표를 변경했습니다: #{@monthly_goal.description} -> #{monthly_goal_params[:description]}"
+    notice_text = "#{view_context.seasonstring}의 목표를 변경했습니다: #{@monthly_goal.description} -> #{monthly_goal_params[:description]}"
     if @monthly_goal.update(monthly_goal_params)
       redirect_to root_url, notice: notice_text
     else

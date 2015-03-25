@@ -8,7 +8,7 @@ class DailyGoalsController < ApplicationController
   end
 
   def update
-    notice_text = "오늘의 목표를 변경했습니다: #{@daily_goal.description} -> #{daily_goal_params[:description]}"
+    notice_text = "#{view_context.datestring}의 목표를 변경했습니다: #{@daily_goal.description} -> #{daily_goal_params[:description]}"
     if @daily_goal.update(daily_goal_params)
       redirect_to root_url, notice: notice_text
     else

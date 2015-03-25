@@ -1,8 +1,9 @@
-.container
+.notice-container
   - if no_monthly_goal?
-    .notice-container
-      = render 'goals/form'
+    = render 'goals/form'
+  - elsif no_daily_goal?
+    = render 'daily_goals/form'
 
-  .card-list
-    = render 'edit_goal' unless no_monthly_goal?
-    = render @statuses
+.card-list
+  = render 'edit_goal' unless no_monthly_goal?
+  = render @statuses
