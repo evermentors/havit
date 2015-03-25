@@ -1,8 +1,11 @@
 .notice-container
   - if no_monthly_goal?
     = render 'goals/form'
-  - elsif no_daily_goal?
+  - elsif no_daily_goal? and not last_daily_goal.blank?
     = render 'daily_goals/form'
+  - elsif last_daily_goal.blank?
+    = render text: "daily_goal이 하나도 설정되어있지 않기 때문에 생기는 에러. 이 경우의 수는 차후 없어야 함. 이 텍스트가 보인다면 목표 카드에서 시즌 목표를 삭제하여 첫 번째 일일 목표를 설정할 것."
+
 
 .card-list
   = render 'edit_goal' unless no_monthly_goal?

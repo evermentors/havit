@@ -12,7 +12,7 @@
           | 그게 아니라, 아직 인증하지 않은 실천을 올리시려면
           =< link_to '실천 인증하러 가기', '#', class: "close-btn"
           | 를 클릭하세요.
-        = text_area_tag 'daily_goal[description]', daily_goal(current_user, Date.yesterday).description, placeholder: "오늘은 무엇을 해보시겠어요?", required: true, class: 'form-control'
+        = text_area_tag 'daily_goal[description]', last_daily_goal.description, placeholder: "오늘은 무엇을 해보시겠어요?", required: true, class: 'form-control'
       .actions
         = submit_tag "목표 등록하기", class: 'btn btn-success submit-btn'
         = link_to '실천 인증하러 가기', '#', class: "btn btn-primary close-btn"
