@@ -1,7 +1,7 @@
 #encoding=utf-8
 
 module ApplicationHelper
-  def datestring (date)
+  def datestring (date=Time.current.to_date)
     date.strftime("%-m월 %-d일")
   end
   def seasonstring (date=season_start)

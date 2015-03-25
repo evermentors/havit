@@ -1,6 +1,14 @@
 h1 Editing daily_goal
 
-== render 'form'
+= simple_form_for(@daily_goal) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+    = f.input :goal_date
+
+  .form-actions
+    = f.button :submit
 
 = link_to 'Back', root_path
 '|

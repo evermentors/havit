@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :weekly_goals, only: [:edit, :update, :destroy]
 
-  resources :daily_goals, only: [:edit, :update, :destroy]
+  resources :daily_goals, only: [:create, :edit, :update, :destroy]
 
   resources :statuses do
     resources :likes, only: [:create]

@@ -1,9 +1,18 @@
-= simple_form_for(@daily_goal) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :description
-    = f.input :goal_date
-
-  .form-actions
-    = f.button :submit
+= form_tag "/daily_goals", method: "post", class: "set-daily-goal"
+  .panel.panel-success
+    .panel-heading
+      h3.panel-title #{current_user.name}님, 오늘(#{datestring})의 목표를 등록하지 않으셨군요!
+    .panel-body
+      .form-group
+        p
+          | #{current_user.name}님의 #{datestring(last_daily_goal.goal_date)} 목표(
+          span.daily-goal-text = last_daily_goal.description
+          | )를 그대로 오늘 목표로 등록하시거나, 수정해서 등록하실 수 있습니다.
+        p
+          | 그게 아니라, 아직 인증하지 않은 실천을 올리시려면
+          =< link_to '실천 인증하러 가기', '#', class: "close-btn"
+          | 를 클릭하세요.
+        = text_area_tag 'daily_goal[description]', daily_goal(current_user, Date.yesterday).description, placeholder: "오늘은 무엇을 해보시겠어요?", required: true, class: 'form-control'
+      .actions
+        = submit_tag "목표 등록하기", class: 'btn btn-success submit-btn'
+        = link_to '실천 인증하러 가기', '#', class: "btn btn-primary close-btn"

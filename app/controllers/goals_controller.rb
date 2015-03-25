@@ -16,8 +16,7 @@ class GoalsController < ApplicationController
     if @monthly_goal.save and @weekly_goal.save and @daily_goal.save
       redirect_to root_url, notice: '목표가 정상적으로 등록되었습니다.'
     else
-      flash.now[:error] = "목표 등록에 오류가 발생했습니다."
-      render :season
+      redirect_to root_url, alert: "목표 등록에 오류가 발생했습니다."
     end
   end
 
