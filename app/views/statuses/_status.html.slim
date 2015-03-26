@@ -1,20 +1,29 @@
+= content_for :card_author, flush:true do
+  .status-author
+    = image_tag(current_user.gravatar_url)
+    = link_to status.user.name, status.user, class: "status-user-name"
+    span.time = datestring(status.created_at)
+  .status-stats
+    span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
+
+= content_for :card_goals, flush:true do
+  / 임시로 숨겨놓음
+  / p = monthly_goal(status.user, status.verified_at).description unless no_monthly_goal?(status.user, status.verified_at)
+  / p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
+  - unless no_daily_goal?(status.user, status.verified_at)
+    span.daily-goal
+      = "#{datestring(status.verified_at)} 목표: "
+      span.daily-goal-text = daily_goal(status.user, status.verified_at).description
+
+= content_for :card_message, flush:true do
+  p.description == status.description
+
 = content_for :card_photo, flush:true do
   - if status.photo?
     = image_tag status.photo.url(:medium)
   - else
     = image_tag "havit-logo-big.png"
-= content_for :card_goals, flush:true do
-  p = monthly_goal(status.user, status.verified_at).description unless no_monthly_goal?(status.user, status.verified_at)
-  p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
-  p = daily_goal(status.user, status.verified_at).description unless no_daily_goal?(status.user, status.verified_at)
-= content_for :card_message, flush:true do
-  p.description == status.description
-  span.name
-    = link_to status.user.name, status.user
-    '님의
-  span.time => datestring(status.verified_at)
-  ' 실천 ·
-  span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
+
 = content_for :card_actions, flush:true do
   .like-form data={ status_id: status.id }
     - if current_user.likes?(status)
@@ -22,6 +31,10 @@
     - else
       == render 'statuses/like', status: status
   - if status.user_id == current_user.id
-    = link_to 'edit', edit_status_path(status), class: "status-edit-btn btn btn-link"
+    ' ·
+    =<> link_to '게시물 수정', edit_status_path(status), class: "status-edit-btn btn btn-link"
+
+= content_for :card_comments, flush:true do
+  p 코멘트 영역
 
 = render 'layouts/card'

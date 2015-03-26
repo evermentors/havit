@@ -12,7 +12,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
       - if user_signed_in?
         ul.nav.navbar-nav
           li = link_to 'Users', users_path
-        = render 'monthly_goals/top_bar_form'
+          li.topbar-goal = render 'monthly_goals/top_bar_form'
         ul.nav.navbar-nav.navbar-right
           li = link_to 'Edit account', edit_user_registration_path
           li = link_to 'Sign out', destroy_user_session_path, method: 'delete'

@@ -1,0 +1,9 @@
+= form_tag "/statuses", method: "post", multipart: true, class: "new-status-form"
+  .status-author.new
+    = image_tag(current_user.gravatar_url)
+    span #{current_user.name}님의 #{datestring} 실천
+  .form-group
+    = text_area_tag 'status[description]', nil, placeholder: "#{datestring}: \"#{daily_goal.description}\" 인증하기", required: true, class: 'form-control'
+    = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg'
+    = date_field_tag 'status[verified_at]', Time.current.to_date
+    = submit_tag "등록", class: 'btn btn-primary btn-sm submit-btn'

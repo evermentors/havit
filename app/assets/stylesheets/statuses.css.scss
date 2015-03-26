@@ -1,41 +1,104 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.notice-container {
+// Used only when there is no montly goal
+.no-monthly-goal {
   position:relative;
   margin-top:10px;
-
   textarea {
     min-height:70px;
   }
-
-  .notice-submit-btn {
+  .submit-btn {
     position:absolute;
     right:5px;
     top:5px;
   }
+}
 
-  .actions {
-    margin-top: 10px;
-    .btn {
-      margin-right:15px;
+.container-header {
+  position:relative;
+  margin-top:10px;
+  .notice-container {
+    .actions {
+      margin-top: 10px;
+      .btn {
+        margin-right:15px;
+      }
+    }
+    .set-daily-goal {
+      .form-group {
+        margin-bottom:0;
+      }
+      .daily-goal-text {
+        font-style:italic;
+        color: #379D41;
+      }
     }
   }
+}
 
-  .set-daily-goal {
-    .form-group {
-      margin-bottom:0;
-    }
-    .daily-goal-text {
-      font-style:italic;
-      color: #379D41;
-    }
-  }
+.container-sidebar {
+  float: left;
+  width: 224px;
+  padding: 16px 0;
+}
+
+.edit-goal.container-sidebar {
+  padding: 0 10px;
+}
+
+.container-center {
+  border: 1px solid rgba(0,0,0,.1);
+  border-width: 0 1px;
+  min-width: 240px;
+  max-width: 700px;
+  padding: 16px;
+  margin-left: 224px;
 }
 
 .status {
   .description {
     @extend .lead;
     margin-bottom: 5px;
+  }
+}
+
+.card-header {
+  height: 45px;
+  margin-top: -60px;
+  margin-left: -15px;
+  .status-stats {
+    float:right;
+  }
+}
+
+.status-author {
+  position: relative;
+  img {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 40px;
+  }
+  .status-user-name {
+    position: absolute;
+    left: 45px;
+  }
+  .time {
+    position: absolute;
+    top: 20px;
+    left: 45px;
+  }
+}
+
+.card-goals {
+  background-color: rgb(181, 213, 255);
+  margin: -1px -16px;
+  font-weight:bold;
+  font-size:18px;
+  text-align: center;
+  .daily-goal-text {
+    font-style: italic;
+    color:green;
   }
 }

@@ -7,10 +7,8 @@
   border-bottom: 1px solid #e7e7e7;
 }
 .card-container {
-  @extend .well;
   padding:0;
-  width: 200px;
-  margin-top:20px;
+  margin-top:70px;
   background-color: white;
 }
 .card-goals {
@@ -18,7 +16,6 @@
 }
 .card-message {
   padding: 10px;
-  @extend %has-border-top-bottom;
 }
 .card-actions {
   position: relative;
@@ -27,10 +24,6 @@
 
 .like-form {
   float:left
-}
-.status-edit-btn {
-  position:absolute;
-  right:0;
 }
 
 .list-group.edit-goal-card {
