@@ -1,5 +1,5 @@
 = form_tag "/statuses", method: "post", class: "new-status-form"
-  .status-new-author
+  .status-author.new
     = image_tag(current_user.gravatar_url)
     span #{current_user.name}님의 #{datestring} 실천
   .form-group

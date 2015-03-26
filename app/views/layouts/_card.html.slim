@@ -1,7 +1,6 @@
 .card-container.container-center
   .card-header
     = yield :card_author
-    = yield :card_actions
   .card-body
     .card-goals
       = yield :card_goals
@@ -9,5 +8,7 @@
       = yield :card_message
     .card-photo
       = yield :card_photo
+    .card-actions
+      = yield :card_actions
     .card-comments
       = yield :card_comments

@@ -11,6 +11,8 @@ class StatusesController < ApplicationController
 
   def create
     @status = current_user.statuses.build(status_params)
+    # 일단 무조건 오늘로만 verify되게 함
+    @status.verified_at = Time.current.to_date
 
     if @status.save
       redirect_to root_url

@@ -52,7 +52,7 @@
   border-width: 0 1px;
   min-width: 240px;
   max-width: 700px;
-  padding: 16px 32px;
+  padding: 16px;
   margin-left: 224px;
 }
 
@@ -60,5 +60,45 @@
   .description {
     @extend .lead;
     margin-bottom: 5px;
+  }
+}
+
+.card-header {
+  height: 45px;
+  margin-top: -60px;
+  margin-left: -15px;
+  .status-stats {
+    float:right;
+  }
+}
+
+.status-author {
+  position: relative;
+  img {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 40px;
+  }
+  .status-user-name {
+    position: absolute;
+    left: 45px;
+  }
+  .time {
+    position: absolute;
+    top: 20px;
+    left: 45px;
+  }
+}
+
+.card-goals {
+  background-color: rgb(181, 213, 255);
+  margin: -1px -16px;
+  font-weight:bold;
+  font-size:18px;
+  text-align: center;
+  .daily-goal-text {
+    font-style: italic;
+    color:green;
   }
 }
