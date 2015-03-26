@@ -1,17 +1,15 @@
-.card-container
-  .card-wrapper
-    .list-group.edit-goal-card
-      span.list-group-item.monthly
-        h4.list-group-item-heading = seasonstring
-        a.modify-goal-link href=edit_monthly_goal_path(monthly_goal)
-          span.glyphicon.glyphicon-pencil
-        span.list-group-item-text = monthly_goal.description
-      span.list-group-item.weekly
-        h4.list-group-item-heading = weekstring
-        - if no_weekly_goal?
-          = link_to '이번 주 목표를 설정해 보세요!', '#'
+.list-group.edit-goal-card
+  span.list-group-item.monthly
+    h4.list-group-item-heading = seasonstring
+    a.modify-goal-link href=edit_monthly_goal_path(monthly_goal)
+      span.glyphicon.glyphicon-pencil
+    span.list-group-item-text = monthly_goal.description
+  span.list-group-item.weekly
+    h4.list-group-item-heading = weekstring
+    - if no_weekly_goal?
+      = link_to '이번 주 목표를 설정해 보세요!', '#'
 
-        - else
-          a.modify-goal-link href=edit_weekly_goal_path(weekly_goal)
-            span.glyphicon.glyphicon-pencil
-          span.list-group-item-text = weekly_goal.description
+    - else
+      a.modify-goal-link href=edit_weekly_goal_path(weekly_goal)
+        span.glyphicon.glyphicon-pencil
+      span.list-group-item-text = weekly_goal.description

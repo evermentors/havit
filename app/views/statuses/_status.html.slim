@@ -1,10 +1,18 @@
-= content_for :card_sidebar, flush:true do
+= content_for :card_author, flush:true do
   span.name
     = link_to status.user.name, status.user
     '님의
   span.time => datestring(status.verified_at)
   ' 실천 ·
   span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
+= content_for :card_actions, flush:true do
+  .like-form data={ status_id: status.id }
+    - if current_user.likes?(status)
+      == render 'statuses/unlike', status: status
+    - else
+      == render 'statuses/like', status: status
+  - if status.user_id == current_user.id
+    = link_to 'edit', edit_status_path(status), class: "status-edit-btn btn btn-link"
 = content_for :card_goals, flush:true do
   p = monthly_goal(status.user, status.verified_at).description unless no_monthly_goal?(status.user, status.verified_at)
   p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
@@ -16,14 +24,6 @@
     = image_tag status.photo.url(:medium)
   - else
     = image_tag "havit-logo-big.png"
-= content_for :card_actions, flush:true do
-  .like-form data={ status_id: status.id }
-    - if current_user.likes?(status)
-      == render 'statuses/unlike', status: status
-    - else
-      == render 'statuses/like', status: status
-  - if status.user_id == current_user.id
-    = link_to 'edit', edit_status_path(status), class: "status-edit-btn btn btn-link"
 = content_for :card_comments, flush:true do
   p 코멘트 영역
 

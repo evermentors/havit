@@ -1,7 +1,5 @@
-.topbar-goal.navbar-left
-  - if no_daily_goal?
-    - unless last_daily_goal.blank?
-      span.current-daily-goal #{datestring(last_daily_goal.goal_date)}의 목표: #{last_daily_goal.description}
-  - else
-    = link_to "오늘의 목표: #{daily_goal.description}", edit_daily_goal_path(daily_goal), class: "current-daily-goal"
-    = link_to '인증', new_status_path, class: 'verify-btn btn btn-default navbar-btn'
+- if no_daily_goal?
+  - unless last_daily_goal.blank?
+    span.current-daily-goal #{datestring(last_daily_goal.goal_date)}의 목표: #{last_daily_goal.description}
+- else
+  = link_to "오늘의 목표: #{daily_goal.description}", edit_daily_goal_path(daily_goal), class: "current-daily-goal"

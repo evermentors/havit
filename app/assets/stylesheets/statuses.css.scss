@@ -1,36 +1,59 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.notice-container {
+// Used only when there is no montly goal
+.no-monthly-goal {
   position:relative;
   margin-top:10px;
-
   textarea {
     min-height:70px;
   }
-
-  .notice-submit-btn {
+  .submit-btn {
     position:absolute;
     right:5px;
     top:5px;
   }
+}
 
-  .actions {
-    margin-top: 10px;
-    .btn {
-      margin-right:15px;
+.container-header {
+  position:relative;
+  margin-top:10px;
+  .notice-container {
+    .actions {
+      margin-top: 10px;
+      .btn {
+        margin-right:15px;
+      }
+    }
+    .set-daily-goal {
+      .form-group {
+        margin-bottom:0;
+      }
+      .daily-goal-text {
+        font-style:italic;
+        color: #379D41;
+      }
     }
   }
+}
 
-  .set-daily-goal {
-    .form-group {
-      margin-bottom:0;
-    }
-    .daily-goal-text {
-      font-style:italic;
-      color: #379D41;
-    }
-  }
+.container-sidebar {
+  float: left;
+  width: 224px;
+  padding: 16px 0;
+}
+
+.edit-goal.container-sidebar {
+  padding: 0 10px;
+}
+
+.container-center {
+  border: 1px solid rgba(0,0,0,.1);
+  border-width: 0 1px;
+  min-width: 240px;
+  max-width: 700px;
+  padding: 16px 32px;
+  margin-left: 224px;
 }
 
 .status {
