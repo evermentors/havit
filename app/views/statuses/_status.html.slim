@@ -1,6 +1,6 @@
 = content_for :card_author, flush:true do
   .status-author
-    = image_tag(current_user.gravatar_url)
+    = image_tag(status.user.gravatar_url)
     = link_to status.user.name, status.user, class: "status-user-name"
     span.time = datestring(status.created_at)
   .status-stats
