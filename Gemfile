@@ -26,10 +26,10 @@ gem 'rails-timeago'
 gem 'simple_form'
 gem 'unicorn'
 gem "paperclip"
+gem 'aws-sdk', '< 2.0'
 
 group :production do
   gem 'rails_12factor'
-  gem 'aws-sdk'
 end
 
 group :development do
