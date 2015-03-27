@@ -14,7 +14,7 @@
       span.list-group-item-text = weekly_goal.description
   - unless no_daily_goal?
     span.list-group-item.daily
-      h4.list-group-item-heading 오늘(#{datestring})의 목표
+      h4.list-group-item-heading #{datestring} #{weekdaystring}
       a.modify-goal-link href=edit_daily_goal_path(daily_goal)
         span.glyphicon.glyphicon-pencil
       span.list-group-item-text = daily_goal.description
