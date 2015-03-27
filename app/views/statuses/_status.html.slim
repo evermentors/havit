@@ -12,7 +12,7 @@
   / p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
   - unless no_daily_goal?(status.user, status.verified_at)
     span.daily-goal
-      = "#{datestring(status.verified_at)} 목표: "
+      = "#{datestring(status.verified_at)} #{weekdaystring}의 목표: "
       span.daily-goal-text = daily_goal(status.user, status.verified_at).description
 
 = content_for :card_message, flush:true do
