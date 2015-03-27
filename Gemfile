@@ -29,6 +29,7 @@ gem "paperclip"
 
 group :production do
   gem 'rails_12factor'
+  gem 'aws-sdk'
 end
 
 group :development do
