@@ -2,7 +2,7 @@
   .status-author
     = image_tag(status.user.gravatar_url)
     = link_to status.user.name, status.user, class: "status-user-name"
-    span.time = datestring(status.created_at)
+    span.time = timeago_tag status.created_at
   .status-stats
     span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
 
@@ -10,10 +10,12 @@
   / 임시로 숨겨놓음
   / p = monthly_goal(status.user, status.verified_at).description unless no_monthly_goal?(status.user, status.verified_at)
   / p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
-  - unless no_daily_goal?(status.user, status.verified_at)
-    span.daily-goal
-      = "#{datestring(status.verified_at)} #{weekdaystring}의 목표: "
-      span.daily-goal-text = daily_goal(status.user, status.verified_at).description
+  span.daily-goal
+  - if no_daily_goal?(status.user, status.verified_at)
+    = "#{datestring(status.verified_at)}에는 목표가 없었습니다."
+  - else
+    = "#{datestring(status.verified_at)} #{weekdaystring}의 목표: "
+    span.daily-goal-text = daily_goal(status.user, status.verified_at).description
 
 = content_for :card_message, flush:true do
   p.description == status.description
