@@ -23,7 +23,7 @@
 
     <% if @new_comment.nil? %>
       <div id="thread_<%= thread.id %>_new_comment_link_div" class="thread_new_comment_link">
-        <%= link_to t('commontator.comment.actions.new'),
+        <%= link_to '새 댓글 달기',
             commontator.new_thread_comment_path(thread, :per_page => per_page),
             :remote => true %>
       </div>

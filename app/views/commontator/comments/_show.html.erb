@@ -16,6 +16,9 @@
     <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
       <%= link.blank? ? name : link_to(name, link) %>
     </span>
+    <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
+      <%= timeago_tag comment.created_at %>
+    </span>
     <span id="comment_<%= comment.id.to_s %>_actions_span" class="comment_actions">
       <%= render :partial => 'commontator/comments/actions',
                  :locals => { :comment => comment,
@@ -35,17 +38,6 @@
       <%= render :partial => 'commontator/comments/body',
                  :locals => { :comment => comment } %>
     </div>
-  </div>
-  <div id="comment_<%= comment.id.to_s %>_bottom_div" class="comment_div">
-    <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
-      <%= comment.created_timestamp %>
-    </span>
-    <br/>
-    <span id="comment_<%= comment.id.to_s %>_updated_timestamp_span" class="comment_timestamp">
-    <% if comment.is_modified? %>
-      <%= comment.updated_timestamp %>
-    <% end %>
-    </span>
   </div>
 </div>
 <% end %>

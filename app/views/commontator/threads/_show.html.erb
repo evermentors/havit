@@ -18,7 +18,7 @@
                               :user => user } %>
     </span>
   <% end %>
-  
+
   &nbsp;
 
   <% if can_edit %>
@@ -47,8 +47,7 @@
 </span>
 
 <span id="thread_<%= thread.id.to_s %>_header_span" class="thread_header">
-  <%= t "commontator.thread.status.#{thread.is_closed? ? 'closed' : 'open'}",
-        :closer_name => (thread.is_closed? ? Commontator.commontator_name(thread.closer) : '') %>
+  댓글 목록
 </span>
 
 <% if thread.config.comment_order == :l %>
