@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 class Status < ActiveRecord::Base
+  acts_as_commontable
   belongs_to :user
 
   has_many :likes, dependent: :destroy
