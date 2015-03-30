@@ -37,6 +37,6 @@
     =<> link_to '게시물 수정', edit_status_path(status), class: "status-edit-btn btn btn-link"
 
 = content_for :card_comments, flush:true do
-  p 코멘트 영역
+  = commontator_thread(status)
 
 = render 'layouts/card'
