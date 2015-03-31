@@ -20,6 +20,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    active_model_serializers (0.8.3)
+      activemodel (>= 3.0)
     activejob (4.2.0)
       activesupport (= 4.2.0)
       globalid (>= 0.3.0)
@@ -193,6 +195,9 @@ GEM
     rainbow (2.0.0)
     raindrops (0.13.0)
     rake (10.4.2)
+    rapidfire (2.1.0)
+      active_model_serializers (~> 0.8.1)
+      rails (>= 3.2.13)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rubocop (0.29.1)
@@ -280,6 +285,7 @@ DEPENDENCIES
   rails-timeago
   rails_12factor
   rails_layout
+  rapidfire
   rubocop
   scss-lint
   simple_form

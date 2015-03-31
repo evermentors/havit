@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up).append [:name]
   end
+
+  def can_administer?
+    current_user.try(:email) == "evermentors@gmail.com"
+  end
 end
