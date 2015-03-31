@@ -28,6 +28,7 @@ gem 'unicorn'
 gem "paperclip"
 gem 'aws-sdk', '< 2.0'
 gem 'commontator'
+gem 'rapidfire'
 
 group :production do
   gem 'rails_12factor'
