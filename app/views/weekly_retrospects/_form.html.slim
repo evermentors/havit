@@ -1,0 +1,10 @@
+= simple_form_for(@weekly_retrospect) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user
+    = f.association :weekly_goal
+    = f.association :rapidfire_answer_group
+
+  .form-actions
+    = f.button :submit
