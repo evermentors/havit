@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331055211) do
+ActiveRecord::Schema.define(version: 20150331074615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,21 @@ ActiveRecord::Schema.define(version: 20150331055211) do
   add_index "weekly_goals", ["user_id"], name: "index_weekly_goals_on_user_id", using: :btree
   add_index "weekly_goals", ["weeknum"], name: "index_weekly_goals_on_weeknum", using: :btree
 
+  create_table "weekly_retrospects", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "weekly_goal_id"
+    t.integer  "rapidfire_answer_group_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "weekly_retrospects", ["rapidfire_answer_group_id"], name: "index_weekly_retrospects_on_rapidfire_answer_group_id", using: :btree
+  add_index "weekly_retrospects", ["user_id"], name: "index_weekly_retrospects_on_user_id", using: :btree
+  add_index "weekly_retrospects", ["weekly_goal_id"], name: "index_weekly_retrospects_on_weekly_goal_id", using: :btree
+
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
+  add_foreign_key "weekly_retrospects", "rapidfire_answer_groups"
+  add_foreign_key "weekly_retrospects", "users"
+  add_foreign_key "weekly_retrospects", "weekly_goals"
 end
