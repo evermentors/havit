@@ -93,7 +93,7 @@
   }
 }
 
-.auth-user-text {
+.status-new-text {
   margin-left: 45px;
 }
 
@@ -101,7 +101,7 @@
   margin-top : 23px;
 }
 
-.auth-button {
+.status-new-button {
   margin: 5px;
   float: right;
 }
@@ -111,6 +111,6 @@
   float: right;
 }
 
-.form-control {
-  color :green !important;
+#status-new-form-control.form-control {
+  color :green;
 }
