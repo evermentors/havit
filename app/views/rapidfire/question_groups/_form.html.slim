@@ -1,0 +1,10 @@
+h3 = question_group.new_record? ? "New Group" : "Edit Group"
+
+= form_for question_group do |f|
+  - if question_group.errors.any?
+    ul
+      - question_group.errors.full_messages.each do |message|
+        li = message
+  = f.label :name
+  = f.text_field :name
+  = f.submit
