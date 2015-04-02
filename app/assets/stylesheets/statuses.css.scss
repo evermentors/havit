@@ -93,24 +93,22 @@
   }
 }
 
-.auth-user-text {
-  margin-left: 45px;
-}
-
-.new-status-form > .form-group {
-  margin-top : 23px;
-}
-
-.auth-button {
-  margin: 5px;
-  float: right;
-}
-
-.photo-upload {
-  margin: 5px;
-  float: right;
-}
-
-.form-control {
-  color :green !important;
+.new-status-form {
+  .status-new-text {
+    margin-left: 45px;
+  }
+  .form-group {
+    margin-top : 5px;
+  }
+  .submit-btn {
+    margin: 5px;
+    float: right;
+  }
+  .photo-upload {
+    margin: 5px;
+    float: right;
+  }
+  textarea {
+    color :green;
+  }
 }
