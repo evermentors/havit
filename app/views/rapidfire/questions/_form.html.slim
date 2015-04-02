@@ -9,6 +9,9 @@ h3 Question
   = f.label :type
   = f.select :type, ::Rapidfire::QuestionForm::QUESTION_TYPES, {}, id: "question_type"
 
+  = f.label :question_leading
+  = f.text_field :question_leading
+
   = f.label :question_text
   = f.text_field :question_text
 
@@ -16,10 +19,10 @@ h3 Question
   = f.text_area :answer_options, rows: 5
 
   = f.label :placeholder
-  = f.text_field :placeholder
+  = f.text_area :placeholder
 
   = f.label :default_text
-  = f.text_field :default_text
+  = f.text_area :default_text
 
   h4 Other options
   hr
