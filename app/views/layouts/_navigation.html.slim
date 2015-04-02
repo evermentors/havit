@@ -7,7 +7,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to image_tag("havit-logo-big.png"), root_path, class: 'navigation-logo'
+      = link_to image_tag("havit-logo-big.png"), main_app.root_path, class: 'navigation-logo'
     .collapse.navbar-collapse
       - if user_signed_in?
         ul.nav.navbar-nav
