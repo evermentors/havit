@@ -1,0 +1,7 @@
+= render partial: "rapidfire/answers/errors", locals: {answer: answer}
+
+/ - if answer.question.question_leading
+/   = f.label :answer_text, "#{send answer.question.question_leading}#{answer.question.question_text}"
+/ - else
+= f.label :answer_text, answer.question.question_text
+= f.text_area :answer_text, value: answer.question.default_text, :rows => 5, placeholder: answer.question.placeholder

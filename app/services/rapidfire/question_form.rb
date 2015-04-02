@@ -18,7 +18,7 @@ module Rapidfire
     end
 
     attr_accessor :question_group, :question,
-      :type, :question_text, :answer_options, :placeholder, :default_text,
+      :type, :question_text, :answer_options, :placeholder, :default_text, :question_leading,
       :answer_presence, :answer_minimum_length, :answer_maximum_length,
       :answer_greater_than_or_equal_to, :answer_less_than_or_equal_to
 
@@ -54,6 +54,7 @@ module Rapidfire
     def to_question_params
       {
         :question_group => question_group,
+        :question_leading => question_leading,
         :question_text  => question_text,
         :answer_options => answer_options,
         :placeholder => placeholder,
@@ -71,6 +72,7 @@ module Rapidfire
     def from_question_to_attributes(question)
       self.type = question.type
       self.question_group  = question.question_group
+      self.question_leading   = question.question_leading
       self.question_text   = question.question_text
       self.answer_options  = question.answer_options
       self.placeholder     = question.placeholder
