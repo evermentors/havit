@@ -69,6 +69,6 @@ class WeeklyRetrospectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def weekly_retrospect_params
-      params.require(:weekly_retrospect).permit(:user_id, :weekly_goal_id, :rapidfire_answer_group_id)
+      params.require(:weekly_retrospect).permit(:user_id, :weekly_goal_id, :contents)
     end
 end

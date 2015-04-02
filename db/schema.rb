@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402080301) do
+ActiveRecord::Schema.define(version: 20150331074615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,50 +92,6 @@ ActiveRecord::Schema.define(version: 20150402080301) do
   add_index "monthly_goals", ["season"], name: "index_monthly_goals_on_season", using: :btree
   add_index "monthly_goals", ["user_id"], name: "index_monthly_goals_on_user_id", using: :btree
 
-  create_table "rapidfire_answer_groups", force: :cascade do |t|
-    t.integer  "question_group_id"
-    t.integer  "user_id"
-    t.string   "user_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rapidfire_answer_groups", ["question_group_id"], name: "index_rapidfire_answer_groups_on_question_group_id", using: :btree
-  add_index "rapidfire_answer_groups", ["user_id", "user_type"], name: "index_rapidfire_answer_groups_on_user_id_and_user_type", using: :btree
-
-  create_table "rapidfire_answers", force: :cascade do |t|
-    t.integer  "answer_group_id"
-    t.integer  "question_id"
-    t.text     "answer_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rapidfire_answers", ["answer_group_id"], name: "index_rapidfire_answers_on_answer_group_id", using: :btree
-  add_index "rapidfire_answers", ["question_id"], name: "index_rapidfire_answers_on_question_id", using: :btree
-
-  create_table "rapidfire_question_groups", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "rapidfire_questions", force: :cascade do |t|
-    t.integer  "question_group_id"
-    t.string   "type"
-    t.string   "question_text"
-    t.string   "placeholder"
-    t.string   "default_text"
-    t.integer  "position"
-    t.text     "answer_options"
-    t.text     "validation_rules"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "question_leading"
-  end
-
-  add_index "rapidfire_questions", ["question_group_id"], name: "index_rapidfire_questions_on_question_group_id", using: :btree
-
   create_table "statuses", force: :cascade do |t|
     t.text     "description",        default: "", null: false
     t.integer  "user_id",                         null: false
@@ -184,18 +140,16 @@ ActiveRecord::Schema.define(version: 20150402080301) do
   create_table "weekly_retrospects", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "weekly_goal_id"
-    t.integer  "rapidfire_answer_group_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "contents",       null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "weekly_retrospects", ["rapidfire_answer_group_id"], name: "index_weekly_retrospects_on_rapidfire_answer_group_id", using: :btree
   add_index "weekly_retrospects", ["user_id"], name: "index_weekly_retrospects_on_user_id", using: :btree
   add_index "weekly_retrospects", ["weekly_goal_id"], name: "index_weekly_retrospects_on_weekly_goal_id", using: :btree
 
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
-  add_foreign_key "weekly_retrospects", "rapidfire_answer_groups"
   add_foreign_key "weekly_retrospects", "users"
   add_foreign_key "weekly_retrospects", "weekly_goals"
 end
