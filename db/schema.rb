@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20150331074615) do
     t.integer  "question_group_id"
     t.string   "type"
     t.string   "question_text"
+    t.string   "placeholder"
+    t.string   "default_text"
     t.integer  "position"
     t.text     "answer_options"
     t.text     "validation_rules"
