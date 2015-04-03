@@ -1,0 +1,32 @@
+.retrospect-container
+  .weekly-statuses
+    h3 지난 일주일동안의 실천 내역
+    .card-lists
+      = render @statuses
+  .retrospect
+    h2 #{advanced_weekstring} 주간 회고
+    h3
+      ' #{seasonstring last_weekly_goal.weeknum}의 목표 :
+      span.monthly-goal-text = monthly_goal(current_user, last_weekly_goal.weeknum).description
+    h4
+      ' #{weekstring last_weekly_goal.weeknum}의 목표 :
+      span.weekly-goal-text = last_weekly_goal.description
+
+    = simple_form_for @weekly_retrospect, html: {class: 'new-weekly-retrospect-form' } do |f|
+      = f.error_notification
+
+      .form-inputs
+        .this-week
+          .description = @this_week_description
+          - @hashes_this_week.each do |hash|
+            = render partial: 'layouts/retrospects/question', locals: { hash: hash}
+        .next-week
+          .description = @next_week_description
+          - @hashes_next_week.each do |hash|
+            = render partial: 'layouts/retrospects/question', locals: { hash: hash}
+        .feedbacks
+          = render partial: 'layouts/retrospects/question', locals: { hash: @our_question}
+
+      .form-actions
+        = f.button :submit, '회고 저장하기'
+

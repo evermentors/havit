@@ -1,4 +1,5 @@
 = paginate @statuses
+= link_to '회고하러 가기', new_weekly_retrospect_path
 - if no_monthly_goal?
   .no-monthly-goal
     = render 'goals/form'

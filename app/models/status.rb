@@ -14,6 +14,12 @@ class Status < ActiveRecord::Base
   validates :verified_at, presence: true
   validate :verified_at_should_be_past
 
+  class << self
+    def during(period, user)
+      where(verified_at: period, user: user).order(:verified_at)
+    end
+  end
+
   def verified_at_should_be_past
     errors.add(:verified_at, "미래의 실천을 인증할 수는 없습니다!") if
       verified_at > Date.today

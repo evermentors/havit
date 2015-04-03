@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount Commontator::Engine => '/commontator'
-  mount Rapidfire::Engine => "/rapidfire"
 
   devise_for :users
 
@@ -21,4 +20,5 @@ Rails.application.routes.draw do
     resource :like, only: [:destroy]
   end
 
+  resources :weekly_retrospects
 end

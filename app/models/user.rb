@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :monthly_goals, dependent: :destroy
   has_many :weekly_goals, dependent: :destroy
+  has_many :weekly_retrospects, dependent: :destroy
   has_many :daily_goals, dependent: :destroy
   has_many :statuses, dependent: :destroy
   has_many :likes, dependent: :destroy

@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong User:
+  = @weekly_retrospect.user
+p
+  strong Weekly goal:
+  = @weekly_retrospect.weekly_goal
+p
+  strong Answers:
+  - @weekly_retrospect.answers.each do |key, val|
+    = key
+    = val
+
+= link_to 'Edit', edit_weekly_retrospect_path(@weekly_retrospect)
+'|
+= link_to 'Back', weekly_retrospects_path

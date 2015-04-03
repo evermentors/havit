@@ -32,4 +32,8 @@ module ApplicationHelper
   def weekstring (date=Time.current.to_date)
     datestring(date.beginning_of_week) + '~' + datestring(date.beginning_of_week + 5.days)
   end
+
+  def advanced_weekstring (date=last_weekly_goal.weeknum)
+    "#{seasonstring date} #{relative_weeknum date}주차(#{weekstring date})"
+  end
 end

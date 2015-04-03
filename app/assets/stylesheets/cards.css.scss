@@ -17,6 +17,9 @@
   position: relative;
   min-height: 34px;
 }
+.card-photo > img {
+  max-height: 50px;
+}
 
 .like-form {
   float:left

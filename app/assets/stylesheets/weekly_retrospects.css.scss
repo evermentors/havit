@@ -1,0 +1,16 @@
+.retrospect-container {
+  .weekly-statuses {
+    width: 30%;
+    padding: 0 20px;
+    float: left;
+    .card-container.container-center {
+      margin-left:0;
+    }
+  }
+  .retrospect {
+    width: 70%;
+    padding: 0 20px;
+    float: right;
+  }
+}
+
