@@ -7,8 +7,10 @@ p
   strong Weekly goal:
   = @weekly_retrospect.weekly_goal
 p
-  strong Contents:
-  = @weekly_retrospect.contents
+  strong Answers:
+  - @weekly_retrospect.answers.each do |key, val|
+    = key
+    = val
 
 = link_to 'Edit', edit_weekly_retrospect_path(@weekly_retrospect)
 '|

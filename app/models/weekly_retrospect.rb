@@ -2,5 +2,6 @@ class WeeklyRetrospect < ActiveRecord::Base
   belongs_to :user
   belongs_to :weekly_goal
 
-  serialize :contents, Hash
+  serialize :questions, Hash
+  serialize :answers, Hash
 end

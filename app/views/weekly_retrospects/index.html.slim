@@ -5,7 +5,7 @@ table
     tr
       th User
       th Weekly goal
-      th Contents
+      th Answers
       th
       th
       th
@@ -15,7 +15,7 @@ table
       tr
         td = weekly_retrospect.user
         td = weekly_retrospect.weekly_goal
-        td = weekly_retrospect.contents
+        td = weekly_retrospect.answers
         td = link_to 'Show', weekly_retrospect
         td = link_to 'Edit', edit_weekly_retrospect_path(weekly_retrospect)
         td = link_to 'Destroy', weekly_retrospect, data: {:confirm => 'Are you sure?'}, :method => :delete

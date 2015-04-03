@@ -28,7 +28,8 @@ class WeeklyRetrospectsController < ApplicationController
     @weekly_retrospect = WeeklyRetrospect.new(
       user: current_user,
       weekly_goal: view_context.last_weekly_goal,
-      contents: params[:contents])
+      questions: params[:questions],
+      answers: params[:answers])
 
     respond_to do |format|
       if @weekly_retrospect.save
@@ -73,6 +74,6 @@ class WeeklyRetrospectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def weekly_retrospect_params
-      params.require(:weekly_retrospect).permit(:user_id, :weekly_goal_id, :contents)
+      params.require(:weekly_retrospect).permit(:user_id, :weekly_goal_id)
     end
 end

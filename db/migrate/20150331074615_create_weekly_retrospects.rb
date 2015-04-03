@@ -3,7 +3,8 @@ class CreateWeeklyRetrospects < ActiveRecord::Migration
     create_table :weekly_retrospects do |t|
       t.references :user, index: true
       t.references :weekly_goal, index: true
-      t.text :contents, null: false
+      t.text :questions, null: false
+      t.text :answers, null: false
 
       t.timestamps null: false
     end

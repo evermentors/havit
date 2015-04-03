@@ -140,7 +140,8 @@ ActiveRecord::Schema.define(version: 20150331074615) do
   create_table "weekly_retrospects", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "weekly_goal_id"
-    t.text     "contents",       null: false
+    t.text     "questions",      null: false
+    t.text     "answers",        null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
