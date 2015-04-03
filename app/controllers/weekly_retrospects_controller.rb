@@ -15,6 +15,7 @@ class WeeklyRetrospectsController < ApplicationController
   # GET /weekly_retrospects/new
   def new
     @weekly_retrospect = WeeklyRetrospect.new
+    @statuses = Status.during(view_context.last_weekly_goal.weeknum.all_week, current_user)
   end
 
   # GET /weekly_retrospects/1/edit
