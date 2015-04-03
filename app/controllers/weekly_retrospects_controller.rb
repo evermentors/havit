@@ -24,7 +24,10 @@ class WeeklyRetrospectsController < ApplicationController
   # POST /weekly_retrospects
   # POST /weekly_retrospects.json
   def create
-    @weekly_retrospect = WeeklyRetrospect.new(weekly_retrospect_params)
+    @weekly_retrospect = WeeklyRetrospect.new(
+      user: current_user,
+      weekly_goal: view_context.last_weekly_goal,
+      contents: params[:contents])
 
     respond_to do |format|
       if @weekly_retrospect.save

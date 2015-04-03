@@ -1,10 +1,11 @@
-= simple_form_for(@weekly_retrospect) do |f|
+= simple_form_for @weekly_retrospect, html: {class: 'new-weekly-retrospect-form' } do |f|
   = f.error_notification
 
   .form-inputs
-    = f.association :user
-    = f.association :weekly_goal
-    = f.input :contents
+    = text_area_tag 'contents[overall_feeling]'
+    = text_area_tag 'contents[goods]'
+    = text_area_tag 'contents[bads]'
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, '회고 저장하기'
+
