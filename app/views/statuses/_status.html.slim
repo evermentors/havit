@@ -14,7 +14,7 @@
   - if no_daily_goal?(status.user, status.verified_at)
     = "#{datestring(status.verified_at)}에는 목표가 없었습니다."
   - else
-    = "#{datestring(status.verified_at)} #{weekdaystring}의 목표: "
+    = "#{datestring(status.verified_at)} #{weekdaystring status.verified_at}의 목표: "
     span.daily-goal-text = daily_goal(status.user, status.verified_at).description
 
 = content_for :card_message, flush:true do
