@@ -31,22 +31,21 @@ class WeeklyRetrospectsController < ApplicationController
   end
 
   def monthly
-    @date = Time.zone.local(params[:year], params[:month]).to_date
-    @date = @date + ((8 - @date.wday)%7).days
-
+    month_start = Time.zone.local(params[:year], params[:month]).to_date
     # Need redirection actually
-    @date = Date.today if @date > Date.today
+    month_start = Date.today.beginning_of_month if month_start > Date.today
+
+    @first_monday_of_month = month_start + ((8 - month_start.wday)%7).days
 
     @weeks = []
-    week = @date
-    while @date == view_context.season_start(week) do
+    week = @first_monday_of_month
+    while @first_monday_of_month == view_context.season_start(week) do
       @weeks << week
       week += 7.days
     end
 
-    @prev = @date.prev_month
-    @next = @date.next_month
-    @period = @date.all_month
+    @prev = @first_monday_of_month.prev_month
+    @next = @first_monday_of_month.next_month
   end
 
   def edit
