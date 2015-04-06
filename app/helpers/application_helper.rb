@@ -30,7 +30,7 @@ module ApplicationHelper
   end
 
   def weekstring (date=Time.current.to_date)
-    datestring(date.beginning_of_week) + '~' + datestring(date.beginning_of_week + 5.days)
+    datestring(date.beginning_of_week) + '~' + datestring(date.beginning_of_week + 6.days)
   end
 
   def advanced_weekstring (date=last_weekly_goal.weeknum)
