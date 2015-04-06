@@ -30,6 +30,25 @@ class WeeklyRetrospectsController < ApplicationController
     @our_question = { name: 'havit_feedback', class: 'havit-feedback', question: 'Havit 서비스에 대한 피드백을 적어주세요. 적극 반영하겠습니다!' }
   end
 
+  def monthly
+    @date = Time.zone.local(params[:year], params[:month]).to_date
+    @date = @date + ((8 - @date.wday)%7).days
+
+    # Need redirection actually
+    @date = Date.today if @date > Date.today
+
+    @weeks = []
+    week = @date
+    while @date == view_context.season_start(week) do
+      @weeks << week
+      week += 7.days
+    end
+
+    @prev = @date.prev_month
+    @next = @date.next_month
+    @period = @date.all_month
+  end
+
   def edit
   end
 
