@@ -20,5 +20,12 @@ Rails.application.routes.draw do
     resource :like, only: [:destroy]
   end
 
-  resources :weekly_retrospects
+  resources :weekly_retrospects do
+    collection do
+      constraints year: /\d{4}/, month: /(0?[1-9]|1[012])/ do
+        get "/:year/:month", action: :monthly, as: :monthly
+        # get "/:year", action: :yearly, as: :yearly
+      end
+    end
+  end
 end

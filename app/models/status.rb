@@ -18,6 +18,10 @@ class Status < ActiveRecord::Base
     def during(period, user)
       where(verified_at: period, user: user).order(:verified_at)
     end
+
+    def at(date, user)
+      where(verified_at: date, user: user).order(:created_at)
+    end
   end
 
   def verified_at_should_be_past

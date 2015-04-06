@@ -5,24 +5,26 @@ module ApplicationHelper
     date.strftime("%-m월 %-d일")
   end
 
-  def weekdaystring (date=Time.current.to_date)
+  def weekdaystring (date=Time.current.to_date, option='long')
     # TODO: date.strftime("%a")와 i18n 활용
     case date.wday
       when 0
-        "일요일"
+        wday = "일"
       when 1
-        "월요일"
+        wday = "월"
       when 2
-        "화요일"
+        wday = "화"
       when 3
-        "수요일"
+        wday = "수"
       when 4
-        "목요일"
+        wday = "목"
       when 5
-        "금요일"
+        wday = "금"
       when 6
-        "토요일"
+        wday = "토"
     end
+    wday += "요일" if option == 'long'
+    return wday
   end
 
   def seasonstring (date=season_start)
@@ -30,7 +32,7 @@ module ApplicationHelper
   end
 
   def weekstring (date=Time.current.to_date)
-    datestring(date.beginning_of_week) + '~' + datestring(date.beginning_of_week + 5.days)
+    datestring(date.beginning_of_week) + '~' + datestring(date.beginning_of_week + 6.days)
   end
 
   def advanced_weekstring (date=last_weekly_goal.weeknum)

@@ -17,3 +17,22 @@
   }
 }
 
+.weekly-retrospects {
+  text-align: center;
+  .navigation {
+    text-align: left;
+  }
+  .weeks-container {
+    .week {
+      .daily-stars {
+        padding-left: 0;
+        li {
+          display: inline-block;
+          .star {
+            display:block;
+          }
+        }
+      }
+    }
+  }
+}

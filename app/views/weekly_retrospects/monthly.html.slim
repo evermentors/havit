@@ -1,0 +1,41 @@
+.weekly-retrospects
+  h3
+    ' #{seasonstring @first_monday_of_month} :
+    span.monthly-goal-text
+      - if monthly_goal(current_user, @first_monday_of_month).present?
+        =< monthly_goal(current_user, @first_monday_of_month).description
+      - else
+        ' 목표가 없었습니다.
+
+  .navigation
+    span.prev
+        => link_to "<< #{seasonstring @prev}", monthly_weekly_retrospects_path(@prev.year, @prev.month), title: @prev.strftime("%Y/%m")
+    - unless Date.today.year == @first_monday_of_month.year and Date.today.month == @first_monday_of_month.month
+    span.next.pull-right
+      = link_to "#{seasonstring @next} >>", monthly_weekly_retrospects_path(@next.year, @next.month), title: @next.strftime("%Y/%m")
+
+  - if monthly_goal(current_user, @first_monday_of_month).present?
+    .weeks-container
+      - for week in @weeks
+        .week.panel.panel-warning
+          .panel-heading
+            ' #{relative_weeknum week}주차(#{weekstring week}):
+            span.weekly-goal-text
+              - if weekly_goal(current_user, week).blank?
+                ' 목표가 없었습니다.
+              - else
+                =< weekly_goal(current_user, week).description
+                =< link_to '(자세히 보기)', weekly_retrospect_path(weekly_retro_at(week)) if weekly_retro_at(week).present?
+          .panel-body
+            ul.daily-stars
+              - week.all_week.each do |day|
+                li
+                  = weekdaystring(day, 'short')
+                  - if status_at(day).present?
+                    span.star.glyphicon.glyphicon-star
+                  - else
+                    span.star.glyphicon.glyphicon-star-empty
+            .overall-feelings
+              - if weekly_retro_at(week).present?
+                ' 전체적 느낌:
+                =< weekly_retro_at(week).answers[:overall_feeling]
