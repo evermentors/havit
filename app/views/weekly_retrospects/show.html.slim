@@ -1,17 +1,29 @@
-p#notice = notice
+.retrospect-container
+  .weekly-statuses
+    h3 #{weekstring @weekly_goal.weeknum}의 실천 내역
+    .card-lists
+      = render @statuses
+  .retrospect
+    h2 #{advanced_weekstring @weekly_goal.weeknum} 주간 회고
+    h3
+      ' #{seasonstring @weekly_goal.weeknum}의 목표 :
+      span.monthly-goal-text = monthly_goal(current_user, @weekly_goal.weeknum).description
+    h4
+      ' #{weekstring @weekly_goal.weeknum}의 목표 :
+      span.weekly-goal-text = @weekly_goal.description
 
-p
-  strong User:
-  = @weekly_retrospect.user
-p
-  strong Weekly goal:
-  = @weekly_retrospect.weekly_goal
-p
-  strong Answers:
-  - @weekly_retrospect.answers.each do |key, val|
-    = key
-    = val
-
-= link_to 'Edit', edit_weekly_retrospect_path(@weekly_retrospect)
-'|
-= link_to 'Back', weekly_retrospects_path
+    .answers
+      .this-week
+        blockquote.description
+          p = @this_week_description
+        - @hashes_this_week.each do |hash|
+          = render partial: 'layouts/retrospects/answer', locals: { hash: hash, panel: 'panel-info', answer: @weekly_retrospect.answers}
+      .next-week
+        blockquote.description
+         p = @next_week_description
+        - @hashes_next_week.each do |hash|
+          = render partial: 'layouts/retrospects/answer', locals: { hash: hash, panel: 'panel-success', answer: @weekly_retrospect.answers}
+      .feedbacks
+        blockquote.description
+          p = @our_question_description
+        = render partial: 'layouts/retrospects/answer', locals: { hash: @our_question, panel: 'panel-danger', answer: @weekly_retrospect.answers}
