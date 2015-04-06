@@ -100,6 +100,8 @@ class WeeklyRetrospectsController < ApplicationController
         { name: 'next_monday_goal', class: 'next-monday-goal', question: "다음 주 월요일(#{view_context.datestring view_context.last_weekly_goal.weeknum.next_week})에는 무엇을 할지도 적어봅시다." },
         { name: 'next_monday_premortem', class: 'next-monday-premortem', question: '다음 주 월요일 밤이 되었다고 상상해 봅시다. 만약 목표를 성공하지 못했다면 그 이유는 무엇이었을까요?' },
         { name: 'how_to_success', class: 'how-to-success', question: '그러면, 목표를 성공하기 위해 어떻게 해보시겠어요?' } ]
-      @our_question = { name: 'havit_feedback', class: 'havit-feedback', question: 'Havit 서비스에 대한 피드백을 적어주세요. 적극 반영하겠습니다!' }
+
+      @our_question_description = "Havit 서비스에 대한 피드백을 적어주세요. 적극 반영하겠습니다!"
+      @our_question = { name: 'havit_feedback', class: 'havit-feedback', question: '피드백: ' }
     end
 end

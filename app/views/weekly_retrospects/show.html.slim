@@ -1,6 +1,6 @@
 .retrospect-container
   .weekly-statuses
-    h3 지난 일주일동안의 실천 내역
+    h3 #{weekstring @weekly_goal.weeknum}의 실천 내역
     .card-lists
       = render @statuses
   .retrospect
@@ -14,12 +14,16 @@
 
     .answers
       .this-week
-        .description = @this_week_description
+        blockquote.description
+          p = @this_week_description
         - @hashes_this_week.each do |hash|
-          = render partial: 'layouts/retrospects/answer', locals: { hash: hash, answer: @weekly_retrospect.answers}
+          = render partial: 'layouts/retrospects/answer', locals: { hash: hash, panel: 'panel-info', answer: @weekly_retrospect.answers}
       .next-week
-        .description = @next_week_description
+        blockquote.description
+         p = @next_week_description
         - @hashes_next_week.each do |hash|
-          = render partial: 'layouts/retrospects/answer', locals: { hash: hash, answer: @weekly_retrospect.answers}
+          = render partial: 'layouts/retrospects/answer', locals: { hash: hash, panel: 'panel-success', answer: @weekly_retrospect.answers}
       .feedbacks
-        = render partial: 'layouts/retrospects/answer', locals: { hash: @our_question, answer: @weekly_retrospect.answers}
+        blockquote.description
+          p = @our_question_description
+        = render partial: 'layouts/retrospects/answer', locals: { hash: @our_question, panel: 'panel-danger', answer: @weekly_retrospect.answers}
