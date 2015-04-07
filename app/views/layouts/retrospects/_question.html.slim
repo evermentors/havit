@@ -1,4 +1,4 @@
 .form-group[class="#{hash[:class]}"]
   = hidden_field(:questions, hash[:name], value: hash[:question])
   = label(:answers, hash[:name], hash[:question])
-  = text_area_tag "answers[#{hash[:name]}]", nil, class: 'form-control'
+  = text_area_tag "answers[#{hash[:name]}]", answer[hash[:name]], class: 'form-control', required: true

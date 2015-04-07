@@ -2,15 +2,11 @@
 
 class WeeklyRetrospectsController < ApplicationController
   before_action :set_weekly_retrospect, only: [:show, :edit, :update, :destroy]
-  before_action :set_weekly_retrospect_hash, only: [:show, :new]
+  before_action :set_weekly_retrospect_hash, only: [:show, :new, :edit]
+  before_action :set_weekly_retrospect_info, only: [:show, :edit]
 
   def index
     @weekly_retrospects = WeeklyRetrospect.all
-  end
-
-  def show
-    @weekly_goal = @weekly_retrospect.weekly_goal
-    @statuses = Status.during(@weekly_goal.weeknum.all_week, current_user)
   end
 
   def new
@@ -36,9 +32,6 @@ class WeeklyRetrospectsController < ApplicationController
     @next = @first_monday_of_month.next_month
   end
 
-  def edit
-  end
-
   def create
     @weekly_retrospect = WeeklyRetrospect.new(
       user: current_user,
@@ -46,13 +39,22 @@ class WeeklyRetrospectsController < ApplicationController
       questions: params[:questions],
       answers: params[:answers])
 
-    respond_to do |format|
-      if @weekly_retrospect.save
-        format.html { redirect_to @weekly_retrospect, notice: 'Weekly retrospect was successfully created.' }
-        format.json { render :show, status: :created, location: @weekly_retrospect }
-      else
-        format.html { render :new }
-        format.json { render json: @weekly_retrospect.errors, status: :unprocessable_entity }
+    if @weekly_retrospect.save
+      @weekly_goal = WeeklyGoal.new(
+        user: current_user,
+        description: @weekly_retrospect.answers[:next_weekly_goal],
+        weeknum: @weekly_retrospect.weekly_goal.weeknum.next_week)
+
+      if @weekly_goal.save
+        @daily_goal = DailyGoal.new(
+          user: current_user,
+          description: @weekly_retrospect.answers[:next_monday_goal],
+          goal_date: @weekly_retrospect.weekly_goal.weeknum.next_week)
+        if @daily_goal.save
+          redirect_to @weekly_retrospect,
+              notice: "#{view_context.advanced_weekstring view_context.last_weekly_goal.weeknum} 주간 회고가 저장되었습니다. #{view_context.link_to('홈 화면', root_path)}으로 돌아가시거나 #{view_context.link_to('회고를 수정', edit_weekly_retrospect_path(@weekly_retrospect))}하실 수 있습니다.}",
+              flash: { html_safe: true }
+        end
       end
     end
   end
@@ -103,5 +105,10 @@ class WeeklyRetrospectsController < ApplicationController
 
       @our_question_description = "Havit 서비스에 대한 피드백을 적어주세요. 적극 반영하겠습니다!"
       @our_question = { name: 'havit_feedback', class: 'havit-feedback', question: '피드백: ' }
+    end
+
+    def set_weekly_retrospect_info
+      @weekly_goal = @weekly_retrospect.weekly_goal
+      @statuses = Status.during(@weekly_goal.weeknum.all_week, current_user)
     end
 end
