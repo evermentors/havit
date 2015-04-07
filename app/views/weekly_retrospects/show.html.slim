@@ -4,7 +4,10 @@
     .card-lists
       = render @statuses
   .retrospect
-    h2 #{advanced_weekstring @weekly_goal.weeknum} 주간 회고
+    h2
+      ' #{advanced_weekstring @weekly_goal.weeknum} 주간 회고
+      a.modify-retrospect-link href=edit_weekly_retrospect_path(@weekly_retrospect) title='회고 수정'
+        span.glyphicon.glyphicon-pencil
     h3
       ' #{seasonstring @weekly_goal.weeknum}의 목표 :
       span.monthly-goal-text = monthly_goal(current_user, @weekly_goal.weeknum).description

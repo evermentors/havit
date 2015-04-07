@@ -2,15 +2,11 @@
 
 class WeeklyRetrospectsController < ApplicationController
   before_action :set_weekly_retrospect, only: [:show, :edit, :update, :destroy]
-  before_action :set_weekly_retrospect_hash, only: [:show, :new]
+  before_action :set_weekly_retrospect_hash, only: [:show, :new, :edit]
+  before_action :set_weekly_retrospect_info, only: [:show, :edit]
 
   def index
     @weekly_retrospects = WeeklyRetrospect.all
-  end
-
-  def show
-    @weekly_goal = @weekly_retrospect.weekly_goal
-    @statuses = Status.during(@weekly_goal.weeknum.all_week, current_user)
   end
 
   def new
@@ -34,9 +30,6 @@ class WeeklyRetrospectsController < ApplicationController
 
     @prev = @first_monday_of_month.prev_month
     @next = @first_monday_of_month.next_month
-  end
-
-  def edit
   end
 
   def create
@@ -112,5 +105,10 @@ class WeeklyRetrospectsController < ApplicationController
 
       @our_question_description = "Havit 서비스에 대한 피드백을 적어주세요. 적극 반영하겠습니다!"
       @our_question = { name: 'havit_feedback', class: 'havit-feedback', question: '피드백: ' }
+    end
+
+    def set_weekly_retrospect_info
+      @weekly_goal = @weekly_retrospect.weekly_goal
+      @statuses = Status.during(@weekly_goal.weeknum.all_week, current_user)
     end
 end

@@ -12,25 +12,22 @@
       ' #{weekstring last_weekly_goal.weeknum}의 목표 :
       span.weekly-goal-text = last_weekly_goal.description
 
-    = simple_form_for @weekly_retrospect, html: {class: 'new-weekly-retrospect-form' } do |f|
-      = f.error_notification
-
+    = form_tag "/daily_goals", method: "post", class: 'new-weekly-retrospect-form'
       .form-inputs
         .this-week
           blockquote.description
             p = @this_week_description
           - @hashes_this_week.each do |hash|
-            = render partial: 'layouts/retrospects/question', locals: { hash: hash}
+            = render partial: 'layouts/retrospects/question', locals: { hash: hash, answer: @weekly_retrospect.answers}
         .next-week
           blockquote.description
             p = @next_week_description
           - @hashes_next_week.each do |hash|
-            = render partial: 'layouts/retrospects/question', locals: { hash: hash}
+            = render partial: 'layouts/retrospects/question', locals: { hash: hash, answer: @weekly_retrospect.answers}
         .feedbacks
           blockquote.description
             p = @our_question_description
-          = render partial: 'layouts/retrospects/question', locals: { hash: @our_question}
-
+          = render partial: 'layouts/retrospects/question', locals: { hash: @our_question, answer: @weekly_retrospect.answers}
       .form-actions
-        = f.button :submit, '회고 저장하기'
+        = submit_tag "회고 저장하기", class: 'btn btn-default submit-btn'
 
