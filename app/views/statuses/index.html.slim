@@ -1,20 +1,29 @@
 = paginate @statuses
-= link_to '회고하러 가기', new_weekly_retrospect_path
+/ = link_to '회고하러 가기', new_weekly_retrospect_path
+= day_passed_since_last_retro
 - if no_monthly_goal?
-  .no-monthly-goal
-    = render 'goals/form'
+  - if Status.where(user: current_user).blank?
+    .no-monthly-goal
+      = render 'goals/form'
+  - else
+    = render '월간회고 해라'
 - else
   .container-header
     .edit-goal.container-sidebar
       = render 'edit_goal'
-    - if no_daily_goal? and not last_daily_goal.blank?
+  - if day_passed_since_last_retro <= 5
+    - if day_passed_since_last_retro == 5 and last_verified_at == Date.today
+      = render text: '회고해라'
+    - elsif no_daily_goal?
       .notice-container.container-center
         = render 'daily_goals/form'
-    - elsif last_daily_goal.blank?
-      = render text: "daily_goal이 하나도 설정되어있지 않기 때문에 생기는 에러. 이 경우의 수는 차후 없어야 함. 이 텍스트가 보인다면 목표 카드에서 시즌 목표를 삭제하여 첫 번째 일일 목표를 설정할 것."
     - else
       .new-status-form.container-center
         = render 'new'
+  - elsif day_passed_since_last_retro < 8
+    = render text: '인증하고 회고하거나 걍 회고해라'
+  - else
+    = render text: '회고하거나 목표 정하러 가라'
 
 .container-body
   = render @statuses

@@ -12,7 +12,7 @@
       ' #{weekstring last_weekly_goal.weeknum}의 목표 :
       span.weekly-goal-text = last_weekly_goal.description
 
-    = form_tag "/daily_goals", method: "post", class: 'new-weekly-retrospect-form'
+    = form_tag "/weekly_retrospects", method: "post", class: 'new-weekly-retrospect-form'
       .form-inputs
         .this-week
           blockquote.description
@@ -30,4 +30,3 @@
           = render partial: 'layouts/retrospects/question', locals: { hash: @our_question, answer: @weekly_retrospect.answers}
       .form-actions
         = submit_tag "회고 저장하기", class: 'btn btn-default submit-btn'
-
