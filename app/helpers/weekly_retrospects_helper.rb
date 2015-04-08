@@ -10,6 +10,8 @@ module WeeklyRetrospectsHelper
   def day_passed_since_last_retro
     if last_weekly_retro.present?
       (Date.today - last_weekly_retro.weekly_goal.weeknum.end_of_week).to_i
+    elsif Status.where(user: current_user).blank?
+      0
     else
       (Date.today - first_verified_at.beginning_of_week.yesterday).to_i
     end
