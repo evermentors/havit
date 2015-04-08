@@ -38,4 +38,8 @@ module ApplicationHelper
   def advanced_weekstring (date=last_weekly_goal.weeknum)
     "#{seasonstring date} #{relative_weeknum date}주차(#{weekstring date})"
   end
+
+  def advanced_weekstring_short (date=last_weekly_goal.weeknum)
+    "#{seasonstring date} #{relative_weeknum date}주차"
+  end
 end
