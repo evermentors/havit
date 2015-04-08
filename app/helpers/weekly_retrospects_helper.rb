@@ -16,8 +16,9 @@ module WeeklyRetrospectsHelper
   end
 
   def last_week_of_season?
-    last_weeklygoal_absolute_weeknum = WeeklyGoal.where(user: current_user).order(:weeknum).last.weeknum.strftime("%W")
-    next_season_start_absolute_weeknum = season_start(retro_date.next_month).strftime("%W")
+    last_weeklygoal_date = WeeklyGoal.where(user: current_user).order(:weeknum).last.weeknum
+    last_weeklygoal_absolute_weeknum = last_weeklygoal_date.strftime("%W").to_i
+    next_season_start_absolute_weeknum = season_start(last_weeklygoal_date.next_month).strftime("%W").to_i
 
     (next_season_start_absolute_weeknum - last_weeklygoal_absolute_weeknum) == 1
   end

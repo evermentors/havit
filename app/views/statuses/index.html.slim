@@ -1,6 +1,5 @@
 = paginate @statuses
-/ = link_to '회고하러 가기', new_weekly_retrospect_path
-= day_passed_since_last_retro
+
 - if no_monthly_goal?
   - if Status.where(user: current_user).blank?
     .no-monthly-goal
@@ -11,19 +10,22 @@
   .container-header
     .edit-goal.container-sidebar
       = render 'edit_goal'
-  - if day_passed_since_last_retro <= 5
-    - if day_passed_since_last_retro == 5 and last_verified_at == Date.today
-      = render text: '회고해라'
-    - elsif no_daily_goal?
-      .notice-container.container-center
-        = render 'daily_goals/form'
+    - if day_passed_since_last_retro <= 5
+      - if day_passed_since_last_retro == 5 and last_verified_at == Date.today
+        .notice-container.container-center.retro
+          = render 'retrospects/retro_only'
+      - elsif no_daily_goal?
+        .notice-container.container-center
+          = render 'daily_goals/form'
+      - else
+        .new-status-form.container-center
+          = render 'new'
+    - elsif day_passed_since_last_retro < 8
+      .notice-container.container-center.retro
+        = render 'retrospects/retro_or_status'
     - else
-      .new-status-form.container-center
-        = render 'new'
-  - elsif day_passed_since_last_retro < 8
-    = render text: '인증하고 회고하거나 걍 회고해라'
-  - else
-    = render text: '회고하거나 목표 정하러 가라'
+      .notice-container.container-center.retro
+        = render 'retrospects/retro_or_goal'
 
 .container-body
   = render @statuses

@@ -39,3 +39,38 @@
     }
   }
 }
+
+.notice-container.retro {
+  .panel-body {
+    padding: 5px;
+    .link-div {
+      width: 50%;
+      a {
+        width: 100%;
+        display: table;
+        text-align: center;
+      }
+      a:hover, a:visited, a:active {
+        background: #f6f7f8;
+        text-decoration: none;
+      }
+      .title {
+        height: 85px;
+        display: table-cell;
+        vertical-align: middle;
+        color: #3b5998;
+        font-size: 15px;
+        font-weight: bold;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+    .link-div.left {
+      float: left;
+      border-right: 1px solid #e5e5e5;
+    }
+    .link-div.right {
+      float: right;
+    }
+  }
+}
