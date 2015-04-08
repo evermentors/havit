@@ -14,9 +14,17 @@ class StatusesController < ApplicationController
     @status = current_user.statuses.build(status_params)
 
     if @status.save
-      redirect_to root_url
+      @daily_goal = DailyGoal.new(
+        user: current_user,
+        description: params[:next_daily_goal],
+        goal_date: @status.verified_at.tomorrow)
+      if @daily_goal.save
+        redirect_to root_url
+      else
+        redirect_to root_url, notice: 'error: daily goal on new status'
+      end
     else
-      redirect_to root_url
+      redirect_to root_url, notice: 'error: new status'
     end
   end
 
@@ -42,6 +50,6 @@ class StatusesController < ApplicationController
     end
 
     def status_params
-      params.require(:status).permit(:description, :user_id, :photo, :verified_at)
+      params.require(:status).permit(:description, :user_id, :photo, :verified_at, :next_daily_goal)
     end
 end
