@@ -28,4 +28,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get "daily_goals/:date", action: :on, as: :on, controller: :daily_goals
 end

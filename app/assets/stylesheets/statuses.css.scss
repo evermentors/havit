@@ -60,6 +60,7 @@
   margin-left: -15px;
   .status-stats {
     float:right;
+    padding-top: 10px;
   }
 }
 
@@ -95,21 +96,70 @@
 }
 
 .new-status-form {
-  .status-new-text {
-    margin-left: 45px;
+  .status-author {
+    .status-new-description {
+      margin-left: 45px;
+    }
   }
+
   .form-group {
     margin-top : 5px;
-  }
-  .submit-btn {
-    margin: 5px;
-    float: right;
-  }
-  .photo-upload {
-    margin: 5px;
-    float: right;
-  }
-  textarea {
-    color :green;
+    textarea {
+      color :green;
+    }
+    .status-photo {
+      text-align: center;
+      width: 40px;
+      float: right;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      margin-top: -48px;
+      margin-right: 5px;
+      background-color: #EFEFEF;
+      border-radius: 5px;
+      .status-photo-wrapper {
+        position: relative;
+        height: 33px;
+        cursor: pointer;
+        .status-photo-link {
+          .photo-upload-wrapper {
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            font-size: 25px;
+            .hidden-file-input {
+              bottom: 0;
+              cursor: inherit;
+              font-size: 1000px !important;
+              height: 300px;
+              margin: 0;
+              opacity: 0;
+              padding: 0;
+              position: absolute;
+              right: 0;
+            }
+          }
+        }
+      }
+    }
+    .status-photo:hover {
+      background-color: #FFF;
+      .status-photo-link:hover {
+        text-decoration: none;
+        color: #337ab7 !important;
+      }
+    }
+
+    .status-footer {
+      margin-top: 10px;
+      .next-daily-goal-input {
+        width:400px;
+      }
+      .submit-btn {
+        float: right;
+      }
+    }
   }
 }
