@@ -34,6 +34,18 @@ class DailyGoalsController < ApplicationController
     end
   end
 
+  def on
+    date = "#{view_context.datestring(params[:date].to_date)} #{view_context.weekdaystring(params[:date].to_date)}: "
+
+    if view_context.no_daily_goal?(current_user, params[:date])
+      @goal = ''
+      @description = date + '목표가 없었습니다.'
+    else
+      @goal = DailyGoal.of(current_user, params[:date]).last.description
+      @description = "#{date}[#{@goal}] 인증하기"
+    end
+  end
+
   private
     def set_daily_goal
       @daily_goal = DailyGoal.find(params[:id])
