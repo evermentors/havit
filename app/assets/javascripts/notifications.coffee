@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+show_notifications = ()->
+  $('.notification-btn').on 'click', ->
+    if $('.notifications-container').hasClass('closed')
+      if $('.notification').length == 0
+        $.ajax(url: '/notifications')
+    $('.notifications-container').toggleClass('closed opened')
+    $('.notification-btn').toggleClass('closed opened')
+
+$(document).on 'ready page:load', show_notifications
