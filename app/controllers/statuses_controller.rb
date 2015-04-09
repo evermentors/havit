@@ -14,10 +14,16 @@ class StatusesController < ApplicationController
     @status = current_user.statuses.build(status_params)
 
     if @status.save
-      @daily_goal = DailyGoal.new(
-        user: current_user,
-        description: params[:next_daily_goal],
-        goal_date: @status.verified_at.tomorrow)
+      if view_context.no_daily_goal?(current_user, @status.verified_at.tomorrow)
+        @daily_goal = DailyGoal.new(
+          user: current_user,
+          description: params[:next_daily_goal],
+          goal_date: @status.verified_at.tomorrow)
+      else
+        @daily_goal = view_context.daily_goal(current_user, @status.verified_at.tomorrow)
+        @daily_goal.description = params[:next_daily_goal]
+      end
+
       if @daily_goal.save
         redirect_to root_url
       else

@@ -20,6 +20,9 @@
       span.next-daily-goal-description
         span.next-goal-date = datestring Time.current.to_date.tomorrow
         '의 목표:
-      =< text_field_tag 'next_daily_goal', daily_goal.description, placeholder: '목표를 정해주세요', required: true, class: 'form-control next-daily-goal-input'
+      =< text_field_tag 'next_daily_goal',
+        (daily_goal_description Time.current.to_date.tomorrow),
+        placeholder: '새로운 목표를 등록해주세요!',
+        class: 'form-control next-daily-goal-input',
+        required: true
       = submit_tag "등록", class: 'btn btn-primary submit-btn'
-
