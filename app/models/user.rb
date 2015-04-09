@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :statuses, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_statuses, through: :likes, source: :status
+  has_many :notifications, dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
