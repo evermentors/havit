@@ -1,3 +1,18 @@
 .notification-wrapper {
   border: 1px solid black;
+.notification-btn {
+  font-size: 22px;
+  color: #B3B3B3;
+  border: 1px solid #B3B3B3;
+  border-radius: 20px;
+  width: 33px;
+  text-align: center;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.notification-btn:hover, .notification-btn.opened {
+  color: green;
+  border-color: green;
+  background-color: white;
+}
 }
