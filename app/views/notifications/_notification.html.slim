@@ -1,0 +1,10 @@
+.notification
+  a href=notification.link
+    .notification-wrapper
+      .noti-who
+        = image_tag(notification.user.gravatar_url)
+      .noti-what
+        span.noti-user-name = notification.user.name
+        ' 님이
+        =< notification.description
+        .time = timeago_tag notification.created_at

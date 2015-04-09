@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :notifications, only: [:index, :create, :update, :destroy]
+
   resource :goals, only: [:create]
 
   resources :monthly_goals, only: [:edit, :update, :destroy]
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :daily_goals, only: [:create, :edit, :update, :destroy]
 
-  resources :statuses, only: [:create, :edit, :update, :destroy] do
+  resources :statuses, only: [:show, :create, :edit, :update, :destroy] do
     resources :likes, only: [:create]
     resource :like, only: [:destroy]
   end

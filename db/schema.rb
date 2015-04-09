@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331074615) do
+ActiveRecord::Schema.define(version: 20150409054301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,18 @@ ActiveRecord::Schema.define(version: 20150331074615) do
   add_index "monthly_goals", ["season"], name: "index_monthly_goals_on_season", using: :btree
   add_index "monthly_goals", ["user_id"], name: "index_monthly_goals_on_user_id", using: :btree
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recipient"
+    t.text     "description", null: false
+    t.text     "link",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "notifications", ["recipient"], name: "index_notifications_on_recipient", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+
   create_table "statuses", force: :cascade do |t|
     t.text     "description",        default: "", null: false
     t.integer  "user_id",                         null: false
@@ -151,6 +163,7 @@ ActiveRecord::Schema.define(version: 20150331074615) do
 
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
+  add_foreign_key "notifications", "users"
   add_foreign_key "weekly_retrospects", "users"
   add_foreign_key "weekly_retrospects", "weekly_goals"
 end

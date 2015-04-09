@@ -32,6 +32,13 @@ module Commontator
           format.html { redirect_to @thread }
           format.js { render :cancel }
         elsif @comment.save
+          notification = Notification.new(
+            user: current_user,
+            recipient: Status.find(@thread.commontable_id).user_id,
+            description: "댓글을 달았습니다: #{@comment.body}",
+            link: main_app.status_path(Status.find(@thread.commontable_id)))
+          notification.save
+
           sub = @thread.config.thread_subscription.to_sym
           @thread.subscribe(@user) if sub == :a || sub == :b
           Subscription.comment_created(@comment)

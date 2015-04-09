@@ -25,6 +25,12 @@ class StatusesController < ApplicationController
       end
 
       if @daily_goal.save
+        notification = Notification.new(
+          user: current_user,
+          recipient: 0,
+          description: "실천을 올렸습니다: #{@status.description}",
+          link: status_path(@status))
+        notification.save
         redirect_to root_url
       else
         redirect_to root_url, notice: 'error: daily goal on new status'
