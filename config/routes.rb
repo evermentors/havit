@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :notifications
+
   resource :goals, only: [:create]
 
   resources :monthly_goals, only: [:edit, :update, :destroy]
