@@ -29,3 +29,16 @@
 .notifications-container.closed {
   display: none;
 }
+
+.notification {
+  .notification-wrapper {
+    padding: 5px;
+    .noti-who {
+      float: left;
+      width: 35px;
+    }
+    .noti-what {
+      margin-left: 40px;
+    }
+  }
+}
