@@ -4,11 +4,15 @@
 }
 .card-container {
   padding-top: 16px;
+  padding-bottom: 10px;
   margin-top: 100px;
   background-color: white;
+  border-radius: 5px;
 }
 .card-goals {
   padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .card-message {
   padding: 10px;
@@ -16,6 +20,9 @@
 .card-actions {
   position: relative;
   min-height: 34px;
+}
+.card-comments {
+  border-top: 1px solid #BEBEBE;
 }
 
 .like-form {
