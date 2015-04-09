@@ -3,4 +3,5 @@ class Notification < ActiveRecord::Base
 
   validates :description, presence: true
   validates :link, presence: true
+  validates :recipient, presence: true
 end

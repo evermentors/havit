@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :notifications
+  resources :notifications, only: [:index, :create, :update, :destroy]
 
   resource :goals, only: [:create]
 

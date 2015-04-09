@@ -94,12 +94,14 @@ ActiveRecord::Schema.define(version: 20150409054301) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "recipient"
     t.text     "description", null: false
     t.text     "link",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
+  add_index "notifications", ["recipient"], name: "index_notifications_on_recipient", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "statuses", force: :cascade do |t|
