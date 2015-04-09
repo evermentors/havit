@@ -2,7 +2,11 @@ class NotificationsController < ApplicationController
   before_action :set_notification, only: [:update, :destroy]
 
   def index
-    @notifications = Notification.all
+    @notifications_mine = Notification.where(recipient: current_user.id)
+    @notifications_others = Notification.where("recipient = 0 and user_id != ?", current_user.id)
+
+    @notifications = @notifications_mine + @notifications_others.sort_by{ |noti| noti.created_at}.reverse!
+
   end
 
   def create
