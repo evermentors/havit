@@ -17,6 +17,10 @@ scroll_to_status = ()->
     target = $('.card-container#status-card-'+status_id)
     $('html, body').animate({scrollTop: target.offset().top - 100}, 1000);
 
+    $('.notifications-container').toggleClass('closed opened')
+    $('.notification-btn').toggleClass('closed opened')
+    $.ajax(url: '/notifications/'+ $(".notification:first").attr('notification-id') + '/read')
+
 load_notifications = ()->
   $.ajax(url: '/notifications')
 
