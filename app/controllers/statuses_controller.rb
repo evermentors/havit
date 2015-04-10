@@ -1,3 +1,5 @@
+#encoding=utf-8
+
 class StatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_status, only: [:edit, :update, :destroy]
@@ -28,7 +30,7 @@ class StatusesController < ApplicationController
         notification = Notification.new(
           user: current_user,
           recipient: 0,
-          description: "실천을 올렸습니다: #{@status.description}",
+          description: "#{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
           link: status_path(@status))
         notification.save
         redirect_to root_url

@@ -7,7 +7,14 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :notifications, only: [:index, :create, :update, :destroy]
+  resources :notifications, only: [:index, :create, :update, :destroy] do
+    member do
+      get :read
+    end
+    collection do
+      get :pull_unread
+    end
+  end
 
   resource :goals, only: [:create]
 

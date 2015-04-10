@@ -2,11 +2,18 @@ class NotificationsController < ApplicationController
   before_action :set_notification, only: [:update, :destroy]
 
   def index
-    @notifications_mine = Notification.where(recipient: current_user.id)
-    @notifications_others = Notification.where("recipient = 0 and user_id != ?", current_user.id)
+    @unread_notifications = Notification.unread(current_user).reverse
+    need_more_notification = 5 - @unread_notifications.count
+    @read_notifications = Notification.read(current_user).limit(need_more_notification).reverse
+  end
 
-    @notifications = @notifications_mine + @notifications_others.sort_by{ |noti| noti.created_at}.reverse!
+  def read
+    current_user.update(last_checked_notification: params[:id])
+    render nothing: true
+  end
 
+  def pull_unread
+    @unread_notifications = Notification.unread(current_user).reverse
   end
 
   def create
