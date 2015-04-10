@@ -1,8 +1,9 @@
 show_notifications = ()->
   $('.notification-btn').on 'click', ->
     if $('.notifications-container').hasClass('closed')
-      if $('.notification').length == 0
-        $.ajax(url: '/notifications')
+      $.ajax(url: '/notifications/'+ $(".notification:first").attr('notification-id') + '/read')
+      $('.notifications-count').addClass('hidden')
+
     $('.notifications-container').toggleClass('closed opened')
     $('.notification-btn').toggleClass('closed opened')
 

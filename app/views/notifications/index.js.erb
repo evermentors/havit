@@ -1,4 +1,13 @@
-<% @notifications.each do |noti| %>
-  $('.notifications-container').append("<%=j render partial: 'notifications/notification', locals: {notification: noti} %>")
+<% if @unread_notifications.count > 0 %>
+  $('.notifications-count').text("<%= @unread_notifications.count %>").removeClass('hidden')
 <% end %>
+
+<% @read_notifications.each do |noti| %>
+  $('.notifications-container').prepend("<%=j render partial: 'notifications/notification', locals: {notification: noti, unread: 'read'} %>")
+<% end %>
+
+<% @unread_notifications.each do |noti| %>
+  $('.notifications-container').prepend("<%=j render partial: 'notifications/notification', locals: {notification: noti, unread: 'unread'} %>")
+<% end %>
+
 $('.notifications-container time').timeago();
