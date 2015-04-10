@@ -39,4 +39,4 @@
 = content_for :card_comments, flush:true do
   = commontator_thread(status)
 
-= render 'layouts/card'
+= render partial: 'layouts/card', locals: {status_id: status.id}
