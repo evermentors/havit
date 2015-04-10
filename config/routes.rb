@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     member do
       get :read
     end
+    collection do
+      get :pull_unread
+    end
   end
 
   resource :goals, only: [:create]

@@ -7,10 +7,13 @@ class NotificationsController < ApplicationController
     @read_notifications = Notification.read(current_user).limit(need_more_notification).reverse
   end
 
-
   def read
     current_user.update(last_checked_notification: params[:id])
     render nothing: true
+  end
+
+  def pull_unread
+    @unread_notifications = Notification.unread(current_user).reverse
   end
 
   def create

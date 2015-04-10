@@ -14,11 +14,11 @@ nav.navbar.navbar-inverse.navbar-fixed-top
           li = link_to 'Users', main_app.users_path
           li.topbar-goal = render 'monthly_goals/top_bar_form'
         ul.nav.navbar-nav.navbar-right
-          button.temp temp
+          / button.temp temp
           li
             .notification-btn.closed
               span.glyphicon.glyphicon-bell
-              span.notifications-count
+              span.notifications-count.hidden
             .notifications-container.closed
           li = link_to 'Edit account', main_app.edit_user_registration_path
           li = link_to 'Sign out', main_app.destroy_user_session_path, method: 'delete'
