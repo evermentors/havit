@@ -31,16 +31,30 @@
 }
 
 .notification {
-  .notification-wrapper {
-    padding: 5px;
-    .noti-who {
-      float: left;
-      width: 35px;
-    }
-    .noti-what {
-      margin-left: 40px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  padding: 5px;
+  .notification-link {
+    text-decoration: none;
+    .notification-wrapper {
+      padding: 5px;
+      .noti-who {
+        float: left;
+        width: 35px;
+      }
+      .noti-what {
+        margin-left: 42px;
+      }
     }
   }
+}
+
+.notification.unread {
+  background-color: #EDEFF5;
+}
+
+.notification:hover {
+  background-color: #F6F7F8;
 }
 
 .notifications-count {
