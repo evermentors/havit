@@ -1,3 +1,5 @@
+#encoding=utf-8
+
 module Commontator
   class CommentsController < Commontator::ApplicationController
     before_filter :set_thread, :only => [:new, :create]
@@ -32,10 +34,12 @@ module Commontator
           format.html { redirect_to @thread }
           format.js { render :cancel }
         elsif @comment.save
+          recipient = Status.find(@thread.commontable_id).user_id
+          datestr = Status.find(@thread.commontable_id).verified_at.strftime("%-m월 %-d일")
           notification = Notification.new(
             user: current_user,
-            recipient: Status.find(@thread.commontable_id).user_id,
-            description: "댓글을 달았습니다: #{@comment.body}",
+            recipient: recipient,
+            description: "#{User.find(recipient).name}님의 #{datestr} 실천에 댓글을 달았습니다.",
             link: main_app.status_path(Status.find(@thread.commontable_id)))
           notification.save
 
