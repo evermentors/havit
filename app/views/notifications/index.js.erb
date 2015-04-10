@@ -1,3 +1,4 @@
 <% @notifications.each do |noti| %>
   $('.notifications-container').append("<%=j render partial: 'notifications/notification', locals: {notification: noti} %>")
 <% end %>
+$('.notifications-container time').timeago();
