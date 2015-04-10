@@ -23,8 +23,8 @@
 = content_for :card_photo, flush:true do
   - if status.photo?
     = image_tag status.photo.url(:medium)
-  - else
-    = image_tag "havit-logo-big.png"
+  / - else
+  /   = image_tag "havit-logo-big.png"
 
 = content_for :card_actions, flush:true do
   .like-form data={ status_id: status.id }
