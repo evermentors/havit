@@ -20,7 +20,7 @@
       - else
         .new-status-form.container-center
           = render 'new'
-    - elsif day_passed_since_last_retro < 8
+    - elsif day_passed_since_last_retro <= 15
       .notice-container.container-center.retro
         = render 'retrospects/retro_or_status'
     - else

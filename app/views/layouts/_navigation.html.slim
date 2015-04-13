@@ -16,7 +16,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         ul.nav.navbar-nav.navbar-right
           / button.temp temp
           li
-            .notification-btn.closed
+            .notification-btn.closed last-checked=current_user.last_checked_notification tabindex="-1"
               span.glyphicon.glyphicon-bell
               span.notifications-count.hidden
             .notifications-container.closed
