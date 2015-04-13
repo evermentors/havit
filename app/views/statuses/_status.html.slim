@@ -18,7 +18,7 @@
     span.daily-goal-text = daily_goal(status.user, status.verified_at).description
 
 = content_for :card_message, flush:true do
-  p.description == status.description
+  span.description.nl2br == status.description
 
 = content_for :card_photo, flush:true do
   - if status.photo?

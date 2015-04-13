@@ -3,7 +3,7 @@
     h4.list-group-item-heading = seasonstring
     a.modify-goal-link href=edit_monthly_goal_path(monthly_goal)
       span.glyphicon.glyphicon-pencil
-    span.list-group-item-text = monthly_goal.description
+    span.list-group-item-text.nl2br = monthly_goal.description
   span.list-group-item.weekly
     h4.list-group-item-heading = weekstring
     - if no_weekly_goal?
@@ -11,10 +11,10 @@
     - else
       a.modify-goal-link href=edit_weekly_goal_path(weekly_goal)
         span.glyphicon.glyphicon-pencil
-      span.list-group-item-text = weekly_goal.description
+      span.list-group-item-text.nl2br = weekly_goal.description
   - unless no_daily_goal?
     span.list-group-item.daily
       h4.list-group-item-heading #{datestring} #{weekdaystring}
       a.modify-goal-link href=edit_daily_goal_path(daily_goal)
         span.glyphicon.glyphicon-pencil
-      span.list-group-item-text = daily_goal.description
+      span.list-group-item-text.nl2br = daily_goal.description

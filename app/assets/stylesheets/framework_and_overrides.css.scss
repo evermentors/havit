@@ -88,3 +88,8 @@ section {
   padding: 10px;
   text-align: center;
 }
+
+// show newline as expected
+.nl2br {
+  white-space: pre-line;
+}
