@@ -1,14 +1,18 @@
 show_notifications = ()->
   $('.notification-btn').on 'click', ->
     if $('.notifications-container').hasClass('closed')
+      $(this).focus()
       $.ajax(url: '/notifications').done () ->
         $('.notifications-count').addClass('hidden')
         $('.notification').slice(5).remove()
+      $('.notifications-container').toggleClass('closed opened')
+      $('.notification-btn').toggleClass('closed opened')
     else
-      update_last_checked()
+      close_notifications()
 
-    $('.notifications-container').toggleClass('closed opened')
-    $('.notification-btn').toggleClass('closed opened')
+close_notifications_on_blur = () ->
+  $('.notification-btn').on 'blur', ->
+    close_notifications()
 
 scroll_to_status = ()->
   $('body').on 'click', '.notification-link', ->
@@ -16,7 +20,10 @@ scroll_to_status = ()->
     status_id = status_url[status_url.length - 1]
     target = $('.card-container#status-card-'+status_id)
     $('html, body').animate({scrollTop: target.offset().top - 100}, 1000);
+    close_notifications()
 
+close_notifications = () ->
+  unless $('.notifications-container').hasClass('closed')
     $('.notifications-container').toggleClass('closed opened')
     $('.notification-btn').toggleClass('closed opened')
     update_last_checked()
@@ -46,6 +53,7 @@ not_notified_yet = (noti_id) ->
     return true
 
 $(document).on 'ready page:load', show_notifications
+$(document).on 'ready page:load', close_notifications_on_blur
 $(document).on 'ready page:load', scroll_to_status
 $(document).on 'ready page:load', load_notifications
 $(document).on 'ready page:load', pull_unread
