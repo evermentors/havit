@@ -1,4 +1,4 @@
-= content_for :card_author, flush:true do
+= content_for :card_author, flush:true
   .status-author
     = image_tag(status.user.gravatar_url)
     = link_to status.user.name, status.user, class: "status-user-name"
@@ -6,7 +6,7 @@
   .status-stats
     span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
 
-= content_for :card_goals, flush:true do
+= content_for :card_goals, flush:true
   / 임시로 숨겨놓음
   / p = monthly_goal(status.user, status.verified_at).description unless no_monthly_goal?(status.user, status.verified_at)
   / p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
@@ -17,16 +17,17 @@
     = "#{datestring(status.verified_at)} #{weekdaystring status.verified_at}의 목표: "
     span.daily-goal-text = daily_goal(status.user, status.verified_at).description
 
-= content_for :card_message, flush:true do
+= content_for :card_message, flush:true
   span.description.nl2br == status.description
 
-= content_for :card_photo, flush:true do
+= content_for :card_photo, flush:true
   - if status.photo?
     = image_tag status.photo.url(:medium)
-  / - else
+  - else
+    span
   /   = image_tag "havit-logo-big.png"
 
-= content_for :card_actions, flush:true do
+= content_for :card_actions, flush:true
   .like-form data={ status_id: status.id }
     - if current_user.likes?(status)
       == render 'statuses/unlike', status: status
@@ -36,7 +37,7 @@
     ' ·
     =<> link_to '게시물 수정', edit_status_path(status), class: "status-edit-btn btn btn-link"
 
-= content_for :card_comments, flush:true do
+= content_for :card_comments, flush:true
   = commontator_thread(status)
 
 = render partial: 'layouts/card', locals: {status_id: status.id}
