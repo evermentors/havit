@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :notifications, only: [:index, :create, :update, :destroy] do
+  resources :notifications, only: [:index] do
     member do
       get :read
     end
