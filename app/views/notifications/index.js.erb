@@ -3,11 +3,16 @@
 <% end %>
 
 <% @read_notifications.each do |noti| %>
-  $('.notifications-container').prepend("<%=j render partial: 'notifications/notification', locals: {notification: noti, unread: 'read'} %>")
+  if (not_notified_yet("<%= noti.id %>")) {
+    $('.notifications-container').prepend("<%=j render partial: 'notifications/notification', locals: {notification: noti, unread: 'read'} %>");
+  }
+
 <% end %>
 
 <% @unread_notifications.each do |noti| %>
-  $('.notifications-container').prepend("<%=j render partial: 'notifications/notification', locals: {notification: noti, unread: 'unread'} %>")
+  if (not_notified_yet("<%= noti.id %>")) {
+    $('.notifications-container').prepend("<%=j render partial: 'notifications/notification', locals: {notification: noti, unread: 'unread'} %>");
+  }
 <% end %>
 
 $('.notifications-container time').timeago();

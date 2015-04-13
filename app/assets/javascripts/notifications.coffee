@@ -36,7 +36,17 @@ update_last_checked = () ->
     $('.notification-btn').attr('last-checked', last_checked)
     $.ajax(url: '/notifications/'+ last_checked + '/read')
 
+not_notified_yet = (noti_id) ->
+  noti_arr = []
+  $('.notification').each (index, element) =>
+    noti_arr.push $(element).attr('notification-id')
+  if noti_id in noti_arr
+    return false
+  else
+    return true
+
 $(document).on 'ready page:load', show_notifications
 $(document).on 'ready page:load', scroll_to_status
 $(document).on 'ready page:load', load_notifications
 $(document).on 'ready page:load', pull_unread
+$(document).on 'ready page:load', window.not_notified_yet = not_notified_yet
