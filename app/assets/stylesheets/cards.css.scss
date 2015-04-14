@@ -36,7 +36,7 @@
     margin-right: -10px;
     outline: 0;
   }
-  .see-detail:active {
+  .see-detail:active, .see-detail:focus {
     outline: 0;
   }
   .see-detail.up:before {
