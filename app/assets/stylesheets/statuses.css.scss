@@ -12,6 +12,11 @@
   }
 }
 
+.goal-text {
+  font-style: italic;
+  color:green;
+}
+
 .container-header {
   position:relative;
   margin-top:10px;
@@ -25,10 +30,6 @@
     .set-daily-goal {
       .form-group {
         margin-bottom:0;
-      }
-      .daily-goal-text {
-        font-style:italic;
-        color: #379D41;
       }
     }
   }
@@ -89,9 +90,23 @@
   font-weight:bold;
   font-size:18px;
   text-align: center;
-  .daily-goal-text {
-    font-style: italic;
-    color:green;
+  .goals-hidden {
+    display: none;
+  }
+  .see-detail {
+    float: right;
+    margin-top: -15px;
+    margin-right: -5px;
+    outline: 0;
+  }
+  .see-detail:active {
+    outline: 0;
+  }
+  .see-detail.up:before {
+    content: '목표 자세히 보기';
+  }
+  .see-detail.down:before {
+    content: '접기';
   }
 }
 
