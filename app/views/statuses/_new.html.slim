@@ -4,7 +4,7 @@
     span.status-new-description
       ' #{current_user.name}님의
       / #{weekdaystring(date)}를 써서 '월요일' 같은 걸 나타낼 수 있음
-      = date_field_tag 'status[verified_at]', Time.current.to_date, class: 'status-verified-at'
+      = date_field_tag 'status[verified_at]', last_daily_goal.goal_date.to_date, class: 'status-verified-at'
       ' 실천
 
   .form-group
@@ -15,13 +15,13 @@
             span.glyphicon.glyphicon-camera
             = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
     .status-description
-      = text_area_tag 'status[description]', nil, placeholder: "#{datestring} #{weekdaystring}: [#{daily_goal.description}] 인증하기", required: true, class: 'form-control'
+      = text_area_tag 'status[description]', nil, placeholder: "#{datestring last_daily_goal.goal_date} #{weekdaystring last_daily_goal.goal_date}: [#{last_daily_goal.description}] 인증하기", required: true, class: 'form-control'
     .status-footer.form-inline
       span.next-daily-goal-description
-        span.next-goal-date = datestring Time.current.to_date.tomorrow
+        span.next-goal-date = datestring last_daily_goal.goal_date.tomorrow
         '의 목표:
       =< text_field_tag 'next_daily_goal',
-        (daily_goal_description Time.current.to_date.tomorrow),
+        (daily_goal_description last_daily_goal.goal_date.tomorrow),
         placeholder: '새로운 목표를 등록해주세요!',
         class: 'form-control next-daily-goal-input',
         required: true
