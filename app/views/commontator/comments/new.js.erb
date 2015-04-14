@@ -5,7 +5,7 @@ $("#thread_<%= @thread.id %>_new_comment_form_div").html("<%= escape_javascript(
                       :per_page => @per_page }) %>");
 
 $("#thread_<%= @thread.id %>_new_comment_form_div").fadeIn();
-
+$("#thread_<%= @thread.id %>_div #comment_body").focus();
 $("#thread_<%= @thread.id %>_new_comment_link_div").hide();
 
 <%= javascript_proc %>
