@@ -27,9 +27,6 @@ Rails.application.routes.draw do
   resources :statuses, only: [:show, :create, :edit, :update, :destroy] do
     resources :likes, only: [:create]
     resource :like, only: [:destroy]
-    collection do
-      get :verify_past
-    end
   end
 
   resources :weekly_retrospects do

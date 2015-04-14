@@ -10,6 +10,7 @@
   .container-header
     .edit-goal.container-sidebar
       = render 'edit_goal'
+
     - if day_passed_since_last_retro <= 5
       - if day_passed_since_last_retro == 5 and last_verified_at == Date.today
         .notice-container.container-center.retro
@@ -17,15 +18,15 @@
       - elsif no_daily_goal?
         .notice-container.container-center
           = render 'daily_goals/form'
-      - else
-        .new-status-form.container-center
-          = render 'new'
     - elsif day_passed_since_last_retro <= 15
       .notice-container.container-center.retro
         = render 'retrospects/retro_or_status'
     - else
       .notice-container.container-center.retro
         = render 'retrospects/retro_or_goal'
+
+    .new-status-form.container-center class=(new_status_form_hidden? ? 'hidden' : '')
+      = render 'new'
 
 .container-body
   = render @statuses
