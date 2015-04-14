@@ -17,10 +17,12 @@ show_new_status_form = () ->
   $('.verify-past-btn').on 'click', (e) ->
     e.preventDefault()
     $('.notice-container').hide()
-    $('.new-status-form').removeClass('hidden')
+    $('.new-status-form-div').removeClass('hidden')
+    $('.new-status-form-div textarea').autosize()
 
 textarea_autosize = ()->
-  $('textarea').autosize()
+  $('textarea').each (index, element) =>
+    $(element).autosize() unless $(element).closest('.new-status-form-div').hasClass('hidden')
 
 $(document).on 'ready page:load', on_verified_at_changed
 $(document).on 'ready page:load', show_new_status_form
