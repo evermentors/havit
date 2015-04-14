@@ -12,5 +12,9 @@ show_new_status_form = () ->
     $('.notice-container').hide()
     $('.new-status-form').removeClass('hidden')
 
+textarea_autosize = ()->
+  $('textarea').autosize()
+
 $(document).on 'ready page:load', on_verified_at_changed
+$(document).on 'ready page:load', textarea_autosize
 $(document).on 'ready page:load', show_new_status_form
