@@ -6,6 +6,7 @@
       / #{weekdaystring(date)}를 써서 '월요일' 같은 걸 나타낼 수 있음
       = date_field_tag 'status[verified_at]', last_daily_goal.goal_date.to_date, class: 'status-verified-at'
       ' 실천
+      small.text-danger.verify-tomorrow.hidden 내일 실천은 내일 해요~
 
   .form-group
     .status-photo
