@@ -42,4 +42,19 @@ module ApplicationHelper
   def advanced_weekstring_short (date=last_weekly_goal.weeknum)
     "#{seasonstring date} #{relative_weeknum date}주차"
   end
+
+  def new_status_form_hidden?
+    unless no_monthly_goal?
+      if day_passed_since_last_retro <= 5
+        if day_passed_since_last_retro == 5 and last_verified_at == Date.today
+          return true
+        elsif no_daily_goal?
+          return true
+        else
+          return false
+        end
+      end
+    end
+    return true
+  end
 end
