@@ -12,6 +12,9 @@ class StatusesController < ApplicationController
   def edit
   end
 
+  def verify_past
+  end
+
   def create
     @status = current_user.statuses.build(status_params)
 
