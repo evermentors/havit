@@ -43,6 +43,8 @@ GEM
     autoprefixer-rails (5.1.7)
       execjs
       json
+    autosize-rails (1.18.17)
+      rails (>= 3.1)
     awesome_print (1.6.1)
     aws-sdk (1.63.0)
       aws-sdk-v1 (= 1.63.0)
@@ -252,6 +254,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autosize-rails
   awesome_print
   aws-sdk (< 2.0)
   better_errors
