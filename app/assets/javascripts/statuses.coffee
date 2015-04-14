@@ -17,11 +17,22 @@ show_new_status_form = () ->
   $('.verify-past-btn').on 'click', (e) ->
     e.preventDefault()
     $('.notice-container').hide()
-    $('.new-status-form').removeClass('hidden')
+    $('.new-status-form-div').removeClass('hidden')
+    $('.new-status-form-div textarea').autosize()
 
 textarea_autosize = ()->
-  $('textarea').autosize()
+  $('textarea').each (index, element) =>
+    $(element).autosize() unless $(element).closest('.new-status-form-div').hasClass('hidden')
+
+toggle_monthly_weekly_goals = () ->
+  $('.card-goals > .see-detail').on 'click', ->
+    see_detail = $(this)
+    if $(this).hasClass('up')
+      $(this).prevAll('.goals-hidden').slideDown(-> see_detail.toggleClass('up down'))
+    else
+      $(this).prevAll('.goals-hidden').slideUp(-> see_detail.toggleClass('up down'))
 
 $(document).on 'ready page:load', on_verified_at_changed
 $(document).on 'ready page:load', show_new_status_form
 $(document).on 'ready page:load', textarea_autosize
+$(document).on 'ready page:load', toggle_monthly_weekly_goals

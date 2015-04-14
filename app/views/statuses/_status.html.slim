@@ -7,15 +7,25 @@
     span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
 
 = content_for :card_goals, flush:true
-  / 임시로 숨겨놓음
-  / p = monthly_goal(status.user, status.verified_at).description unless no_monthly_goal?(status.user, status.verified_at)
-  / p = weekly_goal(status.user, status.verified_at).description unless no_weekly_goal?(status.user, status.verified_at)
-  span.daily-goal
-  - if no_daily_goal?(status.user, status.verified_at)
-    = "#{datestring(status.verified_at)}에는 목표가 없었습니다."
-  - else
-    = "#{datestring(status.verified_at)} #{weekdaystring status.verified_at}의 목표: "
-    span.daily-goal-text = daily_goal(status.user, status.verified_at).description
+  .goals-hidden
+    .monthly-goal.small
+      - if no_monthly_goal?(status.user, status.verified_at)
+        = "#{seasonstring status.verified_at}에 목표가 없었습니다."
+      - else
+        = "#{seasonstring status.verified_at} 목표: "
+        span.goal-text = monthly_goal(status.user, status.verified_at).description
+    .weekly-goal.small
+      - if no_weekly_goal?(status.user, status.verified_at)
+        = "#{advanced_weekstring status.verified_at, false}에 목표가 없었습니다."
+      - else
+        = "#{advanced_weekstring status.verified_at, false} 목표: "
+        span.goal-text = weekly_goal(status.user, status.verified_at).description
+  .daily-goal
+    - if no_daily_goal?(status.user, status.verified_at)
+      = "#{datestring status.verified_at}에는 목표가 없었습니다."
+    - else
+      = "#{datestring status.verified_at} #{weekdaystring status.verified_at}의 목표: "
+      span.goal-text = daily_goal(status.user, status.verified_at).description
 
 = content_for :card_message, flush:true
   span.description.nl2br == status.description

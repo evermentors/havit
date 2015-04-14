@@ -6,7 +6,7 @@
       .form-group
         p
           | #{current_user.name}님의 #{datestring(last_daily_goal.goal_date)} 목표(
-          span.daily-goal-text = last_daily_goal.description
+          span.goal-text = last_daily_goal.description
           | )를 그대로 오늘 목표로 등록하시거나, 수정해서 등록하실 수 있습니다.
         p
           ' 그게 아니라, 아직 인증하지 않은 실천을 올리시려면
