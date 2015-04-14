@@ -9,13 +9,48 @@
   background-color: white;
   border-radius: 5px;
 }
+.card-header {
+  height: 45px;
+  margin-top: -60px;
+  margin-left: -15px;
+  .status-stats {
+    float:right;
+    padding-top: 10px;
+  }
+}
 .card-goals {
-  padding: 10px;
+  padding: 15px 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  background-color: rgb(181, 213, 255);
+  margin: -1px -16px;
+  font-weight:bold;
+  font-size:18px;
+  text-align: center;
+  .goals-hidden {
+    display: none;
+  }
+  .see-detail {
+    float: right;
+    margin-top: -6px;
+    margin-right: -10px;
+    outline: 0;
+  }
+  .see-detail:active {
+    outline: 0;
+  }
+  .see-detail.up:before {
+    content: '목표 자세히 보기';
+  }
+  .see-detail.down:before {
+    content: '접기';
+  }
 }
 .card-message {
   padding: 10px;
+  .description {
+    margin-top: -15px;
+  }
 }
 .card-actions {
   position: relative;

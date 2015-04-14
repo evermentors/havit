@@ -55,16 +55,6 @@
   margin-left: 224px;
 }
 
-.card-header {
-  height: 45px;
-  margin-top: -60px;
-  margin-left: -15px;
-  .status-stats {
-    float:right;
-    padding-top: 10px;
-  }
-}
-
 .status-author {
   position: relative;
   img {
@@ -84,45 +74,12 @@
   }
 }
 
-.card-goals {
-  background-color: rgb(181, 213, 255);
-  margin: -1px -16px;
-  font-weight:bold;
-  font-size:18px;
-  text-align: center;
-  .goals-hidden {
-    display: none;
-  }
-  .see-detail {
-    float: right;
-    margin-top: -15px;
-    margin-right: -5px;
-    outline: 0;
-  }
-  .see-detail:active {
-    outline: 0;
-  }
-  .see-detail.up:before {
-    content: '목표 자세히 보기';
-  }
-  .see-detail.down:before {
-    content: '접기';
-  }
-}
-
-.card-message {
-  .description {
-    margin-top: -15px;
-  }
-}
-
 .new-status-form {
   .status-author {
     .status-new-description {
       margin-left: 45px;
     }
   }
-
   .form-group {
     margin-top : 5px;
     textarea {
@@ -172,7 +129,6 @@
         color: #337ab7 !important;
       }
     }
-
     .status-footer {
       margin-top: 10px;
       .next-daily-goal-input {
