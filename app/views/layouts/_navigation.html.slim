@@ -16,10 +16,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         ul.nav.navbar-nav.navbar-right
           / button.temp temp
           li
-            .notification-btn.closed last-checked=current_user.last_checked_notification tabindex="-1"
+            .notification-btn.closed last-checked=current_user.last_checked_notification
               span.glyphicon.glyphicon-bell
               span.notifications-count.hidden
-            .notifications-container.closed
+            .notifications-container.closed tabindex="-1"
           li = link_to 'Edit account', main_app.edit_user_registration_path
           li = link_to 'Sign out', main_app.destroy_user_session_path, method: 'delete'
       - else

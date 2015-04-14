@@ -1,17 +1,16 @@
 show_notifications = ()->
   $('.notification-btn').on 'click', ->
     if $('.notifications-container').hasClass('closed')
-      $(this).focus()
       $.ajax(url: '/notifications').done () ->
         $('.notifications-count').addClass('hidden')
         $('.notification').slice(5).remove()
-      $('.notifications-container').toggleClass('closed opened')
+      $('.notifications-container').toggleClass('closed opened').focus()
       $('.notification-btn').toggleClass('closed opened')
     else
       close_notifications()
 
 close_notifications_on_blur = () ->
-  $('.notification-btn').on 'blur', ->
+  $('.notifications-container').on 'blur', ->
     close_notifications()
 
 scroll_to_status = ()->
