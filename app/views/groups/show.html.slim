@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @group.name
+p
+  strong Description:
+  = @group.description
+p
+  strong Password:
+  = @group.password
+p
+  strong Member limit:
+  = @group.member_limit
+
+= link_to 'Edit', edit_group_path(@group)
+'|
+= link_to 'Back', groups_path
