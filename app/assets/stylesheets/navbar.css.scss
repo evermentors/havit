@@ -2,8 +2,18 @@
   height:50px;
 }
 
-.topbar-goal {
-  .current-daily-goal {
-    font-size: 18px;
+.nav .my-page-link-li {
+  margin-right: 5px;
+  .my-page-link {
+    padding: 9px 10px;
+    color: white;
+    img {
+      height: 32px;
+      margin-right: 6px;
+      display: inline-block;
+    }
+  }
+  .my-page-link:hover {
+    background-color: rgba(73, 73, 73, 0.83);
   }
 }
