@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @monthly_goal = current_user.monthly_goals.build(monthly_goal_params)
+    @monthly_goal = current_character.monthly_goals.build(monthly_goal_params)
     @monthly_goal.season = view_context.season_start(Time.current.to_date)
 
     @weekly_goal = current_user.weekly_goals.build(weekly_goal_params)

@@ -1,10 +1,10 @@
 module MonthlyGoalsHelper
-  def no_monthly_goal? (user=current_user, date=Time.current.to_date)
-    MonthlyGoal.of(user, season_start(date)).count.zero?
+  def no_monthly_goal? (cha=current_character, date=Time.current.to_date)
+    MonthlyGoal.of(cha, season_start(date)).count.zero?
   end
 
-  def monthly_goal (user=current_user, date=Time.current.to_date)
-    MonthlyGoal.of(user, season_start(date)).last
+  def monthly_goal (cha=current_character, date=Time.current.to_date)
+    MonthlyGoal.of(cha, season_start(date)).last
   end
 
   def season_start (date=Time.current.to_date)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416060600) do
+ActiveRecord::Schema.define(version: 20150416062128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,15 +109,15 @@ ActiveRecord::Schema.define(version: 20150416060600) do
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "monthly_goals", force: :cascade do |t|
-    t.text     "description", default: "", null: false
-    t.date     "season",                   null: false
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "description",  default: "", null: false
+    t.date     "season",                    null: false
+    t.integer  "character_id",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
+  add_index "monthly_goals", ["character_id"], name: "index_monthly_goals_on_character_id", using: :btree
   add_index "monthly_goals", ["season"], name: "index_monthly_goals_on_season", using: :btree
-  add_index "monthly_goals", ["user_id"], name: "index_monthly_goals_on_user_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
