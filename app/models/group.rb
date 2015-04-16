@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  has_many :characters, dependent: :destroy
+
   validates :name, presence: true
   validates :description, presence: true
   validates :password, presence: true, length: { maximum: 20 }
