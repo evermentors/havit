@@ -1,8 +1,8 @@
 = content_for :card_author, flush:true
   .status-author
-    a href=user_path(status.user)
-      = image_tag(status.user.gravatar_url)
-      span.status-user-name = status.user.name
+    a href=user_path(status.character)
+      = image_tag(status.character.gravatar_url)
+      span.status-user-name = status.character.name
     span.time = timeago_tag status.created_at
   .status-stats
     span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
@@ -10,23 +10,23 @@
 = content_for :card_goals, flush:true
   .goals-hidden
     .monthly-goal.small
-      - if no_monthly_goal?(status.user, status.verified_at)
+      - if no_monthly_goal?(status.character, status.verified_at)
         = "#{seasonstring status.verified_at}에 목표가 없었습니다."
       - else
         = "#{seasonstring status.verified_at} 목표: "
-        span.goal-text = monthly_goal(status.user, status.verified_at).description
+        span.goal-text = monthly_goal(status.character, status.verified_at).description
     .weekly-goal.small
-      - if no_weekly_goal?(status.user, status.verified_at)
+      - if no_weekly_goal?(status.character, status.verified_at)
         = "#{advanced_weekstring status.verified_at, false}에 목표가 없었습니다."
       - else
         = "#{advanced_weekstring status.verified_at, false} 목표: "
-        span.goal-text = weekly_goal(status.user, status.verified_at).description
+        span.goal-text = weekly_goal(status.character, status.verified_at).description
   .daily-goal
-    - if no_daily_goal?(status.user, status.verified_at)
+    - if no_daily_goal?(status.character, status.verified_at)
       = "#{datestring status.verified_at}에는 목표가 없었습니다."
     - else
       = "#{datestring status.verified_at} #{weekdaystring status.verified_at}의 목표: "
-      span.goal-text = daily_goal(status.user, status.verified_at).description
+      span.goal-text = daily_goal(status.character, status.verified_at).description
 
 = content_for :card_message, flush:true
   span.description.nl2br == status.description
@@ -44,7 +44,7 @@
       == render 'statuses/unlike', status: status
     - else
       == render 'statuses/like', status: status
-  - if status.user_id == current_user.id
+  - if status.character_id == current_character.id
     ' ·
     =<> link_to '게시물 수정', edit_status_path(status), class: "status-edit-btn btn btn-link"
 
