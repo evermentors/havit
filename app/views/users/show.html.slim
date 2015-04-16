@@ -1,4 +1,8 @@
-.container
-  = image_tag @user.gravatar_url, class: 'gravatar'
-  h2 = @user.name
-  h2 = @user.email
+= paginate @statuses, window: 2
+.container.user-page
+  .user-information
+    = image_tag @user.gravatar_url
+    h2.user-name = "#{@user.name}"
+  .user-statuses
+    = render @statuses
+= paginate @statuses, window: 2

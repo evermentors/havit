@@ -10,11 +10,11 @@ nav.navbar.navbar-inverse.navbar-fixed-top
       = link_to image_tag("havit-logo-big.png"), main_app.root_path, class: 'navigation-logo'
     .collapse.navbar-collapse
       - if user_signed_in?
-        ul.nav.navbar-nav
-          li = link_to 'Users', main_app.users_path
-          li.topbar-goal = render 'monthly_goals/top_bar_form'
         ul.nav.navbar-nav.navbar-right
-          / button.temp temp
+          li.my-page-link-li
+            a.my-page-link href=user_path(current_user)
+              = image_tag(current_user.gravatar_url)
+              span = current_user.name
           li.notifications-li.closed tabindex="-1"
             .notification-btn.closed last-checked=current_user.last_checked_notification
               span.glyphicon.glyphicon-bell
