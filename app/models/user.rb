@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
 
+  has_many :characters, dependent: :destroy
+
   acts_as_commontator
 
   has_many :monthly_goals, dependent: :destroy

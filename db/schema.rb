@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410025048) do
+ActiveRecord::Schema.define(version: 20150416041040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.integer  "group_id",                   null: false
+    t.boolean  "notify",     default: true,  null: false
+    t.integer  "order",                      null: false
+    t.boolean  "is_admin",   default: false, null: false
+    t.integer  "user_id",                    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "characters", ["group_id"], name: "index_characters_on_group_id", using: :btree
+  add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "commontator_comments", force: :cascade do |t|
     t.string   "creator_type"
@@ -68,6 +81,20 @@ ActiveRecord::Schema.define(version: 20150410025048) do
 
   add_index "daily_goals", ["goal_date"], name: "index_daily_goals_on_goal_date", using: :btree
   add_index "daily_goals", ["user_id"], name: "index_daily_goals_on_user_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.text     "description",  default: "", null: false
+    t.string   "password",     default: "", null: false
+    t.integer  "member_limit", default: 0,  null: false
+    t.integer  "creator",                   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "groups", ["creator"], name: "index_groups_on_creator", using: :btree
+  add_index "groups", ["description"], name: "index_groups_on_description", using: :btree
+  add_index "groups", ["name"], name: "index_groups_on_name", using: :btree
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -162,6 +189,8 @@ ActiveRecord::Schema.define(version: 20150410025048) do
   add_index "weekly_retrospects", ["user_id"], name: "index_weekly_retrospects_on_user_id", using: :btree
   add_index "weekly_retrospects", ["weekly_goal_id"], name: "index_weekly_retrospects_on_weekly_goal_id", using: :btree
 
+  add_foreign_key "characters", "groups"
+  add_foreign_key "characters", "users"
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "notifications", "users"
