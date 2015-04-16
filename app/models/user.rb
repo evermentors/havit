@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_create :update_last_checked_notification
+  before_create :update_user_attributes
+  after_create :update_character
 
   include Gravtastic
   gravtastic
@@ -29,7 +30,15 @@ class User < ActiveRecord::Base
   end
 
   private
-  def update_last_checked_notification
+  def update_user_attributes
+    universe = Group.find_by_name('Universe')
+    character = Character.create order: 1, group_id: universe.id, user_id: User.first.id
+
+    self.last_used_character = character.id
     self.last_checked_notification = Notification.last.id
+  end
+
+  def update_character
+    Character.last.update user_id: self.id
   end
 end
