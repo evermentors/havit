@@ -1,8 +1,8 @@
 class MonthlyGoal < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :character
 
   validates :description, presence: true
   validates :season, presence: true
 
-  scope :of, -> (user, season) { where(user_id: user.id, season: season) }
+  scope :of, -> (character, season) { where(character: character, season: season) }
 end

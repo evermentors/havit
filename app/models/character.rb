@@ -2,8 +2,6 @@ class Character < ActiveRecord::Base
   belongs_to :group
   belongs_to :user
 
-  acts_as_commontator
-
   has_many :monthly_goals, dependent: :destroy
   has_many :weekly_goals, dependent: :destroy
   has_many :weekly_retrospects, dependent: :destroy
