@@ -1,5 +1,6 @@
 class Character < ActiveRecord::Base
   belongs_to :group
+  belongs_to :user
 
   acts_as_commontator
 
