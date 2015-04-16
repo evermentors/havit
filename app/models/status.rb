@@ -2,7 +2,7 @@
 
 class Status < ActiveRecord::Base
   acts_as_commontable
-  belongs_to :user
+  belongs_to :character
 
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
@@ -15,12 +15,12 @@ class Status < ActiveRecord::Base
   validate :verified_at_should_be_past
 
   class << self
-    def during(period, user)
-      where(verified_at: period, user: user).order(:verified_at)
+    def during(period, character)
+      where(verified_at: period, character: character).order(:verified_at)
     end
 
-    def at(date, user)
-      where(verified_at: date, user: user).order(:created_at)
+    def at(date, character)
+      where(verified_at: date, character: character).order(:created_at)
     end
   end
 

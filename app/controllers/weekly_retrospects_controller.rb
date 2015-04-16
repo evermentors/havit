@@ -11,7 +11,7 @@ class WeeklyRetrospectsController < ApplicationController
 
   def new
     @weekly_retrospect = WeeklyRetrospect.new
-    @statuses = Status.during(view_context.last_weekly_goal.weeknum.all_week, current_user)
+    @statuses = Status.during(view_context.last_weekly_goal.weeknum.all_week, current_character)
   end
 
   def monthly
@@ -109,6 +109,6 @@ class WeeklyRetrospectsController < ApplicationController
 
     def set_weekly_retrospect_info
       @weekly_goal = @weekly_retrospect.weekly_goal
-      @statuses = Status.during(@weekly_goal.weeknum.all_week, current_user)
+      @statuses = Status.during(@weekly_goal.weeknum.all_week, current_character)
     end
 end

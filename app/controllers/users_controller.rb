@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @statuses = Status.where(user: @user).order(verified_at: :desc).page(params[:page]).per(7)
+    @statuses = Status.where(character: @user.characters).order(verified_at: :desc).page(params[:page]).per(7)
   end
 
   def new
