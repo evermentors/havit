@@ -28,7 +28,7 @@ class StatusesController < ApplicationController
 
       if @daily_goal.save
         notification = Notification.new(
-          character: current_character,
+          user: current_user,
           recipient: 0,
           description: "#{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
           link: status_path(@status))

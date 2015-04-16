@@ -34,7 +34,7 @@ module Commontator
           format.html { redirect_to @thread }
           format.js { render :cancel }
         elsif @comment.save
-          recipient = Status.find(@thread.commontable_id).user_id
+          recipient = Status.find(@thread.commontable_id).character.user_id
           datestr = Status.find(@thread.commontable_id).verified_at.strftime("%-m월 %-d일")
           notification = Notification.new(
             user: current_user,

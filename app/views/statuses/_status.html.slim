@@ -1,8 +1,8 @@
 = content_for :card_author, flush:true
   .status-author
-    a href=user_path(status.character)
-      = image_tag(status.character.gravatar_url)
-      span.status-user-name = status.character.name
+    a href=user_path(status.character.user)
+      = image_tag(status.character.user.gravatar_url)
+      span.status-user-name = status.character.user.name
     span.time = timeago_tag status.created_at
   .status-stats
     span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'

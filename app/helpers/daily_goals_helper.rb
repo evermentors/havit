@@ -22,6 +22,6 @@ module DailyGoalsHelper
   end
 
   def last_daily_goal
-    DailyGoal.where(character: current_character).order(created_at: :desc).first
+    DailyGoal.where("character_id = ? and goal_date <= ?", current_character.id, Date.today).order(created_at: :desc).first
   end
 end
