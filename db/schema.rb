@@ -21,11 +21,13 @@ ActiveRecord::Schema.define(version: 20150416041040) do
     t.boolean  "notify",     default: true,  null: false
     t.integer  "order",                      null: false
     t.boolean  "is_admin",   default: false, null: false
+    t.integer  "user_id",                    null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
   add_index "characters", ["group_id"], name: "index_characters_on_group_id", using: :btree
+  add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "commontator_comments", force: :cascade do |t|
     t.string   "creator_type"
@@ -188,6 +190,7 @@ ActiveRecord::Schema.define(version: 20150416041040) do
   add_index "weekly_retrospects", ["weekly_goal_id"], name: "index_weekly_retrospects_on_weekly_goal_id", using: :btree
 
   add_foreign_key "characters", "groups"
+  add_foreign_key "characters", "users"
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "notifications", "users"
