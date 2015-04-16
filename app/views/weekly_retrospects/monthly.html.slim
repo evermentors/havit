@@ -21,10 +21,10 @@
           .panel-heading
             ' #{relative_weeknum week}주차(#{weekstring week}):
             span.weekly-goal-text
-              - if weekly_goal(current_user, week).blank?
+              - if weekly_goal(current_character, week).blank?
                 ' 목표가 없었습니다.
               - else
-                =< weekly_goal(current_user, week).description
+                =< weekly_goal(current_character, week).description
                 =< link_to '(자세히 보기)', weekly_retrospect_path(weekly_retro_at(week)) if weekly_retro_at(week).present?
           .panel-body
             ul.daily-stars

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416062128) do
+ActiveRecord::Schema.define(version: 20150416064927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,15 +72,15 @@ ActiveRecord::Schema.define(version: 20150416062128) do
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true, using: :btree
 
   create_table "daily_goals", force: :cascade do |t|
-    t.text     "description", default: "", null: false
-    t.date     "goal_date",                null: false
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "description",  default: "", null: false
+    t.date     "goal_date",                 null: false
+    t.integer  "character_id",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
+  add_index "daily_goals", ["character_id"], name: "index_daily_goals_on_character_id", using: :btree
   add_index "daily_goals", ["goal_date"], name: "index_daily_goals_on_goal_date", using: :btree
-  add_index "daily_goals", ["user_id"], name: "index_daily_goals_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -168,14 +168,14 @@ ActiveRecord::Schema.define(version: 20150416062128) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "weekly_goals", force: :cascade do |t|
-    t.text     "description", default: "", null: false
-    t.date     "weeknum",                  null: false
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "description",  default: "", null: false
+    t.date     "weeknum",                   null: false
+    t.integer  "character_id",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  add_index "weekly_goals", ["user_id"], name: "index_weekly_goals_on_user_id", using: :btree
+  add_index "weekly_goals", ["character_id"], name: "index_weekly_goals_on_character_id", using: :btree
   add_index "weekly_goals", ["weeknum"], name: "index_weekly_goals_on_weeknum", using: :btree
 
   create_table "weekly_retrospects", force: :cascade do |t|

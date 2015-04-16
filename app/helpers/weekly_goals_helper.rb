@@ -1,14 +1,14 @@
 module WeeklyGoalsHelper
-  def no_weekly_goal? (user=current_user, date=Time.current.to_date)
-    WeeklyGoal.of(user, date.beginning_of_week).count.zero?
+  def no_weekly_goal? (cha=current_character, date=Time.current.to_date)
+    WeeklyGoal.of(cha, date.beginning_of_week).count.zero?
   end
 
-  def weekly_goal (user=current_user, date=Time.current.to_date)
-    WeeklyGoal.of(user, date.beginning_of_week).last
+  def weekly_goal (cha=current_character, date=Time.current.to_date)
+    WeeklyGoal.of(cha, date.beginning_of_week).last
   end
 
   def last_weekly_goal
-    WeeklyGoal.where(user_id: current_user.id).order(created_at: :desc).first
+    WeeklyGoal.where(character: current_character).order(created_at: :desc).first
   end
 
   def relative_weeknum (date=Time.current.to_date)
