@@ -1,5 +1,5 @@
 class Character < ActiveRecord::Base
-  belongs_to :group, dependent: :destroy
+  belongs_to :group
 
   acts_as_commontator
 
@@ -12,9 +12,7 @@ class Character < ActiveRecord::Base
   has_many :liked_statuses, through: :likes, source: :status
 
   validates :group, presence: true
-  validates :notify, presence: true
   validates :order, presence: true
-  validates :is_admin, presence: true
 
   def like!(status)
     liked_statuses << status unless likes?(status)
