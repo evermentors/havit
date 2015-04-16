@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
 
   has_many :likes, dependent: :destroy
   has_many :liked_statuses, through: :likes, source: :status
-  private
-  def update_last_checked_notification
-    self.last_checked_notification = Notification.last.id
-  end
 
   def like!(status)
     liked_statuses << status unless likes?(status)
@@ -30,5 +26,10 @@ class User < ActiveRecord::Base
 
   def likes?(status)
     liked_statuses.include?(status)
+  end
+
+  private
+  def update_last_checked_notification
+    self.last_checked_notification = Notification.last.id
   end
 end
