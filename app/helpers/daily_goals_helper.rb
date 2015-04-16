@@ -1,16 +1,16 @@
 #encoding=utf-8
 
 module DailyGoalsHelper
-  def no_daily_goal? (user=current_user, date=Time.current.to_date)
-    DailyGoal.of(user, date).count.zero?
+  def no_daily_goal? (cha=current_character, date=Time.current.to_date)
+    DailyGoal.of(cha, date).count.zero?
   end
 
-  def daily_goal (user=current_user, date=Time.current.to_date)
-    DailyGoal.of(user, date).last
+  def daily_goal (cha=current_character, date=Time.current.to_date)
+    DailyGoal.of(cha, date).last
   end
 
-  def daily_goal_description (date=Time.current.to_date, option='short', user=current_user)
-    dg = DailyGoal.of(user, date).last
+  def daily_goal_description (date=Time.current.to_date, option='short', cha=current_character)
+    dg = DailyGoal.of(cha, date).last
     if dg.present?
       description = dg.description
       description = "[#{dg.description}] 인증하기" if option == 'long'
@@ -22,6 +22,6 @@ module DailyGoalsHelper
   end
 
   def last_daily_goal
-    DailyGoal.where(user_id: current_user.id).order(created_at: :desc).first
+    DailyGoal.where(character: current_character).order(created_at: :desc).first
   end
 end

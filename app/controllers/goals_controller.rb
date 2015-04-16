@@ -7,10 +7,10 @@ class GoalsController < ApplicationController
     @monthly_goal = current_character.monthly_goals.build(monthly_goal_params)
     @monthly_goal.season = view_context.season_start(Time.current.to_date)
 
-    @weekly_goal = current_user.weekly_goals.build(weekly_goal_params)
+    @weekly_goal = current_character.weekly_goals.build(weekly_goal_params)
     @weekly_goal.weeknum = Time.current.to_date.beginning_of_week
 
-    @daily_goal = current_user.daily_goals.build(daily_goal_params)
+    @daily_goal = current_character.daily_goals.build(daily_goal_params)
     @daily_goal.goal_date = Time.current.to_date
 
     if @monthly_goal.save and @weekly_goal.save and @daily_goal.save

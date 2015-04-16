@@ -1,8 +1,8 @@
 class DailyGoal < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :character
 
   validates :description, presence: true
   validates :goal_date, presence: true
 
-  scope :of, -> (user, date) { where(user_id: user.id, goal_date: date) }
+  scope :of, -> (character, date) { where(character: character, goal_date: date) }
 end

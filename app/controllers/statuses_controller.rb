@@ -16,19 +16,19 @@ class StatusesController < ApplicationController
     @status = current_user.statuses.build(status_params)
 
     if @status.save
-      if view_context.no_daily_goal?(current_user, @status.verified_at.tomorrow)
+      if view_context.no_daily_goal?(current_character, @status.verified_at.tomorrow)
         @daily_goal = DailyGoal.new(
-          user: current_user,
+          character: current_character,
           description: params[:next_daily_goal],
           goal_date: @status.verified_at.tomorrow)
       else
-        @daily_goal = view_context.daily_goal(current_user, @status.verified_at.tomorrow)
+        @daily_goal = view_context.daily_goal(current_character, @status.verified_at.tomorrow)
         @daily_goal.description = params[:next_daily_goal]
       end
 
       if @daily_goal.save
         notification = Notification.new(
-          user: current_user,
+          character: current_character,
           recipient: 0,
           description: "#{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
           link: status_path(@status))
