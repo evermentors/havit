@@ -39,6 +39,6 @@ class User < ActiveRecord::Base
   end
 
   def update_character
-    Character.last.update user_id: self.id
+    Character.find(self.last_used_character).update user_id: self.id
   end
 end
