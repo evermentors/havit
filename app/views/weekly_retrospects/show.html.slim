@@ -10,7 +10,7 @@
         span.glyphicon.glyphicon-pencil
     h3
       ' #{seasonstring @weekly_goal.weeknum}의 목표 :
-      span.monthly-goal-text = monthly_goal(current_user, @weekly_goal.weeknum).description
+      span.monthly-goal-text = monthly_goal(current_character, @weekly_goal.weeknum).description
     h4
       ' #{weekstring @weekly_goal.weeknum}의 목표 :
       span.weekly-goal-text = @weekly_goal.description

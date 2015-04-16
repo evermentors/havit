@@ -8,7 +8,7 @@ class DailyGoalsController < ApplicationController
   end
 
   def create
-    @daily_goal = current_user.daily_goals.build(daily_goal_params)
+    @daily_goal = current_character.daily_goals.build(daily_goal_params)
     @daily_goal.goal_date = Time.current.to_date
     if @daily_goal.save
       redirect_to root_url, notice: "#{view_context.datestring}의 목표를 등록했습니다: #{@daily_goal.description}"

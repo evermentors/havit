@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416041040) do
+ActiveRecord::Schema.define(version: 20150416073029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,15 +72,15 @@ ActiveRecord::Schema.define(version: 20150416041040) do
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true, using: :btree
 
   create_table "daily_goals", force: :cascade do |t|
-    t.text     "description", default: "", null: false
-    t.date     "goal_date",                null: false
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "description",  default: "", null: false
+    t.date     "goal_date",                 null: false
+    t.integer  "character_id",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
+  add_index "daily_goals", ["character_id"], name: "index_daily_goals_on_character_id", using: :btree
   add_index "daily_goals", ["goal_date"], name: "index_daily_goals_on_goal_date", using: :btree
-  add_index "daily_goals", ["user_id"], name: "index_daily_goals_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -109,15 +109,15 @@ ActiveRecord::Schema.define(version: 20150416041040) do
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "monthly_goals", force: :cascade do |t|
-    t.text     "description", default: "", null: false
-    t.date     "season",                   null: false
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "description",  default: "", null: false
+    t.date     "season",                    null: false
+    t.integer  "character_id",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
+  add_index "monthly_goals", ["character_id"], name: "index_monthly_goals_on_character_id", using: :btree
   add_index "monthly_goals", ["season"], name: "index_monthly_goals_on_season", using: :btree
-  add_index "monthly_goals", ["user_id"], name: "index_monthly_goals_on_user_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 20150416041040) do
 
   create_table "statuses", force: :cascade do |t|
     t.text     "description",        default: "", null: false
-    t.integer  "user_id",                         null: false
+    t.integer  "character_id",                    null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "photo_file_name"
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 20150416041040) do
     t.date     "verified_at",                     null: false
   end
 
-  add_index "statuses", ["user_id"], name: "index_statuses_on_user_id", using: :btree
+  add_index "statuses", ["character_id"], name: "index_statuses_on_character_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                      default: "", null: false
@@ -161,24 +161,25 @@ ActiveRecord::Schema.define(version: 20150416041040) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.integer  "last_checked_notification", default: 0,  null: false
+    t.integer  "last_used_character",                    null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "weekly_goals", force: :cascade do |t|
-    t.text     "description", default: "", null: false
-    t.date     "weeknum",                  null: false
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "description",  default: "", null: false
+    t.date     "weeknum",                   null: false
+    t.integer  "character_id",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  add_index "weekly_goals", ["user_id"], name: "index_weekly_goals_on_user_id", using: :btree
+  add_index "weekly_goals", ["character_id"], name: "index_weekly_goals_on_character_id", using: :btree
   add_index "weekly_goals", ["weeknum"], name: "index_weekly_goals_on_weeknum", using: :btree
 
   create_table "weekly_retrospects", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "character_id"
     t.integer  "weekly_goal_id"
     t.text     "questions",      null: false
     t.text     "answers",        null: false
@@ -186,7 +187,7 @@ ActiveRecord::Schema.define(version: 20150416041040) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "weekly_retrospects", ["user_id"], name: "index_weekly_retrospects_on_user_id", using: :btree
+  add_index "weekly_retrospects", ["character_id"], name: "index_weekly_retrospects_on_character_id", using: :btree
   add_index "weekly_retrospects", ["weekly_goal_id"], name: "index_weekly_retrospects_on_weekly_goal_id", using: :btree
 
   add_foreign_key "characters", "groups"
@@ -194,6 +195,6 @@ ActiveRecord::Schema.define(version: 20150416041040) do
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "notifications", "users"
-  add_foreign_key "weekly_retrospects", "users"
+  add_foreign_key "weekly_retrospects", "users", column: "character_id"
   add_foreign_key "weekly_retrospects", "weekly_goals"
 end

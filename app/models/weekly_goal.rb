@@ -1,10 +1,10 @@
 class WeeklyGoal < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :character
 
   has_one :weekly_retrospect, dependent: :destroy
 
   validates :description, presence: true
   validates :weeknum, presence: true
 
-  scope :of, -> (user, date) { where(user_id: user.id, weeknum: date) }
+  scope :of, -> (character, date) { where(character: character, weeknum: date) }
 end

@@ -13,16 +13,16 @@ class StatusesController < ApplicationController
   end
 
   def create
-    @status = current_user.statuses.build(status_params)
+    @status = current_character.statuses.build(status_params)
 
     if @status.save
-      if view_context.no_daily_goal?(current_user, @status.verified_at.tomorrow)
+      if view_context.no_daily_goal?(current_character, @status.verified_at.tomorrow)
         @daily_goal = DailyGoal.new(
-          user: current_user,
+          character: current_character,
           description: params[:next_daily_goal],
           goal_date: @status.verified_at.tomorrow)
       else
-        @daily_goal = view_context.daily_goal(current_user, @status.verified_at.tomorrow)
+        @daily_goal = view_context.daily_goal(current_character, @status.verified_at.tomorrow)
         @daily_goal.description = params[:next_daily_goal]
       end
 

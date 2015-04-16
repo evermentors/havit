@@ -13,17 +13,8 @@ class User < ActiveRecord::Base
 
   acts_as_commontator
 
-  has_many :monthly_goals, dependent: :destroy
-  has_many :weekly_goals, dependent: :destroy
-  has_many :weekly_retrospects, dependent: :destroy
-  has_many :daily_goals, dependent: :destroy
-  has_many :statuses, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_statuses, through: :likes, source: :status
-  has_many :notifications, dependent: :destroy
-
-  validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
 
   def like!(status)
     liked_statuses << status unless likes?(status)

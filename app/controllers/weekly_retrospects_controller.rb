@@ -11,7 +11,7 @@ class WeeklyRetrospectsController < ApplicationController
 
   def new
     @weekly_retrospect = WeeklyRetrospect.new
-    @statuses = Status.during(view_context.last_weekly_goal.weeknum.all_week, current_user)
+    @statuses = Status.during(view_context.last_weekly_goal.weeknum.all_week, current_character)
   end
 
   def monthly
@@ -34,20 +34,20 @@ class WeeklyRetrospectsController < ApplicationController
 
   def create
     @weekly_retrospect = WeeklyRetrospect.new(
-      user: current_user,
+      character: current_character,
       weekly_goal: view_context.last_weekly_goal,
       questions: params[:questions],
       answers: params[:answers])
 
     if @weekly_retrospect.save
       @weekly_goal = WeeklyGoal.new(
-        user: current_user,
+        character: current_character,
         description: @weekly_retrospect.answers[:next_weekly_goal],
         weeknum: @weekly_retrospect.weekly_goal.weeknum.next_week)
 
       if @weekly_goal.save
         @daily_goal = DailyGoal.new(
-          user: current_user,
+          character: current_character,
           description: @weekly_retrospect.answers[:next_monday_goal],
           goal_date: @weekly_retrospect.weekly_goal.weeknum.next_week)
         if @daily_goal.save
@@ -85,7 +85,7 @@ class WeeklyRetrospectsController < ApplicationController
     end
 
     def weekly_retrospect_params
-      params.require(:weekly_retrospect).permit(:user_id, :weekly_goal_id)
+      params.require(:weekly_retrospect).permit(:character_id, :weekly_goal_id)
     end
 
     def set_weekly_retrospect_hash
@@ -109,6 +109,6 @@ class WeeklyRetrospectsController < ApplicationController
 
     def set_weekly_retrospect_info
       @weekly_goal = @weekly_retrospect.weekly_goal
-      @statuses = Status.during(@weekly_goal.weeknum.all_week, current_user)
+      @statuses = Status.during(@weekly_goal.weeknum.all_week, current_character)
     end
 end
