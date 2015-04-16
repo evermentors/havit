@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :characters
+
   resources :groups
 
   resources :notifications, only: [:index] do
