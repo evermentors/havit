@@ -19,7 +19,7 @@
     background: rgba(255,255,255,.98);
     background-color: #fff;
     border: 1px solid rgba(100, 100, 100, .4);
-    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
     overflow: visible;
     position: absolute;
     top: 51px;
@@ -73,14 +73,14 @@
   right: -2px;
   top: 4px;
   background-color: #dc0d17;
-  background-image: -webkit-linear-gradient(#fa3c45, #dc0d17);
+  background-image: linear-gradient(#fa3c45, #dc0d17);
   color: #fff;
   min-height: 13px;
   padding: 1px 3px;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
-  -webkit-border-radius: 2px;
-  -webkit-background-clip: padding-box;
+  border-radius: 2px;
+  background-clip: padding-box;
   font-size: 10px;
-  -webkit-font-smoothing: subpixel-antialiased;
+  font-smoothing: subpixel-antialiased;
   line-height: normal;
 }
