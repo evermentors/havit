@@ -29,16 +29,23 @@
                               :user => user } %>
     </span>
     <div id="comment_<%= comment.id.to_s %>_body_div" class="comment_body">
-      <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
-        <%= link_to name, main_app.user_path(creator)%>
-      </span>
-      <span>
-        <%= comment.body %>
-      </span>
-      <div class="comment_timestamp_div">
-        <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
-          <%= timeago_tag comment.created_at %>
+      <div class="comment-form">
+      </div>
+      <div class="comment-main-body">
+        <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
+          <%= link_to name, main_app.user_path(creator)%>
         </span>
+        <span class="body-description">
+          <%= comment.body %>
+        </span>
+        <div class="comment_timestamp_div">
+          <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
+            <%= timeago_tag comment.created_at %>
+          </span>
+          <span class="is-modified <%= 'hidden' unless comment.is_modified? %>">
+            · 수정됨
+          </span>
+        </div>
       </div>
     </div>
   </div>
