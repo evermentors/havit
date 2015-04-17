@@ -1,7 +1,7 @@
 = form_tag "/goals", method: "post", class: "goals-altogether"
   .panel.panel-success
     .panel-heading
-      h3.panel-title #{current_user.name}님, #{current_character.group.name} 그룹에서 실천할 #{seasonstring}의 목표들을 입력해 주세요!
+      h3.panel-title #{current_user.name}님, [#{current_character.group.name}] 그룹에서 실천할 #{seasonstring}의 목표들을 입력해 주세요!
       = submit_tag "등록", class: 'btn btn-primary btn-sm submit-btn'
     .panel-body
       .form-group.row
