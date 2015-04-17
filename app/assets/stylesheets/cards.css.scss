@@ -54,7 +54,14 @@
 }
 .card-actions {
   position: relative;
-  min-height: 34px;
+  margin-left: -6px;
+  margin-right: -6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #6d84b4;
+  .status-edit-btn {
+    margin-left: -3px;
+  }
 }
 .card-comments {
   border-top: 1px solid #BEBEBE;

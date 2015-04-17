@@ -46,7 +46,7 @@
       == render 'statuses/like', status: status
   - if status.character_id == current_character.id
     ' ·
-    =<> link_to '게시물 수정', edit_status_path(status), class: "status-edit-btn btn btn-link"
+    = link_to '게시물 수정', edit_status_path(status), class: "status-edit-btn btn btn-xs btn-link"
 
 = content_for :card_comments, flush:true
   = commontator_thread(status)
