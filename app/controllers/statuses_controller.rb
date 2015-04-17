@@ -5,7 +5,7 @@ class StatusesController < ApplicationController
   before_action :set_status, only: [:edit, :update, :destroy]
 
   def index
-    @statuses = Status.all.order(created_at: :desc).page(params[:page])
+    @statuses = Status.where(group: current_character.group).order(created_at: :desc).page(params[:page])
     @commontator_thread_show = true
   end
 
