@@ -1,6 +1,8 @@
 <% unless @comment.try(:id).blank? %>
   <% @comment.reload %>
-  $("#comment_<%= @comment.id.to_s %>_body_div").html("<%= escape_javascript(
+  $("#comment_<%= @comment.id.to_s %>_body_div > .comment-form").empty();
+  $("#comment_<%= @comment.id.to_s %>_body_div > .comment-main-body").show();
+  $("#comment_<%= @comment.id.to_s %>_body_div > .body-description").text("<%= escape_javascript(
     render :partial => 'body', :locals => { :comment => @comment }) %>");
 <% end %>
 

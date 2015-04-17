@@ -12,13 +12,7 @@
 
 <% unless comment.is_deleted? %>
 <div id="comment_<%= comment.id.to_s %>_div" class="comment">
-  <div id="comment_<%= comment.id.to_s %>_top_div" class="comment_div">
-    <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
-      <%= link_to name, main_app.user_path(creator)%>
-    </span>
-    <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
-      <%= timeago_tag comment.created_at %>
-    </span>
+  <div id="comment_<%= comment.id.to_s %>_actions_div" class="comment_actions_div">
     <span id="comment_<%= comment.id.to_s %>_actions_span" class="comment_actions">
       <%= render :partial => 'commontator/comments/actions',
                  :locals => { :comment => comment,
@@ -35,8 +29,24 @@
                               :user => user } %>
     </span>
     <div id="comment_<%= comment.id.to_s %>_body_div" class="comment_body">
-      <%= render :partial => 'commontator/comments/body',
-                 :locals => { :comment => comment } %>
+      <div class="comment-form">
+      </div>
+      <div class="comment-main-body">
+        <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
+          <%= link_to name, main_app.user_path(creator)%>
+        </span>
+        <span class="body-description">
+          <%= comment.body %>
+        </span>
+        <div class="comment_timestamp_div">
+          <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
+            <%= timeago_tag comment.created_at %>
+          </span>
+          <span class="is-modified <%= 'hidden' unless comment.is_modified? %>">
+            · 수정됨
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-= paginate @statuses
+= paginate @statuses, window: 2
 
 - if no_monthly_goal?
   - if Status.where(character: current_character).blank?
@@ -30,3 +30,5 @@
 
 .container-body
   = render @statuses
+
+= paginate @statuses, window: 2

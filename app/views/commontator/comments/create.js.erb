@@ -17,5 +17,6 @@
 <% end %>
 
 $("#comment_<%= @comment.id.to_s %>_div").hide().fadeIn();
+$("#comment_<%= @comment.id.to_s %>_actions_span > a").tooltip({container: 'body'});
 
 <%= javascript_proc %>

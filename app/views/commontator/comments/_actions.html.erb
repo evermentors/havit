@@ -7,23 +7,28 @@
    can_delete = comment.can_be_deleted_by?(user) %>
 
 <% if can_edit %>
-  <%= link_to '수정',
-              commontator.edit_comment_path(comment),
-              :id => "comment_#{comment.id.to_s}_edit_link",
-              :class => "comment_edit_link",
-              :remote => true %>
+  <a href="<%= commontator.edit_comment_path(comment) %>"
+    class="comment_edit_link"
+    id="comment_<%= comment.id %>_edit_link"
+    data-remote="true"
+    data-toggle="tooltip"
+    data-placement="top"
+    title="댓글 수정">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </a>
 <% end %>
 
-&nbsp;
-
 <% if can_delete %>
-  <% is_deleted = comment.is_deleted? %>
-  <% del_string = is_deleted ? 'undelete' : 'delete' %>
-  <%= link_to '삭제',
-              commontator.polymorphic_path([del_string, comment]),
-              :confirm => (!is_deleted ? t('commontator.comment.actions.confirm_delete') : nil),
-              :method => :put,
-              :id => "comment_#{comment.id.to_s}_#{del_string}_link",
-              :class => "comment_#{del_string}_link",
-              :remote => true %>
+  <a href="<%= commontator.polymorphic_path(['delete', comment]) %>"
+    id="comment_<%= comment.id %>_delete_link"
+    class="comment_delete_link"
+    data-remote="true"
+    data-method="put"
+    rel="nofollow"
+    data-confirm="댓글을 삭제하시겠습니까?"
+    data-toggle="tooltip"
+    data-placement="top"
+    title="댓글 삭제">
+    <span class="glyphicon glyphicon-remove"></span>
+  </a>
 <% end %>
