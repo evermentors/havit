@@ -32,7 +32,11 @@ toggle_monthly_weekly_goals = () ->
     else
       $(this).prevAll('.goals-hidden').slideUp(-> see_detail.toggleClass('up down'))
 
+apply_tooltip = () ->
+  $('[data-toggle="tooltip"]').tooltip({container: 'body'})
+
 $(document).on 'ready page:load', on_verified_at_changed
 $(document).on 'ready page:load', show_new_status_form
 $(document).on 'ready page:load', textarea_autosize
 $(document).on 'ready page:load', toggle_monthly_weekly_goals
+$(document).on 'ready page:load', apply_tooltip
