@@ -6,7 +6,6 @@ class StatusesController < ApplicationController
 
   def index
     @statuses = Status.where(group: current_character.group).order(created_at: :desc).page(params[:page])
-    @commontator_thread_show = true
   end
 
   def edit

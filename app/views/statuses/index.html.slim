@@ -9,7 +9,7 @@
 - else
   .container-header
     .edit-goal.container-sidebar
-      = render 'edit_goal'
+      = render 'statuses/edit_goal'
 
     - if day_passed_since_last_retro <= 5
       - if day_passed_since_last_retro == 5 and last_verified_at == Date.current
@@ -26,7 +26,7 @@
         = render 'retrospects/retro_or_goal'
 
     .new-status-form-div.container-center class=(new_status_form_hidden? ? 'hidden' : '')
-      = render 'new'
+      = render 'statuses/new'
 
 .container-body
   = render @statuses
