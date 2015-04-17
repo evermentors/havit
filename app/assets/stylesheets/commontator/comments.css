@@ -1,12 +1,8 @@
-.thread_reply {
-  margin-top: 10px;
-}
 .comment {
+  position: relative;
   font-size: 12px;
   font-weight: normal;
   font-style: normal;
-
-  border-bottom: 1px solid;
 
   margin-top: 0;
   margin-bottom: 0;
@@ -17,24 +13,35 @@
   padding-right: 10px;
 
   color: #000;
-  border-color: #DDD;
-  background-color: #FFF;
-
   clear: both;
+}
+
+.comment_actions_div {
+  position: absolute;
+  right: 7px;
+}
+
+.comment:hover .comment_actions {
+  visibility: visible;
 }
 
 .comment_actions {
   float: right;
+  visibility: hidden;
+}
+
+.comment_actions a:hover, .comment_actions a:visited, .comment_actions a:active, .comment_actions a:focus {
+  text-decoration: none;
+}
+
+.comment_edit_link {
+  margin-right: 3px;
 }
 
 .comment_body {
   padding-top: 3px;
-}
-
-.comment_body p {
-	margin: 0px;
-	overflow: hidden;
-  min-height: 40px;
+  padding-left: 42px;
+  padding-right: 33px;
 }
 
 .comment_div {
@@ -42,8 +49,8 @@
 }
 
 .comment_form_actions {
-  margin-top: 15px;
-  margin-bottom: 10px;
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
 .comment_form_field textarea {
@@ -54,13 +61,13 @@
 .comment_avatar {
   float: left;
 
-  margin-top: 5px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin-top: 3px;
+  margin-bottom: 8px;
+  margin-right: 8px;
 }
 
 .comment_timestamp {
-  color: #666;
+  color: #9197a3;
 }
 
 .comment_votes {
