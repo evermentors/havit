@@ -67,6 +67,9 @@
     position: absolute;
     left: 45px;
   }
+  .status-user-name:hover, .status-user-name:focus, .status-user-name:active {
+    text-decoration: underline;
+  }
   .time {
     position: absolute;
     top: 20px;
