@@ -6,5 +6,5 @@ class WeeklyGoal < ActiveRecord::Base
   validates :description, presence: true
   validates :weeknum, presence: true
 
-  scope :of, -> (character, date) { where(character: character, weeknum: date) }
+  scope :of, -> (character, date) { where(character: character, weeknum: date).order(:weeknum) }
 end

@@ -5,13 +5,13 @@ class GoalsController < ApplicationController
 
   def create
     @monthly_goal = current_character.monthly_goals.build(monthly_goal_params)
-    @monthly_goal.season = view_context.season_start(Time.current.to_date)
+    @monthly_goal.season = view_context.season_start(Date.today)
 
     @weekly_goal = current_character.weekly_goals.build(weekly_goal_params)
-    @weekly_goal.weeknum = Time.current.to_date.beginning_of_week
+    @weekly_goal.weeknum = Date.today.beginning_of_week
 
     @daily_goal = current_character.daily_goals.build(daily_goal_params)
-    @daily_goal.goal_date = Time.current.to_date
+    @daily_goal.goal_date = Date.today
 
     if @monthly_goal.save and @weekly_goal.save and @daily_goal.save
       redirect_to root_url, notice: '목표가 정상적으로 등록되었습니다.'
