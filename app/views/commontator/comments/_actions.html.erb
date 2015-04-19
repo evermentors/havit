@@ -19,7 +19,7 @@
 <% end %>
 
 <% if can_delete %>
-  <a href="<%= commontator.polymorphic_path(['delete', comment]) %>"
+  <a href="<%= commontator.delete_comment_path(comment) %>"
     id="comment_<%= comment.id %>_delete_link"
     class="comment_delete_link"
     data-remote="true"
