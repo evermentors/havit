@@ -5,11 +5,11 @@ module ApplicationHelper
     @current_character ||= Character.find(current_user.last_used_character)
   end
 
-  def datestring (date=Time.current.to_date)
+  def datestring (date=Date.today)
     date.strftime("%-m월 %-d일")
   end
 
-  def weekdaystring (date=Time.current.to_date, option='long')
+  def weekdaystring (date=Date.today, option='long')
     # TODO: date.strftime("%a")와 i18n 활용
     case date.wday
       when 0
@@ -35,7 +35,7 @@ module ApplicationHelper
     date.strftime("%-Y년 %-m월 시즌")
   end
 
-  def weekstring (date=Time.current.to_date)
+  def weekstring (date=Date.today)
     datestring(date.beginning_of_week) + '~' + datestring(date.beginning_of_week + 6.days)
   end
 

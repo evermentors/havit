@@ -13,7 +13,6 @@
   padding-right: 10px;
 
   color: #000;
-  clear: both;
 }
 
 .comment_actions_div {
@@ -42,10 +41,6 @@
   padding-top: 3px;
   padding-left: 42px;
   padding-right: 33px;
-}
-
-.comment_div {
-	clear: both;
 }
 
 .comment_form_actions {

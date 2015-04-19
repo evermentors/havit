@@ -50,9 +50,10 @@ module Commontator
 
     def delete_by(user)
       return false if is_deleted?
-      self.deleted_at = Time.now
-      self.editor = user
-      self.save
+      self.destroy
+      # self.deleted_at = Time.now
+      # self.editor = user
+      # self.save
     end
 
     def undelete_by(user)

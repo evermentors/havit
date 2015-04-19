@@ -8,4 +8,6 @@ class Notification < ActiveRecord::Base
   scope :unread, -> (user) { where("id > ? and user_id != ? and (recipient = ? or recipient = 0)", user.last_checked_notification, user.id, user.id).order(created_at: :desc).limit(5) }
 
   scope :read, -> (user) { where("id <= ? and user_id != ? and (recipient = ? or recipient = 0)", user.last_checked_notification, user.id, user.id).order(created_at: :desc).limit(5) }
+
+  scope :related_to, -> (status_id) { where(link: "/statuses/#{status_id}") }
 end
