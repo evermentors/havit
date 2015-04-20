@@ -1,6 +1,6 @@
 .retrospect-container
   .weekly-statuses
-    h3 #{weekstring last_weekly_goal.weeknum}의 실천 내역
+    h3.title #{weekstring last_weekly_goal.weeknum}의 실천 내역
     .card-lists
       = render @statuses
   .retrospect
@@ -18,15 +18,15 @@
           blockquote.description
             p = @this_week_description
           - @hashes_this_week.each do |hash|
-            = render partial: 'layouts/retrospects/question', locals: { hash: hash, answer: @weekly_retrospect.answers}
+            = render partial: 'layouts/retrospects/question', locals: { hash: hash, answer: @weekly_retrospect.answers, required: true}
         .next-week
           blockquote.description
             p = @next_week_description
           - @hashes_next_week.each do |hash|
-            = render partial: 'layouts/retrospects/question', locals: { hash: hash, answer: @weekly_retrospect.answers}
+            = render partial: 'layouts/retrospects/question', locals: { hash: hash, answer: @weekly_retrospect.answers, required: true}
         .feedbacks
           blockquote.description
             p = @our_question_description
-          = render partial: 'layouts/retrospects/question', locals: { hash: @our_question, answer: @weekly_retrospect.answers}
+          = render partial: 'layouts/retrospects/question', locals: { hash: @our_question, answer: @weekly_retrospect.answers, required: false}
       .form-actions
         = submit_tag "회고 저장하기", class: 'btn btn-default submit-btn'
