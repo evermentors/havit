@@ -3,6 +3,7 @@
 class StatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_status, only: [:edit, :update, :destroy]
+  before_action :set_group
 
   def index
     @statuses = Status.where(group: current_character.group).order(created_at: :desc).page(params[:page])
@@ -13,6 +14,7 @@ class StatusesController < ApplicationController
 
   def create
     @status = current_character.statuses.build(status_params)
+    @status.group = @group
 
     if @status.save
       if view_context.no_daily_goal?(current_character, @status.verified_at.tomorrow)
@@ -32,18 +34,18 @@ class StatusesController < ApplicationController
           description: "#{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
           link: status_path(@status))
         notification.save
-        redirect_to root_url
+        redirect_to url
       else
-        redirect_to root_url, notice: 'error: daily goal on new status'
+        redirect_to url, notice: 'error: daily goal on new status'
       end
     else
-      redirect_to root_url, notice: 'error: new status'
+      redirect_to url, notice: 'error: new status'
     end
   end
 
   def update
     if @status.update(status_params)
-      redirect_to root_url
+      redirect_to url
     else
       render :edit
     end
@@ -53,7 +55,7 @@ class StatusesController < ApplicationController
     Notification.related_to(@status.id).destroy_all
     @status.destroy
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Status was successfully destroyed.' }
+      format.html { redirect_to url, notice: 'Status was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -61,6 +63,10 @@ class StatusesController < ApplicationController
   private
     def set_status
       @status = Status.find(params[:id])
+    end
+
+    def set_group
+      @group ||= current_character.group
     end
 
     def status_params

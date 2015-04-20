@@ -10,7 +10,7 @@ class MonthlyGoalsController < ApplicationController
   def update
     notice_text = "#{view_context.seasonstring}의 목표를 변경했습니다: #{@monthly_goal.description} -> #{monthly_goal_params[:description]}"
     if @monthly_goal.update(monthly_goal_params)
-      redirect_to root_url, notice: notice_text
+      redirect_to url, notice: notice_text
     else
       render :edit
     end
@@ -19,7 +19,7 @@ class MonthlyGoalsController < ApplicationController
   def destroy
     @monthly_goal.destroy
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Monthly goal was successfully destroyed.' }
+      format.html { redirect_to url, notice: 'Monthly goal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

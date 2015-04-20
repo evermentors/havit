@@ -14,5 +14,11 @@ class ApplicationController < ActionController::Base
 
   def current_character
     @current_character ||= Character.find(current_user.last_used_character)
+  def url (character=current_character)
+    if character.group == universe
+      root_url
+    else
+      group_url(character.group)
+    end
   end
 end
