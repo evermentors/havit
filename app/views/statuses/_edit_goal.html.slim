@@ -1,10 +1,10 @@
 .list-group.edit-goal-card
-  span.list-group-item.monthly
+  span.list-group-item.monthly class=old_goal?('season')
     h4.list-group-item-heading = seasonstring last_monthly_goal.season
     a.modify-goal-link href=edit_monthly_goal_path(last_monthly_goal) data-toggle='tooltip' data-plcaement='top' title="시즌 목표 수정"
       span.glyphicon.glyphicon-pencil
     span.list-group-item-text.nl2br = last_monthly_goal.description
-  span.list-group-item.weekly
+  span.list-group-item.weekly class=old_goal?('week')
     h4.list-group-item-heading = weekstring last_weekly_goal.weeknum
     - if no_weekly_goal? current_character, last_weekly_goal.weeknum
       = link_to '이번 주 목표를 설정해 보세요!', '#'
@@ -13,7 +13,7 @@
         span.glyphicon.glyphicon-pencil
       span.list-group-item-text.nl2br = last_weekly_goal.description
   - unless no_daily_goal? current_character, last_daily_goal.goal_date
-    span.list-group-item.daily
+    span.list-group-item.daily class=old_goal?('day')
       h4.list-group-item-heading #{datestring last_daily_goal.goal_date} #{weekdaystring last_daily_goal.goal_date}
       a.modify-goal-link href=edit_daily_goal_path(last_daily_goal) data-toggle='tooltip' data-plcaement='top' title="일일 목표 수정"
         span.glyphicon.glyphicon-pencil

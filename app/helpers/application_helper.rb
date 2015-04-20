@@ -63,4 +63,23 @@ module ApplicationHelper
     end
     return true
   end
+
+  def old_goal? (option)
+    if option == 'season'
+      compare = last_monthly_goal.season
+      against = season_start
+    elsif option == 'week'
+      compare = last_weekly_goal.weeknum
+      against = Date.current.beginning_of_week
+    else
+      compare = last_daily_goal.goal_date
+      against = Date.current
+    end
+
+    if compare < against
+      return 'old'
+    else
+      return ''
+    end
+  end
 end
