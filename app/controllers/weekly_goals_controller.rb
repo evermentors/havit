@@ -10,7 +10,7 @@ class WeeklyGoalsController < ApplicationController
   def update
     notice_text = "#{view_context.weekstring}의 목표를 변경했습니다: #{@weekly_goal.description} -> #{weekly_goal_params[:description]}"
     if @weekly_goal.update(weekly_goal_params)
-      redirect_to root_url, notice: notice_text
+      redirect_to url, notice: notice_text
     else
       render :edit
     end
@@ -19,7 +19,7 @@ class WeeklyGoalsController < ApplicationController
   def destroy
     @weekly_goal.destroy
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Weekly goal was successfully destroyed.' }
+      format.html { redirect_to url, notice: 'Weekly goal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

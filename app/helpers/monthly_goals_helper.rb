@@ -7,6 +7,10 @@ module MonthlyGoalsHelper
     MonthlyGoal.of(cha, season_start(date)).last
   end
 
+  def last_monthly_goal
+    MonthlyGoal.where(character: current_character).order(:season).last
+  end
+
   def season_start (date=Date.current)
     season_start = date.beginning_of_month
     wnum_today = date.strftime("%W").to_i

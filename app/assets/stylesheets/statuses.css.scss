@@ -84,9 +84,6 @@
   }
   .form-group {
     margin-top : 5px;
-    textarea {
-      color :green;
-    }
     .status-photo {
       text-align: center;
       width: 40px;
@@ -134,7 +131,7 @@
     .status-footer {
       margin-top: 10px;
       .next-daily-goal-input {
-        width:400px;
+        width: 500px;
       }
       .submit-btn {
         float: right;

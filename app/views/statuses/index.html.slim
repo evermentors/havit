@@ -9,12 +9,15 @@
 - else
   .container-header
     .edit-goal.container-sidebar
-      = render 'edit_goal'
+      = render 'statuses/edit_goal'
 
     - if day_passed_since_last_retro <= 5
       - if day_passed_since_last_retro == 5 and last_verified_at == Date.current
         .notice-container.container-center.retro
           = render 'retrospects/retro_only'
+      - elsif no_weekly_goal?
+        .notice-container.container-center
+          = render text: '이전에 목표를 정했는데 한 번도 실천하지 않은 채로 다음주 또는 그 이후가 됨'
       - elsif no_daily_goal?
         .notice-container.container-center
           = render 'daily_goals/form'
@@ -26,7 +29,7 @@
         = render 'retrospects/retro_or_goal'
 
     .new-status-form-div.container-center class=(new_status_form_hidden? ? 'hidden' : '')
-      = render 'new'
+      = render 'statuses/new'
 
 .container-body
   = render @statuses

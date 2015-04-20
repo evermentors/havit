@@ -1,7 +1,7 @@
 = form_tag "/daily_goals", method: "post", class: "set-daily-goal"
   .panel.panel-success
     .panel-heading
-      h3.panel-title #{current_user.name}님, #{current_character.group.name} 그룹에서 오늘(#{datestring} #{weekdaystring})의 목표를 등록하지 않으셨군요!
+      h3.panel-title #{current_user.name}님, [#{current_character.group.name}] 그룹에서 오늘(#{datestring} #{weekdaystring})의 목표를 등록하지 않으셨군요!
     .panel-body
       .form-group
         p

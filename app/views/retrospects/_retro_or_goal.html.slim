@@ -4,7 +4,7 @@
       - if last_week_of_season?
         ' 목표 정하기 또는 월간 회고를 보여준다.
       - else
-        ' #{current_user.name}님, 아직 #{current_character.group.name} 그룹에서 #{advanced_weekstring_short}의 주간회고를 하지 않으셨습니다!
+        ' #{current_user.name}님, 아직 [#{current_character.group.name}] 그룹에서 #{advanced_weekstring_short}의 주간회고를 하지 않으셨습니다!
   .panel-body
     - if last_week_of_season?
       p 목표 정하기 또는 월간회고를 하는 칸

@@ -14,9 +14,9 @@ class GoalsController < ApplicationController
     @daily_goal.goal_date = Date.current
 
     if @monthly_goal.save and @weekly_goal.save and @daily_goal.save
-      redirect_to root_url, notice: '목표가 정상적으로 등록되었습니다.'
+      redirect_to url, notice: '목표가 정상적으로 등록되었습니다.'
     else
-      redirect_to root_url, alert: "목표 등록에 오류가 발생했습니다."
+      redirect_to url, alert: "목표 등록에 오류가 발생했습니다."
     end
   end
 

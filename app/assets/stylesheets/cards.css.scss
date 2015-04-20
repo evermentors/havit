@@ -89,6 +89,19 @@
     font-style:italic;
     color: #379D41;
   }
+
+  .list-group-item.old {
+    background-color: #FFFCE4;
+    .list-group-item-heading, .list-group-item-text {
+      color: gray;
+    }
+    .list-group-item-text:before {
+      content: '(오래된 목표) '
+    }
+    .modify-goal-link {
+      display: none;
+    }
+  }
 }
 
 // set-goal-card
