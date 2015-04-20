@@ -18,14 +18,20 @@ class StatusesController < ApplicationController
     @status.group = @group
 
     if @status.save
+      if params[:next_daily_goal].present?
+        next_daily_goal = params[:next_daily_goal]
+      else
+        next_daily_goal = view_context.last_daily_goal.description
+      end
+
       if view_context.no_daily_goal?(current_character, @status.verified_at.tomorrow)
         @daily_goal = DailyGoal.new(
           character: current_character,
-          description: params[:next_daily_goal],
+          description: next_daily_goal,
           goal_date: @status.verified_at.tomorrow)
       else
         @daily_goal = view_context.daily_goal(current_character, @status.verified_at.tomorrow)
-        @daily_goal.description = params[:next_daily_goal]
+        @daily_goal.description = next_daily_goal
       end
 
       if @daily_goal.save

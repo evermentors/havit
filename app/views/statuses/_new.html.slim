@@ -23,7 +23,6 @@
         '의 목표:
       =< text_field_tag 'next_daily_goal',
         (daily_goal_description last_daily_goal.goal_date.tomorrow),
-        placeholder: '새로운 목표를 등록해주세요!',
-        class: 'form-control next-daily-goal-input',
-        required: true
+        placeholder: "미입력시 #{datestring last_daily_goal.goal_date}의 목표 [#{last_daily_goal.description}]가 자동 등록됩니다.",
+        class: 'form-control next-daily-goal-input'
       = submit_tag "등록", class: 'btn btn-primary submit-btn'
