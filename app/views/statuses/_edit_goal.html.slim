@@ -1,4 +1,15 @@
 .list-group.edit-goal-card
+  span.list-group-item.list-group-item-info.dropdown.group-select
+    .dropdown-toggle id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
+      = "그룹: [#{current_character.group.name}]"
+      span.caret
+    ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu1"
+      - for group in groups_of_user
+        - active = (group == current_character.group ? 'active' : '')
+        li role="presentation" class=active
+          a.menuitem role="menuitem" href=group_path(group)
+            span.glyphicon.glyphicon-ok
+            = group.name
   span.list-group-item.monthly class=old_goal?('season')
     h4.list-group-item-heading = seasonstring last_monthly_goal.season
     a.modify-goal-link href=edit_monthly_goal_path(last_monthly_goal) data-toggle='tooltip' data-plcaement='top' title="시즌 목표 수정"

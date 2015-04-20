@@ -93,7 +93,7 @@ class WeeklyRetrospectsController < ApplicationController
       @hashes_this_week =
       [ { name: 'overall_feeling', class: 'overall-feeling', question: '전체적 느낌:' },
         { name: 'goods', class: 'goods', question: '좋았던 점:' },
-        { name: 'bads', class: 'bads', question: '아쉬었던 점:' },
+        { name: 'bads', class: 'bads', question: '아쉬웠던 점:' },
         { name: 'accomplish', class: 'accomplish', question: '목표 달성 정도:' } ]
 
       @next_week_description = "이제 다음 주(#{view_context.weekstring view_context.last_weekly_goal.weeknum.next_week})에 대해 생각해 봅시다."

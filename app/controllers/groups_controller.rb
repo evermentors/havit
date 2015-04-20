@@ -8,13 +8,17 @@ class GroupsController < ApplicationController
   end
 
   def show
-    character = Character.in_group(current_user, @group)
-    if character.present?
-      @statuses = Status.from(@group).page(params[:page])
-      session[:last_used_character_id] = character.id
-      render 'statuses/index'
+    if @group == universe
+      redirect_to root_url
     else
-      render text: '니 그룹이 아님'
+      character = Character.in_group(current_user, @group)
+      if character.present?
+        @statuses = Status.from(@group).page(params[:page])
+        session[:last_used_character_id] = character.id
+        render 'statuses/index'
+      else
+        render text: '니 그룹이 아님'
+      end
     end
   end
 
