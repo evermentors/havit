@@ -13,7 +13,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_character
-    @current_character ||= Character.find(current_user.last_used_character)
+    if session[:last_used_character_id].nil?
+      session[:last_used_character_id] = current_user.last_used_character
+    end
+    @current_character = Character.find(session[:last_used_character_id])
+  end
+
+  def universe
+    @universe ||= Group.find_by_name('Universe')
+  end
+
   def url (character=current_character)
     if character.group == universe
       root_url

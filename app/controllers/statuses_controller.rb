@@ -6,7 +6,8 @@ class StatusesController < ApplicationController
   before_action :set_group
 
   def index
-    @statuses = Status.where(group: current_character.group).order(created_at: :desc).page(params[:page])
+    @statuses = Status.from(universe).page(params[:page])
+    session[:last_used_character_id] = Character.in_group(current_user, universe).id
   end
 
   def edit

@@ -23,6 +23,10 @@ class Status < ActiveRecord::Base
     def at(date, character)
       where(verified_at: date, character: character).order(:created_at)
     end
+
+    def from(group)
+      where(group: group).order(created_at: :desc)
+    end
   end
 
   def verified_at_should_be_past

@@ -1,10 +1,6 @@
 #encoding=utf-8
 
 module ApplicationHelper
-  def current_character
-    @current_character ||= Character.find(current_user.last_used_character)
-  end
-
   def datestring (date=Date.current)
     date.strftime("%-m월 %-d일")
   end

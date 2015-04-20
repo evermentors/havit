@@ -8,10 +8,10 @@ class GroupsController < ApplicationController
   end
 
   def show
-    character = Character.where(user: current_user, group: @group).take
+    character = Character.in_group(current_user, @group)
     if character.present?
-      current_user.last_used_character = character.id
-      @statuses = Status.where(group: @group).order(created_at: :desc).page(params[:page])
+      @statuses = Status.from(@group).page(params[:page])
+      session[:last_used_character_id] = character.id
       render 'statuses/index'
     else
       render text: '니 그룹이 아님'
