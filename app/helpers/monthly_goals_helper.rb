@@ -1,13 +1,13 @@
 module MonthlyGoalsHelper
-  def no_monthly_goal? (cha=current_character, date=Date.today)
+  def no_monthly_goal? (cha=current_character, date=Date.current)
     MonthlyGoal.of(cha, season_start(date)).count.zero?
   end
 
-  def monthly_goal (cha=current_character, date=Date.today)
+  def monthly_goal (cha=current_character, date=Date.current)
     MonthlyGoal.of(cha, season_start(date)).last
   end
 
-  def season_start (date=Date.today)
+  def season_start (date=Date.current)
     season_start = date.beginning_of_month
     wnum_today = date.strftime("%W").to_i
     wnum_beginning = season_start.strftime("%W").to_i

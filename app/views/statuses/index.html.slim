@@ -12,7 +12,7 @@
       = render 'edit_goal'
 
     - if day_passed_since_last_retro <= 5
-      - if day_passed_since_last_retro == 5 and last_verified_at == Date.today
+      - if day_passed_since_last_retro == 5 and last_verified_at == Date.current
         .notice-container.container-center.retro
           = render 'retrospects/retro_only'
       - elsif no_daily_goal?

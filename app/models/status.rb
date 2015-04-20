@@ -26,7 +26,7 @@ class Status < ActiveRecord::Base
 
   def verified_at_should_be_past
     errors.add(:verified_at, "미래의 실천을 인증할 수는 없습니다!") if
-      verified_at > Date.today
+      verified_at > Date.current
   end
 
   def liked_by?(user)

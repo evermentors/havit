@@ -5,11 +5,11 @@ module ApplicationHelper
     @current_character ||= Character.find(current_user.last_used_character)
   end
 
-  def datestring (date=Date.today)
+  def datestring (date=Date.current)
     date.strftime("%-m월 %-d일")
   end
 
-  def weekdaystring (date=Date.today, option='long')
+  def weekdaystring (date=Date.current, option='long')
     # TODO: date.strftime("%a")와 i18n 활용
     case date.wday
       when 0
@@ -35,7 +35,7 @@ module ApplicationHelper
     date.strftime("%-Y년 %-m월 시즌")
   end
 
-  def weekstring (date=Date.today)
+  def weekstring (date=Date.current)
     datestring(date.beginning_of_week) + '~' + datestring(date.beginning_of_week + 6.days)
   end
 
@@ -56,7 +56,7 @@ module ApplicationHelper
   def new_status_form_hidden?
     unless no_monthly_goal?
       if day_passed_since_last_retro <= 5
-        if day_passed_since_last_retro == 5 and last_verified_at == Date.today
+        if day_passed_since_last_retro == 5 and last_verified_at == Date.current
           return true
         elsif no_daily_goal?
           return true

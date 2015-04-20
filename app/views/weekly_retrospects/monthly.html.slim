@@ -10,7 +10,7 @@
   .navigation
     span.prev
         => link_to "<< #{seasonstring @prev}", monthly_weekly_retrospects_path(@prev.year, @prev.month), title: @prev.strftime("%Y/%m")
-    - unless Date.today.year == @first_monday_of_month.year and Date.today.month == @first_monday_of_month.month
+    - unless Date.current.year == @first_monday_of_month.year and Date.current.month == @first_monday_of_month.month
     span.next.pull-right
       = link_to "#{seasonstring @next} >>", monthly_weekly_retrospects_path(@next.year, @next.month), title: @next.strftime("%Y/%m")
 

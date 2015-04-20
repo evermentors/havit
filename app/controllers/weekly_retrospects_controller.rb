@@ -17,7 +17,7 @@ class WeeklyRetrospectsController < ApplicationController
   def monthly
     month_start = Time.zone.local(params[:year], params[:month]).to_date
     # Need redirection actually
-    month_start = Date.today.beginning_of_month if month_start > Date.today
+    month_start = Date.current.beginning_of_month if month_start > Date.current
 
     @first_monday_of_month = month_start + ((8 - month_start.wday)%7).days
 
