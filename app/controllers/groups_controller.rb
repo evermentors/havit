@@ -31,27 +31,21 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.creator = current_user.id
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    if @group.save
+      @group.characters.create user_id: current_user.id, order: (current_user.characters.count + 1), is_admin: true
+      redirect_to @group, notice: "[#{@group.name}] 그룹을 만들었습니다."
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { render :show, status: :ok, location: @group }
-      else
-        format.html { render :edit }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    if @group.update(group_params)
+      redirect_to @group, notice: '[#{@group.name}] 그룹 정보를 수정했습니다.'
+    else
+      render :edit
     end
   end
 
