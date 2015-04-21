@@ -7,9 +7,10 @@
       - for group in groups_of_user
         - active = (group == current_character.group ? 'active' : '')
         li role="presentation" class=active
-          a.menuitem role="menuitem" href=group_path(group)
+          a.menuitem role="menuitem" href=group_path(group) title="그룹 이름: #{group.name}"
             span.glyphicon.glyphicon-ok
-            = group.name
+            .group-name = group.name
+            .group-description = group.description
   span.list-group-item.monthly class=old_goal?('season')
     h4.list-group-item-heading = seasonstring last_monthly_goal.season
     a.modify-goal-link href=edit_monthly_goal_path(last_monthly_goal) data-toggle='tooltip' data-plcaement='top' title="시즌 목표 수정"

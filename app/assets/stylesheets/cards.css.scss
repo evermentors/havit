@@ -110,6 +110,14 @@
         .menuitem {
           padding-top: 8px;
           padding-bottom: 8px;
+          .group-name, .group-description {
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .group-description {
+            font-size: 11px;
+            color: #aaa;
+          }
         }
       }
       .glyphicon-ok {
