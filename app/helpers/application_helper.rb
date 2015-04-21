@@ -37,7 +37,7 @@ module ApplicationHelper
 
   def advanced_weekstring (date=last_weekly_goal.weeknum, season=true)
     seasonstr = seasonstring(date)
-    weekstr = "#{relative_weeknum date}주차(#{weekstring date})"
+    weekstr = " #{relative_weeknum date}주차(#{weekstring date})"
     if season
       seasonstr + weekstr
     else
