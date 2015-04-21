@@ -15,13 +15,15 @@ nav.navbar.navbar-inverse.navbar-fixed-top
             a.my-page-link href=user_path(current_user)
               = image_tag(current_user.gravatar_url)
               span = current_user.name
-          li.notifications-li.closed tabindex="-1"
+          li.notifications-li.closed tabindex="-1" data-toggle='tooltip' data-placement='bottom' title='알림'
             .notification-btn.closed last-checked=current_user.last_checked_notification
               span.glyphicon.glyphicon-bell
               span.notifications-count.hidden
             .notifications-container
-          li = link_to 'Edit account', main_app.edit_user_registration_path
-          li = link_to 'Sign out', main_app.destroy_user_session_path, method: 'delete'
+          li.edit-account-li data-toggle='tooltip' data-placement='bottom' title='계정 설정'
+            = link_to '', main_app.edit_user_registration_path, class: 'glyphicon glyphicon-cog'
+          li.sign-out-li data-toggle='tooltip' data-placement='bottom' title='로그아웃'
+            = link_to '', main_app.destroy_user_session_path, method: 'delete', class: 'glyphicon glyphicon-off'
       - else
         ul.nav.navbar-nav
           li = link_to 'Sign in', new_user_session_path
