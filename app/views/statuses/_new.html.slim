@@ -17,6 +17,7 @@
             = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
     .status-description
       = text_area_tag 'status[description]', nil, placeholder: "#{datestring last_daily_goal.goal_date} #{weekdaystring last_daily_goal.goal_date}: [#{last_daily_goal.description}] 인증하기", required: true, class: 'form-control', resize: false
+    .photo-preview.hidden
     .status-footer.form-inline
       span.next-daily-goal-description
         span.next-goal-date = datestring last_daily_goal.goal_date.tomorrow

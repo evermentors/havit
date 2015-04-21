@@ -35,8 +35,20 @@ toggle_monthly_weekly_goals = () ->
 apply_tooltip = () ->
   $('[data-toggle="tooltip"]').tooltip({container: 'body'})
 
+show_uploaded_photo = () ->
+  $('#status_photo').change () ->
+    readURL(this)
+
+readURL = (input) ->
+  if input.files && input.files[0]
+    reader = new FileReader()
+    reader.onload = (e) ->
+      $('.photo-preview').css('background-image', 'url(' + e.target.result + ')').removeClass('hidden')
+    reader.readAsDataURL(input.files[0])
+
 $(document).on 'ready page:load', on_verified_at_changed
 $(document).on 'ready page:load', show_new_status_form
 $(document).on 'ready page:load', textarea_autosize
 $(document).on 'ready page:load', toggle_monthly_weekly_goals
 $(document).on 'ready page:load', apply_tooltip
+$(document).on 'ready page:load', show_uploaded_photo

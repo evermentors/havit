@@ -128,6 +128,16 @@
         color: #337ab7 !important;
       }
     }
+    .photo-preview {
+      height: 200px;
+      max-width: 200px;
+      margin: 10px auto 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top left;
+      border: 1px solid #ccc;
+      background-color: white;
+    }
     .status-footer {
       margin-top: 10px;
       .next-daily-goal-input {
