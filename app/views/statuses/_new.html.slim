@@ -12,7 +12,7 @@
     .status-photo
       .status-photo-wrapper
         a.status-photo-link
-          .photo-upload-wrapper
+          .photo-upload-wrapper data-toggle='tooltip' data-plcaement='top' title='사진 추가하기'
             span.glyphicon.glyphicon-camera
             = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
     .status-description
