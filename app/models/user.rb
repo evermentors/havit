@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
     character = Character.create order: 1, group_id: universe.id, user_id: User.first.id
 
     self.last_used_character = character.id
-    self.last_checked_notification = Notification.last.id
+    self.last_checked_notification = Notification.last.id if Notification.last.present?
   end
 
   def update_character

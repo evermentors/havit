@@ -1,4 +1,4 @@
-on_verified_at_changed = ()->
+on_verified_at_changed = () ->
   $('.status-verified-at').on 'change', ->
     date = new Date($(this).val())
     today = new Date()
@@ -20,7 +20,7 @@ show_new_status_form = () ->
     $('.new-status-form-div').removeClass('hidden')
     $('.new-status-form-div textarea').autosize()
 
-textarea_autosize = ()->
+textarea_autosize = () ->
   $('textarea').each (index, element) =>
     $(element).autosize() unless $(element).closest('.new-status-form-div').hasClass('hidden')
 
