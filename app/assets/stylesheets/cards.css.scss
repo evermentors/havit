@@ -100,11 +100,13 @@
       }
     }
     .dropdown-menu {
+      max-height: 300px;
+      width: 100%;
       padding: 0;
       margin: 0;
-      width: 100%;
       border: none;
       border-radius: 0;
+      overflow-y: scroll;
       li {
         border-bottom: 1px solid #ccc;
         .menuitem {
@@ -140,6 +142,21 @@
         }
         a:hover, a:focus {
           background-color: #f5f5f5;
+        }
+      }
+      .create-new-group {
+        position: relative;
+        .glyphicon-plus {
+          position: absolute;
+          font-size: 11px;
+          top: 11px;
+          left: 4px;
+        }
+        a {
+          background-color: #ECF8FF;
+        }
+        a:hover, a:active, a:focus {
+          background-color: #85D2FF;
         }
       }
     }
