@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_create :update_user_attributes
-  after_create :update_character
+  before_create :update_user_attributes, unless: :skip_collbacks
+  after_create :update_character, unless: :skip_collbacks
 
   include Gravtastic
   gravtastic
