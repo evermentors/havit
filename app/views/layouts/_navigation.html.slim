@@ -20,9 +20,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top
               span.glyphicon.glyphicon-bell
               span.notifications-count.hidden
             .notifications-container
-          li data-toggle='tooltip' data-placement='bottom' title='계정 설정'
+          li.edit-account-li data-toggle='tooltip' data-placement='bottom' title='계정 설정'
             = link_to '', main_app.edit_user_registration_path, class: 'glyphicon glyphicon-cog'
-          li data-toggle='tooltip' data-placement='bottom' title='로그아웃'
+          li.sign-out-li data-toggle='tooltip' data-placement='bottom' title='로그아웃'
             = link_to '', main_app.destroy_user_session_path, method: 'delete', class: 'glyphicon glyphicon-off'
       - else
         ul.nav.navbar-nav

@@ -18,15 +18,17 @@
     background-color: rgba(73, 73, 73, 0.83);
   }
 }
-
-.glyphicon.glyphicon-off {
-  font-size: 1.3em;
-  padding-left: 10px;
-  padding-right: 10px;
+.nav.navbar-nav.navbar-right {
+  .edit-account-li > a {
+    font-size: 1.5em;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .sign-out-li > a {
+    font-size: 1.3em;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
-.glyphicon.glyphicon-cog {
-  font-size: 1.5em;
-  padding-left: 10px;
-  padding-right: 10px;
-}
+
