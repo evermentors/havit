@@ -1,6 +1,8 @@
 #encoding=utf-8
 if User.find_by_email('evermentors@gmail.com').blank?
-  havit_admin = User.create name: '에버멘토', email: 'evermentors@gmail.com', password: 'ever8253'
+  ActiveRecord::Base.skip_collbacks = true
+  havit_admin = User.create name: '에버멘토', email: 'evermentors@gmail.com', password: 'ever8253', last_used_character: 1
+  ActiveRecord::Base.skip_collbacks = false
 else
   havit_admin = User.find_by_email('evermentors@gmail.com')
 end
@@ -13,6 +15,7 @@ end
 
 User.find_each do |user|
   if Character.find_by(user_id: user.id).blank?
-    Character.create! order: 1, group_id: universe.id, user_id: user.id
+    character = Character.create! order: 1, group_id: universe.id, user_id: user.id
+    user.last_used_character = character.id
   end
 end
