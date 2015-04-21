@@ -2,10 +2,10 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :description
-    = f.input :password
-    = f.input :member_limit
+    = f.input :name, label: '그룹 이름', placeholder: '그룹의 특징을 잘 나타내보세요.', input_html: { maxlength: 50 }
+    = f.input :description, label: '그룹 설명', placeholder: '멤버에게 그룹을 소개하고 그룹의 목적에 대해 알려주세요.'
+    = f.input :password, label: '그룹 입장 코드', hint: '비워놓으면 전체 공개 그룹이 됩니다.', input_html: { maxlength: 20 }
+    = f.input :member_limit, label: '그룹 최대 인원수', hint: '0으로 설정하면 인원 수의 제한이 없어집니다.'
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, '그룹 만들기'
