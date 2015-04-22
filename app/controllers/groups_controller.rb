@@ -32,6 +32,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.creator = current_user.id
+    @group.member_limit = 0 if @group.member_limit.blank?
 
     if @group.save
       @group.characters.create user_id: current_user.id, order: (current_user.characters.count + 1), is_admin: true
