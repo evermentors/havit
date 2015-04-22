@@ -21,6 +21,9 @@
   position:relative;
   margin-top:10px;
   .notice-container {
+    .panel-body:after {
+      clear: none;
+    }
     .actions {
       margin-top: 10px;
       .btn {
