@@ -93,6 +93,11 @@
     cursor: pointer;
     .dropdown-toggle {
       padding: 10px 15px;
+      .group-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
       .caret {
         position: absolute;
         right: 13px;
