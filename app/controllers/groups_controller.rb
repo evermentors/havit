@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    redirect_to @group unless current_character.is_admin
     @submit_text = '그룹 정보 수정'
   end
 
@@ -48,6 +49,7 @@ class GroupsController < ApplicationController
   end
 
   def update
+    redirect_to @group unless current_character.is_admin
     if @group.update(group_params)
       redirect_to @group, notice: "[#{@group.name}] 그룹의 정보를 변경했습니다."
     else
