@@ -1,4 +1,15 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+.search-form {
+  .form-control.search-input {
+    width: 500px;
+  }
+  .search-input:focus {
+    border-color: #ccc;
+    box-shadow: none;
+    webkit-box-shadow: none;
+  }
+  .search-input-btn {
+    button {
+      color: gray;
+    }
+  }
+}
