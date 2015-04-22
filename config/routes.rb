@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   resources :characters
 
-  resources :groups
+  resources :groups do
+    collection do
+      get :members
+    end
+  end
 
   resources :notifications, only: [:index] do
     member do

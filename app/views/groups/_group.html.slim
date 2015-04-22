@@ -1,0 +1,31 @@
+.header
+  .metainfo
+    .group-privacy-info
+      - if @group.password.blank?
+        a data-toggle='tooltip' data-plcaement='top' title='누구나 그룹에 가입할 수 있습니다.'
+          span.glyphicon.glyphicon-globe
+          span.privacy-description 공개 그룹
+      - else
+        a data-toggle='tooltip' data-plcaement='top' title='가입 코드를 입력해야 그룹에 가입할 수 있습니다.'
+          span.glyphicon.glyphicon-lock
+          span.privacy-description 비밀 그룹
+    .group-members-info
+      span.glyphicon.glyphicon-user
+      .members
+        => link_to @group.characters.count, members_groups_path, class: 'current-members'
+        ' /
+        span.member-limit
+          - if @group.member_limit == 0
+            span data-toggle='tooltip' data-plcaement='top' title='그룹 멤버 수의 제한이 없습니다.' &infin;
+          - else
+            =< @group.member_limit
+
+  .title
+    = "[#{@group.name}] 그룹"
+  - if current_character.is_admin
+    .management
+      a href=edit_group_path
+        span.glyphicon.glyphicon-cog
+        span 그룹 설정 변경
+.body
+  .description = @group.description

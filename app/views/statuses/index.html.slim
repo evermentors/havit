@@ -10,7 +10,9 @@
   .container-header
     .edit-goal.container-sidebar
       = render 'statuses/edit_goal'
-
+    - if defined? show_group
+      .group-info-container.container-center
+        = render @group
     - if day_passed_since_last_retro <= 5
       - if day_passed_since_last_retro == 5 and last_verified_at == Date.current
         .notice-container.container-center.retro
