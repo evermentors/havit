@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :characters
 
   resources :groups do
+    member do
+      get :join
+    end
     collection do
       get :members
     end
