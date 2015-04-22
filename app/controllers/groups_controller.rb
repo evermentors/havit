@@ -24,9 +24,11 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @submit_text = '그룹 만들기'
   end
 
   def edit
+    @submit_text = '그룹 정보 수정'
   end
 
   def create
