@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :groups do
     collection do
       get :members
-      get :search
     end
   end
 

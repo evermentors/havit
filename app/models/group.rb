@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  searchkick
+  searchkick word_middle: [:name], text_middle: [:description]
 
   has_many :characters, dependent: :destroy
   has_many :statuses, dependent: :destroy
