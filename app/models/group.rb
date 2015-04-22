@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  searchkick
+
   has_many :characters, dependent: :destroy
   has_many :statuses, dependent: :destroy
 
