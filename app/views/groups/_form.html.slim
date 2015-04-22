@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name, label: '그룹 이름', placeholder: '그룹의 특징을 잘 나타내보세요.', input_html: { maxlength: 50 }, as: :string
-    = f.input :description, label: '그룹 설명', placeholder: '멤버에게 그룹을 소개하고 그룹의 목적에 대해 알려주세요.'
+    = f.input :description, label: '그룹 설명', placeholder: '멤버에게 그룹을 소개하고 그룹의 목적에 대해 알려주세요.', input_html: { maxlength: 200 }
     = f.input :password, label: '그룹 입장 코드', placeholder: '비워놓으면 누구나 가입할 수 있는 공개 그룹이 됩니다.', input_html: { maxlength: 20 }, as: :string
     = f.input :member_limit, label: '그룹 멤버 수 제한', hint: '0으로 설정하면 제한이 없어집니다.'
 

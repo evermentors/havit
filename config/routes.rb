@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :characters
 
   resources :groups do
+    member do
+      get :join
+    end
     collection do
       get :members
     end
@@ -47,4 +50,6 @@ Rails.application.routes.draw do
   end
 
   get "daily_goals/:date", action: :on, as: :on, controller: :daily_goals
+
+  get "/search", to: "search#index"
 end

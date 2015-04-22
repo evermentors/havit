@@ -1,12 +1,8 @@
-%facebooklike-container {
+.group-info-container {
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
   border-radius: 5px;
   background-color: #fff;
-}
-
-.group-info-container {
-  @extend %facebooklike-container;
   margin-bottom: 10px;
   .header {
     height: 45px;
@@ -16,17 +12,12 @@
       top: 5px;
       left: 5px;
       .glyphicon {
-        margin-right: 3px;
+        padding-right: 3px;
       }
       .group-privacy-info {
-        a {
-          color: inherit;
-          text-decoration: none;
+        span {
           cursor: pointer;
         }
-      }
-      .group-privacy-info {
-
       }
       .group-members-info {
         .members {
@@ -56,10 +47,10 @@
     }
   }
   .body {
-    padding: 5px 15px;
+    padding: 15px;
     cursor: default;
     .description {
-      font-size: 15px;
+      font-size: 14px;
       color: #9197a3;
     }
   }

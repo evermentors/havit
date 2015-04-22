@@ -2,11 +2,11 @@
   .metainfo
     .group-privacy-info
       - if @group.password.blank?
-        a data-toggle='tooltip' data-plcaement='top' title='누구나 그룹에 가입할 수 있습니다.'
+        span data-toggle='tooltip' data-plcaement='top' title='누구나 그룹에 가입할 수 있습니다.'
           span.glyphicon.glyphicon-globe
           span.privacy-description 공개 그룹
       - else
-        a data-toggle='tooltip' data-plcaement='top' title='가입 코드를 입력해야 그룹에 가입할 수 있습니다.'
+        span data-toggle='tooltip' data-plcaement='top' title='가입 코드를 입력해야 그룹에 가입할 수 있습니다.'
           span.glyphicon.glyphicon-lock
           span.privacy-description 비밀 그룹
     .group-members-info
@@ -26,4 +26,8 @@
       a href=edit_group_path data-toggle='tooltip' data-plcaement='top' title='그룹 설정 변경'
         span.glyphicon.glyphicon-cog
 .body
-  .description = @group.description
+  .description
+    - if @group.description.present?
+      = @group.description
+    - else
+      ' 그룹 설명이 없습니다.

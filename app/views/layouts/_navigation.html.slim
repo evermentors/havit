@@ -10,6 +10,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top
       = link_to image_tag("havit-logo-big.png"), main_app.root_path, class: 'navigation-logo'
     .collapse.navbar-collapse
       - if user_signed_in?
+        ul.navbar-form.navbar-left
+          == render 'search/form'
         ul.nav.navbar-nav.navbar-right
           li.my-page-link-li
             a.my-page-link href=user_path(current_user)

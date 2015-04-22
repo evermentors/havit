@@ -29,7 +29,6 @@ load_notifications = ()->
   $.ajax(url: '/notifications')
 
 pull_unread = () ->
-  # $('.temp').on 'click', ->
   setInterval () ->
     $.ajax(url: '/notifications/pull_unread')
   , 60000
