@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
       if character.present?
         @statuses = Status.from(@group).page(params[:page])
         session[:last_used_character_id] = character.id
-        render 'statuses/index'
+        render 'statuses/index', locals: { show_group: true }
       else
         render text: '니 그룹이 아님'
       end
@@ -24,14 +24,21 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @submit_text = '그룹 만들기'
   end
 
   def edit
+    redirect_to @group unless current_character.is_admin
+    @submit_text = '그룹 정보 수정'
+  end
+
+  def members
   end
 
   def create
     @group = Group.new(group_params)
     @group.creator = current_user.id
+    @group.member_limit = 0 if @group.member_limit.blank?
 
     if @group.save
       @group.characters.create user_id: current_user.id, order: (current_user.characters.count + 1), is_admin: true
@@ -42,8 +49,9 @@ class GroupsController < ApplicationController
   end
 
   def update
+    redirect_to @group unless current_character.is_admin
     if @group.update(group_params)
-      redirect_to @group, notice: '[#{@group.name}] 그룹 정보를 수정했습니다.'
+      redirect_to @group, notice: "[#{@group.name}] 그룹의 정보를 변경했습니다."
     else
       render :edit
     end

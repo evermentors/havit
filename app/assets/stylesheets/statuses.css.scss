@@ -21,6 +21,9 @@
   position:relative;
   margin-top:10px;
   .notice-container {
+    .panel-body:after {
+      clear: none;
+    }
     .actions {
       margin-top: 10px;
       .btn {
@@ -76,6 +79,14 @@
   }
 }
 
+.new-status-form-div {
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
 .new-status-form {
   .status-author {
     .status-new-description {
@@ -84,13 +95,14 @@
   }
   .form-group {
     margin-top : 5px;
+    margin-bottom: 0;
     .status-photo {
       text-align: center;
       width: 40px;
       float: right;
       border: 1px solid rgba(0, 0, 0, 0.1);
-      margin-top: -48px;
-      margin-right: 5px;
+      margin-top: -46px;
+      margin-right: 0;
       background-color: #EFEFEF;
       border-radius: 5px;
       .status-photo-wrapper {
@@ -122,7 +134,7 @@
       }
     }
     .status-photo:hover {
-      background-color: #FFF;
+      background-color: #D9D9D9;;
       .status-photo-link:hover {
         text-decoration: none;
         color: #337ab7 !important;

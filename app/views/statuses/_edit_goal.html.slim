@@ -1,7 +1,7 @@
 .list-group.edit-goal-card
   span.list-group-item.list-group-item-info.dropdown.group-select
     .dropdown-toggle id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
-      = "그룹: [#{current_character.group.name}]"
+      .group-title = "그룹: [#{current_character.group.name}]"
       span.caret
     ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu1"
       - for group in groups_of_user
