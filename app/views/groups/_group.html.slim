@@ -1,4 +1,4 @@
-.header
+.header.bg-success
   .metainfo
     .group-privacy-info
       - if @group.password.blank?
@@ -16,16 +16,14 @@
         ' /
         span.member-limit
           - if @group.member_limit == 0
-            span data-toggle='tooltip' data-plcaement='top' title='그룹 멤버 수의 제한이 없습니다.' &infin;
+            span.infinite-members data-toggle='tooltip' data-plcaement='top' title='그룹 멤버 수의 제한이 없습니다.' &infin;
           - else
             =< @group.member_limit
 
-  .title
-    = "[#{@group.name}] 그룹"
+  .title title=@group.name = @group.name
   - if current_character.is_admin
     .management
-      a href=edit_group_path
+      a href=edit_group_path data-toggle='tooltip' data-plcaement='top' title='그룹 설정 변경'
         span.glyphicon.glyphicon-cog
-        span 그룹 설정 변경
 .body
   .description = @group.description
