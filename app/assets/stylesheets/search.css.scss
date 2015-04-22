@@ -1,6 +1,7 @@
 .search-form {
+  margin-left: 80px;
   .form-control.search-input {
-    width: 500px;
+    width: 658px;
   }
   .search-input:focus {
     border-color: #ccc;
@@ -10,6 +11,71 @@
   .search-input-btn {
     button {
       color: gray;
+    }
+  }
+}
+
+.search-result-container {
+  padding-top: 10px;
+  .query-result {
+    margin-bottom: 5px;
+  }
+  .searched-group {
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    height: 126px;
+    .left-area {
+      width: 500px;
+      .privacy-info {
+        display: inline;
+        cursor: pointer;
+        margin-top: 2px;
+        margin-right: 5px;
+      }
+      .title-link {
+        display: inline;
+        text-decoration: none;
+        .title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+      .description {
+        border-top: 1px solid #ddd;
+        margin-top: 5px;
+        padding-top: 5px;
+        font-size: 13px;
+        color: #9197a3;
+      }
+    }
+    .right-area {
+      margin-left: 500px;
+      padding-left: 10px;
+      .metainfo {
+        font-size: 12px;
+        margin-top: 5px;
+        .members-info {
+          cursor: default;
+        }
+      }
+      .group-join-form {
+        padding-top: 30px;
+        .group-passcode {
+          margin-bottom: 5px;
+        }
+      }
+      .group-join-form.no-passcode {
+        .group-passcode {
+          display: none;
+        }
+      }
     }
   }
 }
