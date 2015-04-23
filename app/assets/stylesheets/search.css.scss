@@ -65,15 +65,17 @@
           cursor: default;
         }
       }
-      .group-join-form {
+      .group-join-div {
         padding-top: 30px;
-        .group-passcode {
-          margin-bottom: 5px;
+        .group-join-form {
+          .group-passcode {
+            margin-bottom: 5px;
+          }
         }
-      }
-      .group-join-form.no-passcode {
-        .group-passcode {
-          display: none;
+        .group-join-form.no-passcode {
+          .group-passcode {
+            display: none;
+          }
         }
       }
     }
