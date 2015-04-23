@@ -34,4 +34,6 @@
           .group-passcode
             = text_field_tag 'group[password]', nil, placeholder: '가입 코드를 입력하세요.', class: 'form-control'
           .group-join-btn
-            = submit_tag '가입하기', class: "btn btn-success btn-block #{'btn-lg' if group.password.blank?}"
+            = submit_tag '가입하기',
+              class: "btn btn-success btn-block #{'btn-lg' if group.password.blank?}",
+              disabled: (true if group.member_limit > 0 and group.member_limit <= group.characters.count)
