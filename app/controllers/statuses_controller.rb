@@ -7,7 +7,7 @@ class StatusesController < ApplicationController
 
   def index
     @statuses = Status.from(universe).page(params[:page])
-    session[:last_used_character_id] = Character.in_group(current_user, universe).id
+    session[:last_used_character_id] = Character.in_group(current_user, universe).take.id
   end
 
   def edit

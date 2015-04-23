@@ -12,9 +12,9 @@ class GroupsController < ApplicationController
       redirect_to root_url
     else
       character = Character.in_group(current_user, @group)
-      if character.present?
+      unless character.blank?
         @statuses = Status.from(@group).page(params[:page])
-        session[:last_used_character_id] = character.id
+        session[:last_used_character_id] = character.take.id
         render 'statuses/index', locals: { show_group: true }
       else
         render text: '니 그룹이 아님'
