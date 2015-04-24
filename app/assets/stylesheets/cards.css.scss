@@ -83,6 +83,9 @@
   .list-group-item {
     border:none;
     margin-bottom:0;
+    .list-group-item-heading {
+      cursor: default;
+    }
   }
   .list-group-item.group-select.open ~ .list-group-item {
     opacity: 0.4;
