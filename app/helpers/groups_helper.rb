@@ -20,8 +20,8 @@ module GroupsHelper
       'already-joined'
     elsif is_full?(group)
       'full-group'
-    else
-      ''
+    elsif group.password.present?
+      'need-passcode'
     end
   end
 end

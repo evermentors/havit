@@ -37,6 +37,13 @@ class GroupsController < ApplicationController
 
   def can_join
     @group_status = view_context.group_status(@group)
+    if @group_status == 'need-passcode'
+      if @group.password == params[:passcode]
+        @passcode_status = 'right-passcode'
+      else
+        @passcode_status = 'wrong-passcode'
+      end
+    end
   end
 
   def members

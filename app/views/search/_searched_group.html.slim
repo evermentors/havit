@@ -30,7 +30,8 @@
         = button_tag '가입한 그룹입니다.', type: 'button', class: 'btn btn-success btn-block btn-lg disabled', disabled: true
       .full-group
         = button_tag '그룹이 가득찼습니다.', type: 'button', class: 'btn btn-success btn-block btn-lg disabled', disabled: true
-      = form_tag join_group_path(group), method: 'post', class: "group-join-form #{'need-passcode' unless group.password.blank?}"
+        span.
+      = form_tag join_group_path(group), method: 'post', class: "group-join-form"
         .group-passcode
           = text_field_tag 'group[password]', nil, placeholder: '가입 코드를 입력하세요.', class: 'form-control'
         .group-join-btn

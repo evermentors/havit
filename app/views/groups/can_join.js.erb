@@ -1,7 +1,12 @@
 target = $(".group-join-btn > input[data-id=<%= @group.id %>]").closest('.group-join-div')
-target.addClass("<%= @group_status %>")
-
 <% if @group_status == 'full-group' %>
+  target.addClass("<%= @group_status %>")
   target.prev().find('.current-members-count').text("<%= @group.characters.count %>")
   target.prev().find('.member-limit').text("<%= @group.member_limit %>")
+<% elsif @group_status == 'need-passcode' %>
+  input = target.find('.group-passcode > input')
+  input.attr('class', "form-control <%= @passcode_status %>")
+  <% if @passcode_status == 'wrong-passcode' %>
+    input.attr('placeholder', '잘못된 가입 코드입니다.').focus()
+  <% end %>
 <% end %>

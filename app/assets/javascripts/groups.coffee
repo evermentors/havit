@@ -1,6 +1,9 @@
 is_join_available = () ->
   $('.group-join-btn > input').click (e) ->
     e.preventDefault()
-    $.ajax(url: '/groups/' + $(this).attr('data-id') + '/can_join')
+    $.ajax
+      url: '/groups/' + $(this).attr('data-id') + '/can_join'
+      data: { passcode: $(this).parent().prev().find('input').val()}
+
 
 $(document).on 'ready page:load', is_join_available
