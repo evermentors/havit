@@ -1,0 +1,7 @@
+target = $(".group-join-btn > input[data-id=<%= @group.id %>]").closest('.group-join-div')
+target.addClass("<%= @group_status %>")
+
+<% if @group_status == 'full-group' %>
+  target.prev().find('.current-members-count').text("<%= @group.characters.count %>")
+  target.prev().find('.member-limit').text("<%= @group.member_limit %>")
+<% end %>

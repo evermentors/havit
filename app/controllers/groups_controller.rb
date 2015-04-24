@@ -1,7 +1,7 @@
 #encoding=utf-8
 
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :can_join, :join, :members]
 
   def index
     @groups = Group.all
@@ -30,6 +30,13 @@ class GroupsController < ApplicationController
   def edit
     redirect_to @group unless current_character.is_admin
     @submit_text = '그룹 정보 수정'
+  end
+
+  def join
+  end
+
+  def can_join
+    @group_status = view_context.group_status(@group)
   end
 
   def members

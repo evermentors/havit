@@ -18,25 +18,22 @@
         ' 관리자:
         =< link_to Character.admin(group).user.name, user_path(Character.admin(group).user)
       .members-info.pull-right
-        span => group.characters.count
+        span.current-members-count => group.characters.count
         ' /
         span.member-limit
           - if group.member_limit == 0
             span.infinite-members data-toggle='tooltip' data-plcaement='top' title='그룹 멤버 수의 제한이 없습니다.' &infin;
           - else
             =< group.member_limit
-    .group-join-div
-      - if is_full?(group)
-        .group-is-full
-          = button_tag '그룹이 가득찼습니다.', type: 'button', class: 'btn btn-success btn-block btn-lg disabled', disabled: true
-      - elsif joined_group?(group)
-        .already-joined
-          = button_tag '가입한 그룹입니다.', type: 'button', class: 'btn btn-success btn-block btn-lg disabled', disabled: true
-      - else
-        = form_tag join_group_path(group), method: 'post', class: "group-join-form #{'need-passcode' unless group.password.blank?}"
-          .group-passcode
-            = text_field_tag 'group[password]', nil, placeholder: '가입 코드를 입력하세요.', class: 'form-control'
-          .group-join-btn
-            = submit_tag '가입하기',
-              data: { id: group.id },
-              class: "btn btn-success btn-block #{'btn-lg' if group.password.blank?}"
+    .group-join-div class=group_status(group)
+      .already-joined
+        = button_tag '가입한 그룹입니다.', type: 'button', class: 'btn btn-success btn-block btn-lg disabled', disabled: true
+      .full-group
+        = button_tag '그룹이 가득찼습니다.', type: 'button', class: 'btn btn-success btn-block btn-lg disabled', disabled: true
+      = form_tag join_group_path(group), method: 'post', class: "group-join-form #{'need-passcode' unless group.password.blank?}"
+        .group-passcode
+          = text_field_tag 'group[password]', nil, placeholder: '가입 코드를 입력하세요.', class: 'form-control'
+        .group-join-btn
+          = submit_tag '가입하기',
+            data: { id: group.id },
+            class: "btn btn-success btn-block #{'btn-lg' if group.password.blank?}"

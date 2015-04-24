@@ -67,13 +67,35 @@
       }
       .group-join-div {
         padding-top: 43px;
+        .already-joined {
+          display: none;
+        }
+        .full-group {
+          display: none;
+          button {
+            font-size: 16px;
+          }
+        }
         .group-join-form {
           .group-passcode {
             display: none;
           }
         }
-        .group-is-full > button {
-          font-size: 16px;
+      }
+      .group-join-div.already-joined {
+        .already-joined {
+          display: block;
+        }
+        .group-join-form {
+          display: none;
+        }
+      }
+      .group-join-div.full-group {
+        .full-group {
+          display: block;
+        }
+        .group-join-form {
+          display: none;
         }
       }
       .group-join-form.need-passcode {

@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+is_join_available = () ->
+  $('.group-join-btn > input').click (e) ->
+    e.preventDefault()
+    $.ajax(url: '/groups/' + $(this).attr('data-id') + '/can_join')
+
+$(document).on 'ready page:load', is_join_available
