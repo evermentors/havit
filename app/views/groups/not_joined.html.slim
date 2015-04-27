@@ -1,0 +1,12 @@
+= paginate @statuses, window: 2 unless hidden
+
+.container-header
+  .edit-goal.container-sidebar
+    = render 'statuses/edit_goal'
+  .group-info-container.container-center
+    = render @group
+
+.container-body
+  = render @statuses unless hidden
+
+= paginate @statuses, window: 2 unless hidden

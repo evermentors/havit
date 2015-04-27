@@ -12,12 +12,17 @@ class GroupsController < ApplicationController
       redirect_to root_url
     else
       character = Character.in_group(current_user, @group)
-      unless character.blank?
+      if not character.blank?
         session[:last_used_character_id] = character.take.id
+        @statuses = Status.from(@group).page(params[:page])
+        render 'statuses/index', locals: { show_group: true }
+      elsif @group.password.blank?
+        @statuses = Status.from(@group).page(params[:page])
+        render 'groups/not_joined', locals: { hidden: false }
+      else
+        render 'groups/not_joined', locals: { hidden: true }
       end
 
-      @statuses = Status.from(@group).page(params[:page])
-      render 'statuses/index', locals: { show_group: true }
     end
   end
 
