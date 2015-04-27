@@ -1,12 +1,17 @@
 target = $(".group-join-btn > input[data-id=<%= @group.id %>]").closest('.group-join-div')
 <% if @group_status == 'full-group' %>
   target.addClass("<%= @group_status %>")
-  target.prev().find('.current-members-count').text("<%= @group.characters.count %>")
-  target.prev().find('.member-limit').text("<%= @group.member_limit %>")
+  target.parent().find('.current-members-count').text("<%= @group.characters.count %>")
+  target.parent().find('.member-limit').text("<%= @group.member_limit %>")
 <% elsif @group_status == 'need-passcode' %>
-  input = target.find('.group-passcode > input')
-  input.attr('class', "form-control <%= @passcode_status %>")
+  input = target.find('.passcode-input')
+  input.attr('class', "form-control passcode-input <%= @passcode_status %>")
   <% if @passcode_status == 'wrong-passcode' %>
-    input.attr('placeholder', '잘못된 가입 코드입니다.').focus()
+    if (input.parent().hasClass('group-passcode'))
+      input.attr('placeholder', '잘못된 가입 코드입니다.').focus()
+    else if (input.parent().hasClass('input-group'))
+      input.focus()
+      input.tooltip({container: 'body', title: '잘못된 가입 코드입니다.'})
+      input.tooltip('show')
   <% end %>
 <% end %>

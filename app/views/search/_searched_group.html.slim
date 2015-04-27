@@ -33,7 +33,7 @@
         span.
       = form_tag join_group_path(group), method: 'post', class: "group-join-form"
         .group-passcode
-          = text_field_tag 'group[password]', nil, placeholder: '가입 코드를 입력하세요.', class: 'form-control'
+          = text_field_tag 'group[password]', nil, placeholder: '가입 코드를 입력하세요.', class: 'form-control passcode-input'
         .group-join-btn
           = submit_tag '가입하기',
             data: { id: group.id },

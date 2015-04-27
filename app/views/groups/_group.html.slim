@@ -12,7 +12,7 @@
     .group-members-info
       span.glyphicon.glyphicon-user
       .members
-        => link_to @group.characters.count, members_groups_path, class: 'current-members'
+        => link_to @group.characters.count, members_groups_path, class: 'current-members-count'
         ' /
         span.member-limit
           - if @group.member_limit == 0
@@ -21,7 +21,7 @@
             =< @group.member_limit
 
   .title title=@group.name = @group.name
-  .management
+  .management.group-join-div class=group_status(@group)
     - if current_character.group == @group
       - if current_character.is_admin
         a href=edit_group_path data-toggle='tooltip' data-plcaement='top' title='그룹 설정 변경'
@@ -35,8 +35,8 @@
     - else
       = form_tag join_group_path(group), method: 'post', class: "join-group-form form-inline"
         .input-group.input-group-sm
-          = text_field_tag 'group[password]', nil, placeholder: '가입 코드', class: 'form-control'
-          span.input-group-btn
+          = text_field_tag 'group[password]', nil, placeholder: '가입 코드', class: 'form-control passcode-input'
+          span.input-group-btn.group-join-btn
             = submit_tag '가입',
               data: { id: group.id },
               class: 'btn btn-success'
