@@ -21,10 +21,18 @@
             =< @group.member_limit
 
   .title title=@group.name = @group.name
-  - if current_character.is_admin
-    .management
-      a href=edit_group_path data-toggle='tooltip' data-plcaement='top' title='그룹 설정 변경'
-        span.glyphicon.glyphicon-cog
+  .management
+    - if current_character.group == @group
+      - if current_character.is_admin
+        a href=edit_group_path data-toggle='tooltip' data-plcaement='top' title='그룹 설정 변경'
+          span.glyphicon.glyphicon-cog
+      - else
+        button.btn.btn-default 가입됨
+    - elsif @group.password.blank?
+      a.btn.btn-sm.btn-success.join-group-link href=join_group_path(@group) data-method='post'
+        span.glyphicon.glyphicon-plus
+        span 그룹 가입
+
 .body
   .description
     - if @group.description.present?

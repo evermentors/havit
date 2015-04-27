@@ -13,12 +13,11 @@ class GroupsController < ApplicationController
     else
       character = Character.in_group(current_user, @group)
       unless character.blank?
-        @statuses = Status.from(@group).page(params[:page])
         session[:last_used_character_id] = character.take.id
-        render 'statuses/index', locals: { show_group: true }
-      else
-        render text: '니 그룹이 아님'
       end
+
+      @statuses = Status.from(@group).page(params[:page])
+      render 'statuses/index', locals: { show_group: true }
     end
   end
 
