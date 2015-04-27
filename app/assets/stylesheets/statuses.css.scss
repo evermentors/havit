@@ -19,50 +19,6 @@
   color:green;
 }
 
-.container-header {
-  position:relative;
-  margin-top:10px;
-  .notice-container {
-    .panel-body:after {
-      clear: none;
-    }
-    .actions {
-      margin-top: 10px;
-      .btn {
-        margin-right:15px;
-      }
-    }
-    .set-weekly-daily-goal {
-      textarea {
-        margin-bottom: 10px;
-      }
-    }
-    .set-daily-goal {
-      .form-group {
-        margin-bottom:0;
-      }
-    }
-  }
-}
-
-.container-sidebar {
-  position: relative;
-  float: left;
-  width: 224px;
-  padding: 16px 0;
-}
-
-.edit-goal.container-sidebar {
-  padding: 0 10px;
-}
-
-.container-center {
-  position: relative;
-  min-width: 240px;
-  max-width: 700px;
-  margin-left: 224px;
-}
-
 .status-author {
   position: relative;
   img {
