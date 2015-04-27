@@ -1,7 +1,7 @@
 #encoding=utf-8
 
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :can_join, :join, :members]
 
   def index
     @groups = Group.all
@@ -12,13 +12,17 @@ class GroupsController < ApplicationController
       redirect_to root_url
     else
       character = Character.in_group(current_user, @group)
-      if character.present?
+      if not character.blank?
+        session[:last_used_character_id] = character.take.id
         @statuses = Status.from(@group).page(params[:page])
-        session[:last_used_character_id] = character.id
         render 'statuses/index', locals: { show_group: true }
+      elsif @group.password.blank?
+        @statuses = Status.from(@group).page(params[:page])
+        render 'groups/not_joined', locals: { hidden: false }
       else
-        render text: '니 그룹이 아님'
+        render 'groups/not_joined', locals: { hidden: true }
       end
+
     end
   end
 
@@ -30,6 +34,22 @@ class GroupsController < ApplicationController
   def edit
     redirect_to @group unless current_character.is_admin
     @submit_text = '그룹 정보 수정'
+  end
+
+  def join
+    @group.characters.create user_id: current_user.id, order: (current_user.characters.count + 1), is_admin: false
+    redirect_to @group, notice: "[#{@group.name}] 그룹에 가입했습니다."
+  end
+
+  def can_join
+    @group_status = view_context.group_status(@group)
+    if @group_status == 'need-passcode'
+      if @group.password == params[:passcode]
+        @passcode_status = 'right-passcode'
+      else
+        @passcode_status = 'wrong-passcode'
+      end
+    end
   end
 
   def members

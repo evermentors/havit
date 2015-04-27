@@ -4,36 +4,4 @@
   .search-results.container-center
     .query-result = "'#{@query}'의 검색 결과: #{@groups.count}건"
     - @groups.each do |group|
-      .searched-group
-        .left-area.pull-left
-          .privacy-info.pull-left
-            - if group.password.blank?
-              span.glyphicon.glyphicon-globe data-toggle='tooltip' data-plcaement='top' title='누구나 그룹에 가입할 수 있습니다.'
-            - else
-              span.glyphicon.glyphicon-lock data-toggle='tooltip' data-plcaement='top' title='가입 코드를 입력해야 그룹에 가입할 수 있습니다.'
-          a.title-link href=group_path(group)
-            .title = group.name
-          .description
-            - if group.description.present?
-              = group.description
-            - else
-              ' 그룹 설명이 없습니다.
-        .right-area
-          .metainfo
-            .admin-info.pull-left
-              ' 관리자:
-              =< link_to Character.admin(group).user.name, user_path(Character.admin(group).user)
-            .members-info.pull-right
-              span => group.characters.count
-              ' /
-              span.member-limit
-                - if group.member_limit == 0
-                  span.infinite-members data-toggle='tooltip' data-plcaement='top' title='그룹 멤버 수의 제한이 없습니다.' &infin;
-                - else
-                  =< group.member_limit
-          = form_tag join_group_path(group), method: 'post', class: "group-join-form #{'no-passcode' if group.password.blank?}"
-            .group-passcode
-              = text_field_tag 'group[password]', nil, placeholder: '가입 코드를 입력하세요.', class: 'form-control'
-            .group-join-btn
-              = submit_tag '가입하기', class: "btn btn-success btn-block #{'btn-lg' if group.password.blank?}"
-
+      = render partial: 'search/searched_group', locals: { group: group }

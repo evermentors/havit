@@ -8,11 +8,11 @@
       - else
         span data-toggle='tooltip' data-plcaement='top' title='가입 코드를 입력해야 그룹에 가입할 수 있습니다.'
           span.glyphicon.glyphicon-lock
-          span.privacy-description 비밀 그룹
+          span.privacy-description 비공개 그룹
     .group-members-info
       span.glyphicon.glyphicon-user
       .members
-        => link_to @group.characters.count, members_groups_path, class: 'current-members'
+        => link_to @group.characters.count, members_groups_path, class: 'current-members-count'
         ' /
         span.member-limit
           - if @group.member_limit == 0
@@ -21,10 +21,24 @@
             =< @group.member_limit
 
   .title title=@group.name = @group.name
-  - if current_character.is_admin
-    .management
-      a href=edit_group_path data-toggle='tooltip' data-plcaement='top' title='그룹 설정 변경'
-        span.glyphicon.glyphicon-cog
+  .management.group-join-div class=group_status(@group)
+    - if current_character.group == @group
+      - if current_character.is_admin
+        a href=edit_group_path data-toggle='tooltip' data-plcaement='top' title='그룹 설정 변경'
+          span.glyphicon.glyphicon-cog
+    - elsif @group.password.blank?
+      a.btn.btn-sm.btn-success.join-group-link href=join_group_path(@group) data-method='post'
+        span.glyphicon.glyphicon-plus
+        span 그룹 가입
+    - else
+      = form_tag join_group_path(group), method: 'post', class: "join-group-form form-inline"
+        .input-group.input-group-sm
+          = text_field_tag 'group[password]', nil, placeholder: '가입 코드', class: 'form-control passcode-input'
+          span.input-group-btn.group-join-btn
+            = submit_tag '가입',
+              data: { id: group.id },
+              class: 'btn btn-success'
+
 .body
   .description
     - if @group.description.present?

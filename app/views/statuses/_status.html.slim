@@ -17,9 +17,9 @@
         span.goal-text = monthly_goal(status.character, status.verified_at).description
     .weekly-goal.small
       - if no_weekly_goal?(status.character, status.verified_at)
-        = "#{advanced_weekstring status.verified_at, false}에 목표가 없었습니다."
+        = "#{weekstring_short status.verified_at} 목표가 없었습니다."
       - else
-        = "#{advanced_weekstring status.verified_at, false} 목표: "
+        = "#{weekstring_short status.verified_at} 목표: "
         span.goal-text = weekly_goal(status.character, status.verified_at).description
   .daily-goal
     - if no_daily_goal?(status.character, status.verified_at)

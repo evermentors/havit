@@ -31,8 +31,16 @@ module ApplicationHelper
     date.strftime("%-Y년 %-m월 시즌")
   end
 
+  def seasonstring_detail (date=season_start)
+    date.strftime("%-Y년 %-m월 %-d일") + '~' + season_start(date.next_month).strftime("%-Y년 %-m월 %-d일")
+  end
+
   def weekstring (date=Date.current)
     datestring(date.beginning_of_week) + '~' + datestring(date.beginning_of_week + 6.days)
+  end
+
+  def weekstring_short (date=last_weekly_goal.weeknum)
+    "#{date.month}월 #{relative_weeknum date}주차"
   end
 
   def advanced_weekstring (date=last_weekly_goal.weeknum, season=true)
