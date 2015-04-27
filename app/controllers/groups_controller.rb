@@ -37,7 +37,8 @@ class GroupsController < ApplicationController
   end
 
   def join
-    render text: '가입'
+    @group.characters.create user_id: current_user.id, order: (current_user.characters.count + 1), is_admin: false
+    redirect_to @group, notice: "[#{@group.name}] 그룹에 가입했습니다."
   end
 
   def can_join

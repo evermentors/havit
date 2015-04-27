@@ -2,6 +2,9 @@
 .no-monthly-goal {
   position:relative;
   margin-top:10px;
+  .panel-title {
+    margin-right: 40px;
+  }
   textarea {
     min-height:70px;
   }
