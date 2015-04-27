@@ -1,6 +1,6 @@
 .search-result-container
   .edit-goal.container-sidebar
-    = render 'statuses/edit_goal'
+    = render 'statuses/edit_goal' unless no_monthly_goal?
   .search-results.container-center
     .query-result = "'#{@query}'의 검색 결과: #{@groups.count}건"
     - @groups.each do |group|
