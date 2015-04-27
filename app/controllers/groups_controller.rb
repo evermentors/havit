@@ -33,6 +33,7 @@ class GroupsController < ApplicationController
   end
 
   def join
+    render text: '가입'
   end
 
   def can_join

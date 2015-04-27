@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     member do
-      get :join
+      post :join
       get :can_join
     end
     collection do
