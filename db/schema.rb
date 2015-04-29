@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417030030) do
+ActiveRecord::Schema.define(version: 20150429035316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,9 +126,13 @@ ActiveRecord::Schema.define(version: 20150417030030) do
     t.text     "link",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "group_id"
+    t.integer  "status_id"
   end
 
+  add_index "notifications", ["group_id"], name: "index_notifications_on_group_id", using: :btree
   add_index "notifications", ["recipient"], name: "index_notifications_on_recipient", using: :btree
+  add_index "notifications", ["status_id"], name: "index_notifications_on_status_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "statuses", force: :cascade do |t|
@@ -196,6 +200,8 @@ ActiveRecord::Schema.define(version: 20150417030030) do
   add_foreign_key "characters", "users"
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
+  add_foreign_key "notifications", "groups"
+  add_foreign_key "notifications", "statuses"
   add_foreign_key "notifications", "users"
   add_foreign_key "statuses", "groups"
   add_foreign_key "weekly_retrospects", "users", column: "character_id"

@@ -9,7 +9,11 @@ class GroupsController < ApplicationController
 
   def show
     if @group == universe
-      redirect_to root_url
+      if params.include?('status-id')
+        redirect_to (root_url + '?status-id=' + params['status-id'])
+      else
+        redirect_to root_url
+      end
     else
       character = Character.in_group(current_user, @group)
       if not character.blank?
