@@ -57,6 +57,7 @@ class GroupsController < ApplicationController
   end
 
   def members
+    @members = @group.characters
   end
 
   def create
