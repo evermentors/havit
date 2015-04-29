@@ -30,7 +30,6 @@ gem 'aws-sdk', '< 2.0'
 gem 'commontator'
 gem 'autosize-rails'
 gem 'searchkick'
-gem "lograge"
 
 group :production do
   gem 'rails_12factor'
