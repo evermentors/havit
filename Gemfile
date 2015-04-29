@@ -34,6 +34,7 @@ gem "lograge"
 
 group :production do
   gem 'rails_12factor'
+  gem 'rack-cache'
 end
 
 group :test do
