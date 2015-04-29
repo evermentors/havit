@@ -1,0 +1,7 @@
+kucho:
+  name: kucho
+  email: jku856@gmail.com
+  encrypted_password: ever8253
+  sign_in_count: 0
+  created_at: <%= Time.zone.now %>
+  last_used_character: 1
