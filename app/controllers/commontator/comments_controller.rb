@@ -34,14 +34,18 @@ module Commontator
           format.html { redirect_to @thread }
           format.js { render :cancel }
         elsif @comment.save
-          recipient = Status.find(@thread.commontable_id).character.user_id
-          datestr = Status.find(@thread.commontable_id).verified_at.strftime("%-m월 %-d일")
-          notification = Notification.new(
+          status = Status.find(@thread.commontable_id)
+          group = status.character.group
+          recipient = status.character.user_id
+          datestr = status.verified_at.strftime("%-m월 %-d일")
+
+          notification = Notification.create!(
             user: current_user,
             recipient: recipient,
-            description: "#{User.find(recipient).name}님의 #{datestr} 실천에 댓글을 달았습니다.",
-            link: main_app.status_path(Status.find(@thread.commontable_id)))
-          notification.save
+            description: "#{group.name} 그룹에서 #{User.find(recipient).name}님의 #{datestr} 실천에 댓글을 달았습니다.",
+            link: main_app.group_path(group),
+            group: group,
+            status: status)
 
           sub = @thread.config.thread_subscription.to_sym
           @thread.subscribe(@user) if sub == :a || sub == :b

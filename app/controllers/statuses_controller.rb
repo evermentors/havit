@@ -34,14 +34,13 @@ class StatusesController < ApplicationController
       end
 
       if @daily_goal.save
-        notification = Notification.new(
+        notification = Notification.create!(
           user: current_user,
           recipient: 0,
           description: "#{current_character.group.name} 그룹에서 #{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
-          link: '',
+          link: group_path(current_character.group),
           group: current_character.group,
           status: @status)
-        notification.save!
         redirect_to url
       else
         redirect_to url, notice: 'error: daily goal on new status'

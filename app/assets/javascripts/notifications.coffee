@@ -6,19 +6,17 @@ show_notifications = ()->
         $('.notification').slice(5).remove()
       $('.notifications-li').toggleClass('closed opened').focus()
     else
-      $('.notifications-li').blur()
+      close_notifications()
 
 close_notifications_on_blur = () ->
   $('.notifications-li').on 'blur', ->
     close_notifications()
 
-scroll_to_status = ()->
+move_to_notification_link = ()->
   $('body').on 'click', '.notification-link', ->
-    status_url = $(this).attr('status-url').split('/')
-    status_id = status_url[status_url.length - 1]
-    target = $('.card-container#status-card-'+status_id)
-    $('html, body').animate({scrollTop: target.offset().top - 100}, 1000);
-    close_notifications()
+    group = $(this).attr('url')
+    status = '?status-id=' + $(this).attr('status-id')
+    window.location.href = group + status
 
 close_notifications = () ->
   unless $('.notifications-li').hasClass('closed')
@@ -48,9 +46,16 @@ not_notified_yet = (noti_id) ->
   else
     return true
 
+scroll_to_status = () ->
+  if window.location.search.includes('status-id')
+    status_id = window.location.search.split('status-id=')[1]
+    target = $('.card-container#status-card-'+status_id)
+    $('html, body').animate({scrollTop: target.offset().top - 100}, 1000);
+
 $(document).on 'ready page:load', show_notifications
 $(document).on 'ready page:load', close_notifications_on_blur
-$(document).on 'ready page:load', scroll_to_status
+$(document).on 'ready page:load', move_to_notification_link
 $(document).on 'ready page:load', load_notifications
 $(document).on 'ready page:load', pull_unread
 $(document).on 'ready page:load', window.not_notified_yet = not_notified_yet
+$(document).on 'ready page:load', scroll_to_status
