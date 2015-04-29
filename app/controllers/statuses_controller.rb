@@ -3,7 +3,6 @@
 class StatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_status, only: [:edit, :update, :destroy]
-  before_action :set_group
 
   def index
     @statuses = Status.from(universe).page(params[:page])
@@ -15,7 +14,7 @@ class StatusesController < ApplicationController
 
   def create
     @status = current_character.statuses.build(status_params)
-    @status.group = @group
+    @status.group = current_character.group
 
     if @status.save
       if params[:next_daily_goal].present?
@@ -38,9 +37,11 @@ class StatusesController < ApplicationController
         notification = Notification.new(
           user: current_user,
           recipient: 0,
-          description: "#{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
-          link: status_path(@status))
-        notification.save
+          description: "#{current_character.group.name} 그룹에서 #{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
+          link: '',
+          group: current_character.group,
+          status: @status)
+        notification.save!
         redirect_to url
       else
         redirect_to url, notice: 'error: daily goal on new status'
@@ -70,10 +71,6 @@ class StatusesController < ApplicationController
   private
     def set_status
       @status = Status.find(params[:id])
-    end
-
-    def set_group
-      @group ||= current_character.group
     end
 
     def status_params
