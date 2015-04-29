@@ -12,7 +12,7 @@
     .group-members-info
       span.glyphicon.glyphicon-user
       .members
-        => link_to @group.characters.count, members_groups_path, class: 'current-members-count'
+        => link_to @group.characters.count, members_group_path, class: 'current-members-count'
         ' /
         span.member-limit
           - if @group.member_limit == 0

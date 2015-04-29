@@ -38,7 +38,9 @@ class DailyGoalsController < ApplicationController
     date = params[:date].to_date
     datestr = "#{view_context.datestring date} #{view_context.weekdaystring date}: "
     @description = "#{datestr}#{view_context.daily_goal_description date, 'long'}"
+    @description = @description.gsub(/[\r\n]/, "\r"=>'', "\n"=>' nl ');
     @goal = view_context.daily_goal_description(date.tomorrow)
+    @goal = @goal.gsub(/[\r\n]/, "\r"=>'', "\n"=>' ');
   end
 
   private

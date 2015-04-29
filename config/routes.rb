@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     member do
       post :join
       get :can_join
-    end
-    collection do
       get :members
     end
   end
