@@ -1,20 +1,6 @@
 .list-group.edit-goal-card
   span.list-group-item.list-group-item-info.dropdown.group-select
-    .dropdown-toggle id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
-      .group-title = "그룹: [#{current_character.group.name}]"
-      span.caret
-    ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu1"
-      - for group in groups_of_user
-        - active = (group == current_character.group ? 'active' : '')
-        li role="presentation" class=active
-          a.menuitem role="menuitem" href=group_path(group) title="그룹 이름: #{group.name}"
-            span.glyphicon.glyphicon-ok
-            .group-name = group.name
-            .group-description = group.description
-      li role="presentation" class='create-new-group'
-        a.menuitem role="menuitem" href=new_group_path
-          span.glyphicon.glyphicon-plus
-          span.description 새 그룹 만들기
+    = render 'groups/select'
 
   span.list-group-item.monthly class=old_goal?('season')
     h4.list-group-item-heading data-toggle='tooltip' data-placement='top' title=seasonstring_detail(last_monthly_goal.season) = seasonstring last_monthly_goal.season

@@ -1,6 +1,105 @@
-.navigation-logo > img {
-  height: 50px;
-  width: auto;
+.navbar-group-select {
+  @media (min-width: 768px) {
+    display: none;
+  }
+  position: absolute;
+  top: 5px;
+  left: 150px;
+  width: 160px;
+  border-radius: 5px;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 0;
+  cursor: pointer;
+  color: #31708f;
+  background-color: #d9edf7;
+  .dropdown-toggle {
+    padding: 10px 15px;
+    .group-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .caret {
+      position: absolute;
+      right: 13px;
+      top: 18px;
+    }
+  }
+  .dropdown-menu {
+    max-height: 300px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    overflow-y: scroll;
+    li {
+      border-bottom: 1px solid #ccc;
+      .menuitem {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        .group-name, .group-description {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .group-description {
+          font-size: 11px;
+          color: #aaa;
+        }
+      }
+    }
+    .glyphicon-ok {
+      display: none;
+    }
+    .active {
+      position: relative;
+      .glyphicon-ok {
+        display: block;
+        position: absolute;
+        color: black;
+        font-size: 11px;
+        top: 11px;
+        left: 3px;
+      }
+      a {
+        background-color: #fff;
+        color: #333333;
+        font-weight: bold;
+      }
+      a:hover, a:focus {
+        background-color: #f5f5f5;
+      }
+    }
+    .create-new-group {
+      position: relative;
+      .glyphicon-plus {
+        position: absolute;
+        font-size: 11px;
+        top: 11px;
+        left: 4px;
+      }
+      a {
+        background-color: #ECF8FF;
+      }
+      a:hover, a:active, a:focus {
+        background-color: #85D2FF;
+      }
+    }
+  }
+}
+.navbar-group-select:hover, .navbar-group-select.open {
+  background-color: #A3E0FF;
+}
+
+.navigation-logo {
+  @media (max-width: 768px) {
+    float: left;
+    margin-left: 15px;
+  }
+  img {
+    height: 50px;
+    width: auto;
+  }
 }
 
 .nav .my-page-link-li {
