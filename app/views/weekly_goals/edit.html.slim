@@ -1,6 +1,14 @@
 h1 Editing weekly_goal
 
-== render 'form'
+= simple_form_for(@weekly_goal) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+    = f.input :weeknum
+
+  .form-actions
+    = f.button :submit
 
 = link_to 'Back', root_path
 '|

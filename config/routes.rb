@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   resources :monthly_goals, only: [:edit, :update, :destroy]
 
-  resources :weekly_goals, only: [:edit, :update, :destroy]
+  resources :weekly_goals, only: [:create, :edit, :update, :destroy]
 
   resources :daily_goals, only: [:create, :edit, :update, :destroy]
 

@@ -7,8 +7,22 @@ class WeeklyGoalsController < ApplicationController
   def edit
   end
 
+  def create
+    @weekly_goal = current_character.weekly_goals.build(weekly_goal_params)
+    @weekly_goal.weeknum = Date.current.beginning_of_week
+
+    @daily_goal = current_character.daily_goals.build(daily_goal_params)
+    @daily_goal.goal_date = Date.current
+
+    if @weekly_goal.save and @daily_goal.save
+      redirect_to url, notice: "#{view_context.weekstring_short Date.current}의 목표를 등록했습니다: #{@weekly_goal.description}"
+    else
+      redirect_to url, alert: "목표 등록에 오류가 발생했습니다."
+    end
+  end
+
   def update
-    notice_text = "#{view_context.weekstring}의 목표를 변경했습니다: #{@weekly_goal.description} -> #{weekly_goal_params[:description]}"
+    notice_text = "#{view_context.weekstring_short}의 목표를 변경했습니다: #{@weekly_goal.description} -> #{weekly_goal_params[:description]}"
     if @weekly_goal.update(weekly_goal_params)
       redirect_to url, notice: notice_text
     else
@@ -31,5 +45,9 @@ class WeeklyGoalsController < ApplicationController
 
     def weekly_goal_params
       params.require(:weekly_goal).permit(:description, :weeknum, :user_id)
+    end
+
+    def daily_goal_params
+      params.require(:daily_goal).permit(:description)
     end
 end

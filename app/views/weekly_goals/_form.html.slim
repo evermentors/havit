@@ -1,9 +1,15 @@
-= simple_form_for(@weekly_goal) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :description
-    = f.input :weeknum
-
-  .form-actions
-    = f.button :submit
+= form_tag "/weekly_goals", method: "post", class: "set-weekly-daily-goal"
+  .panel.panel-success
+    .panel-heading
+      h3.panel-title #{current_user.name}님, [#{current_character.group.name}] 그룹에서 이번 주의 목표를 등록하지 않으셨군요!
+    .panel-body
+      .form-group
+        p
+          | #{current_user.name}님의 #{weekstring_short} 목표(
+          span.goal-text = last_weekly_goal.description
+          | )를 그대로 이번 주 목표로 등록하시거나, 수정해서 등록하실 수 있습니다.
+        = text_area_tag 'weekly_goal[description]', last_weekly_goal.description, placeholder: "이번 주의 목표는 무엇인가요?", required: true, class: 'form-control'
+        p 오늘 목표도 정해주세요.
+        = text_area_tag 'daily_goal[description]', nil, placeholder: "오늘은 무엇을 해보시겠어요?", required: true, class: 'form-control'
+      .actions
+        = submit_tag "목표 등록하기", class: 'btn btn-success submit-btn'
