@@ -36,7 +36,7 @@
           <%= link_to name, main_app.user_path(creator)%>
         </span>
         <span class="body-description">
-          <%= comment.body %>
+          <%= auto_link(comment.body, html: {target: '_blank'}) do |text| truncate(text, length: 30) end %>
         </span>
         <div class="comment_timestamp_div">
           <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
