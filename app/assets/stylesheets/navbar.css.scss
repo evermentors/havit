@@ -1,6 +1,13 @@
-.navigation-logo > img {
-  height: 50px;
-  width: auto;
+
+.navigation-logo {
+  @media (max-width: 768px) {
+    float: left;
+    margin-left: 15px;
+  }
+  img {
+    height: 50px;
+    width: auto;
+  }
 }
 
 .nav .my-page-link-li {

@@ -1,5 +1,5 @@
 .searched-group
-  .left-area.pull-left
+  .left-area.col-md-8.col-sm-7.col-xs-7
     .privacy-info.pull-left
       - if group.password.blank?
         span.glyphicon.glyphicon-globe data-toggle='tooltip' data-plcaement='top' title='누구나 그룹에 가입할 수 있습니다.'
@@ -12,7 +12,7 @@
         = group.description
       - else
         ' 그룹 설명이 없습니다.
-  .right-area
+  .right-area.col-md-4.col-sm-5.col-xs-5
     .metainfo
       .admin-info.pull-left
         ' 관리자:

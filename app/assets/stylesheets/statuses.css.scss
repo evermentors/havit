@@ -116,10 +116,19 @@
     .status-footer {
       margin-top: 10px;
       .next-daily-goal-input {
-        width: 500px;
+        width: auto;
+        display: inline-block;
+        @media (min-width : 768px) and (max-width: 992px) {
+          width: 330px;
+        }
+        @media (min-width : 992px) {
+          width: 500px;
+        }
       }
       .submit-btn {
-        float: right;
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
       }
     }
   }
