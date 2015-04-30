@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def seasonstring (date=season_start)
-    date.strftime("%-Y년 %-m월 시즌")
+    date.strftime("%-y년 %-m월 시즌")
   end
 
   def seasonstring_detail (date=season_start)

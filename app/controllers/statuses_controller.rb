@@ -61,7 +61,6 @@ class StatusesController < ApplicationController
   end
 
   def destroy
-    Notification.related_to(@status.id).destroy_all
     @status.destroy
     respond_to do |format|
       format.html { redirect_to url, notice: 'Status was successfully destroyed.' }

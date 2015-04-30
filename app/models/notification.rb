@@ -6,8 +6,6 @@ class Notification < ActiveRecord::Base
   validates :description, presence: true
   validates :recipient, presence: true
 
-  scope :related_to, -> (status_id) { where(link: "/statuses/#{status_id}") }
-
   class << self
     def unread(user)
       where("id > ? and #{notify_condition}",
