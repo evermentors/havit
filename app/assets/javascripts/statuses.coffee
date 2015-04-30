@@ -33,7 +33,8 @@ toggle_monthly_weekly_goals = () ->
       $(this).prevAll('.goals-hidden').slideUp(-> see_detail.toggleClass('up down'))
 
 apply_tooltip = () ->
-  $('[data-toggle="tooltip"]').tooltip({container: 'body'})
+  if !(window.matchMedia("(max-width: 767px)").matches)
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'})
 
 show_uploaded_photo = () ->
   $('#status_photo').change () ->

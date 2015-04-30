@@ -97,3 +97,9 @@ section {
 textarea {
   resize: none;
 }
+
+@media (max-width: 768px) {
+  .tooltip {
+    display: none !important;
+  }
+}
