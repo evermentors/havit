@@ -29,7 +29,7 @@
       span.goal-text = daily_goal(status.character, status.verified_at).description
 
 = content_for :card_message, flush:true
-  span.description.nl2br == status.description
+  span.description.nl2br == auto_link(status.description)
 
 = content_for :card_photo, flush:true
   - if status.photo?
