@@ -9,7 +9,7 @@ on_verified_at_changed = () ->
     else
       $('.verify-tomorrow').addClass('hidden')
     date.setDate(date.getDate() + 1)
-    datestr = (date.getMonth()+1) + '월 ' + date.getDate() + '일'
+    datestr = (date.getMonth()+1) + '월 ' + date.getDate() + '일 목표'
     $('.status-footer .next-goal-date').text(datestr)
     $.ajax(url: '/daily_goals/' + $(this).val())
 
