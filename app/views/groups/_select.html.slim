@@ -1,5 +1,5 @@
 .dropdown-toggle id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
-  .group-title = "그룹: [#{current_character.group.name}]"
+  .group-title = "#{current_character.group.name}"
   span.caret
 ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu1"
   - for group in groups_of_user

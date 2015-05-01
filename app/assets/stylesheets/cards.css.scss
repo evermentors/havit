@@ -22,15 +22,15 @@
   padding: 15px 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  background-color: rgb(181, 213, 255);
   margin: -1px 0;
   font-weight:bold;
-  font-size:18px;
+  font-size: 16px;
   text-align: center;
   .goals-hidden {
     display: none;
   }
   .see-detail {
+    color: #AEAEAE;
     float: right;
     margin-top: -6px;
     outline: 0;
@@ -85,12 +85,16 @@
     margin-bottom:0;
     .list-group-item-heading {
       cursor: default;
+      color: #444;
+      font-size: 16px;
     }
   }
   .list-group-item.group-select.open ~ .list-group-item {
     opacity: 0.4;
   }
   .list-group-item.group-select {
+    color: rgb(234, 84, 19);
+    font-weight: bold;
     border-bottom: 1px solid #e7e7e7;
     padding: 0;
     cursor: pointer;
@@ -160,23 +164,17 @@
           top: 11px;
           left: 4px;
         }
-        a {
-          background-color: #ECF8FF;
-        }
-        a:hover, a:active, a:focus {
-          background-color: #85D2FF;
-        }
       }
     }
   }
   .list-group-item.group-select:hover, .list-group-item.group-select.open {
-    background-color: #A3E0FF;
+    background-color: #DDDDDD;
   }
   .list-group-item.weekly {
     @extend %has-border-top-bottom;
   }
   .list-group-item-text {
-    color: #379D41;
+    color: #555;
   }
 
   .list-group-item.old {
