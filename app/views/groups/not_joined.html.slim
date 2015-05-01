@@ -1,10 +1,17 @@
 = paginate @statuses, window: 2 unless hidden
 
-.container-header
-  .edit-goal.container-sidebar
-    = render 'statuses/edit_goal'
-  .group-info-container.container-center
-    = render @group
+- if no_monthly_goal?
+  - if Status.where(character: current_character).blank?
+    .no-monthly-goal
+      = render 'goals/form'
+  - else
+    = render text: '월간회고 해라'
+- else
+  .container-header
+    .edit-goal.container-sidebar
+      = render 'statuses/edit_goal'
+    .group-info-container.container-center
+      = render @group
 
 .container-body
   = render @statuses unless hidden
