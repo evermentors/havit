@@ -47,7 +47,7 @@ not_notified_yet = (noti_id) ->
     return true
 
 scroll_to_status = () ->
-  if window.location.search.includes('status-id')
+  if window.location.search.indexOf('status-id') > -1
     status_id = window.location.search.split('status-id=')[1]
     target = $('.card-container#status-card-'+status_id)
     $('html, body').animate({scrollTop: target.offset().top - 100}, 1000);
