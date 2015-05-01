@@ -3,15 +3,12 @@
   padding: 0 5px;
   .notification-btn {
     font-size: 19px;
-    color: #B3B3B3;
+    color: #777;
     width: 30px;
     text-align: center;
-    margin-top: 14px;
-    margin-bottom: 9px;
+    padding-top: 14px;
+    padding-bottom: 9px;
     cursor: pointer;
-  }
-  .notification-btn:hover {
-    color: white;
   }
   .notifications-container {
     background: rgba(255,255,255,.98);
@@ -27,9 +24,15 @@
     margin-left: -115px;
   }
 }
+.notifications-li:hover, .notifications-li:focus {
+  background-color: #E2E2E2;
+  .notification-btn {
+    color: #333;
+  }
+}
 .notifications-li.opened {
   .notification-btn {
-    color: white;
+    color: #333;
   }
 }
 .notifications-li.closed {

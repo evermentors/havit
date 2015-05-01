@@ -1,3 +1,9 @@
+.navbar {
+  background-color: white;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+}
+
 .navbar-group-select {
   @media (min-width: 768px) {
     display: none;
@@ -113,11 +119,12 @@
       display: inline-block;
     }
   }
-  .my-page-link:hover {
-    background-color: rgba(73, 73, 73, 0.83);
-  }
 }
+
 .nav.navbar-nav.navbar-right {
+  a:hover {
+    background-color: #E2E2E2;
+  }
   .edit-account-li > a {
     font-size: 1.5em;
     padding-left: 10px;
