@@ -58,18 +58,20 @@ module ApplicationHelper
   end
 
   def new_status_form_hidden?
-    unless no_monthly_goal?
-      if day_passed_since_last_retro <= 5
-        if day_passed_since_last_retro == 5 and last_verified_at == Date.current
-          return true
-        elsif no_daily_goal?
-          return true
-        else
-          return false
-        end
-      end
-    end
-    return true
+    # TODO: recover after retrospect is complete
+    # unless no_monthly_goal?
+    #   if day_passed_since_last_retro <= 5
+    #     if day_passed_since_last_retro == 5 and last_verified_at == Date.current
+    #       return true
+    #     elsif no_weekly_goal? or no_daily_goal?
+    #       return true
+    #     else
+    #       return false
+    #     end
+    #   end
+    # end
+    # return true
+    return (no_monthly_goal? or no_weekly_goal? or no_daily_goal?)
   end
 
   def old_goal? (option)

@@ -1,9 +1,9 @@
 - if no_monthly_goal?
-  - if Status.where(character: current_character).blank?
-    .no-monthly-goal
-      = render 'goals/form'
-  - else
-    = render text: '월간회고 해라'
+  / - if Status.where(character: current_character).blank?
+  .no-monthly-goal
+    = render 'goals/form'
+  / - else
+  /   = render text: '월간회고 해라'
 - else
   .container-header
     .edit-goal.container-sidebar
@@ -11,22 +11,29 @@
     - if defined? show_group
       .group-info-container.container-center
         = render @group
-    - if day_passed_since_last_retro <= 5
-      - if day_passed_since_last_retro == 5 and last_verified_at == Date.current
-        .notice-container.container-center.retro
-          = render 'retrospects/retro_only'
-      - elsif no_weekly_goal?
-        .notice-container.container-center
-          = render 'weekly_goals/form'
-      - elsif no_daily_goal?
-        .notice-container.container-center
-          = render 'daily_goals/form'
-    - elsif day_passed_since_last_retro <= 15
-      .notice-container.container-center.retro
-        = render 'retrospects/retro_or_status'
-    - else
-      .notice-container.container-center.retro
-        = render 'retrospects/retro_or_goal'
+    / TODO: recover after retrospect is complete
+    / - if day_passed_since_last_retro <= 5
+    /   - if day_passed_since_last_retro == 5 and last_verified_at == Date.current
+    /     .notice-container.container-center.retro
+    /       = render 'retrospects/retro_only'
+    /   - elsif no_weekly_goal?
+    /     .notice-container.container-center
+    /       = render 'weekly_goals/form'
+    /   - elsif no_daily_goal?
+    /     .notice-container.container-center
+    /       = render 'daily_goals/form'
+    / - elsif day_passed_since_last_retro <= 15
+    /   .notice-container.container-center.retro
+    /     = render 'retrospects/retro_or_status'
+    / - else
+    /   .notice-container.container-center.retro
+    /     = render 'retrospects/retro_or_goal'
+    - if no_weekly_goal?
+      .notice-container.container-center
+        = render 'daily_goals/form'
+    - elsif no_daily_goal?
+      .notice-container.container-center
+        = render 'daily_goals/form'
 
     .new-status-form-div.container-center class=(new_status_form_hidden? ? 'hidden' : '')
       = render 'statuses/new'
