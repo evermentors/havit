@@ -66,15 +66,13 @@
         padding-top: 5px;
         font-size: 13px;
         color: #9197a3;
-        @media (max-width: 992px) {
-          display: block;
-          display: -webkit-box;
-          height: 80px;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
+        display: block;
+        display: -webkit-box;
+        height: 80px;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .right-area {
