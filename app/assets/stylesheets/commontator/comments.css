@@ -20,13 +20,13 @@
   right: 7px;
 }
 
-.comment:hover .comment_actions {
-  visibility: visible;
+.comment:hover .comment_actions, .comment:focus .comment_actions {
+  display: block;
 }
 
 .comment_actions {
+  display: none;
   float: right;
-  visibility: hidden;
 }
 
 .comment_actions a:hover, .comment_actions a:visited, .comment_actions a:active, .comment_actions a:focus {
