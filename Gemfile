@@ -58,3 +58,7 @@ group :development do
   gem 'spring'
   # gem 'web-console'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
