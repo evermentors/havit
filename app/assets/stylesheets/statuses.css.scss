@@ -60,18 +60,22 @@
     margin-top : 5px;
     margin-bottom: 0;
     .status-photo {
+      display: inline-table;
+      vertical-align: middle;
       text-align: center;
-      width: 40px;
-      float: right;
       border: 1px solid rgba(0, 0, 0, 0.1);
-      margin-top: -46px;
       margin-right: 0;
       background-color: #EFEFEF;
       border-radius: 5px;
       .status-photo-wrapper {
         position: relative;
         height: 33px;
+        width: 40px;
         cursor: pointer;
+        @media (max-width: 400px) {
+          height: 28px;
+          width: 30px;
+        }
         .status-photo-link {
           .photo-upload-wrapper {
             height: 100%;
@@ -81,6 +85,9 @@
             top: 0;
             width: 100%;
             font-size: 25px;
+            @media (max-width: 400px) {
+              font-size: 21px;
+            }
             .hidden-file-input {
               bottom: 0;
               cursor: inherit;
@@ -115,20 +122,53 @@
     }
     .status-footer {
       margin-top: 10px;
-      .next-daily-goal-input {
-        width: auto;
-        display: inline-block;
-        @media (min-width : 768px) and (max-width: 992px) {
-          width: 330px;
+      .next-daily-goal {
+        @media (min-width: 400px) {
+          display: inline-table;
+          vertical-align: middle;
+          width: 70%;
         }
-        @media (min-width : 992px) {
-          width: 500px;
+        @media (min-width: 555px) {
+          display: inline-table;
+          vertical-align: middle;
+          width: 80%;
+        }
+        .next-goal-date {
+          padding-left: 7px;
+          padding-right: 7px;
+          @media (max-width: 400px) {
+            padding: 5px 10px;
+            font-size: 12px;
+          }
+        }
+        .next-daily-goal-input {
+          width: 100%;
+          display: inline-block;
+          @media (max-width: 400px) {
+            height: 30px;
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+          }
+          @media (min-width : 768px) and (max-width: 992px) {
+            width: 280px;
+          }
+          @media (min-width : 992px) {
+            width: 490px;
+          }
         }
       }
       .submit-btn {
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
+        display: inline-table;
+        vertical-align: middle;
+        float: right;
+        @media (max-width: 400px) {
+          padding: 5px 10px;
+          font-size: 12px;
+          line-height: 1.5;
+          border-radius: 3px;
+          float: none;
+        }
       }
     }
   }
