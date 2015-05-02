@@ -1,3 +1,19 @@
+%havit-color {
+  color: rgb(236, 84, 19);
+}
+%havit-bg-bright {
+  background-color: hsl(18, 84%, 60%);
+  border-color: hsl(18, 84%, 50%);
+}
+%havit-bg {
+  background-color: hsl(18, 85%, 50%);
+  border-color: hsl(18, 85%, 40%);
+}
+%havit-bg-dark {
+  background-color: hsl(18, 86%, 40%);
+  border-color: hsl(18, 86%, 30%);
+}
+
 // Used only when there is no montly goal
 .no-monthly-goal {
   position:relative;
@@ -16,7 +32,7 @@
 }
 
 .goal-text {
-  color: rgb(236, 84, 19);
+  @extend %havit-color;
 }
 
 .status-author {
@@ -77,7 +93,7 @@
           width: 30px;
         }
         .status-photo-link {
-          color: #EA5413;
+          @extend %havit-color;
           .photo-upload-wrapper {
             height: 100%;
             overflow: hidden;
@@ -108,7 +124,6 @@
       background-color: #D9D9D9;;
       .status-photo-link:hover {
         text-decoration: none;
-        color: #EA5413 !important;
       }
     }
     .photo-preview {
@@ -163,8 +178,7 @@
         display: inline-table;
         vertical-align: middle;
         float: right;
-        background-color: hsl(18, 85%, 50%);
-        border-color: hsl(18, 85%, 40%);
+        @extend %havit-bg;
         color: #fff;
         @media (max-width: 400px) {
           padding: 5px 10px;
@@ -175,8 +189,7 @@
         }
       }
       .submit-btn:hover {
-        background-color: hsl(18, 86%, 40%);
-        border-color: hsl(18, 86%, 30%);
+        @extend %havit-bg-dark;
       }
     }
   }
