@@ -3,7 +3,7 @@ on_verified_at_changed = () ->
     unless $(this).hasClass('active')
       goal_date = $(this).attr('goal-date')
 
-      $('.status-dates li.active').removeClass('active')
+      $('.status-dates li.active').removeClass('active first-load')
       $(this).addClass('active')
       $('.status-verified-at').val(goal_date)
 

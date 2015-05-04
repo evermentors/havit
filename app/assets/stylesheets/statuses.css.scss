@@ -114,16 +114,75 @@
         margin-left: 4px;
       }
     }
-    li:hover {
-      @extend %havit-color;
-    }
     li:last-child {
       border-right: none;
     }
     li.active {
-      @extend %havit-color;
-      border-bottom: none;
       font-weight: bold;
+    }
+    li.active.first-load {
+      .emphasize:after {
+        font-weight: bold;
+        -moz-animation-duration: .7s;
+        -webkit-animation-duration: .7s;
+        animation-duration: .7s;
+      }
+    }
+    li.active, li:not(.active):hover {
+      @extend %havit-color;
+      .emphasize:after {
+        content: '';
+        display: block;
+        margin: auto;
+        height: 3px;
+        width: 45%;
+        background-color: hsl(18, 85%, 50%);
+
+        -moz-animation-name: emphasize;
+        -moz-animation-iteration-count: 1;
+        -moz-animation-timing-function: ease;
+        -moz-animation-duration: .3s;
+
+        -webkit-animation-name: emphasize;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease;
+        -webkit-animation-duration: .3s;
+
+        animation-name: emphasize;
+        animation-iteration-count: 1;
+        animation-timing-function: ease;
+        animation-duration: .3s;
+      }
+      @-moz-keyframes emphasize {
+        0% {
+          width: 0%;
+          background-color: #fff;
+        }
+        100% {
+          width: 45%;
+          background-color: hsl(18, 85%, 50%);
+        }
+      }
+      @-webkit-keyframes emphasize {
+        0% {
+          width: 0%;
+          background-color: #fff;
+        }
+        100% {
+          width: 45%;
+          background-color: hsl(18, 85%, 50%);
+        }
+      }
+      @keyframes emphasize {
+        0% {
+          width: 0%;
+          background-color: #fff;
+        }
+        100% {
+          width: 45%;
+          background-color: hsl(18, 85%, 50%);
+        }
+      }
     }
   }
   .status-goal {
