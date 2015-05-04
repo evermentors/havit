@@ -1,7 +1,40 @@
+%havit-white-button {
+  color: rgb(236, 84, 19);
+  border: 1px solid hsl(18, 85%, 50%);
+  background-color: #fff;
+}
+%havit-white-button-hover {
+  background-image: linear-gradient(#fff, rgba(236, 84, 19, .1));
+}
+%havit-color {
+  color: rgb(236, 84, 19);
+}
+%havit-border-bright {
+  border: 1px solid hsl(18, 85%, 60%);
+}
+%havit-border {
+  border: 1px solid hsl(18, 85%, 50%);
+}
+%havit-border-dark {
+  border: 1px solid hsl(18, 85%, 40%);
+}
+%havit-bg-bright {
+  background-color: hsl(18, 84%, 60%);
+  border-color: hsl(18, 84%, 50%);
+}
+%havit-bg {
+  background-color: hsl(18, 85%, 50%);
+  border-color: hsl(18, 85%, 40%);
+}
+%havit-bg-dark {
+  background-color: hsl(18, 86%, 40%);
+  border-color: hsl(18, 86%, 30%);
+}
 %has-border-top-bottom {
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
 }
+
 .card-container {
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
@@ -47,8 +80,17 @@
 }
 .card-message {
   padding: 10px;
-  .description {
-    margin-top: -15px;
+  .next-goal {
+    text-align: right;
+    padding-top: 10px;
+    opacity: 0.6;
+    font-size: 85%;
+    .goal-description {
+      @extend %havit-color;
+    }
+  }
+  .next-goal:before {
+    content: '\2014 \00A0';
   }
 }
 .card-actions {

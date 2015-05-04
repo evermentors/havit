@@ -1,3 +1,47 @@
+@font-face {
+  font-family: 'Harlow Solid Italic';
+  src: url(font-path('harlow_solid_italic.eot'));
+  src: url(font-path('harlow_solid_italic.eot') + "?#iefix") format('embedded-opentype'),
+       url(font-path('harlow_solid_italic.svg') + '#Harlow Solid Italic') format('svg'),
+       url(font-path('harlow_solid_italic.woff')) format('woff'),
+       url(font-path('harlow_solid_italic.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+%havit-white-button {
+  color: rgb(236, 84, 19);
+  border: 1px solid hsl(18, 85%, 50%);
+  background-color: #fff;
+}
+%havit-white-button-hover {
+  background-image: linear-gradient(#fff, rgba(236, 84, 19, .1));
+}
+%havit-color {
+  color: rgb(236, 84, 19);
+}
+%havit-border-bright {
+  border: 1px solid hsl(18, 85%, 60%);
+}
+%havit-border {
+  border: 1px solid hsl(18, 85%, 50%);
+}
+%havit-border-dark {
+  border: 1px solid hsl(18, 85%, 40%);
+}
+%havit-bg-bright {
+  background-color: hsl(18, 84%, 60%);
+  border-color: hsl(18, 84%, 50%);
+}
+%havit-bg {
+  background-color: hsl(18, 85%, 50%);
+  border-color: hsl(18, 85%, 40%);
+}
+%havit-bg-dark {
+  background-color: hsl(18, 86%, 40%);
+  border-color: hsl(18, 86%, 30%);
+}
+
 // Used only when there is no montly goal
 .no-monthly-goal {
   position:relative;
@@ -16,7 +60,7 @@
 }
 
 .goal-text {
-  color: rgb(236, 84, 19);
+  @extend %havit-color;
 }
 
 .status-author {
@@ -51,33 +95,138 @@
 }
 
 .new-status-form {
+  .status-dates {
+    padding-left: 0;
+    text-align: center;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-bottom: 10px;
+    li {
+      display: inline-block;
+      list-style: none;
+      width: 14.2857%;
+      color: #BFBFBF;
+      margin-right: -4px;
+      padding: 5px 0;
+      border-right: 1px solid #E6E6E6;
+      cursor: pointer;
+      .glyphicon-ok {
+        margin-left: 4px;
+      }
+    }
+    li:hover {
+      @extend %havit-color;
+    }
+    li:last-child {
+      border-right: none;
+    }
+    li.active {
+      @extend %havit-color;
+      border-bottom: none;
+      font-weight: bold;
+    }
+  }
+  .status-goal {
+    margin-bottom: 5px;
+    .goal-date {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .goal-description {
+      @extend %havit-color;
+      font-size: 15px;
+    }
+  }
   .status-author {
     .status-new-description {
       margin-left: 45px;
     }
   }
-  .form-group {
-    margin-top : 5px;
-    margin-bottom: 0;
+  .status-body {
+    margin: 5px 0;
+    textarea {
+      border-radius: 4px;
+      box-shadow: none;
+      border: 1px solid #D9D9D9;
+      border-bottom: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    textarea::-webkit-input-placeholder {
+      color: #666;
+    }
+    textarea:-moz-input-placeholder {
+      color: #666;
+      opacity: 1;
+    }
+    textarea::-moz-input-placeholder {
+      color: #666;
+      opacity: 1;
+    }
+    textarea:-ms-input-placeholder {
+      color: #666;
+    }
+    textarea:focus::-webkit-input-placeholder {
+      color: #999;
+    }
+    textarea:focus:-moz-input-placeholder {
+      color: #999;
+      opacity: 1;
+    }
+    textarea:focus::-moz-input-placeholder {
+      color: #999;
+      opacity: 1;
+    }
+    textarea:focus:-ms-input-placeholder {
+      color: #999;
+    }
+    .next-daily-goal {
+      border: 1px solid #D9D9D9;
+      border-top-style: dotted;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      .next-goal-date {
+        color: #999;
+        padding-left: 5px;
+        padding-right: 5px;
+        background-color: white;
+        border: none;
+        line-height: 1.42857143;
+      }
+      .next-daily-goal-input {
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    .photo-preview {
+      height: 200px;
+      max-width: 200px;
+      margin: 10px auto 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top left;
+      border: 1px solid #ccc;
+      background-color: white;
+    }
+  }
+  .status-footer {
     .status-photo {
       display: inline-table;
       vertical-align: middle;
-      text-align: center;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      margin-right: 0;
-      background-color: #EFEFEF;
       border-radius: 5px;
+      @extend %havit-white-button;
       .status-photo-wrapper {
         position: relative;
         height: 32px;
-        width: 35px;
         cursor: pointer;
-        @media (max-width: 400px) {
-          height: 28px;
-          width: 30px;
-        }
+        padding-left: 8px;
+        padding-right: 8px;
         .status-photo-link {
-          color: #EA5413;
+          @extend %havit-color;
           .photo-upload-wrapper {
             height: 100%;
             overflow: hidden;
@@ -86,8 +235,8 @@
             top: 0;
             width: 100%;
             font-size: 25px;
-            @media (max-width: 400px) {
-              font-size: 21px;
+            .glyphicon-camera {
+              margin-left: 8px;
             }
             .hidden-file-input {
               bottom: 0;
@@ -101,83 +250,32 @@
               right: 0;
             }
           }
+          .photo-upload-description {
+            line-height: 32px;
+            margin-left: 30px;
+          }
         }
       }
     }
     .status-photo:hover {
-      background-color: #D9D9D9;;
+      @extend %havit-white-button-hover;
       .status-photo-link:hover {
         text-decoration: none;
-        color: #EA5413 !important;
       }
     }
-    .photo-preview {
-      height: 200px;
-      max-width: 200px;
-      margin: 10px auto 0;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: top left;
-      border: 1px solid #ccc;
-      background-color: white;
+    .submit-btn {
+      display: inline-table;
+      vertical-align: middle;
+      float: right;
+      padding-left: 8px;
+      padding-right: 8px;
+      @extend %havit-white-button;
+      .glyphicon-ok {
+        margin-right: 5px;
+      }
     }
-    .status-footer {
-      margin-top: 10px;
-      .next-daily-goal {
-        @media (min-width: 400px) {
-          display: inline-table;
-          vertical-align: middle;
-          width: 70%;
-        }
-        @media (min-width: 555px) {
-          display: inline-table;
-          vertical-align: middle;
-          width: 80%;
-        }
-        .next-goal-date {
-          padding-left: 7px;
-          padding-right: 7px;
-          @media (max-width: 400px) {
-            padding: 5px 10px;
-            font-size: 12px;
-          }
-        }
-        .next-daily-goal-input {
-          width: 100%;
-          display: inline-block;
-          @media (max-width: 400px) {
-            height: 30px;
-            padding: 5px 10px;
-            font-size: 12px;
-            line-height: 1.5;
-          }
-          @media (min-width : 768px) and (max-width: 992px) {
-            width: 280px;
-          }
-          @media (min-width : 992px) {
-            width: 490px;
-          }
-        }
-      }
-      .submit-btn {
-        display: inline-table;
-        vertical-align: middle;
-        float: right;
-        background-color: hsl(18, 85%, 50%);
-        border-color: hsl(18, 85%, 40%);
-        color: #fff;
-        @media (max-width: 400px) {
-          padding: 5px 10px;
-          font-size: 12px;
-          line-height: 1.5;
-          border-radius: 3px;
-          float: none;
-        }
-      }
-      .submit-btn:hover {
-        background-color: hsl(18, 86%, 40%);
-        border-color: hsl(18, 86%, 30%);
-      }
+    .submit-btn:hover {
+      @extend %havit-white-button-hover;
     }
   }
 }

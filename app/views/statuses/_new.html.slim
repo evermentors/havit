@@ -1,28 +1,37 @@
 = form_tag "/statuses", method: "post", multipart: true, class: "new-status-form"
-  .status-author.new
-    = image_tag(current_user.gravatar_url)
-    span.status-new-description
-      ' #{current_user.name}님의
-      / #{weekdaystring(date)}를 써서 '월요일' 같은 걸 나타낼 수 있음
-      = date_field_tag 'status[verified_at]', last_daily_goal.goal_date.to_date, class: 'status-verified-at'
-      ' 실천
-      small.text-danger.verify-tomorrow.hidden 내일 실천은 내일 해요~
+  ul.status-dates
+    - 6.downto(0).each do |day|
+      li class=(last_daily_goal.goal_date==day.days.ago.to_date ? 'active' : '') data-toggle='tooltip' title=datestring(day.days.ago) goal-date=day.days.ago.to_date
+        = Date.current==day.days.ago.to_date ? '오늘' : weekdaystring(day.days.ago, 'short')
+        - if status_at(day.days.ago).present?
+          span.glyphicon.glyphicon-ok
+  = hidden_field_tag 'status[verified_at]', last_daily_goal.goal_date.to_date, class: 'status-verified-at'
 
-  .form-group
+  .status-goal.text-center
+    .goal-date = "#{last_daily_goal.goal_date.strftime("%-Y년 %-m월 %-d일")} #{weekdaystring last_daily_goal.goal_date}"
+    span.goal-description.nl2br = last_daily_goal.description.strip()
+
+  .status-body
     .status-description
-      = text_area_tag 'status[description]', nil, placeholder: "#{datestring last_daily_goal.goal_date} #{weekdaystring last_daily_goal.goal_date}: [#{last_daily_goal.description}] 인증하기", required: true, class: 'form-control', resize: false
+      = text_area_tag 'status[description]', nil, placeholder: '어떤 실천을 하셨나요?', required: true, class: 'form-control', resize: false
+    .input-group.next-daily-goal data-toggle='tooltip' data-plcaement='bottom' title='다음날의 실천 목표를 입력해주세요. 미입력시 가장 최근 목표가 등록됩니다.'
+      span.input-group-addon.next-goal-date = "#{datestring last_daily_goal.goal_date.tomorrow} 목표:"
+      = text_field_tag 'next_daily_goal',
+      (daily_goal_description last_daily_goal.goal_date.tomorrow),
+      placeholder: "미입력시 '#{last_daily_goal.description}'#{korean_postposition(last_daily_goal.description)} 자동 등록됩니다.",
+      class: 'form-control next-daily-goal-input',
+      autocomplete: 'off'
     .photo-preview.hidden
-    .status-footer
-      .input-group.next-daily-goal
-        span.input-group-addon.next-goal-date = "#{datestring last_daily_goal.goal_date.tomorrow} 목표"
-        = text_field_tag 'next_daily_goal',
-        (daily_goal_description last_daily_goal.goal_date.tomorrow),
-        placeholder: "미입력시 [#{last_daily_goal.description}]가 자동 등록됩니다.",
-        class: 'form-control next-daily-goal-input'
-      .status-photo
-        .status-photo-wrapper
-          a.status-photo-link
-            .photo-upload-wrapper data-toggle='tooltip' data-plcaement='top' title='사진 추가하기'
-              span.glyphicon.glyphicon-camera
-              = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
-      = submit_tag "등록", class: 'btn submit-btn'
+
+  .status-footer
+    .status-photo
+      .status-photo-wrapper
+        a.status-photo-link
+          .photo-upload-wrapper
+            span.glyphicon.glyphicon-camera
+            = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
+          span.photo-upload-description 실천 인증샷 추가
+    button.btn.submit-btn type='submit'
+      span.glyphicon.glyphicon-ok
+      ' 인증 완료!
+

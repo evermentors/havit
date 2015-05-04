@@ -9,16 +9,13 @@ module DailyGoalsHelper
     DailyGoal.of(cha, date).last
   end
 
-  def daily_goal_description (date=Date.current, option='short', cha=current_character)
+  def daily_goal_description (date=Date.current, cha=current_character)
     dg = DailyGoal.of(cha, date).last
     if dg.present?
       description = dg.description
-      description = "[#{dg.description}] 인증하기" if option == 'long'
     else
       description = ''
-      description = '목표가 없었습니다.' if option == 'long'
     end
-    return description
   end
 
   def last_daily_goal

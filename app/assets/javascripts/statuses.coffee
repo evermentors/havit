@@ -1,17 +1,22 @@
 on_verified_at_changed = () ->
-  $('.status-verified-at').on 'change', ->
-    date = new Date($(this).val())
-    today = new Date()
-    if date > today
-      date = today
-      $(this).val(today.toJSON().split('T')[0])
-      $('.verify-tomorrow').removeClass('hidden')
-    else
-      $('.verify-tomorrow').addClass('hidden')
-    date.setDate(date.getDate() + 1)
-    datestr = (date.getMonth()+1) + '월 ' + date.getDate() + '일 목표'
-    $('.status-footer .next-goal-date').text(datestr)
-    $.ajax(url: '/daily_goals/' + $(this).val())
+  $('.status-dates li').click ->
+    unless $(this).hasClass('active')
+      goal_date = $(this).attr('goal-date')
+
+      $('.status-dates li.active').removeClass('active')
+      $(this).addClass('active')
+      $('.status-verified-at').val(goal_date)
+
+      week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일')
+      date = new Date(goal_date)
+      date_selected_str = (date.getFullYear()) + '년 ' + (date.getMonth()+1) + '월 ' + date.getDate() + '일 ' + week[date.getDay()]
+      $('.status-goal > .goal-date').text(date_selected_str)
+
+      date.setDate(date.getDate() + 1)
+      next_goal_date_str = (date.getMonth()+1) + '월 ' + date.getDate() + '일 목표:'
+      $('.next-goal-date').text(next_goal_date_str)
+
+      $.ajax(url: '/daily_goals/' + goal_date)
 
 show_new_status_form = () ->
   $('.verify-past-btn').on 'click', (e) ->

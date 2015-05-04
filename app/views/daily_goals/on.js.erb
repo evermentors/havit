@@ -1,2 +1,2 @@
-$('.status-description > textarea').attr('placeholder', "<%= @description %>".replace(/ nl /g, ' '))
+$('.status-goal > .goal-description').text("<%= @description %>".replace(/ nl /g, '\n'))
 $('.next-daily-goal-input').val("<%= @goal %>")
