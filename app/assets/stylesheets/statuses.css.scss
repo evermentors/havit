@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'Harlow Solid Italic';
+  src: url(font-path('harlow_solid_italic.eot'));
+  src: url(font-path('harlow_solid_italic.eot') + "?#iefix") format('embedded-opentype'),
+       url(font-path('harlow_solid_italic.svg') + '#Harlow Solid Italic') format('svg'),
+       url(font-path('harlow_solid_italic.woff')) format('woff'),
+       url(font-path('harlow_solid_italic.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 %havit-color {
   color: rgb(236, 84, 19);
 }
