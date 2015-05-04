@@ -92,4 +92,12 @@ module ApplicationHelper
       return ''
     end
   end
+
+  def korean_postposition(str)
+    if (str[-1].unpack('U*').first - 0xAC00) % 28 != 0
+      '이'
+    else
+      '가'
+    end
+  end
 end

@@ -18,7 +18,7 @@
       span.input-group-addon.next-goal-date = "#{datestring last_daily_goal.goal_date.tomorrow} 목표:"
       = text_field_tag 'next_daily_goal',
       (daily_goal_description last_daily_goal.goal_date.tomorrow),
-      placeholder: "미입력시 '#{last_daily_goal.description}'가 자동 등록됩니다.",
+      placeholder: "미입력시 '#{last_daily_goal.description}'#{korean_postposition(last_daily_goal.description)} 자동 등록됩니다.",
       class: 'form-control next-daily-goal-input',
       autocomplete: 'off'
     .photo-preview.hidden
