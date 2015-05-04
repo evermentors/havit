@@ -96,11 +96,24 @@
 
 .new-status-form {
   .status-dates {
-    padding-left: 0;
     text-align: center;
+    padding-left: 0;
+    padding-right: 5px;
     margin-left: -5px;
     margin-right: -5px;
     margin-bottom: 10px;
+    @media (max-width: 600px) {
+      font-size: 80%;
+      padding-right: 0;
+      margin-left: -20px;
+      margin-right: -10px;
+      .glyphicon-ok {
+        margin-left: 0;
+        font-size: 75%;
+        position: absolute;
+        top: 7px;
+      }
+    }
     li {
       display: inline-block;
       list-style: none;
