@@ -25,14 +25,14 @@
     .photo-preview.hidden
 
   .status-footer
-    .status-photo
+    .status-photo.btn-havit-white
       .status-photo-wrapper
         a.status-photo-link
           .photo-upload-wrapper
             span.glyphicon.glyphicon-camera
             = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
           span.photo-upload-description 실천 인증샷 추가
-    button.btn.submit-btn type='submit'
+    button.btn.btn-havit-white.submit-btn type='submit'
       span.glyphicon.glyphicon-ok
       ' 인증 완료!
 

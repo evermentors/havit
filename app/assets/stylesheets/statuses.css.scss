@@ -9,14 +9,6 @@
   font-style: normal;
 }
 
-%havit-white-button {
-  color: rgb(236, 84, 19);
-  border: 1px solid hsl(18, 85%, 50%);
-  background-color: #fff;
-}
-%havit-white-button-hover {
-  background-image: linear-gradient(#fff, rgba(236, 84, 19, .1));
-}
 %havit-color {
   color: rgb(236, 84, 19);
 }
@@ -290,7 +282,6 @@
       display: inline-table;
       vertical-align: middle;
       border-radius: 5px;
-      @extend %havit-white-button;
       .status-photo-wrapper {
         position: relative;
         height: 32px;
@@ -330,7 +321,6 @@
       }
     }
     .status-photo:hover {
-      @extend %havit-white-button-hover;
       .status-photo-link:hover {
         text-decoration: none;
       }
@@ -341,13 +331,9 @@
       float: right;
       padding-left: 8px;
       padding-right: 8px;
-      @extend %havit-white-button;
       .glyphicon-ok {
         margin-right: 5px;
       }
-    }
-    .submit-btn:hover {
-      @extend %havit-white-button-hover;
     }
   }
 }
