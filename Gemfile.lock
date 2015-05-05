@@ -111,9 +111,9 @@ GEM
       warden (~> 1.2.3)
     did_you_mean (0.9.6)
       interception
+    diff-lcs (1.2.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
-    diff-lcs (1.2.5)
     dotenv (1.0.2)
     elasticsearch (1.0.8)
       elasticsearch-api (= 1.0.7)
@@ -315,14 +315,14 @@ GEM
       activemodel
       elasticsearch (>= 1)
       hashie
-    sendgrid-ruby (0.0.3)
-      rest-client
-      smtpapi
     selenium-webdriver (2.45.0)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    sendgrid-ruby (0.0.3)
+      rest-client
+      smtpapi
     shellany (0.0.1)
     simple_form (3.1.0)
       actionpack (~> 4.0)
@@ -424,8 +424,8 @@ DEPENDENCIES
   rubocop
   scss-lint
   searchkick
-  sendgrid-ruby
   selenium-webdriver
+  sendgrid-ruby
   simple_form
   slim-rails
   spring
