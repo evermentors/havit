@@ -1,11 +1,12 @@
-$("#thread_<%= @thread.id %>_new_comment_form_div").html("<%= escape_javascript(
+$("<%= @modal_class %> #thread_<%= @thread.id %>_new_comment_form_div").html("<%= escape_javascript(
   render :partial => 'form',
          :locals => { :comment => @comment,
                       :thread => @thread,
-                      :per_page => @per_page }) %>");
+                      :per_page => @per_page,
+                      :modal_class => @modal_class }) %>");
 
-$("#thread_<%= @thread.id %>_new_comment_form_div").fadeIn();
-$("#thread_<%= @thread.id %>_div #comment_body").focus().autosize();
-$("#thread_<%= @thread.id %>_new_comment_link_div").hide();
+$("<%= @modal_class %> #thread_<%= @thread.id %>_new_comment_form_div").fadeIn();
+$("<%= @modal_class %> #thread_<%= @thread.id %>_div #comment_body").focus().autosize();
+$("<%= @modal_class %> #thread_<%= @thread.id %>_new_comment_link_div").hide();
 
 <%= javascript_proc %>

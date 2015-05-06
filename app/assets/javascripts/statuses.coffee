@@ -56,6 +56,9 @@ bigger_photo_when_clicked = () ->
   $('.card-photo').click () ->
     status = $(this).closest('.card-container').clone().toggleClass('card-container container-center modal-status')
     $('.photo-modal .modal-content').html(status)
+    $('.photo-modal .comment_actions > a').tooltip({container: 'body'})
+    new_comment_link = $('.photo-modal .thread_new_comment_link > a').attr('href') + '?modal=.photo-modal'
+    $('.photo-modal .thread_new_comment_link > a').attr('href', new_comment_link)
     $('.photo-modal').modal()
 
 $(document).on 'ready page:load', on_verified_at_changed

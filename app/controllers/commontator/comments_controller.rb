@@ -3,6 +3,7 @@
 module Commontator
   class CommentsController < Commontator::ApplicationController
     before_filter :set_thread, :only => [:new, :create]
+    before_filter :set_modal, only: [:new, :create, :edit, :update, :delete]
     before_filter :set_comment_and_thread, :except => [:new, :create]
 
     # GET /threads/1/comments/new
@@ -18,7 +19,6 @@ module Commontator
         format.html { redirect_to @thread }
         format.js
       end
-
     end
 
     # POST /threads/1/comments
@@ -161,6 +161,10 @@ module Commontator
       @comment = Comment.find(params[:id])
       @thread = @comment.thread
       commontator_set_new_comment(@thread, @user)
+    end
+
+    def set_modal
+      @modal_class = params[:modal]
     end
   end
 end

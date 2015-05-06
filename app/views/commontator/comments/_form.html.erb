@@ -25,6 +25,7 @@
              :remote => !no_remote) do |f| %>
 
   <%= hidden_field_tag :per_page, per_page %>
+  <%= hidden_field_tag :modal, modal_class %>
 
   <div class="comment_form_field">
     <%= f.text_area :body, :rows => '2', class: "form-control" %>
