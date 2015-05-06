@@ -30,7 +30,7 @@ textarea_autosize = () ->
     $(element).autosize() unless $(element).closest('.new-status-form-div').hasClass('hidden')
 
 toggle_monthly_weekly_goals = () ->
-  $('.card-goals > .see-detail').on 'click', ->
+  $('body').on 'click', '.card-goals > .see-detail', ->
     see_detail = $(this)
     if $(this).hasClass('up')
       $(this).prevAll('.goals-hidden').slideDown(-> see_detail.toggleClass('up down'))
@@ -52,9 +52,19 @@ readURL = (input) ->
       $('.photo-preview').css('background-image', 'url(' + e.target.result + ')').removeClass('hidden')
     reader.readAsDataURL(input.files[0])
 
+bigger_photo_when_clicked = () ->
+  $('.card-photo').click () ->
+    status = $(this).closest('.card-container').clone().toggleClass('card-container container-center modal-status')
+    $('.photo-modal .modal-body').html(status)
+    $('.photo-modal .comment_actions > a').tooltip({container: 'body'})
+    new_comment_link = $('.photo-modal .thread_new_comment_link > a').attr('href') + '?modal=.photo-modal'
+    $('.photo-modal .thread_new_comment_link > a').attr('href', new_comment_link)
+    $('.photo-modal').modal()
+
 $(document).on 'ready page:load', on_verified_at_changed
 $(document).on 'ready page:load', show_new_status_form
 $(document).on 'ready page:load', textarea_autosize
 $(document).on 'ready page:load', toggle_monthly_weekly_goals
 $(document).on 'ready page:load', apply_tooltip
 $(document).on 'ready page:load', show_uploaded_photo
+$(document).on 'ready page:load', bigger_photo_when_clicked

@@ -1,8 +1,8 @@
-$("#comment_<%= @comment.id.to_s %>_body_div > .comment-form").empty();
-$("#comment_<%= @comment.id.to_s %>_body_div > .comment-main-body").show();
-$("#comment_<%= @comment.id.to_s %>_body_div > .body-description").text("<%= escape_javascript(
+$("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_body_div > .comment-form").empty();
+$("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_body_div > .comment-main-body").show();
+$("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_body_div > .body-description").text("<%= escape_javascript(
   render :partial => 'body', :locals => { :comment => @comment }) %>");
 
-$("#comment_<%= @comment.id.to_s %>_created_timestamp_span").next().removeClass('hidden');
+$("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_created_timestamp_span").next().removeClass('hidden');
 
 <%= javascript_proc %>

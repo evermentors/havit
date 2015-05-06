@@ -43,6 +43,9 @@
   background-color: white;
   border-radius: 5px;
 }
+.card-photo-original {
+  display: none;
+}
 .card-header {
   height: 45px;
   margin-top: -60px;
@@ -81,9 +84,15 @@
 }
 .card-message {
   padding: 10px;
+}
+.card-photo {
+  img {
+    cursor: pointer;
+  }
   .next-goal {
     text-align: right;
     padding-top: 10px;
+    padding-right: 10px;
     opacity: 0.6;
     font-size: 85%;
     .goal-description {
@@ -143,6 +152,12 @@
     cursor: pointer;
     .dropdown-toggle {
       padding: 10px 15px;
+      .group-icon {
+        height: 15px;
+        float: left;
+        margin-top: 2.5px;
+        margin-right: 4px;
+      }
       .group-title {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -150,7 +165,7 @@
       }
       .caret {
         position: absolute;
-        right: 13px;
+        right: 10px;
         top: 18px;
       }
     }

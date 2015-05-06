@@ -7,7 +7,7 @@
    show_all ||= false
 %>
 
-$("#thread_<%= thread.id %>_div").html(
+$("<%= @modal_class %> #thread_<%= thread.id %>_div").html(
   "<%= escape_javascript(
     render :partial => 'commontator/threads/show',
            :formats => [:html],
@@ -17,4 +17,4 @@ $("#thread_<%= thread.id %>_div").html(
                         :per_page => per_page,
                         :show_all => show_all }) %>");
 
-$("#thread_<%= thread.id %>_div time").timeago();
+$("<%= @modal_class %> #thread_<%= thread.id %>_div time").timeago();
