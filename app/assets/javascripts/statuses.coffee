@@ -52,9 +52,16 @@ readURL = (input) ->
       $('.photo-preview').css('background-image', 'url(' + e.target.result + ')').removeClass('hidden')
     reader.readAsDataURL(input.files[0])
 
+bigger_photo_when_clicked = () ->
+  $('.card-photo').click () ->
+    status = $(this).closest('.card-container').clone().toggleClass('card-container container-center modal-status')
+    $('.photo-modal .modal-content').html(status)
+    $('.photo-modal').modal()
+
 $(document).on 'ready page:load', on_verified_at_changed
 $(document).on 'ready page:load', show_new_status_form
 $(document).on 'ready page:load', textarea_autosize
 $(document).on 'ready page:load', toggle_monthly_weekly_goals
 $(document).on 'ready page:load', apply_tooltip
 $(document).on 'ready page:load', show_uploaded_photo
+$(document).on 'ready page:load', bigger_photo_when_clicked

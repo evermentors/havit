@@ -337,3 +337,37 @@
     }
   }
 }
+
+// modal-status
+.photo-modal {
+  .modal-backdrop.in {
+    opacity: .8;
+  }
+  .modal-dialog {
+    width: 95%;
+    .modal-content {
+      .modal-status {
+        .card-photo-original {
+          display: inline-block;
+          width: 50%;
+          padding: 5px;
+          background-color: #EEEEEE;
+          img {
+            max-height: 90vh;
+          }
+        }
+        .card-photo {
+          display: none;
+        }
+        .card-else {
+          display: inline-block;
+          width: 48%;
+          vertical-align: top;
+          .card-header {
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,9 @@
+= content_for :card_photo_original, flush: true
+  - if status.photo?
+    = image_tag status.photo.url
+  - else
+    span
+
 = content_for :card_author, flush:true
   .status-author
     a href=user_path(status.character.user)
