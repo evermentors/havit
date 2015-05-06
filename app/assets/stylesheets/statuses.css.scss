@@ -340,6 +340,7 @@
 
 // modal-status
 .photo-modal {
+  overflow-y: hidden !important;
   .modal-backdrop.in {
     opacity: .8;
   }
@@ -361,8 +362,14 @@
         }
         .card-else {
           display: inline-block;
-          width: 48%;
+          width: 49%;
           vertical-align: top;
+          overflow-y: scroll;
+          max-height: 90vh;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          padding-right: 25px;
+          padding-left: 25px;
           .card-header {
             margin-top: 5px;
           }
