@@ -30,11 +30,6 @@
 
 = content_for :card_message, flush:true
   span.description.nl2br == auto_link(status.description, html: {target: '_blank'}) do |text| truncate(text, length: 30) end
-  - unless no_daily_goal?(status.character, status.verified_at.tomorrow)
-    .next-goal
-      = "#{status.character.user.name}님의 다음 목표는 "
-      span.goal-description = daily_goal(status.character, status.verified_at.tomorrow).description
-      ' 입니다.
 
 = content_for :card_photo, flush:true
   - if status.photo?
@@ -42,6 +37,11 @@
   - else
     span
   /   = image_tag "havit-logo-big.png"
+  - unless no_daily_goal?(status.character, status.verified_at.tomorrow)
+    .next-goal
+      = "#{status.character.user.name}님의 다음 목표는 "
+      span.goal-description = daily_goal(status.character, status.verified_at.tomorrow).description
+      ' 입니다.
 
 = content_for :card_actions, flush:true
   .like-form data={ status_id: status.id }
