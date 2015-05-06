@@ -86,6 +86,9 @@
   padding: 10px;
 }
 .card-photo {
+  img {
+    cursor: pointer;
+  }
   .next-goal {
     text-align: right;
     padding-top: 10px;
