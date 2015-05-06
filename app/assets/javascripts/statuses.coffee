@@ -30,7 +30,7 @@ textarea_autosize = () ->
     $(element).autosize() unless $(element).closest('.new-status-form-div').hasClass('hidden')
 
 toggle_monthly_weekly_goals = () ->
-  $('.card-goals > .see-detail').on 'click', ->
+  $('body').on 'click', '.card-goals > .see-detail', ->
     see_detail = $(this)
     if $(this).hasClass('up')
       $(this).prevAll('.goals-hidden').slideDown(-> see_detail.toggleClass('up down'))
