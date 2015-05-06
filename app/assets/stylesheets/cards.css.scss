@@ -81,6 +81,8 @@
 }
 .card-message {
   padding: 10px;
+}
+.card-photo {
   .next-goal {
     text-align: right;
     padding-top: 10px;
@@ -143,6 +145,12 @@
     cursor: pointer;
     .dropdown-toggle {
       padding: 10px 15px;
+      .group-icon {
+        height: 15px;
+        float: left;
+        margin-top: 2.5px;
+        margin-right: 4px;
+      }
       .group-title {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -150,7 +158,7 @@
       }
       .caret {
         position: absolute;
-        right: 13px;
+        right: 10px;
         top: 18px;
       }
     }

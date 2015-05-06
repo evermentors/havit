@@ -4,6 +4,18 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 }
 
+.navbar-group-select.will-collapse {
+  @media (max-width: 767px) {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    display: block;
+  }
+  position: relative;
+  float: right;
+  left: 0;
+}
+
 .navbar-group-select {
   @media (min-width: 768px) {
     display: none;
@@ -18,6 +30,13 @@
   cursor: pointer;
   .dropdown-toggle {
     padding: 10px 15px;
+    .group-icon {
+      height: 15px;
+      float: left;
+      margin-top: 2.5px;
+      margin-left: -7px;
+      margin-right: 4px;
+    }
     .group-title {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -25,7 +44,7 @@
     }
     .caret {
       position: absolute;
-      right: 13px;
+      right: 10px;
       top: 18px;
     }
   }
@@ -84,7 +103,7 @@
     }
   }
 }
-.navbar-group-select:hover, .navbar-group-select.open {
+.navbar-group-select:hover, .navbar-group-select:focus, .navbar-group-select.open {
   color: rgb(234, 84, 19);
   border-color: rgb(234, 84, 19);
 }
