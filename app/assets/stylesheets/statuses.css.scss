@@ -53,7 +53,6 @@
 
 .goal-text {
   @extend %havit-color;
-  display: block;
   font-weight: normal;
 }
 
@@ -412,9 +411,6 @@
             }
             .card-header {
               margin-top: 0;
-            }
-            .see-detail {
-              right: 15px;
             }
           }
         }

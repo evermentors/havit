@@ -38,8 +38,8 @@
 .card-container {
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-  padding-top: 10px;
-  margin-top: 20px;
+  padding-top: 16px;
+  margin-top: 60px;
   background-color: white;
   border-radius: 5px;
 }
@@ -48,32 +48,29 @@
 }
 .card-header {
   height: 45px;
-  margin-left: 10px;
-  position: absolute;
-  width: 140px;
+  margin-top: -60px;
   .status-stats {
     float:right;
     padding-top: 10px;
   }
 }
 .card-goals {
-  margin: 0 150px;
-  padding-bottom: 20px;
+  padding: 15px 10px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  margin: -1px 0;
+  font-weight: bold;
   font-size: 15px;
   text-align: center;
-  font-weight: bold;
   .goals-hidden {
     display: none;
   }
   .see-detail {
-    position: absolute;
-    top: 10px;
-    right: 5px;
     color: #AEAEAE;
-    font-size: 11px;
+    float: right;
+    margin-top: -6px;
     outline: 0;
+    font-size: 11px;
   }
   .see-detail:active, .see-detail:focus {
     outline: 0;
@@ -86,8 +83,7 @@
   }
 }
 .card-message {
-  padding: 5px 0;
-  margin: 5px 10px;
+  padding: 10px;
 }
 .card-photo {
   img {
@@ -119,6 +115,7 @@
   margin-right: 4px;
   padding-top: 5px;
   padding-bottom: 5px;
+  color: #6d84b4;
   min-height: 30px;
   .status-edit-btn {
     margin-left: -3px;
