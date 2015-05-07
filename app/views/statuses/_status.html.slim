@@ -10,6 +10,10 @@
       = image_tag(status.character.user.gravatar_url)
       span.status-user-name = status.character.user.name
     span.time = timeago_tag status.created_at, format: "%y년 %B %-d일"
+  - if status.likes_count > 0
+    .status-likes-count.color-havit
+      span.glyphicon.glyphicon-heart
+      span.likes-count data={ status_id: status.id } => status.likes_count
 
 = content_for :card_goals, flush:true
   .goals-hidden
@@ -60,8 +64,8 @@
     ' ·
     = link_to '게시물 수정', edit_status_path(status), class: "status-edit-btn btn btn-xs btn-link"
   - if status.likes_count > 0
-    .status-stats
-      span.likers
+    .status-likers
+      span
         - status.likers.each do |liker|
           - if liker == current_user
             | 회원
@@ -70,7 +74,6 @@
           | 님
           = ", " unless liker == status.likers.last
         | 이 좋아합니다.
-      / span.likes-count data={ status_id: status.id } => "#{status.likes_count}명이 좋아합니다."
 
 = content_for :card_comments, flush:true
   = commontator_thread(status)

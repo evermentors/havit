@@ -49,9 +49,14 @@
 .card-header {
   height: 45px;
   margin-top: -60px;
-  .status-stats {
+  .status-likes-count {
     float:right;
     padding-top: 10px;
+    font-size: 20px;
+    .glyphicon-heart {
+      margin-right: 5px;
+      top: 3px;
+    }
   }
 }
 .card-goals {
