@@ -32,6 +32,7 @@ gem 'autosize-rails'
 gem 'searchkick'
 gem 'rails_autolink'
 gem 'browser'
+gem 'rails-i18n', '~> 4.0.0'
 
 group :production do
   gem 'rails_12factor'
