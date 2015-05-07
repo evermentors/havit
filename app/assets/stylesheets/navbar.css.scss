@@ -21,15 +21,15 @@
     display: none;
   }
   position: absolute;
-  top: 5px;
+  top: 8px;
   left: 150px;
-  width: 160px;
+  width: 120px;
   border-radius: 5px;
   border: 1px solid #ddd;
   padding: 0;
   cursor: pointer;
   .dropdown-toggle {
-    padding: 10px 15px;
+    padding: 7px 15px;
     .group-icon {
       height: 15px;
       float: left;
@@ -45,7 +45,7 @@
     .caret {
       position: absolute;
       right: 10px;
-      top: 18px;
+      top: 15px;
     }
   }
   .dropdown-menu {

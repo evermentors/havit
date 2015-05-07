@@ -88,6 +88,12 @@
 .card-photo {
   img {
     cursor: pointer;
+    max-height: 300px;
+    max-width: 90%;
+  }
+  img.mobile {
+    max-width: 100%;
+    max-height: 350px;
   }
   .next-goal {
     text-align: right;

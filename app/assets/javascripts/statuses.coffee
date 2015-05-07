@@ -45,6 +45,12 @@ show_uploaded_photo = () ->
   $('#status_photo').change () ->
     readURL(this)
 
+remove_uploaded_photo = () ->
+  $('.photo-preview > .photo-remove-btn').click () ->
+    control = $("#status_photo")
+    control.replaceWith( control.val('').clone( true ) )
+    $('.photo-preview').css('background-image', '').addClass('hidden')
+
 readURL = (input) ->
   if input.files && input.files[0]
     reader = new FileReader()
@@ -53,7 +59,7 @@ readURL = (input) ->
     reader.readAsDataURL(input.files[0])
 
 bigger_photo_when_clicked = () ->
-  $('.card-photo').click () ->
+  $('.card-photo > img').click () ->
     status = $(this).closest('.card-container').clone().toggleClass('card-container container-center modal-status')
     $('.photo-modal .modal-body').html(status)
     $('.photo-modal .comment_actions > a').tooltip({container: 'body'})
@@ -67,4 +73,5 @@ $(document).on 'ready page:load', textarea_autosize
 $(document).on 'ready page:load', toggle_monthly_weekly_goals
 $(document).on 'ready page:load', apply_tooltip
 $(document).on 'ready page:load', show_uploaded_photo
+$(document).on 'ready page:load', remove_uploaded_photo
 $(document).on 'ready page:load', bigger_photo_when_clicked
