@@ -109,9 +109,10 @@ textarea {
   border: 1px solid hsl(18, 85%, 50%);
   background-color: #fff;
 }
-.btn-havit-white:hover {
+.btn-havit-white:hover, .btn-havit-white:focus, .btn-havit-white:active {
  color: rgb(236, 84, 19);
  background-image: linear-gradient(#fff, rgba(236, 84, 19, .1));
+ box-shadow: none;
 }
 
 .btn-havit-inverted {

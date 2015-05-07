@@ -53,7 +53,7 @@ readURL = (input) ->
     reader.readAsDataURL(input.files[0])
 
 bigger_photo_when_clicked = () ->
-  $('.card-photo').click () ->
+  $('.card-photo > img').click () ->
     status = $(this).closest('.card-container').clone().toggleClass('card-container container-center modal-status')
     $('.photo-modal .modal-body').html(status)
     $('.photo-modal .comment_actions > a').tooltip({container: 'body'})
