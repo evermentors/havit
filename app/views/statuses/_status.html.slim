@@ -9,7 +9,7 @@
     a href=user_path(status.character.user)
       = image_tag(status.character.user.gravatar_url)
       span.status-user-name = status.character.user.name
-    span.time = timeago_tag status.created_at
+    span.time = timeago_tag status.created_at, format: "%Y년 %B %-d일"
   .status-stats
     span.likes-count data={ status_id: status.id } => pluralize status.likes_count, 'like'
 

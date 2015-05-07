@@ -40,7 +40,7 @@
         </span>
         <div class="comment_timestamp_div">
           <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
-            <%= timeago_tag comment.created_at %>
+            <%= timeago_tag comment.created_at, format: "%Y년 %B %-d일" %>
           </span>
           <span class="is-modified <%= 'hidden' unless comment.is_modified? %>">
             · 수정됨
