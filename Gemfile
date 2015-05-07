@@ -31,6 +31,7 @@ gem 'commontator'
 gem 'autosize-rails'
 gem 'searchkick'
 gem 'rails_autolink'
+gem 'browser'
 
 group :production do
   gem 'rails_12factor'
