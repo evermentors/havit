@@ -6,25 +6,11 @@ module ApplicationHelper
   end
 
   def weekdaystring (date=Date.current, option='long')
-    # TODO: date.strftime("%a")와 i18n 활용
-    case date.wday
-      when 0
-        wday = "일"
-      when 1
-        wday = "월"
-      when 2
-        wday = "화"
-      when 3
-        wday = "수"
-      when 4
-        wday = "목"
-      when 5
-        wday = "금"
-      when 6
-        wday = "토"
+    if option == 'short'
+      l date, format: "%a"
+    else
+      l date, format: "%A"
     end
-    wday += "요일" if option == 'long'
-    return wday
   end
 
   def seasonstring (date=season_start)
