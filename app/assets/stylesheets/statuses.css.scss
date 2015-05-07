@@ -53,6 +53,8 @@
 
 .goal-text {
   @extend %havit-color;
+  display: block;
+  font-weight: normal;
 }
 
 .status-author {
