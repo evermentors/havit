@@ -39,7 +39,10 @@
 
 = content_for :card_photo, flush:true
   - if status.photo?
-    = image_tag status.photo.url(:medium)
+    - if browser.mobile?
+      = image_tag status.photo.url(:medium), class: 'mobile'
+    - else
+      = image_tag status.photo
   - else
     span
   /   = image_tag "havit-logo-big.png"
