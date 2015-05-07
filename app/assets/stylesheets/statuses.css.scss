@@ -267,6 +267,7 @@
       }
     }
     .photo-preview {
+      position: relative;
       height: 200px;
       max-width: 200px;
       margin: 10px auto 0;
@@ -275,6 +276,13 @@
       background-position: top left;
       border: 1px solid #ccc;
       background-color: white;
+      .photo-remove-btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: .5;
+        cursor: pointer;
+      }
     }
   }
   .status-footer {
