@@ -149,6 +149,9 @@
     text-align: center;
     line-height: 30px;
     opacity: .8;
+    .glyphicon-pencil {
+      color: #AAA;
+    }
   }
   .likers {
     line-height: 16px;
@@ -300,4 +303,5 @@
   position:absolute;
   right:10px;
   top:10px;
+  color: #AAA;
 }
