@@ -19,4 +19,5 @@
   $("<%= @modal_class %> #thread_<%= @thread.id %>_new_comment_link_div").fadeIn();
 <% end %>
 
+$("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_div").removeClass('editing')
 <%= javascript_proc %>

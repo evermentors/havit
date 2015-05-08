@@ -11,6 +11,10 @@
   color: #000;
 }
 
+.comment.editing .comment_actions_div {
+  display: none;
+}
+
 .comment_actions_div {
   position: absolute;
   right: 7px;
@@ -40,8 +44,13 @@
 }
 
 .comment_form_actions {
-  margin-top: 8px;
-  margin-bottom: 0;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.comment_form_actions > .btn-link {
+  display: block;
+  margin-top: 5px;
 }
 
 .comment_avatar {

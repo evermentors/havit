@@ -35,9 +35,7 @@
         <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
           <%= link_to name, main_app.user_path(creator)%>
         </span>
-        <span class="body-description">
-          <%= auto_link(comment.body, html: {target: '_blank'}) do |text| truncate(text, length: 30) end %>
-        </span>
+        <span class="body-description nl2br"> <%= auto_link(comment.body.strip(), html: {target: '_blank'}) do |text| truncate(text, length: 30) end %> </span>
         <div class="comment_timestamp_div">
           <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
             <%= timeago_tag comment.created_at, format: "%Y년 %B %-d일" %>
