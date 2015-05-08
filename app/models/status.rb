@@ -38,4 +38,8 @@ class Status < ActiveRecord::Base
   def liked_by?(user)
     likers.include?(user)
   end
+
+  def likers_other_than(user)
+    likers.reject{ |liker| liker==user }
+  end
 end

@@ -2,9 +2,9 @@
   span.liker-names
     - if current_user.likes?(status)
       span 회원님
-    - status.likers.each do |liker|
-      - unless liker == current_user
-        = ", " unless liker == status.likers.last
+      = ", " if status.likers.count > 1
+    - status.likers_other_than(current_user).each do |liker|
         = link_to liker.name, user_path(liker)
         | 님
+        = ", " unless liker == status.likers_other_than(current_user).last
     | 이 좋아합니다.

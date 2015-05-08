@@ -1,4 +1,5 @@
 var container = $(".card-container[id=status-card-<%= @status.id %>")
 container.find('.likes-count').text("<%= @status.likes.count %>");
+container.find('.status-likes-count').removeClass('hidden');
 container.find('.like-form').html("<%= j render 'statuses/like_icon', status: @status %>");
 container.find('.likers').html("<%= j render 'statuses/liker_names', status: @status %>");
