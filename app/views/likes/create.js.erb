@@ -1,2 +1,4 @@
-$(".likes-count[data-status-id=<%= @status.id %>]").text("<%= pluralize @status.likes.count, 'like' %>");
-$(".like-form[data-status-id=<%= @status.id %>]").html("<%= j render 'statuses/unlike', status: @status %>");
+var container = $(".card-container[id=status-card-<%= @status.id %>")
+container.find('.likes-count').text("<%= @status.likes.count %>");
+container.find('.like-form').html("<%= j render 'statuses/like_icon', status: @status %>");
+container.find('.likers').html("<%= j render 'statuses/liker_names', status: @status %>");

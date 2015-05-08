@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require rails-timeago
+//= require locales/jquery.timeago.ko.js
 //= require jquery.autosize
 //= require_tree .
