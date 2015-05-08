@@ -1,3 +1,12 @@
 $('.status-goal > .goal-description').text("<%= @description %>".replace(/ nl /g, '\n'))
-$('.status-goal > .goal-date > .edit-goal').attr('href', "<%= edit_daily_goal_path(@today_goal)%>")
 $('.next-daily-goal-input').val("<%= @tomorrow_goal %>")
+
+if ("<%= @today_goal %>" == 'none') {
+  $('.new-status-form .modify-goal-link').addClass('hidden')
+}
+else {
+  $('.new-status-form .modify-goal-link').removeClass('hidden')
+  $('.new-status-form .btn-confirm').attr('data-id', "<%= @today_goal %>")
+}
+
+$('.new-status-form').removeClass('editing')

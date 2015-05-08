@@ -1,0 +1,14 @@
+var description = "<%= @description %>".replace(/ nl /g, '\n')
+var description_inline = "<%= @description %>".replace(/ nl /g, ' ')
+
+if ($('.goal-container.editing').hasClass('.list-group-item')) {
+  $('.edit-goal-card .goal-container.daily .goal-description').text(description)
+}
+
+if ($('.new-status-form .status-verified-at').val() == "<%= @daily_goal.goal_date %>") {
+  $('.new-status-form .goal-description').text(description)
+  $('.new-status-form .next-daily-goal-input').attr('placeholder', "미입력시 '" + description_inline + "'<%= korean_postposition(@description) %>" + ' 자동 등록됩니다.')
+}
+
+$(".daily-goal[data-id=<%= @daily_goal.id%>] > .goal-text").text(description_inline)
+$('.goal-container.daily').removeClass('editing')

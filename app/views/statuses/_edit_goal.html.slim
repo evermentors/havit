@@ -34,7 +34,7 @@
       h4.list-group-item-heading #{datestring last_daily_goal.goal_date} #{weekdaystring last_daily_goal.goal_date}
       a.modify-goal-link data-toggle='tooltip' data-plcaement='top' title="일일 목표 수정"
         span.glyphicon.glyphicon-pencil
-      = form_tag daily_goal_path(last_daily_goal), method: 'patch', class: 'modify-actions'
+      = form_tag daily_goal_path(last_daily_goal), method: 'patch', remote: true, class: 'modify-actions'
         = hidden_field(:daily_goal, :goal_date, value: last_daily_goal.goal_date)
         .buttons
           button.btn-xs.btn-link.btn-confirm 확인
