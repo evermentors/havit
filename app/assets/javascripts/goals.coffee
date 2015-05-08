@@ -4,7 +4,8 @@ show_goal_textarea = () ->
 
     # 텍스트에어리어 맨 끝으로 포커스되게 함
     textarea = target.find('.goal-textarea')
-    original_val = target.find('.goal-description').text()
+    # replace로 쓸데없이 생기는 leading spaces를 없앰
+    original_val = target.find('.goal-description').text().replace(/ +/g, "");
     textarea.focus().val('').val(original_val).trigger('autosize.resize')
 
 cancel_edit_goal = () ->
