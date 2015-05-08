@@ -1,4 +1,4 @@
-var container = $(".card-container[id=status-card-<%= @status.id %>")
+var container = $(".card-container[id=status-card-<%= @status.id %>]")
 container.find('.likes-count').text("<%= @status.likes.count %>");
 if (container.find('.likes-count').text() == '0')
   container.find('.status-likes-count').addClass('hidden');
