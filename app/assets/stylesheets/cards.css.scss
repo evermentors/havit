@@ -39,7 +39,7 @@
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
   padding-top: 16px;
-  margin-top: 60px;
+  margin-top: 80px;
   background-color: white;
   border-radius: 5px;
 }
@@ -116,18 +116,55 @@
 }
 .card-actions {
   position: relative;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  color: #6d84b4;
-  min-height: 30px;
-  .status-edit-btn {
-    margin-left: -3px;
+  height: 30px;
+  border-top: 1px solid #e1e2e3;
+  background-color: #f6f7f8;
+  .like-form {
+    position: relative;
+    float: left;
+    display: inline;
+    height: 100%;
+    width: 30px;
+    text-align: center;
+    font-size: 17px;
+    color: hsl(0, 0%, 64%);
+    .status-like-icon {
+      button {
+        padding: 0;
+        border: 0;
+        top: 0;
+        margin: 0 auto;
+        line-height: 30px;
+        background: transparent;
+        outline: 0;
+      }
+    }
+  }
+  .other-actions {
+    float: right;
+    position: relative;
+    display: inline;
+    height: 100%;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    opacity: .8;
+  }
+  .likers {
+    line-height: 16px;
+    margin: 0 30px;
+    padding: 6px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #aaa;
+    text-shadow: 0 1px 0 rgba(255,255,255,.8);
+  }
+  .likers.expand-right {
+    margin-right: 0;
   }
 }
 .card-comments {
-  border-top: 1px solid #e1e2e3;
   margin: 0;
   background-color: #f6f7f8;
   border-bottom-left-radius: 5px;

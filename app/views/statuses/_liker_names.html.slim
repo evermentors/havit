@@ -1,0 +1,10 @@
+- if status.likers.count > 0
+  span.liker-names
+    - if current_user.likes?(status)
+      span 회원님
+    - status.likers.each do |liker|
+      - unless liker == current_user
+        = ", " unless liker == status.likers.last
+        = link_to liker.name, user_path(liker)
+        | 님
+    | 이 좋아합니다.

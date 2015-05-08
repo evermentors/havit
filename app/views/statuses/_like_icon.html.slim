@@ -1,0 +1,7 @@
+- if current_user.likes?(status)
+  = form_for(status, url: status_like_path(status),
+           html: { class: 'status-like-icon', method: :delete }, remote: true) do |f|
+    = f.button '', class: 'glyphicon glyphicon-heart color-havit'
+- else
+  = form_for([status, status.likes.build], remote: true, html: {class: 'status-like-icon'}) do |f|
+    = f.button '', class: 'glyphicon glyphicon-heart'
