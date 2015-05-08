@@ -7,7 +7,6 @@
     a.modify-goal-link data-toggle='tooltip' data-plcaement='top' title="시즌 목표 수정"
       span.glyphicon.glyphicon-pencil
     = form_tag monthly_goal_path(last_monthly_goal), method: 'patch', remote: true, class: 'modify-actions'
-      = hidden_field(:monthly_goal, :season, value: last_monthly_goal.season)
       .buttons
         button.btn-xs.btn-link.btn-confirm 확인
         button.btn-xs.btn-link.btn-cancel type='button' 취소
@@ -22,7 +21,6 @@
       a.modify-goal-link data-toggle='tooltip' data-plcaement='top' title="주간 목표 수정"
         span.glyphicon.glyphicon-pencil
       = form_tag weekly_goal_path(last_weekly_goal), method: 'patch', remote: true, class: 'modify-actions'
-        = hidden_field(:weekly_goal, :weeknum, value: last_weekly_goal.weeknum)
         .buttons
           button.btn-xs.btn-link.btn-confirm 확인
           button.btn-xs.btn-link.btn-cancel type='button' 취소
@@ -35,7 +33,6 @@
       a.modify-goal-link data-toggle='tooltip' data-plcaement='top' title="일일 목표 수정"
         span.glyphicon.glyphicon-pencil
       = form_tag daily_goal_path(last_daily_goal), method: 'patch', remote: true, class: 'modify-actions'
-        = hidden_field(:daily_goal, :goal_date, value: last_daily_goal.goal_date)
         .buttons
           button.btn-xs.btn-link.btn-confirm 확인
           button.btn-xs.btn-link.btn-cancel type='button' 취소
