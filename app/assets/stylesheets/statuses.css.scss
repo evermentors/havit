@@ -196,6 +196,11 @@
     .goal-date {
       font-weight: bold;
       font-size: 16px;
+      .edit-goal {
+        font-size: 14px;
+        color: #AAA;
+        margin-left: 5px;
+      }
     }
     .goal-description {
       @extend %havit-color;

@@ -36,9 +36,10 @@ class DailyGoalsController < ApplicationController
 
   def on
     date = params[:date].to_date
+    @today_goal = view_context.daily_goal(current_character, date)
     @description = view_context.daily_goal_description(date).gsub(/[\r\n]/, "\r"=>'', "\n"=>' nl ')
     @description = '목표가 없었습니다.' if @description.blank?
-    @goal = view_context.daily_goal_description(date.tomorrow).gsub(/[\r\n]/, "\r"=>'', "\n"=>' ')
+    @tomorrow_goal = view_context.daily_goal_description(date.tomorrow).gsub(/[\r\n]/, "\r"=>'', "\n"=>' ')
   end
 
   private

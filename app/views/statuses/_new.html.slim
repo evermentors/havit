@@ -9,7 +9,10 @@
   = hidden_field_tag 'status[verified_at]', last_daily_goal.goal_date.to_date, class: 'status-verified-at'
 
   .status-goal.text-center
-    .goal-date = "#{last_daily_goal.goal_date.strftime("%-Y년 %-m월 %-d일")} #{weekdaystring last_daily_goal.goal_date}"
+    .goal-date
+      span = "#{last_daily_goal.goal_date.strftime("%-Y년 %-m월 %-d일")} #{weekdaystring last_daily_goal.goal_date}"
+      a.edit-goal href=edit_daily_goal_path(last_daily_goal) data-toggle='tooltip' data-plcaement='top' title="목표 수정하기"
+        span.glyphicon.glyphicon-pencil
     span.goal-description.nl2br = last_daily_goal.description.strip()
 
   .status-body
