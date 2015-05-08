@@ -1,4 +1,4 @@
-= form_tag "/statuses", method: "post", multipart: true, class: "new-status-form"
+= form_tag "/statuses", method: "post", multipart: true, class: "new-status-form goal-container"
   ul.status-dates
     - 6.downto(0).each do |day|
       li class=(last_daily_goal.goal_date==day.days.ago.to_date ? 'active first-load' : '') data-toggle='tooltip' title=datestring(day.days.ago) goal-date=day.days.ago.to_date
@@ -11,8 +11,13 @@
   .status-goal.text-center
     .goal-date
       span = "#{last_daily_goal.goal_date.strftime("%-Y년 %-m월 %-d일")} #{weekdaystring last_daily_goal.goal_date}"
-      a.edit-goal href=edit_daily_goal_path(last_daily_goal) data-toggle='tooltip' data-plcaement='top' title="목표 수정하기"
+      a.modify-goal-link data-toggle='tooltip' data-plcaement='top' title="목표 수정하기"
         span.glyphicon.glyphicon-pencil
+    .modify-actions
+      .buttons
+        button.btn-xs.btn-link.btn-confirm type='button' 확인
+        button.btn-xs.btn-link.btn-cancel type='button' 취소
+      = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
     span.goal-description.nl2br = last_daily_goal.description.strip()
 
   .status-body
