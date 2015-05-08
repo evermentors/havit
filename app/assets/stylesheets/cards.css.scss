@@ -149,6 +149,9 @@
     text-align: center;
     line-height: 30px;
     opacity: .8;
+    .glyphicon-pencil {
+      color: #AAA;
+    }
   }
   .likers {
     line-height: 16px;
@@ -298,6 +301,38 @@
 // set-goal-card
 .modify-goal-link {
   position:absolute;
-  right:10px;
-  top:10px;
+  right: 10px;
+  top: 10px;
+  color: #AAA;
+  cursor: pointer;
+}
+
+.goal-container {
+  .modify-actions {
+    display: none;
+  }
+}
+.goal-container.editing {
+  .modify-goal-link, .list-group-item-text, .goal-description, .status-body, .status-footer {
+    display: none;
+  }
+  .modify-actions {
+    display: block;
+    .buttons {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+  }
+}
+.goal-container.new-status-form.editing {
+  .modify-actions {
+    .buttons {
+      top: 2px;
+      right: 0;
+    }
+    .goal-textarea {
+      margin-top: 5px;
+    }
+  }
 }

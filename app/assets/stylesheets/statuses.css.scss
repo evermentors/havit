@@ -193,9 +193,17 @@
   }
   .status-goal {
     margin-bottom: 5px;
+    position: relative;
     .goal-date {
       font-weight: bold;
       font-size: 16px;
+      .modify-goal-link {
+        position: relative;
+        top: 0;
+        right: 0;
+        font-size: 14px;
+        margin-left: 5px;
+      }
     }
     .goal-description {
       @extend %havit-color;

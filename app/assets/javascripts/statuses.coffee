@@ -10,7 +10,7 @@ on_verified_at_changed = () ->
       week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일')
       date = new Date(goal_date)
       date_selected_str = (date.getFullYear()) + '년 ' + (date.getMonth()+1) + '월 ' + date.getDate() + '일 ' + week[date.getDay()]
-      $('.status-goal > .goal-date').text(date_selected_str)
+      $('.status-goal > .goal-date > span').text(date_selected_str)
 
       date.setDate(date.getDate() + 1)
       next_goal_date_str = (date.getMonth()+1) + '월 ' + date.getDate() + '일 목표:'

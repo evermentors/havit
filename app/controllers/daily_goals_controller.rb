@@ -18,9 +18,11 @@ class DailyGoalsController < ApplicationController
   end
 
   def update
-    notice_text = "#{view_context.datestring}의 목표를 변경했습니다: #{@daily_goal.description} -> #{daily_goal_params[:description]}"
     if @daily_goal.update(daily_goal_params)
-      redirect_to url, notice: notice_text
+      @description = @daily_goal.description.gsub(/[\r\n]/, "\r"=>'', "\n"=>' nl ')
+      respond_to do |format|
+        format.js
+      end
     else
       render :edit
     end
@@ -36,9 +38,16 @@ class DailyGoalsController < ApplicationController
 
   def on
     date = params[:date].to_date
+
+    if view_context.no_daily_goal?(current_character, date)
+      @today_goal = 'none'
+    else
+      @today_goal = view_context.daily_goal(current_character, date).id
+    end
+
     @description = view_context.daily_goal_description(date).gsub(/[\r\n]/, "\r"=>'', "\n"=>' nl ')
     @description = '목표가 없었습니다.' if @description.blank?
-    @goal = view_context.daily_goal_description(date.tomorrow).gsub(/[\r\n]/, "\r"=>'', "\n"=>' ')
+    @tomorrow_goal = view_context.daily_goal_description(date.tomorrow).gsub(/[\r\n]/, "\r"=>'', "\n"=>' ')
   end
 
   private

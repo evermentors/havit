@@ -16,19 +16,19 @@
 
 = content_for :card_goals, flush:true
   .goals-hidden
-    .monthly-goal.small
+    .monthly-goal.small data-id="#{monthly_goal(status.character, status.verified_at).id unless no_monthly_goal?}"
       - if no_monthly_goal?(status.character, status.verified_at)
         = "#{seasonstring status.verified_at}에 목표가 없었습니다."
       - else
         = "#{seasonstring status.verified_at} 목표: "
         span.goal-text = monthly_goal(status.character, status.verified_at).description
-    .weekly-goal.small
+    .weekly-goal.small data-id="#{weekly_goal(status.character, status.verified_at).id unless no_weekly_goal?}"
       - if no_weekly_goal?(status.character, status.verified_at)
         = "#{weekstring_short status.verified_at} 목표가 없었습니다."
       - else
         = "#{weekstring_short status.verified_at} 목표: "
         span.goal-text = weekly_goal(status.character, status.verified_at).description
-  .daily-goal
+  .daily-goal data-id="#{daily_goal(status.character, status.verified_at).id unless no_daily_goal?}"
     - if no_daily_goal?(status.character, status.verified_at)
       = "#{datestring status.verified_at}에는 목표가 없었습니다."
     - else

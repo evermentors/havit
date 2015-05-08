@@ -22,9 +22,11 @@ class WeeklyGoalsController < ApplicationController
   end
 
   def update
-    notice_text = "#{view_context.weekstring_short}의 목표를 변경했습니다: #{@weekly_goal.description} -> #{weekly_goal_params[:description]}"
     if @weekly_goal.update(weekly_goal_params)
-      redirect_to url, notice: notice_text
+      @description = @weekly_goal.description.gsub(/[\r\n]/, "\r"=>'', "\n"=>' nl ')
+      respond_to do |format|
+        format.js
+      end
     else
       render :edit
     end
