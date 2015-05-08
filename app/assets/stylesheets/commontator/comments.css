@@ -110,3 +110,14 @@
 .comment_error_explanation ul {
   list-style-position: inside;
 }
+
+.new_comment {
+  position: relative;
+}
+.new_comment .comment_form_field {
+  padding-right: 38px;
+}
+.new_comment .comment_form_actions {
+  top: -5px;
+  right: 0;
+}
