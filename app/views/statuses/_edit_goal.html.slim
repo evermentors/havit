@@ -11,7 +11,7 @@
       .buttons
         button.btn-xs.btn-link.btn-confirm 확인
         button.btn-xs.btn-link.btn-cancel type='button' 취소
-      = text_area_tag 'monthly_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
+      = text_area_tag 'monthly_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea', required: true
     span.goal-description.list-group-item-text.nl2br = last_monthly_goal.description
 
   span.list-group-item.goal-container.weekly class=old_goal?('week')
@@ -26,7 +26,7 @@
         .buttons
           button.btn-xs.btn-link.btn-confirm 확인
           button.btn-xs.btn-link.btn-cancel type='button' 취소
-        = text_area_tag 'weekly_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
+        = text_area_tag 'weekly_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea', required: true
       span.goal-description.list-group-item-text.nl2br = last_weekly_goal.description
 
   - unless no_daily_goal? current_character, last_daily_goal.goal_date
@@ -39,5 +39,5 @@
         .buttons
           button.btn-xs.btn-link.btn-confirm 확인
           button.btn-xs.btn-link.btn-cancel type='button' 취소
-        = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
+        = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea', required: true
       span.goal-description.list-group-item-text.nl2br = last_daily_goal.description

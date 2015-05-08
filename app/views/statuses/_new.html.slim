@@ -17,7 +17,7 @@
       .buttons
         button.btn-xs.btn-link.btn-confirm type='button' 확인
         button.btn-xs.btn-link.btn-cancel type='button' 취소
-      = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
+      = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea', required: true
     span.goal-description.nl2br = last_daily_goal.description.strip()
 
   .status-body
