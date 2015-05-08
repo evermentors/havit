@@ -1,7 +1,7 @@
 var description = "<%= @description %>".replace(/ nl /g, '\n')
 var description_inline = "<%= @description %>".replace(/ nl /g, ' ')
 
-if ($('.goal-container.editing').hasClass('.list-group-item')) {
+if ($('.goal-container.editing').hasClass('list-group-item')) {
   $('.edit-goal-card .goal-container.daily .goal-description').text(description)
 }
 

@@ -15,7 +15,6 @@ cancel_edit_goal = () ->
 edit_goal_on_new_status_form = () ->
   $('.new-status-form .btn-confirm').click ->
     target = $(this).closest('.goal-container')
-    goal_date = target.find('.status-verified-at').val()
     goal_description = target.find('.goal-textarea').val()
     $.ajax({
       method: 'PATCH',
@@ -23,7 +22,6 @@ edit_goal_on_new_status_form = () ->
       data: {
         daily_goal: {
           description: goal_description,
-          goal_date: goal_date
         }
       }
     })

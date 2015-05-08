@@ -36,7 +36,12 @@
       span.goal-text = daily_goal(status.character, status.verified_at).description
 
 = content_for :card_message, flush:true
-  span.description.nl2br == auto_link(status.description, html: {target: '_blank'}) do |text| truncate(text, length: 30) end
+  span.description.nl2br == render 'statuses/description', status: status
+  = form_tag status_path(status), method: 'patch', remote: true, class: 'modify-actions'
+      .buttons
+        button.btn-xs.btn-link.btn-confirm 확인
+        button.btn-xs.btn-link.btn-cancel type='button' 취소
+      = text_area_tag 'status[description]', '', placeholder: '어떤 실천을 하셨나요?', class: 'form-control status-textarea', required: true
 
 = content_for :card_photo, flush:true
   - if status.photo?
@@ -58,7 +63,7 @@
     == render 'statuses/like_icon', status: status
   - if status.character_id == current_character.id
     .other-actions
-      a.modify-status-link href=edit_status_path(status) data-toggle='tooltip' data-plcaement='top' title='실천 인증 수정'
+      a.modify-status-link data-toggle='tooltip' data-plcaement='top' title='실천 인증 수정'
         span.glyphicon.glyphicon-pencil
   .likers class="#{'expand-right' unless status.character_id == current_character.id}"
     == render 'statuses/liker_names', status: status

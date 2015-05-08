@@ -42,6 +42,20 @@
   margin-top: 80px;
   background-color: white;
   border-radius: 5px;
+  .modify-actions {
+    display: none;
+  }
+}
+.card-container.editing {
+  .description {
+    display: none;
+  }
+  .modify-actions {
+    display: block;
+    .buttons {
+      float: right;
+    }
+  }
 }
 .card-photo-original {
   display: none;
@@ -150,8 +164,11 @@
     text-align: center;
     line-height: 30px;
     opacity: .8;
-    .glyphicon-pencil {
-      color: #AAA;
+    .modify-status-link {
+      cursor: pointer;
+      .glyphicon-pencil {
+        color: #AAA;
+      }
     }
   }
   .likers {
