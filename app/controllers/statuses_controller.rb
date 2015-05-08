@@ -54,7 +54,9 @@ class StatusesController < ApplicationController
 
   def update
     if @status.update(status_params)
-      redirect_to url
+      respond_to do |format|
+        format.js
+      end
     else
       render :edit
     end

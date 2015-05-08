@@ -67,6 +67,21 @@ bigger_photo_when_clicked = () ->
     $('.photo-modal .thread_new_comment_link > a').attr('href', new_comment_link)
     $('.photo-modal').modal()
 
+show_status_textarea = () ->
+  $('.modify-status-link').click ->
+    $('.card-container').removeClass('editing')
+    target = $(this).closest('.card-container').addClass('editing')
+
+    # 텍스트에어리어 맨 끝으로 포커스되게 함
+    textarea = target.find('.status-textarea')
+    # replace로 쓸데없이 생기는 leading spaces를 없앰
+    original_val = target.find('.card-message > .description').text().replace(/[ \t]{2,}/g, "");
+    textarea.focus().val('').val(original_val).trigger('autosize.resize')
+
+cancel_edit_status = () ->
+  $('.card-container .btn-cancel').click ->
+    $(this).closest('.card-container').removeClass('editing')
+
 $(document).on 'ready page:load', on_verified_at_changed
 $(document).on 'ready page:load', show_new_status_form
 $(document).on 'ready page:load', textarea_autosize
@@ -75,3 +90,5 @@ $(document).on 'ready page:load', apply_tooltip
 $(document).on 'ready page:load', show_uploaded_photo
 $(document).on 'ready page:load', remove_uploaded_photo
 $(document).on 'ready page:load', bigger_photo_when_clicked
+$(document).on 'ready page:load', show_status_textarea
+$(document).on 'ready page:load', cancel_edit_status
