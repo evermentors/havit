@@ -5,7 +5,7 @@
       h3.panel-title#daily-goal-notice #{current_user.name}님, '#{current_character.group.name}' 그룹에서 오늘(#{datestring} #{weekdaystring})의 목표를 등록하지 않으셨군요!
     .panel-body
       ul.daily-goal-set-buttons
-        li#daily-goal-button-left
+        li#daily-goal-button-left data-toggle='tooltip' data-placement='top' title='최근 목표 : #{last_daily_goal.description}'
           = submit_tag "최근 목표를 오늘 목표로 등록", class: 'last-goal-to-today-goal-hidden'
         li#daily-goal-button-center
           .btn.new-daily-goal-button 새 목표 등록
