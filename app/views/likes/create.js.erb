@@ -3,3 +3,11 @@ container.find('.likes-count').text("<%= @status.likes.count %>");
 container.find('.status-likes-count').removeClass('hidden');
 container.find('.like-form').html("<%= j render 'statuses/like_icon', status: @status %>");
 container.find('.likers').html("<%= j render 'statuses/liker_names', status: @status %>");
+
+if ($('body').hasClass('modal-open')) {
+  var modal_container = $('.modal-status');
+  modal_container.find('.likes-count').text("<%= @status.likes.count %>");
+  modal_container.find('.status-likes-count').removeClass('hidden');
+  modal_container.find('.like-form').html("<%= j render 'statuses/like_icon', status: @status %>");
+  modal_container.find('.likers').html("<%= j render 'statuses/liker_names', status: @status %>");
+}
