@@ -449,24 +449,25 @@
         }
         input.last-goal-to-today-goal-hidden {
           background-color: #fff;
-          border: #fff;
+          border-style: solid;
+          border-color: #fff;
         }
       }
       #daily-goal-button-right {
-        border-right: 0px;
+        border-right: 0;
       }
     }
 
     .input-group {
-      margin: 0px;
-      textarea {
+      margin: 0;
+      .new-daily-goal-text-area#daily_goal_description {
         height: 34px !important;
       }
       input {
         background-color: #fff;
         color: #555;
         border: 1px solid #C3C3C3;
-        margin: 0px;
+        margin: 0;
       }
     }
   }

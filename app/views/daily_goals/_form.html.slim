@@ -1,7 +1,6 @@
 = form_tag "/daily_goals", method: "post", class: "set-daily-goal"
   .panel
     .panel-heading
-      h4.
       h3.panel-title#daily-goal-notice #{current_user.name}님, '#{current_character.group.name}' 그룹에서 오늘(#{datestring} #{weekdaystring})의 목표를 등록하지 않으셨군요!
     .panel-body
       ul.daily-goal-set-buttons
@@ -11,7 +10,7 @@
           .btn.new-daily-goal-button 새 목표 등록
         li#daily-goal-button-right.verify-past-btn
           .btn 실천 인증
-      .input-group.hidden
-        = text_area_tag 'daily_goal[description]', last_daily_goal.description, placeholder: "#{datestring} #{weekdaystring}의 목표를 입력해주세요", required: true, class: 'form-control'
+      .input-group.new-daily-goal-form.hidden
+        = text_area_tag 'daily_goal[description]', last_daily_goal.description, placeholder: "#{datestring} #{weekdaystring}의 목표를 입력해주세요", required: true, class: 'form-control new-daily-goal-text-area'
         span.input-group-btn
           = submit_tag "목표 등록", class: 'btn submit-btn'

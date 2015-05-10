@@ -4,9 +4,9 @@
 
 show_new_daily_goal_form = () ->
   $('.new-daily-goal-button').on 'click', (e) ->
-    if($('.panel-body .input-group').hasClass('hidden'))
-      $('.panel-body .input-group').removeClass('hidden')
+    if($('.panel-body .new-daily-goal-form').hasClass('hidden'))
+      $('.panel-body .new-daily-goal-form').removeClass('hidden')
     else
-      $('.panel-body .input-group').addClass('hidden')
+      $('.panel-body .new-daily-goal-form').addClass('hidden')
 
 $(document).on 'ready page:load', show_new_daily_goal_form
