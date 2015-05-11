@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :liked_statuses, through: :likes, source: :status
 
+  validates :name, presence: true
+
   def like!(status)
     liked_statuses << status unless likes?(status)
   end
