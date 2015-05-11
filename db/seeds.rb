@@ -1,8 +1,8 @@
 #encoding=utf-8
 if User.find_by_email('evermentors@gmail.com').blank?
-  ActiveRecord::Base.skip_collbacks = true
+  ActiveRecord::Base.skip_callbacks = true
   havit_admin = User.create name: '에버멘토', email: 'evermentors@gmail.com', password: 'ever8253', last_used_character: 1
-  ActiveRecord::Base.skip_collbacks = false
+  ActiveRecord::Base.skip_callbacks = false
 else
   havit_admin = User.find_by_email('evermentors@gmail.com')
 end
