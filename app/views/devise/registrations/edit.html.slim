@@ -5,6 +5,8 @@
       = f.error_notification
 
       .contents
+        / = f.input :avatar, label: '프로필 사진', accept: 'image/png,image/gif,image/jpeg'
+        / = image_tag @user.avatar.url(:thumb)
         = f.input :name, required: true, label: '이름'
         = f.input :email, required: true, label: '이메일 주소'
         = f.input :password, autocomplete: "off", placeholder: "비밀번호 변경시에만 입력해 주세요.", required: false, label: "비밀번호"
