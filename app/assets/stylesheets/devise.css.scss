@@ -24,6 +24,12 @@
       margin: 15px 0;
       height: 50px;
     }
+    label {
+      font-size: 12px;
+    }
+    label + input {
+      margin-top: 0;
+    }
     .submit-btn {
       height: 50px;
     }
@@ -37,17 +43,35 @@
         text-align: right;
       }
     }
+    .user_current_password {
+      border-top: 1px solid hsl(0, 0%, 80%);
+      padding-top: 15px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.wrap-white {
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  .alert {
+    font-size: 12px;
+    margin: 0 0 10px;
   }
 }
 
 main.need-login {
+  background-color: #fff;
   .alert {
     width: 300px;
     margin: 30px auto -30px;
+    font-size: 12px;
   }
   .authform {
     .alert {
-      margin: 0;
+      margin: 0 0 10px;
     }
   }
 }

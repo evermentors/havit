@@ -1,0 +1,14 @@
+.wrap-white
+  .authform
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      .title 계정 설정
+      = f.error_notification
+
+      .contents
+        = f.input :name, required: true, label: '이름'
+        = f.input :email, required: true, label: '이메일 주소'
+        = f.input :password, autocomplete: "off", placeholder: "비밀번호 변경시에만 입력해 주세요.", required: false, label: "비밀번호"
+        = f.input :password_confirmation, required: false, label: '비밀번호 확인'
+
+        = f.input :current_password, required: true, label: '설정을 변경하시려면 현재 비밀번호를 입력해 주세요.'
+        = f.button :submit, "설정 변경", class: 'btn submit-btn btn-block btn-havit-inverted'
