@@ -39,20 +39,25 @@ nav.navbar.navbar-default.navbar-fixed-top
 
 - if user_signed_in?
   nav.side-nav
-    ul
-      li.mobile-search-form
+    .contents
+      .header
+        .mobile-login-as
+          a.my-page-link href=user_path(current_user)
+            = image_tag(current_user.gravatar_url)
+            span = current_user.name
+      ul.menus
+        li.mobile-notification
+          / = link_to '', main_app.edit_user_registration_path, class: 'glyphicon glyphicon-bell'
+          a href='#'
+            span.glyphicon.glyphicon-bell
+            span.description 알림
+        li.mobile-edit-account
+          a href=main_app.edit_user_registration_path
+            span.glyphicon.glyphicon-cog
+            span.description 계정 설정
+        li.mobile-sign-out
+          a href=main_app.destroy_user_session_path data-method='delete'
+            span.glyphicon.glyphicon-off
+            span.description 로그아웃
+      .mobile-search-form
         == render 'search/form'
-      li.mobile-login-as
-        a.my-page-link href=user_path(current_user)
-          = image_tag(current_user.gravatar_url)
-          span = current_user.name
-      li.mobile-notification
-        / = link_to '', main_app.edit_user_registration_path, class: 'glyphicon glyphicon-bell'
-        = link_to '', '#', class: 'glyphicon glyphicon-bell'
-        span.description 알림
-      li.mobile-edit-account
-        = link_to '', main_app.edit_user_registration_path, class: 'glyphicon glyphicon-cog'
-        span.description 계정 설정
-      li.mobile-sign-out
-        = link_to '', main_app.destroy_user_session_path, method: 'delete', class: 'glyphicon glyphicon-off'
-        span.description 로그아웃
