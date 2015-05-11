@@ -4,18 +4,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_create :update_user_attributes, unless: :skip_collbacks
-  after_create :update_character, unless: :skip_collbacks
+  before_create :update_user_attributes, unless: :skip_callbacks
+  after_create :update_character, unless: :skip_callbacks
 
   include Gravtastic
   gravtastic
 
   has_many :characters, dependent: :destroy
 
+  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+  # validates_attachment_content_type :avatar, content_type: ["image/jpeg", "image/gif", "image/png"]
   acts_as_commontator
 
   has_many :likes, dependent: :destroy
   has_many :liked_statuses, through: :likes, source: :status
+
+  validates :name, presence: true
 
   def like!(status)
     liked_statuses << status unless likes?(status)
