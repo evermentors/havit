@@ -32,6 +32,6 @@ nav.navbar.navbar-default.navbar-fixed-top
         .navbar-group-select.will-collapse.dropdown
           = render 'groups/select'
       - else
-        ul.nav.navbar-nav
-          li = link_to 'Sign in', new_user_session_path
-          li = link_to 'Sign up', new_user_registration_path
+        ul.nav.navbar-nav.navbar-right
+          li = link_to '로그인', new_user_session_path
+          li = link_to '회원가입', new_user_registration_path
