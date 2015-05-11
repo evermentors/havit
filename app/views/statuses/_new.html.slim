@@ -2,8 +2,8 @@
   ul.status-dates
     - 6.downto(0).each do |day|
       li class=(last_daily_goal.goal_date==day.days.ago.to_date ? 'active first-load' : '') data-toggle='tooltip' title=datestring(day.days.ago) goal-date=day.days.ago.to_date
-        = Date.current==day.days.ago.to_date ? '오늘' : weekdaystring(day.days.ago, 'short')
-        - if status_at(day.days.ago).present?
+        = Date.current==day.days.ago.to_date ? '오늘' : weekdaystring(day.days.ago.to_date, 'short')
+        - if status_at(day.days.ago.to_date).present?
           span.glyphicon.glyphicon-ok
         .emphasize
   = hidden_field_tag 'status[verified_at]', last_daily_goal.goal_date.to_date, class: 'status-verified-at'
