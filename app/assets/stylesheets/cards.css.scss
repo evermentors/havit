@@ -139,7 +139,7 @@
     float: left;
     display: inline;
     height: 100%;
-    width: 30px;
+    width: 35px;
     text-align: center;
     font-size: 17px;
     color: hsl(0, 0%, 64%);
@@ -152,6 +152,7 @@
         line-height: 30px;
         background: transparent;
         outline: 0;
+        font-size: 20px;
       }
     }
   }
@@ -160,20 +161,22 @@
     position: relative;
     display: inline;
     height: 100%;
-    width: 30px;
+    width: 35px;
     text-align: center;
     line-height: 30px;
     opacity: .8;
+    margin-right: 5px;
+    .glyphicon {
+      color: #AAA;
+    }
     .modify-status-link {
       cursor: pointer;
-      .glyphicon-pencil {
-        color: #AAA;
-      }
+      margin-right: 5px;
     }
   }
   .likers {
     line-height: 16px;
-    margin: 0 30px;
+    margin: 0 35px;
     padding: 6px 0;
     overflow: hidden;
     text-overflow: ellipsis;

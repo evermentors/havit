@@ -65,7 +65,7 @@ class StatusesController < ApplicationController
   def destroy
     @status.destroy
     respond_to do |format|
-      format.html { redirect_to url, notice: 'Status was successfully destroyed.' }
+      format.html { redirect_to url, notice: '실천 인증이 성공적으로 삭제되었습니다.' }
       format.json { head :no_content }
     end
   end
