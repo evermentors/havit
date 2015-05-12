@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   after_create :update_character, unless: :skip_callbacks
 
   include Gravtastic
-  gravtastic
+  gravtastic(default: 'mm')
 
   has_many :characters, dependent: :destroy
 
