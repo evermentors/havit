@@ -132,3 +132,21 @@ textarea {
 .border-havit {
   border: 1px solid rgb(236, 84, 19);
 }
+
+.avatar-wrapper {
+  display: inline-block;
+  height: 31px;
+  width: 31px;
+  overflow: hidden;
+}
+.avatar-wrapper.status-avatar {
+  height: 40px;
+  width: 40px;
+}
+.avatar-wrapper + .user-name {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 32px;
+  margin-top: 0;
+  padding-top: 0;
+}

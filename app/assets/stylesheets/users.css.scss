@@ -1,6 +1,7 @@
 .user-page {
   .user-information {
     height: 50px;
+    margin-top: 20px;
     margin-bottom: -40px;
     img {
       display: inline;
@@ -10,8 +11,6 @@
       margin-right: 10px;
     }
     .user-name {
-      margin-top: 10px;
-      padding-top: 4px;
     }
   }
   .user-statuses {

@@ -7,7 +7,8 @@
 = content_for :card_author, flush:true
   .status-author
     a href=user_path(status.character.user)
-      = image_tag avatar_url(status.character.user)
+      .avatar-wrapper.status-avatar
+        = image_tag avatar_url(status.character.user)
       span.status-user-name = status.character.user.name
     span.time = timeago_tag status.created_at, format: "%y년 %B %-d일"
   .status-likes-count.color-havit class="#{'hidden' if status.likes_count == 0}"
