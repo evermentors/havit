@@ -126,11 +126,12 @@
 
 .nav .my-page-link-li {
   margin-right: 5px;
+  margin-left: 5px;
   .my-page-link {
-    padding: 9px 10px;
-    img {
-      margin-right: 6px;
-    }
+    padding-top: 10px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
