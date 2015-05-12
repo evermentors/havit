@@ -21,7 +21,7 @@
   </div>
   <div id="comment_<%= comment.id.to_s %>_middle_div" class="comment_div">
     <a id="comment_<%= comment.id.to_s %>_avatar_span" class="comment_avatar" href="<%= main_app.user_path(creator)%>">
-      <%= avatar %>
+      <%= image_tag avatar_url(creator) %>
     </a>
     <span id="comment_<%= comment.id.to_s %>_votes_span" class="comment_votes">
       <%= render :partial => 'commontator/comments/votes',

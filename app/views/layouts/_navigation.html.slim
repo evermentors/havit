@@ -19,7 +19,7 @@ nav.navbar.navbar-default.navbar-fixed-top
         ul.nav.navbar-nav.navbar-right
           li.my-page-link-li
             a.my-page-link href=user_path(current_user)
-              = image_tag(current_user.gravatar_url)
+              = image_tag avatar_url
               span = current_user.name
           li.notifications-li.closed tabindex="-1" data-toggle='tooltip' data-placement='bottom' title='알림'
             .notification-btn.closed last-checked=current_user.last_checked_notification

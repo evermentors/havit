@@ -2,7 +2,7 @@
   a.notification-link status-id=notification.status_id group-id=notification.group_id url=notification.link
     .notification-wrapper
       .noti-who
-        = image_tag(notification.user.gravatar_url)
+        = image_tag avatar_url(notification.user)
       .noti-what
         span.noti-user-name = notification.user.name
         ' 님이

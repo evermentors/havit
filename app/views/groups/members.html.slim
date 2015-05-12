@@ -2,7 +2,7 @@
   h3.text-center = "[#{@group.name}] 그룹"
   - @members.each do |member|
     .user-information
-      = image_tag member.user.gravatar_url
+      = image_tag avatar_url(member.user)
       h4.user-name
         = "#{member.user.name}"
         = "(관리자)" if member.is_admin

@@ -13,10 +13,7 @@
                 span.description 프로필 사진 업데이트
               = f.input :avatar, accept: 'image/png,image/gif,image/jpeg', input_html: { class: 'hidden-file-input' }, label: false
             .show-profile
-              - if @user.avatar.present?
-                = image_tag @user.avatar.url
-              - else
-                = image_tag @user.gravatar_url(size: 150)
+              = image_tag avatar_url(@user, 'medium')
         .user-name-input data-toggle='tooltip' data-placement='bottom' title='이름 수정'
           .user-name = @user.name
           = text_field_tag 'user[name]', @user.name, placeholder: '이름', class: 'form-control'
