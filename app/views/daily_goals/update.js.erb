@@ -8,6 +8,10 @@ if ($('.goal-container.editing').hasClass('list-group-item')) {
 if ($('.new-status-form .status-verified-at').val() == "<%= @daily_goal.goal_date %>") {
   $('.new-status-form .goal-description').text(description)
   $('.new-status-form .next-daily-goal-input').attr('placeholder', "미입력시 '" + description_inline + "'<%= korean_postposition(@description) %>" + ' 자동 등록됩니다.')
+
+  if ($('.goal-container.editing').hasClass('new-status-form')) {
+    $('.edit-goal-card .goal-container.daily .goal-description').text(description)
+  }
 }
 
 $(".daily-goal[data-id=<%= @daily_goal.id%>] > .goal-text").text(description_inline)
