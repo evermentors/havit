@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
+    redirect_to root_url unless current_user.email == 'evermentors@gmail.com'
     @users = User.all
   end
 

@@ -1,13 +1,22 @@
 .wrap-white
-  .authform
+  .authform.account-update
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      .title 계정 설정
       = f.error_notification
 
       .contents
-        / = f.input :avatar, label: '프로필 사진', accept: 'image/png,image/gif,image/jpeg'
-        / = image_tag @user.avatar.url(:thumb)
-        = f.input :name, required: true, label: '이름'
+        .profile-photo-wrapper
+          a.profile-photo-link
+            .overlay
+            .photo-upload-wrapper
+              span.modify-profile
+                span.glyphicon.glyphicon-camera
+                span.description 프로필 사진 업데이트
+              = f.input :avatar, accept: 'image/png,image/gif,image/jpeg', input_html: { class: 'hidden-file-input' }, label: false
+            .show-profile
+              = image_tag avatar_url(@user, 'medium')
+        .user-name-input data-toggle='tooltip' data-placement='bottom' title='이름 수정'
+          .user-name = @user.name
+          = text_field_tag 'user[name]', @user.name, placeholder: '이름', class: 'form-control'
         = f.input :email, required: true, label: '이메일 주소'
         = f.input :password, autocomplete: "off", placeholder: "비밀번호 변경시에만 입력해 주세요.", required: false, label: "비밀번호"
         = f.input :password_confirmation, required: false, label: '비밀번호 확인'

@@ -50,6 +50,111 @@
     }
   }
 }
+.authform.account-update {
+  margin-top: 20px;
+  .contents {
+    .user-name-input {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      .user-name {
+        text-align: center;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .user-name:hover, .user-name:focus {
+        opacity: .7;
+      }
+      input {
+        display: none;
+        width: 150px;
+        height: 28px;
+        margin: 0 auto;
+      }
+    }
+    .user-name-input.editing {
+      .user-name {
+        display: none;
+      }
+      input {
+        display: block;
+      }
+    }
+    input {
+      height: 35px;
+    }
+    .profile-photo-wrapper {
+      position: relative;
+      height: 150px;
+      width: 150px;
+      margin: 0 auto;
+      cursor: pointer;
+      .profile-photo-link {
+        .overlay {
+          background: #000;
+          opacity: .5;
+          display: none;
+          box-sizing: border-box;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          border-radius: 10px;
+        }
+        .photo-upload-wrapper {
+          height: 100%;
+          overflow: hidden;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 100%;
+          font-size: 25px;
+          z-index: 1000;
+          .modify-profile {
+            display: none;
+            text-align: center;
+            color: white;
+            margin-top: 43px;
+            .glyphicon {
+              font-size: 50px;
+            }
+            .description {
+              display: block;
+              font-size: 16px;
+            }
+          }
+          .hidden-file-input {
+            bottom: 0;
+            cursor: inherit;
+            font-size: 1000px !important;
+            height: 150px;
+            margin: 0;
+            opacity: 0;
+            padding: 0;
+            position: absolute;
+            right: 0;
+          }
+        }
+        .show-profile {
+          width: 150px;
+          height: 150px;
+          overflow: hidden;
+          margin: 0 auto;
+          border-radius: 10px;
+        }
+      }
+    }
+    .profile-photo-wrapper:hover {
+      .overlay {
+        display: block;
+      }
+      .modify-profile {
+        display: block !important;
+      }
+    }
+  }
+}
 
 .wrap-white {
   background-color: #fff;

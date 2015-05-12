@@ -1,6 +1,28 @@
 #encoding=utf-8
 
 module ApplicationHelper
+  def avatar_url (user=current_user, size='thumb')
+    if size == 'thumb'
+      if user.avatar.present?
+        user.avatar.url(:thumb)
+      else
+        user.gravatar_url
+      end
+    elsif size == 'medium'
+      if user.avatar.present?
+        user.avatar.url(:medium)
+      else
+        user.gravatar_url(size: 150)
+      end
+    elsif size == 'original'
+      if user.avatar.present?
+        user.avatar.url
+      else
+        user.gravatar_url(size: 512)
+      end
+    end
+  end
+
   def datestring (date=Date.current)
     date.strftime("%-m월 %-d일")
   end
