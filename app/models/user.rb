@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
 
   has_many :characters, dependent: :destroy
 
-  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
-  # validates_attachment_content_type :avatar, content_type: ["image/jpeg", "image/gif", "image/png"]
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment_content_type :avatar, content_type: ["image/jpeg", "image/gif", "image/png"]
   acts_as_commontator
 
   has_many :likes, dependent: :destroy
