@@ -66,7 +66,7 @@
     .other-actions
       a.modify-status-link data-toggle='tooltip' data-plcaement='top' title='실천 인증 수정'
         span.glyphicon.glyphicon-pencil
-      a.delete-status-link data-toggle='tooltip' data-plcaement='top' title='실천 인증 삭제' href="statuses/#{status.id}" data-method='delete'
+      a.delete-status-link data-toggle='tooltip' data-plcaement='top' title='실천 인증 삭제' href="/statuses/#{status.id}" data-method='delete'
         span.glyphicon.glyphicon-remove
   .likers class="#{'expand-right' unless status.character_id == current_character.id}"
     == render 'statuses/liker_names', status: status

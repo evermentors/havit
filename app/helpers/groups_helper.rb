@@ -49,6 +49,12 @@ module GroupsHelper
         m.from = 'evermentors@gmail.com'
         m.subject = "[Havit] #{current_user.name}님이 '#{current_character.group.name}' 그룹에서 #{datestring status.verified_at}의 실천 인증을 올렸습니다."
         m.html ="
+        <p style='position:relative; margin-top:0;'>
+          <div style='display: inline-block; max-height: 31px; height: 31px; width: 31px; max-width: 31px; overflow: hidden;'>
+            <img src='#{avatar_url(current_user)}' style='width: 31px; height: 31px;'>
+          </div>
+          <span style='display: inline-block; vertical-align: top; line-height: 31px; margin-top: 0; margin-left: 3px; padding-top: 0;'>#{current_user.name}</span>
+        </p>
         <p style='margin:0; font-size:15px;'>#{goal_str}</p>
         <hr style='width: 30px; display: inline-block;'>
         <p style='white-space: pre-line; margin:0;'>#{auto_link(status.description.gsub(/[<>]/, "<"=>'[', ">"=>']'), html: {target: '_blank'}) do |text| truncate(text, length: 30) end}</p>
