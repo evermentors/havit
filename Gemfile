@@ -33,6 +33,7 @@ gem 'searchkick'
 gem 'rails_autolink'
 gem 'browser'
 gem 'rails-i18n', '~> 4.0.0'
+gem 'sendgrid-ruby'
 
 group :production do
   gem 'rails_12factor'
