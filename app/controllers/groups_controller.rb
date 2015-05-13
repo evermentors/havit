@@ -54,6 +54,8 @@ class GroupsController < ApplicationController
       else
         @passcode_status = 'wrong-passcode'
       end
+    else
+      @passcode_status = 'right-passcode'
     end
   end
 

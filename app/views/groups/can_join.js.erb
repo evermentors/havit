@@ -3,7 +3,7 @@ target = $(".group-join-btn > input[data-id=<%= @group.id %>]").closest('.group-
   target.addClass("<%= @group_status %>")
   target.parent().find('.current-members-count').text("<%= @group.characters.count %>")
   target.parent().find('.member-limit').text("<%= @group.member_limit %>")
-<% elsif @group_status == 'need-passcode' %>
+<% else %>
   input = target.find('.passcode-input')
   input.attr('class', "form-control passcode-input <%= @passcode_status %>")
   <% if @passcode_status == 'wrong-passcode' %>
