@@ -38,10 +38,12 @@ class StatusesController < ApplicationController
           Notification.create!(
             user: current_user,
             recipient: 0,
-            description: "[#{current_character.group.name}] 그룹에서 #{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
+            description: "'#{current_character.group.name}' 그룹에서 #{view_context.datestring @status.verified_at}의 실천 인증을 올렸습니다.",
             link: group_path(current_character.group),
             group: current_character.group,
             status: @status)
+
+          view_context.notify_to_group(@status)
         end
         redirect_to url
       else
