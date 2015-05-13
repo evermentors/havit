@@ -75,7 +75,7 @@ show_status_textarea = () ->
     # 텍스트에어리어 맨 끝으로 포커스되게 함
     textarea = target.find('.status-textarea')
     # replace로 쓸데없이 생기는 leading spaces를 없앰
-    original_val = target.find('.card-message > .description').text().replace(/[ \t]{2,}/g, "");
+    original_val = textarea.val()
     textarea.focus().val('').val(original_val).trigger('autosize.resize')
 
 cancel_edit_status = () ->

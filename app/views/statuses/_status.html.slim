@@ -42,7 +42,7 @@
       .buttons
         button.btn-xs.btn-link.btn-confirm 확인
         button.btn-xs.btn-link.btn-cancel type='button' 취소
-      = text_area_tag 'status[description]', '', placeholder: '어떤 실천을 하셨나요?', class: 'form-control status-textarea', required: true
+      = text_area_tag 'status[description]', status.description, placeholder: '어떤 실천을 하셨나요?', class: 'form-control status-textarea', required: true
 
 = content_for :card_photo, flush:true
   - if status.photo?
