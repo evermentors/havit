@@ -5,6 +5,7 @@ show_notifications = ()->
         $('.notifications-count').addClass('hidden')
         $('.notification').slice(5).remove()
       $('.notifications-li').toggleClass('closed opened').focus()
+      update_last_checked()
     else
       close_notifications()
 
@@ -21,7 +22,6 @@ move_to_notification_link = ()->
 close_notifications = () ->
   unless $('.notifications-li').hasClass('closed')
     $('.notifications-li').toggleClass('closed opened')
-    update_last_checked()
 
 load_notifications = ()->
   $.ajax(url: '/notifications')
