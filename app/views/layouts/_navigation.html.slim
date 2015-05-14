@@ -17,7 +17,7 @@ nav.navbar.navbar-default.navbar-fixed-top
         ul.navbar-form.navbar-left
           == render 'search/form'
         ul.nav.navbar-nav.navbar-right
-          li.my-page-link-li
+          li.my-page-link-li data-toggle='tooltip' data-placement='bottom' title='나의 실천 내역'
             a.my-page-link href=user_path(current_user)
               .avatar-wrapper
                 = image_tag avatar_url
