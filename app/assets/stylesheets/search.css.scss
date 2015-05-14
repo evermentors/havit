@@ -17,7 +17,7 @@
   .search-input:focus {
     border-color: #ccc;
     box-shadow: none;
-    webkit-box-shadow: none;
+    -webkit-box-shadow: none;
   }
   .search-input-btn {
     button {
@@ -28,8 +28,27 @@
 
 .search-result-container {
   padding-top: 10px;
-  .query-result {
-    margin-bottom: 5px;
+  .search-result-description {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .menus {
+    text-align: right;
+    margin-bottom: 10px;
+    .btn:focus {
+      outline: none;
+    }
+    .active {
+      color: #23527c;
+      text-decoration: underline;
+    }
+  }
+  .search-results.show-not-joined {
+    .groups-joined {
+      display: none;
+    }
   }
   .searched-group {
     border: 1px solid;

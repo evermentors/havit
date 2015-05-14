@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+hide_joined_or_all = ()->
+  $('.search-results > .menus > button').click ->
+    $(this).siblings('.active').removeClass('active')
+    $(this).addClass('active')
+    $('.search-results').removeClass('show-all show-not-joined').addClass($(this).attr('trigger'))
+
+$(document).on 'ready page:load', hide_joined_or_all
