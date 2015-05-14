@@ -15,6 +15,7 @@ close_notifications_on_blur = () ->
 
 move_to_notification_link = ()->
   $('body').on 'click', '.notification-link', ->
+    update_last_checked()
     group = $(this).attr('url')
     status = '?status-id=' + $(this).attr('status-id')
     window.location.href = group + status
