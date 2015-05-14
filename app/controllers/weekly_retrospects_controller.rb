@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 class WeeklyRetrospectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_weekly_retrospect, only: [:show, :edit, :update, :destroy]
   before_action :set_weekly_retrospect_hash, only: [:show, :new, :edit]
   before_action :set_weekly_retrospect_info, only: [:show, :edit]

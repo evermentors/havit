@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @unread_notifications = Notification.unread(current_user).reverse
     need_more_notification = 5 - @unread_notifications.count
