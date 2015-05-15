@@ -2,6 +2,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// import progress framework
+$nprogress-color: #ec5413;
+$nprogress-height: 1px;
+$nprogress-zindex: 10100;
+
+@import 'nprogress';
+
 @font-face {
   font-family: 'Harlow Solid Italic';
   src: url(font-path('harlow_solid_italic.eot'));

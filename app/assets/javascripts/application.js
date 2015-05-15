@@ -17,4 +17,6 @@
 //= require rails-timeago
 //= require locales/jquery.timeago.ko.js
 //= require jquery.autosize
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
