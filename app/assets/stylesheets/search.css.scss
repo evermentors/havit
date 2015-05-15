@@ -37,12 +37,16 @@
   .menus {
     text-align: right;
     margin-bottom: 10px;
-    .btn:focus {
+    .btn {
+      color: #aaa;
+    }
+    .btn:focus, .btn:hover {
       outline: none;
+      text-decoration: none;
+      color: #ec5413;
     }
     .active {
-      color: #23527c;
-      text-decoration: underline;
+      color: #ec5413;
     }
   }
   .search-results.show-not-joined {

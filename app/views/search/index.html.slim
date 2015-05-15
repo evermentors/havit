@@ -4,10 +4,10 @@
       - if defined? @index
         | Havit에 있는 모든 그룹의 목록입니다. 원하는 그룹을 찾아 보세요!
       - else
-        | '#{@query}'으로 그룹 #{@groups_joined.count + @groups_not_joined.count}개가 검색되었습니다.
+        | '#{@query}'으로 그룹 #{@groups_count}개가 검색되었습니다.
     .menus
-      button.btn.btn-xs.btn-link[trigger='show-not-joined'] 가입하지 않은 그룹만 보기
-      button.btn.btn-xs.btn-link.active[trigger='show-all'] 모두 보기
+      button.btn.btn-xs.btn-link[trigger='show-not-joined' class="#{'disabled' if @groups_not_joined_count == 0}"] 가입하지 않은 그룹만 보기 (#{@groups_not_joined_count})
+      button.btn.btn-xs.btn-link.active[trigger='show-all'] 모두 보기 (#{@groups_count})
     .searched-groups
       .groups-not-joined
         - @groups_not_joined.each do |group|
