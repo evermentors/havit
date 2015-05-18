@@ -124,6 +124,7 @@ GEM
       faraday
       multi_json
     erubis (2.7.0)
+    escape_utils (1.1.0)
     execjs (2.4.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -395,6 +396,7 @@ DEPENDENCIES
   commontator
   devise
   did_you_mean
+  escape_utils
   factory_girl_rails (~> 4.0)
   faker
   figaro
