@@ -38,6 +38,7 @@ gem 'nprogress-rails'
 gem 'capybara'
 gem "factory_girl_rails", "~> 4.0"
 gem 'escape_utils'
+gem 'fast_blank'
 
 group :production do
   gem 'rails_12factor'
