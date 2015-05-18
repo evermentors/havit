@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_character
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
   before_filter -> { flash.now[:notice] = flash[:notice].html_safe if flash[:html_safe] && flash[:notice] }
 
   def configure_permitted_parameters
@@ -31,5 +32,9 @@ class ApplicationController < ActionController::Base
     else
       group_url(character.group)
     end
+  end
+
+  def set_locale
+    I18n.locale = I18n.default_locale
   end
 end
