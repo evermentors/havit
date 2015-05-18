@@ -1,16 +1,26 @@
-= form_tag "/daily_goals", method: "post", class: "set-daily-goal"
-  .panel
+= form_tag "/daily_goals", method: "post", class: "set-goal-form daily-goal "
+  .panel.panel-havit
     .panel-heading
-      h3.panel-title#daily-goal-notice #{current_user.name}님, '#{current_character.group.name}' 그룹에서 오늘(#{datestring} #{weekdaystring})의 목표를 등록하지 않으셨군요!
+      h3.panel-title
+        span.description #{current_user.name}님, 오늘의 목표를 등록해주세요!
+        span.last-goal-description
+          ' 가장 최근 목표는
+          span.last-goal.color-havit #{last_daily_goal.description}
+          | #{korean_postposition(last_daily_goal.description, :이었)}습니다.
     .panel-body
-      ul.daily-goal-set-buttons
-        li#daily-goal-button-left data-toggle='tooltip' data-placement='top' title='최근 목표 : #{last_daily_goal.description}'
-          = submit_tag "최근 목표를 오늘 목표로 등록", class: 'last-goal-to-today-goal-hidden'
-        li#daily-goal-button-center
-          .btn.new-daily-goal-button 새 목표 등록
-        li#daily-goal-button-right.verify-past-btn
-          .btn 실천 인증
-      .input-group.new-daily-goal-form.hidden
-        = text_area_tag 'daily_goal[description]', last_daily_goal.description, placeholder: "#{datestring} #{weekdaystring}의 목표를 입력해주세요", required: true, class: 'form-control new-daily-goal-text-area'
+      .link-div.col-lg-4.col-md-4.col-sm-4
+        span.last-goal-to-current-goal
+          .title
+            ' 최근 목표를
+            br
+            | 오늘 목표로 등록
+      .link-div.col-lg-4.col-md-4.col-sm-4
+        span.set-new-goal
+          .title 새 목표 등록
+      .link-div.col-lg-4.col-md-4.col-sm-4.no-border
+        span.verify-past-btn
+          .title 지난 실천 인증
+      .input-group
+        = text_field_tag 'daily_goal[description]', last_daily_goal.description, placeholder: "오늘 목표는 무엇인가요?", required: true, class: 'form-control new-goal-input'
         span.input-group-btn
-          = submit_tag "목표 등록", class: 'btn submit-btn'
+          = submit_tag "새 목표 등록", class: 'btn btn-default submit-btn'
