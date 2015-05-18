@@ -17,7 +17,6 @@
 
 # Ignore local configuration files.
 .env
-Procfile
 
 # Ignore database.yml
 config/database.yml
