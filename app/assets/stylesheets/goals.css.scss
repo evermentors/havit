@@ -1,6 +1,5 @@
 .set-goal-form {
   .panel-heading {
-    background-color: hsl(18, 84%, 90%);
     .panel-title {
       .last-goal-description {
         font-size: 85%;
@@ -70,6 +69,18 @@
     }
     .input-group {
       display: table;
+    }
+  }
+}
+
+.set-goal-form.weekly-daily-goal {
+  .panel-body {
+    padding: 15px;
+    textarea {
+      margin-bottom: 10px;
+    }
+    .actions {
+      text-align: right;
     }
   }
 }

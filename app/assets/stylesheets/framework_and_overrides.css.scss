@@ -140,9 +140,10 @@ textarea {
   border: 1px solid hsl(18, 85%, 80%);
 }
 .panel-havit {
-  border-color: hsl(18, 85%, 80%);
+  border-color: hsl(0, 0%, 79%);
   .panel-heading {
-    background-color: hsl(18, 84%, 90%);
+    background-color: #fff;
+    border-bottom: 1px solid #C9C9C9;
   }
 }
 .avatar-wrapper {
