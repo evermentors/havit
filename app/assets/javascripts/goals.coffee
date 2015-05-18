@@ -35,6 +35,10 @@ show_setting_new_goal_input = () ->
     $('.set-goal-form .panel-body').addClass('setting-new-goal')
     $('.set-goal-form .new-goal-input').val('').focus()
 
+show_progress_bar_on_setting_goal = () ->
+  $('.set-goal-form button[type=submit]').click ->
+    NProgress.start()
+
 $(document).on 'ready page:load', show_goal_textarea
 $(document).on 'ready page:load', cancel_edit_goal
 $(document).on 'ready page:load', edit_goal_on_new_status_form

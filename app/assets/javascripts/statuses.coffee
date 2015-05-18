@@ -82,6 +82,10 @@ cancel_edit_status = () ->
   $('.card-container .btn-cancel').click ->
     $(this).closest('.card-container').removeClass('editing')
 
+show_progress_bar_on_new_status_form = () ->
+  $('.new-status-form button[type=submit]').click ->
+    NProgress.start()
+
 $(document).on 'ready page:load', on_verified_at_changed
 $(document).on 'ready page:load', show_new_status_form
 $(document).on 'ready page:load', textarea_autosize
@@ -92,3 +96,4 @@ $(document).on 'ready page:load', remove_uploaded_photo
 $(document).on 'ready page:load', bigger_photo_when_clicked
 $(document).on 'ready page:load', show_status_textarea
 $(document).on 'ready page:load', cancel_edit_status
+$(document).on 'ready page:load', show_progress_bar_on_new_status_form
