@@ -101,11 +101,21 @@ module ApplicationHelper
     end
   end
 
-  def korean_postposition(str)
+  def final_consonant (str)
     if (str[-1].unpack('U*').first - 0xAC00) % 28 != 0
-      '이'
+      return 0
     else
-      '가'
+      return 1
     end
+  end
+
+  def korean_postposition (str, option)
+    postposition = {
+      이가: ['이', '가'],
+      을를: ['을', '를'],
+      으로: ['으로', '로'],
+      이었: ['이었', '였']
+    }
+    postposition[option][final_consonant(str)]
   end
 end

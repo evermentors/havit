@@ -26,6 +26,17 @@ edit_goal_on_new_status_form = () ->
       }
     })
 
+set_last_goal_to_current_goal = () ->
+  $('.set-goal-form .last-goal-to-current-goal').click ->
+    $('.set-goal-form').submit()
+
+show_setting_new_goal_input = () ->
+  $('.set-goal-form .set-new-goal').click ->
+    $('.set-goal-form .panel-body').addClass('setting-new-goal')
+    $('.set-goal-form .new-goal-input').val('').focus()
+
 $(document).on 'ready page:load', show_goal_textarea
 $(document).on 'ready page:load', cancel_edit_goal
 $(document).on 'ready page:load', edit_goal_on_new_status_form
+$(document).on 'ready page:load', set_last_goal_to_current_goal
+$(document).on 'ready page:load', show_setting_new_goal_input

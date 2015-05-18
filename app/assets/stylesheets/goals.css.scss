@@ -1,0 +1,86 @@
+.set-goal-form {
+  .panel-heading {
+    .panel-title {
+      .last-goal-description {
+        font-size: 85%;
+        opacity: .6;
+        margin-left: 5px;
+      }
+    }
+  }
+  .panel-body {
+    padding: 5px;
+    .link-div {
+      border-right: 1px solid #e5e5e5;
+      padding-left: 0;
+      padding-right: 0;
+      @media (max-width: 768px) {
+        border: none;
+      }
+      span {
+        width: 100%;
+        display: table;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bold;
+        .title {
+          height: 70px;
+          display: table-cell;
+          vertical-align: middle;
+          font-size: 14px;
+          color: #666;
+          padding-left: 5px;
+          padding-right: 5px;
+          @media (max-width: 768px) {
+            height: 40px;
+          }
+          br {
+            display: none;
+            @media (min-width: 768px) and (max-width: 991px) {
+              display: block;
+            }
+          }
+        }
+      }
+      span:hover, span:focus, span:active {
+        .title {
+          color: rgb(236, 84, 19);
+        }
+      }
+    }
+    .link-div.no-border {
+      border: none;
+    }
+    .input-group {
+      padding: 18px 10px;
+      display: none;
+      .form-control {
+        outline: none;
+        box-shadow: none;
+      }
+      .form-control:focus {
+        border-color: #ccc;
+      }
+    }
+  }
+  .panel-body.setting-new-goal {
+    .link-div {
+      display: none;
+    }
+    .input-group {
+      display: table;
+    }
+  }
+}
+
+.set-goal-form.weekly-daily-goal {
+  .panel-body {
+    padding: 15px;
+    textarea {
+      margin-bottom: 10px;
+    }
+    .actions {
+      text-align: right;
+    }
+  }
+}

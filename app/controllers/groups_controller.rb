@@ -20,10 +20,10 @@ class GroupsController < ApplicationController
       character = Character.in_group(current_user, @group)
       if not character.blank?
         session[:last_used_character_id] = character.take.id
-        @statuses = Status.from(@group).page(params[:page])
+        @statuses = Status.from(@group).page(params[:page]).per(10)
         render 'statuses/index', locals: { show_group: true }
       elsif @group.password.blank?
-        @statuses = Status.from(@group).page(params[:page])
+        @statuses = Status.from(@group).page(params[:page]).per(10)
         render 'groups/not_joined', locals: { hidden: false }
       else
         render 'groups/not_joined', locals: { hidden: true }

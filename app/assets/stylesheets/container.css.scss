@@ -10,19 +10,6 @@ $device-tablet: "only screen and (max-width: 991px)";
     }
     .actions {
       margin-top: 10px;
-      .btn {
-        margin-right:15px;
-      }
-    }
-    .set-weekly-daily-goal {
-      textarea {
-        margin-bottom: 10px;
-      }
-    }
-    .set-daily-goal {
-      .form-group {
-        margin-bottom:0;
-      }
     }
   }
 }
