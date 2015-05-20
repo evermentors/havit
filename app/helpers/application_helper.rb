@@ -118,4 +118,21 @@ module ApplicationHelper
     }
     postposition[option][final_consonant(str)]
   end
+
+  def month_calendar_td_options
+    ->(start_date, current_calendar_date) {
+      today = Date.current
+      td_class = ["day"]
+      td_class << "today"  if today == current_calendar_date
+      td_class << "past"   if today > current_calendar_date
+      td_class << "future" if today < current_calendar_date
+      td_class << "prev-month"    if start_date.month != current_calendar_date.month && current_calendar_date < start_date
+      td_class << "next-month"    if start_date.month != current_calendar_date.month && current_calendar_date > start_date
+      td_class << "current-month" if start_date.month == current_calendar_date.month
+      td_class << "wday-#{current_calendar_date.wday.to_s}"
+      td_class << 'verified' if status_at(current_calendar_date).present?
+
+      {class: td_class.join(" "), data: {day: current_calendar_date}}
+    }
+  end
 end

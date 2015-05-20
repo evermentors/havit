@@ -1,0 +1,4 @@
+.calendar
+  = month_calendar(table: {class: "table"}, tr: {class: "calendar-row"}, title: -> (start_date) {"#{start_date.month}월: '#{monthly_goal.description}'"}, td: month_calendar_td_options) do |date|
+    span.glyphicon.glyphicon-ok
+    = date.day

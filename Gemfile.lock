@@ -361,6 +361,8 @@ GEM
       rest-client
       smtpapi
     shellany (0.0.1)
+    simple_calendar (1.1.10)
+      rails (>= 3.0)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -467,6 +469,7 @@ DEPENDENCIES
   searchkick
   selenium-webdriver
   sendgrid-ruby
+  simple_calendar
   simple_form
   slim-rails
   spring
