@@ -1,4 +1,7 @@
 .calendar {
+  @media (max-width: 1199px) {
+    display: none;
+  }
   background-color: #fff;
   border-radius: 7px;
   margin-top: 10px;
