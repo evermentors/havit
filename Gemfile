@@ -41,6 +41,7 @@ gem 'escape_utils'
 gem 'fast_blank'
 gem 'rails_admin'
 gem 'font-awesome-sass-rails'
+gem 'simple_calendar'
 
 group :production do
   gem 'rails_12factor'

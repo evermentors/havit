@@ -67,6 +67,10 @@ main.need-login {
   background-color: #fff;
 }
 
+.container {
+  position: relative;
+}
+
 section {
   @extend .row;
   margin-top: 20px;
