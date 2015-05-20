@@ -39,6 +39,8 @@ gem 'capybara'
 gem "factory_girl_rails", "~> 4.0"
 gem 'escape_utils'
 gem 'fast_blank'
+gem 'rails_admin'
+gem 'font-awesome-sass-rails'
 
 group :production do
   gem 'rails_12factor'
