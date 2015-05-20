@@ -41,8 +41,9 @@
 .container-body
   = render @statuses
 
-.container-right
-  = render 'statuses/calendar'
+- unless no_monthly_goal?
+  .container-right
+    = render 'statuses/calendar'
 
 .modal.fade.photo-modal tabindex='-1' role='dialog' aria-hidden='true'
   .modal-dialog

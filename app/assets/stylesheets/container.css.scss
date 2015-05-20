@@ -42,4 +42,8 @@ $device-tablet: "only screen and (max-width: 991px)";
   position: absolute;
   top: 0;
   right: 0;
+  width: 224px;
+  @media (max-width: 1199px) {
+    display: none;
+  }
 }
