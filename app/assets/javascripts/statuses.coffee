@@ -96,4 +96,4 @@ $(document).on 'ready page:load', remove_uploaded_photo
 $(document).on 'ready page:load', bigger_photo_when_clicked
 $(document).on 'ready page:load', show_status_textarea
 $(document).on 'ready page:load', cancel_edit_status
-$(document).on 'ready page:load', show_progress_bar_on_new_status_form
+# $(document).on 'ready page:load', show_progress_bar_on_new_status_form

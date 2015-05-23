@@ -9,5 +9,4 @@ show_progress_bar_on_search = () ->
     NProgress.start()
 
 $(document).on 'ready page:load', hide_joined_or_all
-$(document).on 'ready page:load', show_progress_bar_on_search
-$(document).on 'page:receive', NProgress.set(0.7)
+# $(document).on 'ready page:load', show_progress_bar_on_search
