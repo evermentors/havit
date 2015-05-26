@@ -2,9 +2,10 @@
   .panel-heading {
     .panel-title {
       .last-goal-description {
+        display: block;
+        margin-top: 5px;
         font-size: 85%;
         opacity: .6;
-        margin-left: 5px;
       }
     }
   }
