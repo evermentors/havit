@@ -19,15 +19,20 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 Capybara.default_selector = :css
+# Capybara.register_driver :poltergeist do |app|
+#   Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :phantomjs_logger => nil, js_errors: false)
+# end
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :phantomjs_logger => nil, js_errors: false)
+  Capybara::Poltergeist::Driver.new(app,
+    :phantomjs_options => ['--debug=no', '--load-images=no', '--ignore-ssl-errors=yes', '--ssl-protocol=TLSv1'], :debug => false)
 end
+
+
 Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   require 'devise'
 
-  config.warnings = false
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
