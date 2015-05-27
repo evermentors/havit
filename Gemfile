@@ -52,6 +52,8 @@ group :test do
   gem 'minitest-reporters', '1.0.5'
   gem 'mini_backtrace',     '0.1.3'
   gem 'guard-minitest',     '2.3.1'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -75,4 +77,5 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
+  gem 'poltergeist'
 end
