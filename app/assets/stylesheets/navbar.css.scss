@@ -186,6 +186,7 @@ nav.navbar, main {
 }
 
 body.side-open {
+  overflow-x: hidden;
   nav.navbar, main {
     -webkit-transform: translate3d(200px,0,0);
     -moz-transform: translate3d(200px,0,0);
