@@ -1,5 +1,5 @@
-var description = "<%= @description %>".replace(/ nl /g, '\n')
-var description_inline = "<%= @description %>".replace(/ nl /g, ' ')
+var description = "<%== @description %>".replace(/ nl /g, '\n')
+var description_inline = "<%== @description %>".replace(/ nl /g, ' ')
 
 $('.edit-goal-card .goal-container.monthly .goal-description').text(description)
 $(".monthly-goal[data-id=<%= @monthly_goal.id%>] > .goal-text").text(description_inline)
