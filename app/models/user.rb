@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
+  validates :slug, uniqueness: true
+
   before_create :update_user_attributes, unless: :skip_callbacks
   after_create :update_character, unless: :skip_callbacks
 
@@ -31,6 +36,10 @@ class User < ActiveRecord::Base
 
   def likes?(status)
     liked_statuses.include?(status)
+  end
+
+  def normalize_friendly_id(string)
+    string.to_ascii.downcase.gsub(" ", ".")
   end
 
   private
