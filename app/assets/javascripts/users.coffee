@@ -3,7 +3,7 @@ show_name_input_on_edit_account = () ->
     $(this).parent().addClass('editing')
 
 show_uploaded_profile = () ->
-  $('input#user_avatar').change () ->
+  $('input#user_avatar').change ->
     read_profile(this)
 
 read_profile = (input) ->
@@ -13,6 +13,12 @@ read_profile = (input) ->
       $('.profile-photo-link > .show-profile > img').attr('src', e.target.result)
     reader.readAsDataURL(input.files[0])
 
+remove_whitespace_on_slug = () ->
+  $('input#user_slug').blur ->
+    content = $(this).val()
+    $(this).val(content.replace(' ', '.'))
+
 $(document).on 'ready page:load', show_name_input_on_edit_account
 $(document).on 'ready page:load', show_uploaded_profile
 $(document).on 'ready page:load', read_profile
+$(document).on 'ready page:load', remove_whitespace_on_slug
