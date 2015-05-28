@@ -42,6 +42,7 @@ gem 'fast_blank'
 gem 'rails_admin'
 gem 'font-awesome-sass-rails'
 gem 'simple_calendar'
+gem 'unidecoder'
 
 group :production do
   gem 'rails_12factor'

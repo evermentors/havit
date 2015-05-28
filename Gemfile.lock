@@ -417,6 +417,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    unidecoder (1.1.2)
     uniform_notifier (1.7.0)
     version_sorter (1.1.1)
     warden (1.2.3)
@@ -492,3 +493,4 @@ DEPENDENCIES
   turbolinks
   uglifier
   unicorn
+  unidecoder
