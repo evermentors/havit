@@ -1,47 +1,47 @@
 # encoding: UTF-8
 require 'rails_helper'
+require 'byebug'
 
 describe "User logs in", :type => :feature do
   before :each do
     ActiveRecord::Base.skip_callbacks = true
-    # FactoryGirl.create(:admin)
+    FactoryGirl.create(:admin)
     ActiveRecord::Base.skip_callbacks = false
-    FactoryGirl.create(:group)
-    # FactoryGirl.create(:user, name: "kucho1", email: "jku856-1@gmail.com")
-    FactoryGirl.create(:user, name: "kucho2", email: "jku856-2@gmail.com")
+    Group.disable_search_callbacks
+    universe = FactoryGirl.create(:group)
+    Group.enable_search_callbacks
+
+    @user1 = FactoryGirl.create(:user, name: "kucho1", email: "jku856-1@gmail.com")
+    @user2 = FactoryGirl.create(:user, name: "kucho2", email: "jku856-2@gmail.com")
+    Group.disable_search_callbacks
+    @group1 = FactoryGirl.create(:group, name: "Evermentors", creator: @user1.id, description: "This is evermentors group", password: "ever8253", member_limit: 10)
+    @group1.characters.create user_id: @user1.id, order: (@user1.characters.count + 1), is_admin: true
+    Group.enable_search_callbacks
   end
 
-  # it "then universe group is selected" do
-  #   visit "/"
-  #   ActiveRecord::Base.skip_callbacks = false
-  #   universe = FactoryGirl.create(:group)
-
-  #   user1 = FactoryGirl.create(:user, name: "kucho1", email: "jku856-1@gmail.com")
-  #   user2 = FactoryGirl.create(:user, name: "kucho2", email: "jku856-2@gmail.com")
-  #   user_group = FactoryGirl.create(:user_group)
-  #   user_group.characters.create user_id: user1.id, order: 1, is_admin: false
-  #   user_group.characters.create user_id: user2.id, order: 1, is_admin: false
-  # end
-  
-  it "logs in then universe group is selected", js: :true do
-    # FactoryGirl.create(:user, name: "kucho1", email: "jku856-1@gmail.com")
-
-    User.create(name: "kucho", email: "jku856@gmail.com", password: "ever8253")
-    
-    # locale = I18n.locale
-    # visit root_path(locale)
-    visit '/'
-    expect(current_path).to eq(new_user_session_path)
-    expect(page).to have_css("div > #flash_alert")
-
-    # save_screenshot('1_before_email.png')
-    fill_in "user_email", with: "jku856@gmail.com"
-    # save_screenshot('2_before_password.png')
+  it "notifications from my groups", js: :true do
+    # kucho1: login
+    visit "/"
+    fill_in "user_email", with: "jku856-1@gmail.com"
     fill_in "user_password", with: "ever8253"
-    # save_screenshot('3_after_password.png')
     click_button "로그인"
-
-    save_screenshot('4_result.png')
     expect(current_path).to eq "/"
+
+    fill_in "monthly_goal_description", with: "user1's monthly goal description"
+    fill_in "weekly_goal_description", with: "user1's weekly goal description"
+    fill_in "daily_goal_description", with: "user1's daily goal description"
+    page.find('.btn.btn-primary.btn-sm.submit-btn').click
+
+    page.find('.notification-btn > .glyphicon.glyphicon-bell').click
+
+    page.find('.navbar-group-select.will-collapse > div.dropdown-toggle').click
+    page.find('.navbar-group-select.will-collapse .group-name', :text => 'Evermentors').click
+
+    fill_in "monthly_goal_description", with: "user1's monthly goal description"
+    fill_in "weekly_goal_description", with: "user1's weekly goal description"
+    fill_in "daily_goal_description", with: "user1's daily goal description"
+    page.find('.btn.btn-primary.btn-sm.submit-btn').click
+    save_screenshot('panel-title-screenshot.png')
+    expect(page).to have_css(".metainfo")
   end
 end
