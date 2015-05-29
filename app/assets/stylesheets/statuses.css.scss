@@ -243,7 +243,7 @@
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
       .next-goal-date {
-        color: #999;
+        color: #555;
         padding-left: 5px;
         padding-right: 5px;
         background-color: white;
@@ -256,6 +256,18 @@
         border: none;
         box-shadow: none;
       }
+      .next-daily-goal-input:focus::-webkit-input-placeholder {
+        color:transparent;
+      }
+      .next-daily-goal-input:focus:-moz-placeholder {
+        color:transparent;
+      } /* FF 4-18 */
+      .next-daily-goal-input:focus::-moz-placeholder {
+        color:transparent;
+      } /* FF 19+ */
+      .next-daily-goal-input:focus:-ms-input-placeholder {
+        color:transparent;
+      } /* IE 10+ */
     }
     .photo-preview {
       position: relative;
