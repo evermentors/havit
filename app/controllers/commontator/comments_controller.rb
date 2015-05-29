@@ -42,7 +42,7 @@ module Commontator
           Notification.create!(
             user: current_user,
             recipient: recipient,
-            description: "[#{group.name}] 그룹에서 #{User.find(recipient).name}님의 #{datestr} 실천에 댓글을 달았습니다.",
+            description: "'#{group.name}' 그룹에서 #{User.find(recipient).name}님의 #{datestr} 실천에 댓글을 달았습니다.",
             link: main_app.group_path(group),
             group: group,
             status: status)

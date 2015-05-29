@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
-  validates :slug, uniqueness: true
+  validates :slug, presence: true, uniqueness: true
 
   before_create :update_user_attributes, unless: :skip_callbacks
   after_create :update_character, unless: :skip_callbacks
