@@ -2,14 +2,14 @@
 
 class StatusesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_status, only: [:edit, :update, :destroy]
+  before_action :set_status, only: [:show, :update, :destroy]
 
   def index
     @statuses = Status.from(universe).page(params[:page]).per(10)
     session[:last_used_character_id] = Character.in_group(current_user, universe).take.id
   end
 
-  def edit
+  def show
   end
 
   def create

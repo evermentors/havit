@@ -28,5 +28,7 @@ module Havit
 
     # add app/assets/fonts to the asset path
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    Rails::Timeago.default_options limit: proc { 4.days.ago }, date_only: false, nojs: true
   end
 end

@@ -10,7 +10,8 @@
       .avatar-wrapper.status-avatar
         = image_tag avatar_url(status.character.user)
       span.status-user-name = status.character.user.name
-    span.time = timeago_tag status.created_at, format: "%y년 %B %-d일"
+    a.time href=status_path(status)
+      = timeago_tag status.created_at, format: "%B %-d일 %A %p %-l:%M", title: (l status.created_at, format: "%Y년 %B %-d일 %A %p %-l:%M")
   .status-likes-count.color-havit class="#{'hidden' if status.likes_count == 0}"
       span.glyphicon.glyphicon-heart
       span.likes-count => status.likes_count
