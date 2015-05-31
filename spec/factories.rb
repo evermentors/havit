@@ -8,7 +8,7 @@ FactoryGirl.define do
   else
     havit_admin = User.find_by_email('evermentors@gmail.com')
   end
-  
+
   factory :admin, class: User do
     name "evermentors"
     email "evermentors@gmail.com"
@@ -32,7 +32,7 @@ FactoryGirl.define do
   factory :user, class: User do
     name "kucho"
     email "jku856@gmail.com"
-    password "ever8253"
+    password "test4321"
     last_used_character 1
   end
 

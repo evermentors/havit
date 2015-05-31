@@ -19,14 +19,11 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 Capybara.default_selector = :css
-# Capybara.register_driver :poltergeist do |app|
-#   Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :phantomjs_logger => nil, js_errors: false)
-# end
+
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app,
     :phantomjs_options => ['--debug=no', '--load-images=no', '--ignore-ssl-errors=yes', '--ssl-protocol=TLSv1'], :debug => false)
 end
-
 
 Capybara.javascript_driver = :poltergeist
 
