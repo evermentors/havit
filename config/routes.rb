@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root 'statuses#index'
 
-  resources :users
+  resources :users, constraints: { id: /.*/ }
 
   resources :characters
 
