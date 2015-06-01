@@ -40,7 +40,7 @@ module ApplicationHelper
   end
 
   def seasonstring_detail (date=season_start)
-    date.strftime("%-Y년 %-m월 %-d일") + '~' + season_start(date.next_month).strftime("%-Y년 %-m월 %-d일")
+    date.strftime("%-Y년 %-m월 %-d일") + '~' + season_end.strftime("%-Y년 %-m월 %-d일")
   end
 
   def weekstring (date=Date.current)

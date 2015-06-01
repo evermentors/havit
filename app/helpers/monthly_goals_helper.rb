@@ -23,4 +23,8 @@ module MonthlyGoalsHelper
     season_start += 1 until season_start.wday == 1
     return season_start
   end
+
+  def season_end (date=season_start)
+    date.end_of_month.next_week.beginning_of_week.yesterday
+  end
 end

@@ -13,8 +13,12 @@ module SimpleCalendar
       return season_start
     end
 
+    def season_end (date=season_start)
+      date.end_of_month.next_week.beginning_of_week.yesterday
+    end
+
     def date_range
-      @date_range ||= season_start().beginning_of_week..season_start(Date.current.next_month).yesterday
+      @date_range ||= season_start..season_end
     end
   end
 end
