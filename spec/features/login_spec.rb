@@ -25,20 +25,12 @@ describe "User logs in", :type => :feature do
 
   it "logs in and join group successfully", js: true do
     login_user(@user1)
-
-    fill_in "monthly_goal_description", with: "user1's monthly goal description"
-    fill_in "weekly_goal_description", with: "user1's weekly goal description"
-    fill_in "daily_goal_description", with: "user1's daily goal description"
-    page.find('.btn.btn-primary.btn-sm.submit-btn').click
+    fill_in_goals_and_submit(@user1)
 
     page.find('.navbar-group-select.will-collapse > div.dropdown-toggle').click
     page.find('.navbar-group-select.will-collapse .group-name', :text => 'Evermentors').click
 
-    fill_in "monthly_goal_description", with: "user1's monthly goal description"
-    fill_in "weekly_goal_description", with: "user1's weekly goal description"
-    fill_in "daily_goal_description", with: "user1's daily goal description"
-    page.find('.btn.btn-primary.btn-sm.submit-btn').click
-    save_screenshot('panel-title-screenshot.png')
+    fill_in_goals_and_submit(@user1)
     expect(page).to have_css(".metainfo")
   end
 end
