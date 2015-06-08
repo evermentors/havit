@@ -1,4 +1,4 @@
-module Helpers
+module TestHelpers
   def login_user(user)
     visit "/"
     fill_in "user_email", with: user.email

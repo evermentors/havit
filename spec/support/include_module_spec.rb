@@ -1,5 +1,5 @@
-require_relative 'helpers'
+require_relative 'test_helpers'
 
 RSpec.configure do |config|
-  config.include Helpers
+  config.include TestHelpers
 end

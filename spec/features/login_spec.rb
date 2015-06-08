@@ -18,7 +18,7 @@ describe "User logs in", :type => :feature do
     universe = FactoryGirl.create(:group, creator: havit_admin.id)
     Group.enable_search_callbacks
 
-    #crate two users
+    #create two users
     @user1 = FactoryGirl.create(:user, name: "kucho1", email: "jku856-1@gmail.com")
     @user2 = FactoryGirl.create(:user, name: "kucho2", email: "jku856-2@gmail.com")
     Group.disable_search_callbacks
