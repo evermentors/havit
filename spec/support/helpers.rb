@@ -15,4 +15,3 @@ module Helpers
     page.find('.btn.btn-primary.btn-sm.submit-btn').click
   end
 end
-
