@@ -19,15 +19,39 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 Capybara.default_selector = :css
+
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :phantomjs_logger => nil, js_errors: false)
+  Capybara::Poltergeist::Driver.new(app,
+    :phantomjs_options => ['--debug=no', '--load-images=no', '--ignore-ssl-errors=yes', '--ssl-protocol=TLSv1'], :debug => false)
 end
+
 Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   require 'devise'
 
-  config.warnings = false
+  # before the entire test suite runs, clear the test database out completely
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  # transaction strategy use
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  # truncation strategy used when js: true
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
