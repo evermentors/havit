@@ -146,6 +146,8 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
+    font-awesome-sass (4.3.2.1)
+      sass (~> 3.2)
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
@@ -455,6 +457,7 @@ DEPENDENCIES
   faker
   fast_blank
   figaro
+  font-awesome-sass
   font-awesome-sass-rails
   foreman
   friendly_id (~> 5.1.0.beta.1)
