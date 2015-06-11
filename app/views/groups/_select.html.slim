@@ -3,7 +3,7 @@
   .group-title = "#{current_character.group.name}"
   span.caret
 ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu1"
-  - for group in groups_of_user
+  - for group in current_user.joined_groups
     - active = (group == current_character.group ? 'active' : '')
     li role="presentation" class=active
       a.menuitem role="menuitem" href=group_path(group) title="그룹 이름: #{group.name}"
