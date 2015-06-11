@@ -1,6 +1,8 @@
 # encoding: UTF-8
 
 class Status < ActiveRecord::Base
+  default_scope { order(created_at: :desc) }
+
   acts_as_commontable
   belongs_to :character
 
@@ -21,11 +23,7 @@ class Status < ActiveRecord::Base
     end
 
     def at(date, character)
-      where(verified_at: date, character: character).order(:created_at)
-    end
-
-    def from(group)
-      where(group: group).order(created_at: :desc)
+      where(verified_at: date, character: character)
     end
   end
 
