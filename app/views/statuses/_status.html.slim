@@ -1,8 +1,5 @@
 = content_for :card_photo_original, flush: true
-  - if status.photo?
-    = image_tag status.photo.url
-  - else
-    span
+  = status_photo(status)
 
 = content_for :card_author, flush:true
   .status-author
@@ -46,14 +43,7 @@
       = text_area_tag 'status[description]', status.description, placeholder: '어떤 실천을 하셨나요?', class: 'form-control status-textarea', required: true
 
 = content_for :card_photo, flush:true
-  - if status.photo?
-    - if browser.mobile?
-      = image_tag status.photo.url(:medium), class: 'mobile'
-    - else
-      = image_tag status.photo
-  - else
-    span
-  /   = image_tag "havit-logo-big.png"
+  = status_photo(status)
   - unless no_daily_goal?(status.character, status.verified_at.tomorrow)
     .next-goal
       = "#{status.character.user.name}님의 다음 목표는 "

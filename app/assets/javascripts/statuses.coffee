@@ -55,6 +55,14 @@ readURL = (input) ->
   if input.files && input.files[0]
     reader = new FileReader()
     reader.onload = (e) ->
+      exif = piexif.load(e.target.result)
+      orientation = exif["0th"][piexif.ImageIFD.Orientation]
+      if orientation == 6
+        $('.photo-preview').addClass('photo-preview-transform-90')
+      else if orientation == 7
+        $('.photo-preview').addClass('photo-preview-transform-180')
+      else if orientation == 8
+        $('.photo-preview').addClass('photo-preview-transform-270')
       $('.photo-preview').css('background-image', 'url(' + e.target.result + ')').removeClass('hidden')
     reader.readAsDataURL(input.files[0])
 
