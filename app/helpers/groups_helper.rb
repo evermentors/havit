@@ -6,7 +6,7 @@ module GroupsHelper
   end
 
   def joined_group? (group, user=current_user)
-    not Character.in_group(user, group).blank?
+    not user.characters.in_group(group).blank?
   end
 
   def group_status (group)

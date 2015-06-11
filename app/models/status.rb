@@ -3,7 +3,6 @@
 class Status < ActiveRecord::Base
   acts_as_commontable
   belongs_to :character
-  belongs_to :group
 
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
