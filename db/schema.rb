@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528084420) do
+ActiveRecord::Schema.define(version: 20150611084949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,21 @@ ActiveRecord::Schema.define(version: 20150528084420) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "goals", force: :cascade do |t|
+    t.date     "end_date",             null: false
+    t.string   "theme",                null: false
+    t.string   "type",                 null: false
+    t.json     "type_specific_fields", null: false
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "goals", ["group_id"], name: "index_goals_on_group_id", using: :btree
+  add_index "goals", ["type"], name: "index_goals_on_type", using: :btree
+  add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -217,6 +232,8 @@ ActiveRecord::Schema.define(version: 20150528084420) do
 
   add_foreign_key "characters", "groups"
   add_foreign_key "characters", "users"
+  add_foreign_key "goals", "groups"
+  add_foreign_key "goals", "users"
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "notifications", "groups"
