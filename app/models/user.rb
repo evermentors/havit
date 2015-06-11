@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   gravtastic(default: 'mm')
 
   has_many :characters, dependent: :destroy
+  has_many :joined_groups, through: :characters, source: :group
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :avatar, content_type: ["image/jpeg", "image/gif", "image/png"]

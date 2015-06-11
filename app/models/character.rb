@@ -11,7 +11,7 @@ class Character < ActiveRecord::Base
   validates :group, presence: true
   validates :order, presence: true
 
-  scope :in_group, -> (user, group) { where(user: user, group: group) }
+  scope :in_group, -> (group) { where(group: group) }
 
   scope :admin, -> (group) { where(group: group, is_admin: true).take }
 end

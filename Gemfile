@@ -41,6 +41,7 @@ gem 'escape_utils'
 gem 'fast_blank'
 gem 'rails_admin'
 gem 'font-awesome-sass-rails'
+gem 'font-awesome-sass'
 gem 'simple_calendar'
 gem 'unidecoder'
 
