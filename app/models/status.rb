@@ -20,7 +20,6 @@ class Status < ActiveRecord::Base
 
   scope :during, -> (period, character) { where(verified_at: period, character: character).order(:verified_at) }
   scope :at, -> (date, character) { where(verified_at: date, character: character) }
-  scope :inside, -> (group) { where(group: group) }
 
   def verified_at_should_be_past
     errors.add(:verified_at, "미래의 실천을 인증할 수는 없습니다!") if

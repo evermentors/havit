@@ -100,15 +100,15 @@ ActiveRecord::Schema.define(version: 20150611084949) do
     t.string   "theme",                null: false
     t.string   "type",                 null: false
     t.json     "type_specific_fields", null: false
-    t.integer  "user_id"
+    t.integer  "character_id"
     t.integer  "group_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
+  add_index "goals", ["character_id"], name: "index_goals_on_character_id", using: :btree
   add_index "goals", ["group_id"], name: "index_goals_on_group_id", using: :btree
   add_index "goals", ["type"], name: "index_goals_on_type", using: :btree
-  add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -232,8 +232,8 @@ ActiveRecord::Schema.define(version: 20150611084949) do
 
   add_foreign_key "characters", "groups"
   add_foreign_key "characters", "users"
+  add_foreign_key "goals", "characters"
   add_foreign_key "goals", "groups"
-  add_foreign_key "goals", "users"
   add_foreign_key "likes", "statuses", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "notifications", "groups"

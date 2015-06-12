@@ -17,13 +17,16 @@ class User < ActiveRecord::Base
 
   has_many :characters, dependent: :destroy
   has_many :joined_groups, through: :characters, source: :group
+  has_many :goals, through: :characters
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_statuses, through: :likes, source: :status
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :avatar, content_type: ["image/jpeg", "image/gif", "image/png"]
   acts_as_commontator
 
-  has_many :likes, dependent: :destroy
-  has_many :liked_statuses, through: :likes, source: :status
+
 
   validates :name, presence: true
 

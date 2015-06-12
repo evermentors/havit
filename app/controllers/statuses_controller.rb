@@ -5,8 +5,7 @@ class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :update, :destroy]
 
   def index
-    # @statuses = universe.members_statuses.page(params[:page]).per(10)
-    @statuses = Status.inside(universe).page(params[:page]).per(10)
+    @statuses = universe.members_statuses.page(params[:page]).per(10)
 
     session[:last_used_character_id] = Character.in_group(current_user, universe).take.id
   end

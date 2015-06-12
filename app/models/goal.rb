@@ -1,7 +1,7 @@
 #encoding=utf-8
 
 class Goal < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :character
   belongs_to :group
 
   validates :end_date, presence: true
@@ -14,4 +14,17 @@ class Goal < ActiveRecord::Base
     errors.add(:end_date, "실천 종료일을 제대로 골라주세요.") if
       end_date < Date.current
   end
+
+end
+
+class CheckGoal < Goal
+end
+
+class ProgressGoal < Goal
+end
+
+class ScoreGoal < Goal
+end
+
+class MilestoneGoal < Goal
 end
