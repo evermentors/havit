@@ -17,7 +17,6 @@ class StatusesController < ApplicationController
   def create
     @status = current_character.statuses.build(status_params)
     @status.group = current_character.group
-
     if @status.save
       if params[:next_daily_goal].present?
         next_daily_goal = params[:next_daily_goal]

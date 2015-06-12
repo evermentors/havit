@@ -16,7 +16,7 @@ module StatusesHelper
       if browser.mobile?
         image_tag status.photo.url(:medium), class: 'mobile'
       else
-        if Net::HTTP.get_response(URI.parse(status.photo.url(:large))).code.to_i > 400
+        if status.updated_at < Date.new(2015, 6, 12)
           image_tag status.photo
         else
           image_tag status.photo.url(:large)
