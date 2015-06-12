@@ -18,19 +18,9 @@ class Status < ActiveRecord::Base
   validates :verified_at, presence: true
   validate :verified_at_should_be_past
 
-  class << self
-    def during(period, character)
-      where(verified_at: period, character: character).order(:verified_at)
-    end
-
-    def at(date, character)
-      where(verified_at: date, character: character)
-    end
-
-    def from(group)
-      where(group: group)
-    end
-  end
+  scope :during, -> (period, character) { where(verified_at: period, character: character).order(:verified_at) }
+  scope :at, -> (date, character) { where(verified_at: date, character: character) }
+  scope :inside, -> (group) { where(group: group) }
 
   def verified_at_should_be_past
     errors.add(:verified_at, "미래의 실천을 인증할 수는 없습니다!") if

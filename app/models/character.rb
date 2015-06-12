@@ -13,4 +13,5 @@ class Character < ActiveRecord::Base
 
   scope :in_group, -> (user, group) { where(user: user, group: group) }
   scope :admin, -> (group) { where(group: group, is_admin: true).take }
+  scope :notified, -> { where(notify: true) }
 end

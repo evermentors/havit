@@ -27,8 +27,8 @@ class Notification < ActiveRecord::Base
 
     def groups_to_notify(user)
       groups = []
-      user.characters.each do |cha|
-        groups << cha.group.id if cha.notify
+      user.characters.notified.each do |cha|
+        groups << cha.group.id
       end
       return groups
     end
