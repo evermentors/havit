@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611084949) do
+ActiveRecord::Schema.define(version: 20150612080507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_goals", force: :cascade do |t|
+    t.text     "description", null: false
+    t.integer  "goal_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "action_goals", ["goal_id"], name: "index_action_goals_on_goal_id", using: :btree
 
   create_table "characters", force: :cascade do |t|
     t.integer  "group_id",                   null: false
@@ -175,9 +184,13 @@ ActiveRecord::Schema.define(version: 20150611084949) do
     t.integer  "likes_count",        default: 0,  null: false
     t.date     "verified_at",                     null: false
     t.integer  "group_id"
+    t.integer  "goal_id"
+    t.integer  "action_goal_id"
   end
 
+  add_index "statuses", ["action_goal_id"], name: "index_statuses_on_action_goal_id", using: :btree
   add_index "statuses", ["character_id"], name: "index_statuses_on_character_id", using: :btree
+  add_index "statuses", ["goal_id"], name: "index_statuses_on_goal_id", using: :btree
   add_index "statuses", ["group_id"], name: "index_statuses_on_group_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -230,6 +243,7 @@ ActiveRecord::Schema.define(version: 20150611084949) do
   add_index "weekly_retrospects", ["character_id"], name: "index_weekly_retrospects_on_character_id", using: :btree
   add_index "weekly_retrospects", ["weekly_goal_id"], name: "index_weekly_retrospects_on_weekly_goal_id", using: :btree
 
+  add_foreign_key "action_goals", "goals"
   add_foreign_key "characters", "groups"
   add_foreign_key "characters", "users"
   add_foreign_key "goals", "characters"
@@ -239,6 +253,8 @@ ActiveRecord::Schema.define(version: 20150611084949) do
   add_foreign_key "notifications", "groups"
   add_foreign_key "notifications", "statuses"
   add_foreign_key "notifications", "users"
+  add_foreign_key "statuses", "action_goals"
+  add_foreign_key "statuses", "goals"
   add_foreign_key "statuses", "groups"
   add_foreign_key "weekly_retrospects", "users", column: "character_id"
   add_foreign_key "weekly_retrospects", "weekly_goals"

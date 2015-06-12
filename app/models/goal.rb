@@ -4,6 +4,9 @@ class Goal < ActiveRecord::Base
   belongs_to :character
   belongs_to :group
 
+  has_many :action_goals, dependent: :destroy
+  has_many :statuses, dependent: :destroy
+
   validates :end_date, presence: true
   validates :theme, presence: true
   validates :type, presence: true
