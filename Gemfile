@@ -72,6 +72,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'scss-lint', require: false
   gem 'spring'
+  gem 'rack-mini-profiler'
   # gem 'web-console'
 end
 

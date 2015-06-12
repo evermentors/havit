@@ -5,8 +5,10 @@ class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :update, :destroy]
 
   def index
-    @statuses = universe.members_statuses.page(params[:page]).per(10)
-    session[:last_used_character_id] = current_user.characters.in_group(universe).take.id
+    # @statuses = universe.members_statuses.page(params[:page]).per(10)
+    @statuses = Status.from(universe).page(params[:page]).per(10)
+
+    session[:last_used_character_id] = Character.in_group(current_user, universe).take.id
   end
 
   def show
@@ -14,6 +16,7 @@ class StatusesController < ApplicationController
 
   def create
     @status = current_character.statuses.build(status_params)
+    @status.group = current_character.group
 
     if @status.save
       if params[:next_daily_goal].present?
