@@ -50,7 +50,7 @@ module GroupsHelper
           </p>
           <p style='margin:0; font-size:15px;'>#{goal_str}</p>
           <hr style='width: 30px; display: inline-block;'>
-          <p style='white-space: pre-line; margin:0;'>#{auto_link(status.description.gsub(/[<>]/, "<"=>'[', ">"=>']'), html: {target: '_blank'}) do |text| truncate(text, length: 30) end}</p>
+          <p style='white-space: pre-wrap; margin:0;'>#{auto_link(status.description.gsub(/[<>]/, "<"=>'[', ">"=>']'), html: {target: '_blank'}) do |text| truncate(text, length: 30) end}</p>
           <hr style='width: 30px; display: inline-block;'>
           <p style='font-size: small; margin-top:0;'>
             <a href=#{group_url(current_character.group) + '?status-id='+status.id.to_s}>Havit에서 보기</a>
