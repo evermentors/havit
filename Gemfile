@@ -44,6 +44,7 @@ gem 'font-awesome-sass-rails'
 gem 'font-awesome-sass'
 gem 'simple_calendar'
 gem 'unidecoder'
+gem 'newrelic_rpm'
 
 group :production do
   gem 'rails_12factor'
