@@ -1,5 +1,6 @@
 = content_for :card_photo_original, flush: true
   = status_photo(status)
+  = link_to '원본 사진 보기', status.photo.url, target: "_blank", class: 'btn btn-default btn-xs show-original-button'
 
 = content_for :card_author, flush:true
   .status-author

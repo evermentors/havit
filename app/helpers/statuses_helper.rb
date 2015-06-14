@@ -13,15 +13,7 @@ module StatusesHelper
 
   def status_photo (status)
     if status.photo?
-      if browser.mobile?
-        image_tag status.photo.url(:medium), class: 'mobile'
-      else
-        if status.updated_at < Date.new(2015, 6, 12)
-          image_tag status.photo
-        else
-          image_tag status.photo.url(:large)
-        end
-      end
+      image_tag status.photo.url(:large), class: "#{'mobile' if browser.mobile?}"
     else
       content_tag(:span)
     end

@@ -399,6 +399,15 @@
               margin: auto;
               max-height: 90vh;
             }
+            .show-original-button {
+              position: absolute;
+              top: 7px;
+              left: 7px;
+              opacity: .5;
+            }
+            .show-original-button:hover {
+              opacity: .8;
+            }
           }
           .card-photo {
             display: none;
