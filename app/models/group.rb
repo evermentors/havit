@@ -3,8 +3,8 @@ class Group < ActiveRecord::Base
 
   has_many :characters, dependent: :destroy
   has_many :members, through: :characters, source: :user
-  # has_many :members_goals, through: :characters, source: :goal
-  # has_many :members_statuses, through: :characters, source: :statuses
+  has_many :goals
+  has_many :members_statuses, class_name: "Status"
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, length: { maximum: 200 }

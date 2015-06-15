@@ -6,6 +6,8 @@ class Status < ActiveRecord::Base
   acts_as_commontable
   belongs_to :character
   belongs_to :group
+  belongs_to :goal
+  belongs_to :action_goal
 
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
@@ -20,7 +22,6 @@ class Status < ActiveRecord::Base
 
   scope :during, -> (period, character) { where(verified_at: period, character: character).order(:verified_at) }
   scope :at, -> (date, character) { where(verified_at: date, character: character) }
-  scope :inside, -> (group) { where(group: group) }
 
   def verified_at_should_be_past
     errors.add(:verified_at, "미래의 실천을 인증할 수는 없습니다!") if
