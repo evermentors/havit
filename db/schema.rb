@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612080507) do
+ActiveRecord::Schema.define(version: 20150615030544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,14 +105,15 @@ ActiveRecord::Schema.define(version: 20150612080507) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "goals", force: :cascade do |t|
-    t.date     "end_date",             null: false
-    t.string   "theme",                null: false
-    t.string   "type",                 null: false
-    t.json     "type_specific_fields", null: false
+    t.date     "end_date",                          null: false
+    t.string   "theme",                             null: false
+    t.string   "type",                              null: false
+    t.json     "type_specific_fields",              null: false
     t.integer  "character_id"
     t.integer  "group_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.text     "description",          default: "", null: false
   end
 
   add_index "goals", ["character_id"], name: "index_goals_on_character_id", using: :btree

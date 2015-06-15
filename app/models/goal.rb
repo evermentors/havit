@@ -9,6 +9,7 @@ class Goal < ActiveRecord::Base
 
   validates :end_date, presence: true
   validates :theme, presence: true
+  validates :description, presence: true
   validates :type, presence: true
   validates :type_specific_fields, presence: true
   validate :end_date_sholud_be_future
