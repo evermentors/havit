@@ -16,6 +16,19 @@ class StatusesController < ApplicationController
   def create
     @status = current_character.statuses.build(status_params)
     @status.group = current_character.group
+
+    target_goal = Goal.find_by_theme(view_context.monthly_goal(current_character, @status.verified_at).description)
+    @status.goal = target_goal
+
+    if params[:next_daily_goal].present?
+      next_daily_goal = params[:next_daily_goal]
+    else
+      next_daily_goal = view_context.last_daily_goal.description
+    end
+
+    action_goal = ActionGoal.create! description: next_daily_goal, goal: target_goal, created_at: @status.verified_at.tomorrow
+    @status.action_goal = action_goal
+
     if @status.save
       if params[:next_daily_goal].present?
         next_daily_goal = params[:next_daily_goal]
@@ -79,5 +92,9 @@ class StatusesController < ApplicationController
 
     def status_params
       params.require(:status).permit(:description, :user_id, :photo, :verified_at, :next_daily_goal)
+    end
+
+    def target_goal (status)
+
     end
 end
