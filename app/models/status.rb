@@ -2,6 +2,7 @@
 
 class Status < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
+  paginates_per 10
 
   acts_as_commontable
   belongs_to :character
