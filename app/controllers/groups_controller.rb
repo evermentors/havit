@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    if @group == universe
+    if @group.name == 'Universe'
       if params.include?('status-id')
         redirect_to (root_url + '?status-id=' + params['status-id'])
       else
@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
         session[:last_used_character_id] = character.take.id
         @statuses = @group.members_statuses.page(params[:page])
 
-        render 'statuses/index', locals: { show_group: true }
+        render 'statuses/newindex'
       elsif @group.password.blank?
         @statuses = @group.members_statuses.page(params[:page])
         render 'groups/not_joined', locals: { hidden: false }

@@ -11,6 +11,7 @@ class StatusesController < ApplicationController
 
   def newindex
     @statuses = universe.members_statuses.page(params[:page])
+    @group = universe
     session[:last_used_character_id] = Character.in_group(current_user, universe).take.id
   end
 
@@ -96,9 +97,5 @@ class StatusesController < ApplicationController
 
     def status_params
       params.require(:status).permit(:description, :user_id, :photo, :verified_at, :next_daily_goal)
-    end
-
-    def target_goal (status)
-
     end
 end

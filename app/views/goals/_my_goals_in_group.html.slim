@@ -1,0 +1,10 @@
+.goals
+  - current_character.goals.active.each do |goal|
+    .goal[class="#{'active' if goal == selected_goal}"]
+      a href=goal_url(goal)
+        = render partial: 'goals/type_icon', locals: { goal: goal }
+        span = goal.theme
+  .goal.new
+    a href=new_goal_url
+      span.glyphicon.glyphicon-plus.icon
+      span 새 목표 만들기

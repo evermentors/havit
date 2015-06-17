@@ -3,11 +3,14 @@
   = link_to '원본 사진 보기', status.photo.url, target: "_blank", class: 'btn btn-default btn-xs show-original-button'
 
 = content_for :card_author, flush:true
+  a.pull-left href=user_path(status.character.user)
+    .avatar-wrapper.status-avatar
+      = image_tag avatar_url(status.character.user)
   .status-author
-    a href=user_path(status.character.user)
-      .avatar-wrapper.status-avatar
-        = image_tag avatar_url(status.character.user)
-      span.status-user-name = status.character.user.name
+    a.status-user-name href=user_path(status.character.user) = status.character.user.name
+    - unless status.group.name == 'Universe'
+      span.fa.fa-lg.fa-caret-right
+      = link_to status.group.name, group_url(status.group), class: "status-group-name"
     a.time href=status_path(status)
       = timeago_tag status.created_at, format: "%B %-d일 %A %p %-l:%M", title: (l status.created_at, format: "%Y년 %B %-d일 %A %p %-l:%M")
   .status-likes-count.color-havit class="#{'hidden' if status.likes_count == 0}"

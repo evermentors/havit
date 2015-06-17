@@ -69,7 +69,7 @@ readURL = (input) ->
 
 bigger_photo_when_clicked = () ->
   $('.card-photo > img').click () ->
-    status = $(this).closest('.card-container').clone().toggleClass('card-container container-center modal-status')
+    status = $(this).closest('.card-container').clone().toggleClass('card-container modal-status')
     $('.photo-modal .modal-body').html(status)
     $('.photo-modal .comment_actions > a').tooltip({container: 'body'})
     new_comment_link = $('.photo-modal .thread_new_comment_link > a').attr('href') + '?modal=.photo-modal'

@@ -1,3 +1,7 @@
+%havit-color {
+  color: #40BD9C;
+}
+
 .timeline-side-nav {
   padding-right: 15px;
   ul {
@@ -14,21 +18,20 @@
   .icon {
     margin-right: 7px;
   }
-  .active {
-    .header > .title {
-      padding-top: 10px;
-      margin-top: -10px;
-      padding-left: 10px;
-      margin-left: -10px;
-      margin-right: -10px;
-      display: block;
-      font-weight: bold;
-      border-bottom: 2px solid rgb(64, 189, 156);
-      padding-bottom: 3px;
-      color: #000;
-    }
+  li.active > .selectable {
+    font-weight: bold;
+    border-bottom: 2px solid #40BD9C;
+    color: #000;
   }
-  .selectable:hover {
+  .selectable {
+    display: block;
+    padding: 7px 10px;
+    margin: -7px -10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .selectable:hover, .my-timeline:hover {
     background-color: #E6E6E6;
     cursor: pointer;
   }
@@ -41,29 +44,27 @@
     -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
     border-radius: 6px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     .title {
       font-size: 15px;
     }
   }
 
   .goals {
+    margin-top: 10px;
     .goal > a{
       display: block;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      margin-left: -10px;
-      padding-left: 10px;
-      margin-right: -10px;
-      padding-right: 10px;
+      padding: 5px 10px;
+      margin: 0 -10px;
     }
     .goal.new > a {
       color: #999;
     }
-    .goal:hover > a{
-      color: #5789CD
+    .goal:hover > a, .goal.new:hover > a {
+      @extend %havit-color;
+    }
+    .goal.active > a {
+      @extend %havit-color;
+      font-weight: bold;
     }
   }
 }

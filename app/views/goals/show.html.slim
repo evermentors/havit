@@ -1,0 +1,23 @@
+.container-left
+  = render partial: 'layouts/timeline/side_nav', locals: { selected_goal: @goal }
+.container-center
+  .goal-info
+    .goal-type
+      = render partial: 'goals/type_icon', locals: { goal: @goal }
+      = render partial: 'goals/type_name', locals: { goal: @goal }
+    .goal-tags
+      .temp #tag
+      .temp #tag2
+    .goal-description
+      .theme = @goal.theme
+      .detail = @goal.description
+      - unless @goal.action_goals.blank?
+        .action-goal 실천 목표: #{@goal.action_goals.last.description}
+  .new-status-form-div
+    = render partial: 'statuses/new', locals: { goal: @goal }
+  = render @statuses
+.container-right
+
+= render 'statuses/photo_modal'
+
+= paginate @statuses, window: 2

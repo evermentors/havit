@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :goals, only: [:create]
+  resources :goals, only: [:show, :create, :new]
 
   resources :monthly_goals, only: [:edit, :update, :destroy]
 

@@ -10,7 +10,7 @@
 
   .status-goal.text-center
     .goal-date
-      span = "#{last_daily_goal.goal_date.strftime("%-Y년 %-m월 %-d일")} #{weekdaystring last_daily_goal.goal_date}"
+      span = "#{last_daily_goal.goal_date.strftime("%-m월 %-d일")} #{weekdaystring last_daily_goal.goal_date}"
       a.modify-goal-link data-toggle='tooltip' data-plcaement='top' title="목표 수정하기"
         span.glyphicon.glyphicon-pencil
     .modify-actions
