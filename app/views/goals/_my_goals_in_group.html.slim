@@ -3,7 +3,12 @@
     .goal[class="#{'active' if goal == selected_goal}"]
       a href=goal_url(goal)
         = render partial: 'goals/type_icon', locals: { goal: goal }
-        span = goal.theme
+        span.theme = goal.theme
+        - if goal.done_today?
+          span.glyphicon.glyphicon-ok
+        .progress
+          .progress-bar class="#{'progress-bar-striped active' if goal == selected_goal}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow=goal_percentage(goal) style="width: #{goal_percentage(goal)}%"
+            .sr-only #{goal_percentage(goal)}% 완료
   .goal.new
     a href=new_goal_url
       span.glyphicon.glyphicon-plus.icon

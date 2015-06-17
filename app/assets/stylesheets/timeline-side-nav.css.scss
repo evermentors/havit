@@ -1,6 +1,9 @@
 %havit-color {
   color: #40BD9C;
 }
+%havit-bg {
+  background-color: #40BD9C;
+}
 
 .timeline-side-nav {
   padding-right: 15px;
@@ -51,6 +54,18 @@
 
   .goals {
     margin-top: 10px;
+    .theme {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      max-width: 150px;
+      margin-bottom: -5px;
+    }
+    .glyphicon-ok {
+      top: -1px;
+      left: 3px;
+    }
     .goal > a{
       display: block;
       padding: 5px 10px;
@@ -59,12 +74,31 @@
     .goal.new > a {
       color: #999;
     }
-    .goal:hover > a, .goal.new:hover > a {
-      @extend %havit-color;
+    .goal:hover, .goal.new:hover {
+      a {
+        @extend %havit-color;
+      }
+      .progress-bar {
+        @extend %havit-bg;
+      }
     }
-    .goal.active > a {
-      @extend %havit-color;
-      font-weight: bold;
+    .progress {
+      height: 8px;
+      margin-bottom: 0;
+      border-radius: 2px;
+      .progress-bar {
+        background-color: #B3B3B3;
+        box-shadow: none;
+      }
+    }
+    .goal.active {
+      a {
+        @extend %havit-color;
+        font-weight: bold;
+      }
+      .progress-bar {
+        @extend %havit-bg;
+      }
     }
   }
 }
