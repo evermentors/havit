@@ -6,7 +6,11 @@ class StatusesController < ApplicationController
 
   def index
     @statuses = universe.members_statuses.page(params[:page])
+    session[:last_used_character_id] = Character.in_group(current_user, universe).take.id
+  end
 
+  def newindex
+    @statuses = universe.members_statuses.page(params[:page])
     session[:last_used_character_id] = Character.in_group(current_user, universe).take.id
   end
 

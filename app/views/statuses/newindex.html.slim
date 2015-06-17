@@ -1,0 +1,9 @@
+.container-left
+  = render 'layouts/timeline/side_nav'
+.container-center
+  = render @statuses
+.container-right
+
+= render 'statuses/photo_modal'
+
+= paginate @statuses, window: 2

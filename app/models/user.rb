@@ -24,10 +24,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :avatar, content_type: ["image/jpeg", "image/gif", "image/png"]
+
   acts_as_commontator
-
-
-
   validates :name, presence: true
 
   def like!(status)
@@ -44,6 +42,10 @@ class User < ActiveRecord::Base
 
   def normalize_friendly_id(string)
     string.to_ascii.downcase.gsub(" ", ".")
+  end
+
+  def explicitly_joined_groups
+    joined_groups - [Group.find_by_name('Universe')]
   end
 
   private

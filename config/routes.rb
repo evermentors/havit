@@ -52,4 +52,6 @@ Rails.application.routes.draw do
   get "daily_goals/:date", action: :on, as: :on, controller: :daily_goals
 
   get "/search", to: "search#index"
+
+  get "/new", to: "statuses#newindex"
 end

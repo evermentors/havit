@@ -19,6 +19,7 @@ class Goal < ActiveRecord::Base
       end_date < Date.current
   end
 
+  scope :active, -> { where("end_date >= ?", Date.current) }
 end
 
 class CheckGoal < Goal

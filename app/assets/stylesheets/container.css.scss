@@ -1,6 +1,3 @@
-$device-phone: "only screen and (max-width: 767px)";
-$device-tablet: "only screen and (max-width: 991px)";
-
 .container-header {
   position:relative;
   margin-top:10px;
@@ -14,12 +11,12 @@ $device-tablet: "only screen and (max-width: 991px)";
   }
 }
 
-.container-sidebar {
+.container-sidebar, .container-left {
   position: relative;
   float: left;
   width: 224px;
   padding: 16px 0;
-  @media #{$device-phone} {
+  @media (max-width: 767px) {
     display: none;
   }
 }
@@ -33,7 +30,7 @@ $device-tablet: "only screen and (max-width: 991px)";
   min-width: 240px;
   max-width: 680px;
   margin-left: 224px;
-  @media #{$device-phone} {
+  @media (max-width: 767px) {
     margin-left: 0;
   }
 }

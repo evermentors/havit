@@ -1,0 +1,73 @@
+.timeline-side-nav {
+  padding-right: 15px;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  a {
+    color: #666;
+  }
+  a:hover, a:focus, a:active {
+    text-decoration: none;
+  }
+  .icon {
+    margin-right: 7px;
+  }
+  .active {
+    .header > .title {
+      padding-top: 10px;
+      margin-top: -10px;
+      margin-left: -10px;
+      margin-right: -10px;
+      display: block;
+      font-weight: bold;
+      border-bottom: 6px solid #1ACCA1;
+      padding-bottom: 3px;
+      color: #000;
+    }
+  }
+  .selectable:hover {
+    background-color: #E6E6E6;
+    cursor: pointer;
+  }
+
+  .my-timeline, li {
+    display: block;
+    background-color: #fff;
+    padding: 7px 10px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 2px #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    .title {
+      font-size: 15px;
+    }
+  }
+
+  .goals {
+    .goal > a{
+      display: block;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-left: -10px;
+      padding-left: 10px;
+      margin-right: -10px;
+      padding-right: 10px;
+    }
+    .goal.new > a {
+      color: #999;
+    }
+    .goal:hover > a{
+      color: #5789CD
+    }
+  }
+
+  .individual-goals {
+    .header {
+      text-align: center;
+    }
+  }
+}

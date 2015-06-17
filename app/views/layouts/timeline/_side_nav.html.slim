@@ -1,0 +1,23 @@
+.timeline-side-nav
+  a.my-timeline.selectable href=root_url
+    span.glyphicon.glyphicon-home.icon
+    span.title 내 타임라인
+  ul.joined-groups
+    li.individual-goals.active
+      .header
+        = link_to '개인 목표', root_url, class: 'title selectable'
+      .goals
+        - current_character.goals.active.each do |goal|
+          .goal
+            a href=""
+              = render partial: 'goals/type_icon', locals: { goal: goal }
+              span = goal.theme
+        .goal.new
+          a href=""
+            span.glyphicon.glyphicon-plus.icon
+            span 새 목표 만들기
+    - current_user.explicitly_joined_groups.each do |group|
+      li.joined-group.selectable
+        a href=group_url(group)
+          span.fa.fa-group.icon
+          span.title = group.name
