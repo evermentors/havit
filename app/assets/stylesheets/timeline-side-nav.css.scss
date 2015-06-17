@@ -18,11 +18,12 @@
     .header > .title {
       padding-top: 10px;
       margin-top: -10px;
+      padding-left: 10px;
       margin-left: -10px;
       margin-right: -10px;
       display: block;
       font-weight: bold;
-      border-bottom: 6px solid #1ACCA1;
+      border-bottom: 2px solid rgb(64, 189, 156);
       padding-bottom: 3px;
       color: #000;
     }
@@ -36,9 +37,10 @@
     display: block;
     background-color: #fff;
     padding: 7px 10px;
-    border-radius: 3px;
     margin-bottom: 15px;
-    box-shadow: 2px 2px 2px #999;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    border-radius: 6px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -62,12 +64,6 @@
     }
     .goal:hover > a{
       color: #5789CD
-    }
-  }
-
-  .individual-goals {
-    .header {
-      text-align: center;
     }
   }
 }

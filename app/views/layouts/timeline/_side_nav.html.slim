@@ -5,7 +5,9 @@
   ul.joined-groups
     li.individual-goals.active
       .header
-        = link_to '개인 목표', root_url, class: 'title selectable'
+        a.title.selectable href=root_url
+          span.fa.fa-user.icon
+          span 개인 목표
       .goals
         - current_character.goals.active.each do |goal|
           .goal
