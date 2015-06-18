@@ -7,7 +7,7 @@
   background-image: linear-gradient(#fff, rgba(236, 84, 19, .1));
 }
 %havit-color {
-  color: rgb(236, 84, 19);
+  color: #40BD9C;
 }
 %havit-border-bright {
   border: 1px solid hsl(18, 85%, 60%);
@@ -65,10 +65,9 @@
   height: 45px;
   margin-top: -60px;
   .status-likes-count {
-    float:right;
-    padding-top: 10px;
+    float: right;
     font-size: 20px;
-    margin-top: -41px;
+    margin-top: -13px;
     .glyphicon-heart {
       margin-right: 5px;
       top: 3px;

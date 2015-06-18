@@ -1,21 +1,36 @@
 .container-left
   = render partial: 'layouts/timeline/side_nav', locals: { selected_goal: @goal }
+
 .container-center
   .goal-info
     .goal-type
       = render partial: 'goals/type_icon', locals: { goal: @goal }
       = render partial: 'goals/type_name', locals: { goal: @goal }
     .goal-tags
-      .temp #tag
+      .temp #tag1
       .temp #tag2
     .goal-description
       .theme = @goal.theme
       .detail = @goal.description
-      - unless @goal.action_goals.blank?
-        .action-goal 실천 목표: #{@goal.action_goals.last.description}
-  .new-status-form-div
+    .goal-visualization
+      .background
+      .rider
+        = image_tag "rider.png", class: "rider-image"
+        span.rider-speed 55km/h
+      .ground
+    .action-goal
+      .action-date-hidden
+        span.first 그제
+        span.second 어제
+      span.action-date 오늘
+      '의 실천 목표:
+      - if @goal.action_goals.blank?
+        span.description 정하지 않았습니다.
+      - else
+        span.description = @goal.action_goals.last.description
     = render partial: 'statuses/new', locals: { goal: @goal }
   = render @statuses
+
 .container-right
 
 = render 'statuses/photo_modal'
