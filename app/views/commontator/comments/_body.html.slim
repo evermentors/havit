@@ -1,1 +1,1 @@
-== auto_link(comment.body.strip().gsub(/[<>]/, "<"=>'[', ">"=>']'), html: {target: '_blank'}).strip() do |text| truncate(text, length: 30) end
+== auto_link(html_escape(comment.body.strip()), html: {target: '_blank'}) do |text| truncate(text, length: 30) end
