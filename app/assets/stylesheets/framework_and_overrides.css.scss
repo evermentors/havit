@@ -91,6 +91,7 @@ section {
 // show newline as expected
 .nl2br {
   white-space: pre-wrap;
+  word-break: break-all;
 }
 
 textarea {

@@ -1,6 +1,10 @@
 #encoding=utf-8
 
 module GroupsHelper
+  def is_home? (group)
+    group.name == 'Universe'
+  end
+
   def is_full? (group)
     group.member_limit > 0 and group.characters.count >= group.member_limit
   end
