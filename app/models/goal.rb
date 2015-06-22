@@ -25,7 +25,7 @@ class Goal < ActiveRecord::Base
     if statuses.blank?
       false
     else
-      statuses.first.verified_at.today?
+      statuses.at(Date.current).present?
     end
   end
 end

@@ -33,6 +33,12 @@
       margin-bottom: 5px;
       font-size: 16px;
     }
+    .action-goal {
+      font-size: 16px;
+      .description {
+        @extend %havit-color;
+      }
+    }
   }
 
   .goal-tags {
@@ -42,50 +48,6 @@
     color: #999;
   }
 
-  .goal-visualization {
-    margin: 15px 0;
-    .background {
 
-    }
-    .rider {
-      text-align: center;
-      .rider-image {
-        width: 75px;
-        height: 68px;
-        display: inline-block;
-      }
-      .rider-speed {
-        color: rgb(64, 189, 156);
-        font-size: 28px;
-        vertical-align: middle;
-        margin-left: 10px;
-      }
-    }
-    .ground {
-      width: 90%;
-      height: 7px;
-      background-color: #999;
-      border-radius: 10px;
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
-      margin: 0 auto;
-    }
-  }
 
-  .action-goal {
-    position: relative;
-    text-align: center;
-    font-size: 16px;
-    .action-date-hidden {
-      color: #666;
-      cursor: pointer;
-      display: none;
-    }
-    .action-date {
-      color: #5789CD;
-      cursor: pointer;
-    }
-    .description {
-      @extend %havit-color;
-    }
-  }
 }
