@@ -1,47 +1,23 @@
 = form_tag "/statuses", method: "post", multipart: true, class: "new-status-form goal-container daily"
   ul.status-dates
     - 6.downto(0).each do |day|
-      li class=(last_daily_goal.goal_date==day.days.ago.to_date ? 'active first-load' : '') data-toggle='tooltip' title=datestring(day.days.ago) goal-date=day.days.ago.to_date
-        = Date.current==day.days.ago.to_date ? '오늘' : weekdaystring(day.days.ago.to_date, 'short')
-        - if status_at(day.days.ago.to_date).present?
-          span.glyphicon.glyphicon-ok
+      li class=date_class(@goal, day) data-toggle='tooltip' title=datestring(day.days.ago) action-date=day.days.ago.to_date
+        .circle
+        .connect-line
+        = day==0 ? '오늘' : weekdaystring(day.days.ago.to_date, 'short')
         .emphasize
-  = hidden_field_tag 'status[verified_at]', last_daily_goal.goal_date.to_date, class: 'status-verified-at'
+  = hidden_field_tag 'status[verified_at]', Date.current, class: 'status-verified-at'
 
-  .status-goal.text-center
-    .goal-date
-      span = "#{last_daily_goal.goal_date.strftime("%-Y년 %-m월 %-d일")} #{weekdaystring last_daily_goal.goal_date}"
-      a.modify-goal-link data-toggle='tooltip' data-plcaement='top' title="목표 수정하기"
-        span.glyphicon.glyphicon-pencil
-    .modify-actions
-      .buttons
-        button.btn-xs.btn-link.btn-confirm type='button' data-id=last_daily_goal.id 확인
-        button.btn-xs.btn-link.btn-cancel type='button' 취소
-      = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
-    span.goal-description.nl2br = last_daily_goal.description.strip()
-
-  .status-body
-    .status-description
-      = text_area_tag 'status[description]', nil, placeholder: '어떤 실천을 하셨나요?', required: true, class: 'form-control', resize: false
-    .input-group.next-daily-goal data-toggle='tooltip' data-plcaement='bottom' title='다음날의 실천 목표를 입력해주세요. 미입력시 가장 최근 목표가 등록됩니다.'
-      span.input-group-addon.next-goal-date = "#{datestring last_daily_goal.goal_date.tomorrow} 목표:"
-      = text_field_tag 'next_daily_goal',
-      (daily_goal_description last_daily_goal.goal_date.tomorrow),
-      placeholder: "미입력시 '#{last_daily_goal.description}'#{korean_postposition(last_daily_goal.description, :이가)} 자동 등록됩니다.",
-      class: 'form-control next-daily-goal-input',
-      autocomplete: 'off'
-    .photo-preview.hidden
-      span.photo-remove-btn.glyphicon.glyphicon-remove data-toggle='tooltip' title='실천 인증샷 삭제'
-
-  .status-footer
-    .status-photo.btn-havit-white
-      .status-photo-wrapper
-        a.status-photo-link
-          .photo-upload-wrapper
-            span.glyphicon.glyphicon-camera
-            = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
-          span.photo-upload-description 실천 인증샷 추가
-    button.btn.btn-havit-white.submit-btn type='submit'
-      span.glyphicon.glyphicon-ok
-      ' 인증 완료!
-
+  / .status-goal.text-center
+  /   .goal-date
+  /     span = "#{last_daily_goal.goal_date.strftime("%-m월 %-d일")} #{weekdaystring last_daily_goal.goal_date}"
+  /     a.modify-goal-link data-toggle='tooltip' data-plcaement='top' title="목표 수정하기"
+  /       span.glyphicon.glyphicon-pencil
+  /   .modify-actions
+  /     .buttons
+  /       button.btn-xs.btn-link.btn-confirm type='button' data-id=last_daily_goal.id 확인
+  /       button.btn-xs.btn-link.btn-cancel type='button' 취소
+  /     = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
+  /   span.goal-description.nl2br = last_daily_goal.description.strip()
+  .load-or-new
+    = render partial: 'statuses/load_or_new', locals: { goal: @goal, date: Date.current }

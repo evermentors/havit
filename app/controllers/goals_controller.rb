@@ -2,6 +2,7 @@
 
 class GoalsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_goal, only: [:show, :on]
 
   def create
     @monthly_goal = current_character.monthly_goals.build(monthly_goal_params)
@@ -20,6 +21,15 @@ class GoalsController < ApplicationController
     end
   end
 
+  def show
+    @statuses = @goal.statuses.page(params[:page])
+    @group = @goal.group
+  end
+
+  def on
+    @date = params[:date].to_date
+  end
+
   private
     def monthly_goal_params
       params.require(:monthly_goal).permit(:description)
@@ -29,5 +39,9 @@ class GoalsController < ApplicationController
     end
     def daily_goal_params
       params.require(:daily_goal).permit(:description)
+    end
+
+    def set_goal
+      @goal = Goal.find(params[:id])
     end
 end

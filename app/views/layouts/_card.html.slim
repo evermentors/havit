@@ -1,13 +1,19 @@
-.card-container.container-center id="status-card-#{status_id}"
+.card-container id="status-card-#{status_id}"
   .card-photo-original
     = yield :card_photo_original
   .card-else
     .card-header
-      = yield :card_author
+      .card-group
+        = yield :card_group
+      .card-author-photo
+        = yield :card_author_photo
+      .card-title
+        = yield :card_title
+      .card-metainfo
+        = yield :card_metainfo
+      .card-option
+        = yield :card_option
     .card-body
-      .card-goals
-        = yield :card_goals
-        button.btn.btn-xs.btn-link.see-detail.up
       .card-message
         = yield :card_message
       .card-photo

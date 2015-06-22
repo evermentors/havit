@@ -91,6 +91,7 @@ section {
 // show newline as expected
 .nl2br {
   white-space: pre-wrap;
+  word-break: break-all;
 }
 
 textarea {
@@ -104,43 +105,44 @@ textarea {
 }
 
 .btn-havit-white {
-  color: rgb(236, 84, 19);
-  border: 1px solid hsl(18, 85%, 50%);
+  color: #40BD9C;
+  border: 1px solid #40BD9C;
   background-color: #fff;
 }
 .btn-havit-white:hover, .btn-havit-white:focus, .btn-havit-white:active {
- color: rgb(236, 84, 19);
- background-image: linear-gradient(#fff, rgba(236, 84, 19, .1));
- box-shadow: none;
+  color: #40BD9C;
+  background-image: linear-gradient(#fff, hsla(164, 49%, 50%, 0.1));
+  box-shadow: none;
 }
 
 .btn-havit-inverted {
   color: #fff;
-  background-color: hsl(18, 85%, 50%);
-  border-color: hsl(18, 85%, 40%);
+  background-color: hsl(164, 49%, 50%);
+  border-color: hsl(164, 49%, 40%);
 }
 .btn-havit-inverted:hover, .btn-havit-inverted:focus, .btn-havit-inverted:active {
   color: #fff;
-  background-color: hsl(18, 84%, 60%);
-  border-color: hsl(18, 84%, 50%);
+  background-color: hsl(164, 49%, 60%);
+  border-color: hsl(164, 49%, 50%);
 }
 
 .bg-havit-white {
   background-color: #fff;
-  border: 1px solid hsl(18, 84%, 50%);
+  border: 1px solid hsl(164, 49%, 50%);
   color: #000;
 }
 .bg-havit-inverted {
-  background-color: hsl(18, 84%, 60%);
-  border: 1px solid hsl(18, 84%, 50%);
+  background-color: hsl(164, 49%, 60%);
+  border: 1px solid hsl(164, 49%, 50%);
   color: #fff;
 }
 
 .color-havit {
-  color: rgb(236, 84, 19);
+  // color: rgb(236, 84, 19);
+  color: #40BD9C;
 }
 .border-havit {
-  border: 1px solid hsl(18, 85%, 80%);
+  border: 1px solid hsl(164, 49%, 80%);
 }
 .panel-havit {
   border-color: hsl(0, 0%, 79%);

@@ -14,11 +14,24 @@ class Goal < ActiveRecord::Base
   validates :type_specific_fields, presence: true
   # validate :end_date_sholud_be_future
 
+  scope :active, -> { where("end_date >= ?", Date.current) }
+
   def end_date_sholud_be_future
     errors.add(:end_date, "실천 종료일을 제대로 골라주세요.") if
       end_date < Date.current
   end
 
+  def done_today?
+    if statuses.blank?
+      false
+    else
+      statuses.at(Date.current).present?
+    end
+  end
+
+  def last_action_goal
+    self.action_goals.order(created_at: :desc).first
+  end
 end
 
 class CheckGoal < Goal

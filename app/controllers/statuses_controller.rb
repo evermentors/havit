@@ -5,8 +5,8 @@ class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :update, :destroy]
 
   def index
-    @statuses = universe.members_statuses.page(params[:page]).per(10)
-
+    @statuses = universe.members_statuses.page(params[:page])
+    @group = universe
     session[:last_used_character_id] = Character.in_group(current_user, universe).take.id
   end
 
@@ -17,37 +17,23 @@ class StatusesController < ApplicationController
     @status = current_character.statuses.build(status_params)
     @status.group = current_character.group
 
-    target_goal = Goal.find_by_theme(view_context.monthly_goal(current_character, @status.verified_at).description)
+    target_goal = Goal.find(params[:status_goal_id])
     @status.goal = target_goal
-
-    if params[:next_daily_goal].present?
-      next_daily_goal = params[:next_daily_goal]
-    else
-      next_daily_goal = view_context.last_daily_goal.description
-    end
-
-    action_goal = ActionGoal.create! description: next_daily_goal, goal: target_goal, created_at: @status.verified_at.tomorrow
-    @status.action_goal = action_goal
+    @status.action_goal = target_goal.last_action_goal
 
     if @status.save
-      if params[:next_daily_goal].present?
-        next_daily_goal = params[:next_daily_goal]
+      if params[:next_action_goal].present?
+        next_action_goal_description = params[:next_action_goal]
       else
-        next_daily_goal = view_context.last_daily_goal.description
+        next_action_goal_description = @status.action_goal.description
       end
 
-      if view_context.no_daily_goal?(current_character, @status.verified_at.tomorrow)
-        @daily_goal = DailyGoal.new(
-          character: current_character,
-          description: next_daily_goal,
-          goal_date: @status.verified_at.tomorrow)
-      else
-        @daily_goal = view_context.daily_goal(current_character, @status.verified_at.tomorrow)
-        @daily_goal.description = next_daily_goal
-      end
-
-      if @daily_goal.save
-        if current_character.group != universe
+      next_action_goal = ActionGoal.new(
+        description: next_action_goal_description,
+        goal: target_goal,
+        status: @status)
+      if next_action_goal.save
+        unless current_character.group.home?
           Notification.create!(
             user: current_user,
             recipient: 0,
@@ -60,7 +46,7 @@ class StatusesController < ApplicationController
         end
         redirect_to url
       else
-        redirect_to url, notice: 'error: daily goal on new status'
+        redirect_to url, notice: 'error: next action goal on new status'
       end
     else
       redirect_to url, notice: 'error: new status'
@@ -92,9 +78,5 @@ class StatusesController < ApplicationController
 
     def status_params
       params.require(:status).permit(:description, :user_id, :photo, :verified_at, :next_daily_goal)
-    end
-
-    def target_goal (status)
-
     end
 end

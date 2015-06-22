@@ -1,5 +1,5 @@
 %havit-color {
-  color: rgb(236, 84, 19);
+  color: #40BD9C;
 }
 %havit-border-bright {
   border: 1px solid hsl(18, 85%, 60%);
@@ -48,11 +48,27 @@
 .status-author {
   position: relative;
   .status-user-name {
-    position: absolute;
-    left: 45px;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 5px;
+    margin-right: 5px;
   }
   .status-user-name:hover, .status-user-name:focus, .status-user-name:active {
     text-decoration: underline;
+  }
+  .fa-caret-right {
+    position: absolute;
+    top: 3px;
+    margin-left: 3px;
+    color: #999;
+  }
+  .status-group-name {
+    display: inline-block;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 15px;
   }
   .time {
     position: absolute;
@@ -60,294 +76,6 @@
     left: 45px;
     color: #9197a3;
     font-size: 12px;
-  }
-}
-
-.new-status-form-div {
-  border: 1px solid;
-  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.new-status-form {
-  .status-dates {
-    text-align: center;
-    padding-left: 0;
-    padding-right: 5px;
-    margin-left: -5px;
-    margin-right: -5px;
-    margin-bottom: 10px;
-    @media (max-width: 600px) {
-      font-size: 80%;
-      padding-right: 0;
-      margin-left: -20px;
-      margin-right: -10px;
-      .glyphicon-ok {
-        margin-left: 0;
-        font-size: 75%;
-        position: absolute;
-        top: 7px;
-      }
-    }
-    li {
-      display: inline-block;
-      list-style: none;
-      width: 14.2857%;
-      color: #BFBFBF;
-      margin-right: -4px;
-      padding: 5px 0;
-      border-right: 1px solid #E6E6E6;
-      cursor: pointer;
-      .glyphicon-ok {
-        margin-left: 4px;
-      }
-    }
-    li:last-child {
-      border-right: none;
-    }
-    li.active {
-      font-weight: bold;
-    }
-    li.active.first-load {
-      .emphasize:after {
-        font-weight: bold;
-        -moz-animation-duration: .7s;
-        -webkit-animation-duration: .7s;
-        animation-duration: .7s;
-      }
-    }
-    li.active, li:not(.active):hover {
-      @extend %havit-color;
-      .emphasize:after {
-        content: '';
-        display: block;
-        margin: auto;
-        height: 3px;
-        width: 45%;
-        background-color: hsl(18, 85%, 50%);
-
-        -moz-animation-name: emphasize;
-        -moz-animation-iteration-count: 1;
-        -moz-animation-timing-function: ease;
-        -moz-animation-duration: .3s;
-
-        -webkit-animation-name: emphasize;
-        -webkit-animation-iteration-count: 1;
-        -webkit-animation-timing-function: ease;
-        -webkit-animation-duration: .3s;
-
-        animation-name: emphasize;
-        animation-iteration-count: 1;
-        animation-timing-function: ease;
-        animation-duration: .3s;
-      }
-      @-moz-keyframes emphasize {
-        0% {
-          width: 0%;
-          background-color: #fff;
-        }
-        100% {
-          width: 45%;
-          background-color: hsl(18, 85%, 50%);
-        }
-      }
-      @-webkit-keyframes emphasize {
-        0% {
-          width: 0%;
-          background-color: #fff;
-        }
-        100% {
-          width: 45%;
-          background-color: hsl(18, 85%, 50%);
-        }
-      }
-      @keyframes emphasize {
-        0% {
-          width: 0%;
-          background-color: #fff;
-        }
-        100% {
-          width: 45%;
-          background-color: hsl(18, 85%, 50%);
-        }
-      }
-    }
-  }
-  .status-goal {
-    margin-bottom: 5px;
-    position: relative;
-    .goal-date {
-      font-weight: bold;
-      font-size: 16px;
-      .modify-goal-link {
-        position: relative;
-        top: 0;
-        right: 0;
-        font-size: 14px;
-        margin-left: 5px;
-      }
-    }
-    .goal-description {
-      @extend %havit-color;
-      font-size: 15px;
-    }
-  }
-  .status-author {
-    .status-new-description {
-      margin-left: 45px;
-    }
-  }
-  .status-body {
-    margin: 5px 0;
-    textarea {
-      border-radius: 4px;
-      box-shadow: none;
-      border: 1px solid #D9D9D9;
-      border-bottom: 0;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      padding-left: 5px;
-      padding-right: 5px;
-    }
-    textarea::-webkit-input-placeholder {
-      color: #666;
-    }
-    textarea:-moz-input-placeholder {
-      color: #666;
-      opacity: 1;
-    }
-    textarea::-moz-input-placeholder {
-      color: #666;
-      opacity: 1;
-    }
-    textarea:-ms-input-placeholder {
-      color: #666;
-    }
-    textarea:focus::-webkit-input-placeholder {
-      color: #999;
-    }
-    textarea:focus:-moz-input-placeholder {
-      color: #999;
-      opacity: 1;
-    }
-    textarea:focus::-moz-input-placeholder {
-      color: #999;
-      opacity: 1;
-    }
-    textarea:focus:-ms-input-placeholder {
-      color: #999;
-    }
-    .next-daily-goal {
-      border: 1px solid #D9D9D9;
-      border-top-style: dotted;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-      .next-goal-date {
-        color: #555;
-        padding-left: 5px;
-        padding-right: 5px;
-        background-color: white;
-        border: none;
-        line-height: 1.42857143;
-      }
-      .next-daily-goal-input {
-        padding-left: 5px;
-        padding-right: 5px;
-        border: none;
-        box-shadow: none;
-      }
-      .next-daily-goal-input:focus::-webkit-input-placeholder {
-        color:transparent;
-      }
-      .next-daily-goal-input:focus:-moz-placeholder {
-        color:transparent;
-      } /* FF 4-18 */
-      .next-daily-goal-input:focus::-moz-placeholder {
-        color:transparent;
-      } /* FF 19+ */
-      .next-daily-goal-input:focus:-ms-input-placeholder {
-        color:transparent;
-      } /* IE 10+ */
-    }
-    .photo-preview {
-      position: relative;
-      height: 200px;
-      max-width: 200px;
-      margin: 10px auto 0;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: top left;
-      border: 1px solid #ccc;
-      background-color: white;
-      .photo-remove-btn {
-        position: absolute;
-        right: 0;
-        top: 0;
-        opacity: .5;
-        cursor: pointer;
-      }
-    }
-  }
-  .status-footer {
-    .status-photo {
-      display: inline-table;
-      vertical-align: middle;
-      border-radius: 5px;
-      .status-photo-wrapper {
-        position: relative;
-        height: 32px;
-        cursor: pointer;
-        padding-left: 8px;
-        padding-right: 8px;
-        .status-photo-link {
-          @extend %havit-color;
-          .photo-upload-wrapper {
-            height: 100%;
-            overflow: hidden;
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 100%;
-            font-size: 25px;
-            .glyphicon-camera {
-              margin-left: 8px;
-            }
-            .hidden-file-input {
-              bottom: 0;
-              cursor: inherit;
-              font-size: 1000px !important;
-              height: 300px;
-              margin: 0;
-              opacity: 0;
-              padding: 0;
-              position: absolute;
-              right: 0;
-            }
-          }
-          .photo-upload-description {
-            line-height: 32px;
-            margin-left: 30px;
-          }
-        }
-      }
-    }
-    .status-photo:hover {
-      .status-photo-link:hover {
-        text-decoration: none;
-      }
-    }
-    .submit-btn {
-      display: inline-table;
-      vertical-align: middle;
-      float: right;
-      padding-left: 8px;
-      padding-right: 8px;
-      .glyphicon-ok {
-        margin-right: 5px;
-      }
-    }
   }
 }
 

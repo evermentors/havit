@@ -2,38 +2,30 @@
   = status_photo(status)
   = link_to '원본 사진 보기', status.photo.url, target: "_blank", class: 'btn btn-default btn-xs show-original-button'
 
-= content_for :card_author, flush:true
-  .status-author
-    a href=user_path(status.character.user)
-      .avatar-wrapper.status-avatar
-        = image_tag avatar_url(status.character.user)
-      span.status-user-name = status.character.user.name
-    a.time href=status_path(status)
-      = timeago_tag status.created_at, format: "%B %-d일 %A %p %-l:%M", title: (l status.created_at, format: "%Y년 %B %-d일 %A %p %-l:%M")
-  .status-likes-count.color-havit class="#{'hidden' if status.likes_count == 0}"
-      span.glyphicon.glyphicon-heart
-      span.likes-count => status.likes_count
+= content_for :card_group, flush:true
+  - unless status.group.home?
+    span.fa.fa-group
+    span.name = status.group.name
+  - else
+    span
 
-= content_for :card_goals, flush:true
-  .goals-hidden
-    .monthly-goal.small data-id="#{monthly_goal(status.character, status.verified_at).id unless no_monthly_goal?(status.character, status.verified_at)}"
-      - if no_monthly_goal?(status.character, status.verified_at)
-        = "#{seasonstring status.verified_at}에 목표가 없었습니다."
-      - else
-        = "#{seasonstring status.verified_at} 목표: "
-        span.goal-text = monthly_goal(status.character, status.verified_at).description
-    .weekly-goal.small data-id="#{weekly_goal(status.character, status.verified_at).id unless no_weekly_goal?(status.character, status.verified_at)}"
-      - if no_weekly_goal?(status.character, status.verified_at)
-        = "#{weekstring_short status.verified_at} 목표가 없었습니다."
-      - else
-        = "#{weekstring_short status.verified_at} 목표: "
-        span.goal-text = weekly_goal(status.character, status.verified_at).description
-  .daily-goal data-id="#{daily_goal(status.character, status.verified_at).id unless no_daily_goal?(status.character, status.verified_at)}"
-    - if no_daily_goal?(status.character, status.verified_at)
-      = "#{datestring status.verified_at}에는 목표가 없었습니다."
-    - else
-      = "#{datestring status.verified_at} #{weekdaystring status.verified_at}의 목표: "
-      span.goal-text = daily_goal(status.character, status.verified_at).description
+= content_for :card_author_photo, flush:true
+  a href=user_path(status.character.user)
+    .avatar-wrapper.status-avatar
+      = image_tag avatar_url(status.character.user)
+
+= content_for :card_title, flush:true
+  a.status-user-name href=user_path(status.character.user) = status.character.user.name
+  span 님의 #{datestring status.verified_at} #{weekdaystring status.verified_at} #{status.goal.theme}:
+  span.action-goal =< status.action_goal.description
+
+= content_for :card_metainfo, flush:true
+  a.time href=status_path(status)
+    = timeago_tag status.created_at, format: "%B %-d일 %A %p %-l:%M", title: (l status.created_at, format: "%Y년 %B %-d일 %A %p %-l:%M")
+  span.badges
+
+= content_for :card_option, flush:true
+  span.fa.fa-chevron-down
 
 = content_for :card_message, flush:true
   span.description.nl2br == render 'statuses/description', status: status
@@ -45,10 +37,10 @@
 
 = content_for :card_photo, flush:true
   = status_photo(status)
-  - unless no_daily_goal?(status.character, status.verified_at.tomorrow)
+  - if status.next_action_goal.present?
     .next-goal
       = "#{status.character.user.name}님의 다음 목표는 "
-      span.goal-description = daily_goal(status.character, status.verified_at.tomorrow).description
+      span.goal-description = status.next_action_goal.description
       ' 입니다.
 
 = content_for :card_actions, flush:true

@@ -11,7 +11,7 @@ nav.navbar.navbar-default.navbar-fixed-top
       - if user_signed_in?
         .navbar-group-select.dropdown
           = render 'groups/select'
-      = link_to image_tag("havit-logo-big.png"), main_app.root_path, class: 'navigation-logo'
+      = link_to image_tag("havit-logo-green.png"), main_app.root_path, class: 'navigation-logo'
     .collapse.navbar-collapse
       - if user_signed_in?
         ul.navbar-form.navbar-left
@@ -22,6 +22,9 @@ nav.navbar.navbar-default.navbar-fixed-top
               .avatar-wrapper
                 = image_tag avatar_url
               span.user-name = current_user.name
+          li.new-goal-or-group data-toggle='tooltip' data-placement='bottom' title='새로 만들기 (아직 준비중입니다)'
+            a.glyphicon.glyphicon-plus
+              span.caret
           li.notifications-li.closed tabindex="-1" data-toggle='tooltip' data-placement='bottom' title='알림'
             .notification-btn.closed last-checked=current_user.last_checked_notification
               span.glyphicon.glyphicon-bell
@@ -31,8 +34,6 @@ nav.navbar.navbar-default.navbar-fixed-top
             = link_to '', main_app.edit_user_registration_path, class: 'glyphicon glyphicon-cog'
           li.sign-out-li data-toggle='tooltip' data-placement='bottom' title='로그아웃'
             = link_to '', main_app.destroy_user_session_path, method: 'delete', class: 'glyphicon glyphicon-off'
-        .navbar-group-select.will-collapse.dropdown
-          = render 'groups/select'
       - else
         ul.nav.navbar-nav.navbar-right
           li = link_to '로그인', new_user_session_path

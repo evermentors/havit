@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615080904) do
+ActiveRecord::Schema.define(version: 20150622065150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 20150615080904) do
     t.integer  "goal_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "status_id"
   end
 
   add_index "action_goals", ["goal_id"], name: "index_action_goals_on_goal_id", using: :btree
+  add_index "action_goals", ["status_id"], name: "index_action_goals_on_status_id", using: :btree
 
   create_table "characters", force: :cascade do |t|
     t.integer  "group_id",                   null: false
@@ -245,6 +247,7 @@ ActiveRecord::Schema.define(version: 20150615080904) do
   add_index "weekly_retrospects", ["weekly_goal_id"], name: "index_weekly_retrospects_on_weekly_goal_id", using: :btree
 
   add_foreign_key "action_goals", "goals"
+  add_foreign_key "action_goals", "statuses"
   add_foreign_key "characters", "groups"
   add_foreign_key "characters", "users"
   add_foreign_key "goals", "characters"

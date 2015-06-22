@@ -18,6 +18,7 @@
 .comment_actions_div {
   position: absolute;
   right: 7px;
+  top: 8px;
 }
 
 .comment:hover .comment_actions, .comment:focus .comment_actions {
@@ -39,8 +40,7 @@
 
 .comment_body {
   padding-top: 3px;
-  padding-left: 42px;
-  padding-right: 33px;
+  padding-top: 30px;
 }
 
 .comment_form_actions {

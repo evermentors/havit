@@ -18,4 +18,15 @@ module StatusesHelper
       content_tag(:span)
     end
   end
+
+  def date_class(goal, day)
+    str = ""
+    if day == 0
+      str += "active first-load "
+    end
+    if goal.statuses.at(day.days.ago.to_date).present?
+      str += "verified"
+    end
+    return str
+  end
 end

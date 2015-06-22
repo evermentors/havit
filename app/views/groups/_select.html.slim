@@ -1,9 +1,9 @@
 .dropdown-toggle id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
-  = image_tag('group-icon.png', class: 'group-icon')
-  .group-title = "#{current_character.group.name}"
+  span.fa.fa-group.group-icon
+  .group-title = current_character.group.home? ? "내 타임라인" : "#{current_character.group.name}"
   span.caret
 ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu1"
-  - for group in current_user.joined_groups
+  - for group in current_user.explicitly_joined_groups
     - active = (group == current_character.group ? 'active' : '')
     li role="presentation" class=active
       a.menuitem role="menuitem" href=group_path(group) title="그룹 이름: #{group.name}"

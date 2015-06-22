@@ -7,7 +7,7 @@
   background-image: linear-gradient(#fff, rgba(236, 84, 19, .1));
 }
 %havit-color {
-  color: rgb(236, 84, 19);
+  color: #40BD9C;
 }
 %havit-border-bright {
   border: 1px solid hsl(18, 85%, 60%);
@@ -36,10 +36,12 @@
 }
 
 .card-container {
+  position: relative;
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
   padding-top: 16px;
-  margin-top: 80px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: white;
   border-radius: 5px;
   .modify-actions {
@@ -61,48 +63,36 @@
   display: none;
 }
 .card-header {
-  height: 45px;
-  margin-top: -60px;
-  .status-likes-count {
-    float:right;
-    padding-top: 10px;
-    font-size: 20px;
-    margin-top: -41px;
-    .glyphicon-heart {
-      margin-right: 5px;
-      top: 3px;
+  padding: 0 15px;
+  .card-group {
+
+  }
+  .card-author-photo {
+    float: left;
+  }
+  .card-title {
+    margin-left: 45px;
+    .action-goal {
+      @extend %havit-color;
     }
   }
-}
-.card-goals {
-  padding: 15px 10px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  margin: -1px 0;
-  font-weight: bold;
-  font-size: 15px;
-  text-align: center;
-  .goals-hidden {
-    display: none;
+  .card-metainfo {
+    margin-left: 45px;
+    .time {
+      color: #9197a3;
+      font-size: 12px;
+    }
   }
-  .see-detail {
-    color: #AEAEAE;
-    float: right;
-    outline: 0;
-    font-size: 11px;
-  }
-  .see-detail:active, .see-detail:focus {
-    outline: 0;
-  }
-  .see-detail.up:before {
-    content: '목표 자세히 보기';
-  }
-  .see-detail.down:before {
-    content: '접기';
+  .card-option {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #999;
+    cursor: pointer;
   }
 }
 .card-message {
-  padding: 10px;
+  padding: 15px;
 }
 .card-photo {
   img {
@@ -131,6 +121,7 @@
 .card-actions {
   position: relative;
   height: 30px;
+  padding: 0 15px;
   margin-top: 5px;
   border-top: 1px solid #e1e2e3;
   background-color: #f6f7f8;
@@ -139,7 +130,6 @@
     float: left;
     display: inline;
     height: 100%;
-    width: 35px;
     text-align: center;
     font-size: 17px;
     color: hsl(0, 0%, 64%);
@@ -176,7 +166,7 @@
   }
   .likers {
     line-height: 16px;
-    margin: 0 35px;
+    margin: 0 28px;
     padding: 6px 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -190,6 +180,7 @@
 }
 .card-comments {
   margin: 0;
+  padding: 0 6px;
   background-color: #f6f7f8;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
