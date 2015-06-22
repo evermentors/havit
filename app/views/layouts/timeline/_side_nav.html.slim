@@ -1,10 +1,10 @@
 .timeline-side-nav
-  a.my-timeline href=new_url
+  a.my-timeline href=root_url
     span.glyphicon.glyphicon-home.icon
     span.title 내 타임라인
   ul.joined-groups
     li.individual-goals[class="#{'active' if @group.home?}"]
-      a.selectable href=new_url
+      a.selectable href=root_url
         span.fa.fa-tasks.icon
         span.title 개인 목표
       - if @group.home?

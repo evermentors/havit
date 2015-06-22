@@ -1,9 +1,0 @@
-.container-left
-  = render partial: 'layouts/timeline/side_nav', locals: { selected_goal: 'none' }
-.container-center
-  = render @statuses
-.container-right
-
-= render 'statuses/photo_modal'
-
-= paginate @statuses, window: 2

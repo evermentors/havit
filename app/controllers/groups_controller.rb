@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
         session[:last_used_character_id] = character.take.id
         @statuses = @group.members_statuses.page(params[:page])
 
-        render 'statuses/newindex'
+        render 'statuses/index'
       elsif @group.password.blank?
         @statuses = @group.members_statuses.page(params[:page])
         render 'groups/not_joined', locals: { hidden: false }
