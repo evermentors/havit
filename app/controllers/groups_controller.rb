@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    if @group.name == 'Universe'
+    if @group.home?
       if params.include?('status-id')
         redirect_to (root_url + '?status-id=' + params['status-id'])
       else

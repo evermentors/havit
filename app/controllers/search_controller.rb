@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 
   def index
     if @query.blank?
-      groups = Group.all.reject { |g| g==universe }
+      groups = Group.all.reject { |g| g.home? }
       @index = true
     else
       groups = Group.search(
