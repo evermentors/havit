@@ -19,29 +19,4 @@
   /       button.btn-xs.btn-link.btn-cancel type='button' 취소
   /     = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
   /   span.goal-description.nl2br = last_daily_goal.description.strip()
-
-  .status-body
-    .status-description
-      = text_area_tag 'status[description]', nil, placeholder: '어떤 실천을 하셨나요?', required: true, class: 'form-control', resize: false
-    .input-group.next-daily-goal data-toggle='tooltip' data-plcaement='bottom' title='다음 실천 목표를 입력해주세요. 미입력시 가장 최근 목표가 등록됩니다.'
-      span.input-group-addon.next-goal-date = "다음 실천 목표:"
-      = text_field_tag 'next_daily_goal',
-      (daily_goal_description last_daily_goal.goal_date.tomorrow),
-      placeholder: "미입력시 '#{last_daily_goal.description}'#{korean_postposition(last_daily_goal.description, :이가)} 자동 등록됩니다.",
-      class: 'form-control next-daily-goal-input',
-      autocomplete: 'off'
-    .photo-preview.hidden
-      span.photo-remove-btn.glyphicon.glyphicon-remove data-toggle='tooltip' title='실천 인증샷 삭제'
-
-  .status-footer
-    .status-photo.btn-havit-white
-      .status-photo-wrapper
-        a.status-photo-link
-          .photo-upload-wrapper
-            span.glyphicon.glyphicon-camera
-            = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
-          span.photo-upload-description 실천 인증샷 추가
-    button.btn.btn-havit-white.submit-btn type='submit'
-      span.glyphicon.glyphicon-ok
-      ' 인증 완료!
-
+  = render partial: 'statuses/load_or_new', locals: { goal: @goal, date: Date.current }

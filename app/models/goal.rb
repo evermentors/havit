@@ -28,6 +28,10 @@ class Goal < ActiveRecord::Base
       statuses.at(Date.current).present?
     end
   end
+
+  def last_action_goal
+    self.action_goals.order(created_at: :desc).first
+  end
 end
 
 class CheckGoal < Goal

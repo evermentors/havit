@@ -1,0 +1,66 @@
+/ - if goal.statuses.at(date).present?
+/   - status = goal.statuses.at(date).last
+
+/   = content_for :card_author_photo, flush:true
+/     a href=user_path(status.character.user)
+/       .avatar-wrapper.status-avatar
+/         = image_tag avatar_url(status.character.user)
+
+/   = content_for :card_title, flush:true
+/     a.status-user-name href=user_path(status.character.user) = status.character.user.name
+/     span 님의 #{datestring status.verified_at} #{weekdaystring status.verified_at} #{status.goal.theme}:
+/     span.action-goal =< status.action_goal.description
+
+/   = content_for :card_metainfo, flush:true
+/     a.time href=status_path(status)
+/       = timeago_tag status.created_at, format: "%B %-d일 %A %p %-l:%M", title: (l status.created_at, format: "%Y년 %B %-d일 %A %p %-l:%M")
+/     span.badges
+
+/   = content_for :card_message, flush:true
+/     span.description.nl2br == render 'statuses/description', status: status
+
+/   = content_for :card_photo, flush:true
+/     = status_photo(status)
+/     - unless no_daily_goal?(status.character, status.verified_at.tomorrow)
+/     .next-goal
+/       = "#{status.character.user.name}님의 다음 목표는 "
+/       span.color-havit = daily_goal(status.character, status.verified_at.tomorrow).description
+/       ' 입니다.
+
+/   = content_for :card_actions, flush:true
+/     .like-form
+/       .status-like-icon
+/         button.glyphicon.glyphicon-heart.color-havit
+/     .likers class="#{'expand-right' unless status.character_id == current_character.id}"
+/       == render 'statuses/liker_names', status: status
+
+/   = content_for :card_comments, flush:true
+/     = commontator_thread(status)
+
+/   = render partial: 'layouts/card', locals: {status_id: status.id}
+/ - else
+= hidden_field_tag 'status_goal_id', goal.id
+.status-body
+  .status-description
+    = text_area_tag 'status[description]', nil, placeholder: '어떤 실천을 하셨나요?', required: true, class: 'form-control', resize: false
+  .input-group.next-daily-goal data-toggle='tooltip' data-plcaement='bottom' title='다음 실천 목표를 입력해주세요. 미입력시 가장 최근 목표가 등록됩니다.'
+    span.input-group-addon.next-goal-date = "다음 실천 목표:"
+    = text_field_tag 'next_action_goal',
+    '',
+    placeholder: "미입력시 '#{goal.last_action_goal.description}'#{korean_postposition(goal.last_action_goal.description, :이가)} 자동 등록됩니다.",
+    class: 'form-control next-daily-goal-input',
+    autocomplete: 'off'
+  .photo-preview.hidden
+    span.photo-remove-btn.glyphicon.glyphicon-remove data-toggle='tooltip' title='실천 인증샷 삭제'
+
+.status-footer
+  .status-photo.btn-havit-white
+    .status-photo-wrapper
+      a.status-photo-link
+        .photo-upload-wrapper
+          span.glyphicon.glyphicon-camera
+          = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
+        span.photo-upload-description 실천 인증샷 추가
+  button.btn.btn-havit-white.submit-btn type='submit'
+    span.glyphicon.glyphicon-ok
+    ' 인증 완료!

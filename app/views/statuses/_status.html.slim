@@ -37,10 +37,10 @@
 
 = content_for :card_photo, flush:true
   = status_photo(status)
-  - unless no_daily_goal?(status.character, status.verified_at.tomorrow)
+  - if status.next_action_goal.present?
     .next-goal
       = "#{status.character.user.name}님의 다음 목표는 "
-      span.goal-description = daily_goal(status.character, status.verified_at.tomorrow).description
+      span.goal-description = status.next_action_goal.description
       ' 입니다.
 
 = content_for :card_actions, flush:true

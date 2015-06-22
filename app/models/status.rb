@@ -13,6 +13,7 @@ class Status < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
   has_many :notifications, dependent: :destroy
+  has_one :next_action_goal, class_name: "ActionGoal"
 
   has_attached_file :photo, styles: { large: "1024x1024>", medium: "300x300>", thumb: "100x100>" }, source_file_options: { all: '-auto-orient' }
   validates_attachment_content_type :photo, content_type: ["image/jpeg", "image/gif", "image/png"]
