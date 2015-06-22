@@ -5,13 +5,13 @@
   }
   .form-control.search-input {
     @media (min-width : 768px) {
-      width: 270px;
+      width: 220px;
     }
     @media (min-width : 992px) {
-      width: 370px;
+      width: 320px;
     }
     @media (min-width : 1200px) {
-      width: 520px;
+      width: 470px;
     }
   }
   .search-input:focus {
