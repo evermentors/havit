@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   resources :goals, only: [:show, :create, :new]
+  get "goals/:id/:date", action: :on, as: :on, controller: :goals
 
   resources :monthly_goals, only: [:edit, :update, :destroy]
 
@@ -48,8 +49,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  get "daily_goals/:date", action: :on, as: :on, controller: :daily_goals
 
   get "/search", to: "search#index"
 end

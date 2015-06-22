@@ -73,8 +73,10 @@
     }
     .goal.new > a {
       color: #999;
+      cursor: not-allowed;
     }
-    .goal:hover, .goal.new:hover {
+    // .goal:hover, .goal.new:hover {
+    .goal:hover {
       a {
         @extend %havit-color;
       }

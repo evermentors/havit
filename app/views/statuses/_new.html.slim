@@ -1,7 +1,7 @@
 = form_tag "/statuses", method: "post", multipart: true, class: "new-status-form goal-container daily"
   ul.status-dates
     - 6.downto(0).each do |day|
-      li class=date_class(@goal, day) data-toggle='tooltip' title=datestring(day.days.ago) goal-date=day.days.ago.to_date
+      li class=date_class(@goal, day) data-toggle='tooltip' title=datestring(day.days.ago) action-date=day.days.ago.to_date
         .circle
         .connect-line
         = day==0 ? '오늘' : weekdaystring(day.days.ago.to_date, 'short')
@@ -19,4 +19,5 @@
   /       button.btn-xs.btn-link.btn-cancel type='button' 취소
   /     = text_area_tag 'daily_goal[description]', '', placeholder: '목표가 무엇인가요?', class: 'form-control goal-textarea'
   /   span.goal-description.nl2br = last_daily_goal.description.strip()
-  = render partial: 'statuses/load_or_new', locals: { goal: @goal, date: Date.current }
+  .load-or-new
+    = render partial: 'statuses/load_or_new', locals: { goal: @goal, date: Date.current }

@@ -10,6 +10,7 @@
           .progress-bar class="#{'progress-bar-striped active' if goal == selected_goal}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow=goal_percentage(goal) style="width: #{goal_percentage(goal)}%"
             .sr-only #{goal_percentage(goal)}% 완료
   .goal.new
-    a href=new_goal_url
+    / a href=new_goal_url
+    a
       span.glyphicon.glyphicon-plus.icon
-      span 새 목표 만들기
+      span 새 목표 만들기 (준비중입니다)
