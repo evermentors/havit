@@ -1,33 +1,32 @@
 - if goal.statuses.at(date).present?
-  - status = goal.statuses.at(date).last
+  - goal.statuses.at(date).each do |status|
+    = content_for :card_author_photo, flush:true
+      a href=user_path(status.character.user)
+        .avatar-wrapper.status-avatar
+          = image_tag avatar_url(status.character.user)
 
-  = content_for :card_author_photo, flush:true
-    a href=user_path(status.character.user)
-      .avatar-wrapper.status-avatar
-        = image_tag avatar_url(status.character.user)
+    = content_for :card_title, flush:true
+      a.status-user-name href=user_path(status.character.user) = status.character.user.name
+      span 님의 #{datestring status.verified_at} #{weekdaystring status.verified_at} #{status.goal.theme}:
+      span.action-goal =< status.action_goal.description
 
-  = content_for :card_title, flush:true
-    a.status-user-name href=user_path(status.character.user) = status.character.user.name
-    span 님의 #{datestring status.verified_at} #{weekdaystring status.verified_at} #{status.goal.theme}:
-    span.action-goal =< status.action_goal.description
+    = content_for :card_metainfo, flush:true
+      a.time href=status_path(status)
+        = timeago_tag status.created_at, format: "%B %-d일 %A %p %-l:%M", title: (l status.created_at, format: "%Y년 %B %-d일 %A %p %-l:%M")
+      span.badges
 
-  = content_for :card_metainfo, flush:true
-    a.time href=status_path(status)
-      = timeago_tag status.created_at, format: "%B %-d일 %A %p %-l:%M", title: (l status.created_at, format: "%Y년 %B %-d일 %A %p %-l:%M")
-    span.badges
+    = content_for :card_message, flush:true
+      span.description.nl2br == render 'statuses/description', status: status
 
-  = content_for :card_message, flush:true
-    span.description.nl2br == render 'statuses/description', status: status
+    = content_for :card_photo, flush:true
+      = status_photo(status)
+      - if status.next_action_goal.present?
+        .next-goal
+          = "#{status.character.user.name}님의 다음 목표는 "
+          span.color-havit = status.next_action_goal.description
+          ' 입니다.
 
-  = content_for :card_photo, flush:true
-    = status_photo(status)
-    - if status.next_action_goal.present?
-      .next-goal
-        = "#{status.character.user.name}님의 다음 목표는 "
-        span.goal-description = status.next_action_goal.description
-        ' 입니다.
-
-  = render partial: 'layouts/card', locals: {status_id: status.id}
+    = render partial: 'layouts/card', locals: {status_id: status.id}
   .want-more-verification.text-right
     a.btn.btn-havit-white 추가 실천 인증하기
 

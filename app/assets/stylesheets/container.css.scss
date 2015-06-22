@@ -30,8 +30,16 @@
   min-width: 240px;
   max-width: 680px;
   margin-left: 224px;
+  padding-top: 10px;
   @media (max-width: 767px) {
     margin-left: 0;
+  }
+}
+
+.container-center.with-group {
+  padding-top: 30px;
+  .card-container {
+    margin-bottom: 50px;
   }
 }
 
