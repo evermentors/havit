@@ -37,6 +37,21 @@ nav.navbar.navbar-default.navbar-fixed-top
               span.glyphicon.glyphicon-bell
               span.notifications-count.hidden
             .notifications-container
+        .group-and-goal-select
+          - if defined? @goal
+            .goal
+              = render partial: 'goals/type_icon', locals: { goal: @goal }
+              span.theme = @goal.theme
+          - else
+            .group
+              - if current_character.group.home?
+                span.glyphicon.glyphicon-home.icon
+                span.title 내 타임라인
+              - else
+                span.fa.fa-group.icon
+                span.title = current_character.group.name
+          span.fa.fa-chevron-down.show-button
+        = render partial: 'layouts/timeline/top_nav_on_mobile', locals: { current_group: current_character.group, goal: (defined?(@goal) ? @goal : 'none' ) }
       .collapse.navbar-collapse
         ul.navbar-form.navbar-left
           == render 'search/form'

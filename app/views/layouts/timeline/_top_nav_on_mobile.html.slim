@@ -1,0 +1,15 @@
+.timeline-top-nav-on-mobile.up
+  ul.joined-groups
+    li.individual-goals[class="#{'active' if current_group.home?}"]
+      a.selectable href=root_url
+        span.fa.fa-tasks.icon
+        span.title 개인 목표
+      - if @group.home?
+        = render partial: 'goals/my_goals_in_group', locals: { selected_goal: goal }
+    - current_user.explicitly_joined_groups.each do |group|
+      li.joined-group[class="#{'active' if group == current_group}"]
+        a.selectable href=group_url(group)
+          span.fa.fa-group.icon
+          span.title = group.name
+        - if group == @group
+          = render partial: 'goals/my_goals_in_group', locals: { selected_goal: goal }

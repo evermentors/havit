@@ -6,12 +6,19 @@ show_mobile_menu = () ->
     else
       menu.slideUp(-> menu.toggleClass('up down'))
 
-toggle_monthly_weekly_goals = () ->
-  $('body').on 'click', '.card-goals > .see-detail', ->
-    see_detail = $(this)
-    if $(this).hasClass('up')
-      $(this).prevAll('.goals-hidden').slideDown(-> see_detail.toggleClass('up down'))
+show_mobile_top_nav = () ->
+  $('.group-and-goal-select').click () ->
+    menu = $('.timeline-top-nav-on-mobile')
+    if menu.hasClass('up')
+      menu.slideDown(->
+        menu.toggleClass('up down')
+        $('.group-and-goal-select .show-button').toggleClass('fa-chevron-down fa-chevron-up')
+      )
     else
-      $(this).prevAll('.goals-hidden').slideUp(-> see_detail.toggleClass('up down'))
+      menu.slideUp(->
+        menu.toggleClass('up down')
+        $('.group-and-goal-select .show-button').toggleClass('fa-chevron-down fa-chevron-up')
+      )
 
 $(document).on 'ready page:load', show_mobile_menu
+$(document).on 'ready page:load', show_mobile_top_nav
