@@ -19,6 +19,34 @@
         margin-top: 5px;
         margin-left: 10px;
       }
+      .mobile-menu-dropdown {
+        display: none;
+        top: 50px;
+        position: absolute;
+        width: 100%;
+        padding: 15px;
+        margin: 0;
+        list-style: none;
+        opacity: 0.85;
+        background-color: white;
+        border-bottom: 1px solid #BEBCBC;
+        .glyphicon {
+          vertical-align: text-top;
+        }
+        a:active, a:hover, a:link, a:visited {
+          color: #777;
+          text-decoration: none;
+          padding: .25rem 0;
+          display: block;
+          font-size: 16px;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+        .description {
+          margin-left: 10px;
+        }
+      }
     }
   }
   @media (min-width: 768px) {

@@ -3,8 +3,30 @@ nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
       = link_to image_tag("havit-logo-green.png"), main_app.root_path, class: 'navigation-logo'
-      a.navigation-logo-mobile
-        = image_tag("favicon.ico")
+      - if user_signed_in?
+        .navigation-logo-mobile.signed-in
+          = image_tag("favicon.ico")
+          ul.mobile-menu-dropdown.up
+            li.mobile-home
+              a href=main_app.root_path
+                span.glyphicon.glyphicon-home
+                span.description 내 타임라인
+            li.mobile-my-page
+              a href=main_app.user_path(current_user)
+                span.glyphicon.glyphicon-user
+                span.description 마이페이지
+            li.mobile-edit-account
+              a href=main_app.edit_user_registration_path
+                span.glyphicon.glyphicon-cog
+                span.description 계정 설정
+            li.mobile-sign-out
+              a href=main_app.destroy_user_session_path data-method='delete'
+                span.glyphicon.glyphicon-off
+                span.description 로그아웃
+      - else
+        a.navigation-logo-mobile href=main_app.root_path
+          = image_tag("favicon.ico")
+
     - if user_signed_in?
       .show-on-mobile
         ul.nav.navbar-nav.navbar-right
