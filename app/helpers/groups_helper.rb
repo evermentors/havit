@@ -32,15 +32,11 @@ module GroupsHelper
       end
 
       addresses.each do |address|
-        if no_daily_goal?(status.character, status.verified_at)
-          goal_str = "<strong>#{datestring status.verified_at}에는 목표가 없었습니다.</strong>"
-        else
-          goal_str = "<strong>#{datestring status.verified_at} #{weekdaystring status.verified_at}의 목표:</strong> <span style='color: #ec5413; font-weight: normal;'>#{daily_goal(status.character, status.verified_at).description}</span>"
-        end
+        goal_str = "<strong>#{datestring status.verified_at} #{weekdaystring status.verified_at}의 실천 목표:</strong> <span style='color: #40BD9C; font-weight: normal;'>#{status.action_goal.description}</span>"
         mail = SendGrid::Mail.new do |m|
           m.to = address
           m.from = 'evermentors@gmail.com'
-          m.subject = "[Havit] #{current_user.name}님이 '#{current_character.group.name}' 그룹에서 #{datestring status.verified_at}의 실천 인증을 올렸습니다."
+          m.subject = "[Havit] #{current_user.name}님이 '#{group.name}' 그룹에서 #{status.goal.theme} 실천을 하셨습니다."
           m.html ="
           <p style='position:relative; margin-top:0;'>
             <div style='display: inline-block; max-height: 31px; height: 31px; width: 31px; max-width: 31px; overflow: hidden;'>
@@ -53,7 +49,7 @@ module GroupsHelper
           <p style='white-space: pre-wrap; margin:0;'>#{auto_link(html_escape(status.description), html: {target: '_blank'}) do |text| truncate(text, length: 30) end}</p>
           <hr style='width: 30px; display: inline-block;'>
           <p style='font-size: small; margin-top:0;'>
-            <a href=#{group_url(current_character.group) + '?status-id='+status.id.to_s}>Havit에서 보기</a>
+            <a href=#{group_url(group) + '?status-id='+status.id.to_s}>Havit에서 보기</a>
           </p>"
         end
         client.send(mail)
