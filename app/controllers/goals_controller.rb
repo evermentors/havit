@@ -22,6 +22,7 @@ class GoalsController < ApplicationController
   end
 
   def show
+    session[:last_used_character_id] = @goal.character.id
     @statuses = @goal.statuses.page(params[:page])
     @group = @goal.group
   end

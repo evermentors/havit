@@ -1,10 +1,10 @@
 .notifications-li {
   outline: 0;
-  padding: 0 5px;
+  padding: 0;
   .notification-btn {
     font-size: 19px;
     color: #777;
-    width: 30px;
+    width: 37px;
     text-align: center;
     padding-top: 14px;
     padding-bottom: 9px;
@@ -18,10 +18,12 @@
     overflow: visible;
     position: absolute;
     top: 51px;
-    left: -71px;
+    left: -185px;
     width: 300px;
     z-index: -1;
-    margin-left: -115px;
+    @media (max-width: 767px) {
+      left: -255px;
+    }
   }
 }
 .notifications-li:hover, .notifications-li:focus {

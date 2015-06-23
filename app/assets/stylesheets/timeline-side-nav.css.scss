@@ -52,6 +52,13 @@
     }
   }
 
+  .new-group {
+    a {
+      color: #999;
+      cursor: not-allowed;
+    }
+  }
+
   .goals {
     margin-top: 10px;
     .theme {
