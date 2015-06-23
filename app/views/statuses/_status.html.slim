@@ -2,12 +2,12 @@
   = status_photo(status)
   = link_to '원본 사진 보기', status.photo.url, target: "_blank", class: 'btn btn-default btn-xs show-original-button'
 
-= content_for :card_group, flush:true
-  - unless status.group.home?
-    span.fa.fa-group
-    span.name = status.group.name
-  - else
-    span
+/ = content_for :card_group, flush:true
+/   - unless status.group.home?
+/     span.fa.fa-group
+/     span.name = status.group.name
+/   - else
+/     span
 
 = content_for :card_author_photo, flush:true
   a href=user_path(status.character.user)
