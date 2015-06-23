@@ -14,38 +14,10 @@
       cursor: pointer;
       img {
         display: inline;
-        height: 40px;
+        height: 30px;
         width: auto;
-        margin-top: 5px;
+        margin-top: 10px;
         margin-left: 10px;
-      }
-      .mobile-menu-dropdown {
-        display: none;
-        top: 50px;
-        position: absolute;
-        width: 100%;
-        padding: 15px;
-        margin: 0;
-        list-style: none;
-        opacity: 0.85;
-        background-color: white;
-        border-bottom: 1px solid #BEBCBC;
-        .glyphicon {
-          vertical-align: text-top;
-        }
-        a:active, a:hover, a:link, a:visited {
-          color: #777;
-          text-decoration: none;
-          padding: .25rem 0;
-          display: block;
-          font-size: 16px;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-        .description {
-          margin-left: 10px;
-        }
       }
     }
   }
@@ -79,15 +51,15 @@
       }
     }
     .group-and-goal-select {
-      margin-left: 75px;
-      margin-right: 75px;
-      padding-top: 8px;
-      padding-bottom: 17px;
-      text-align: center;
-      font-size: 18px;
-      color: #777;
+      margin-left: 45px;
+      margin-right: 110px;
       cursor: pointer;
-      .group, .goal {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      .group {
+        font-size: 16px;
+        font-weight: bold;
+        color: #777;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -96,10 +68,22 @@
         margin-right: 7px;
       }
       .show-button {
-        position: absolute;
-        bottom: 0;
-        font-size: 13px;
+        font-size: 22px;
         color: #999;
+        margin-left: 6px;
+        vertical-align: bottom;
+      }
+    }
+    .group-and-goal-select.with-goal {
+      padding-top: 4px;
+      padding-bottom: 1px;
+      .goal {
+        margin-top: 3px;
+        font-size: 14px;
+        color: #999;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
     .timeline-top-nav-on-mobile {
@@ -111,8 +95,7 @@
       padding: 15px;
       margin: 0;
       list-style: none;
-      opacity: 0.9;
-      background-color: #eee;
+      background: rgba(238, 238, 238, .85);
       border-bottom: 1px solid #BEBCBC;
       font-size: 13px;
       text-align: left;
@@ -126,11 +109,12 @@
       }
       a:hover, a:focus, a:active {
         text-decoration: none;
+        color: #40BD9C;
       }
       .icon {
         margin-right: 7px;
       }
-      .joined-groups {
+      .joined-groups, .my-timeline {
         margin-left: 50px;
         margin-right: 50px;
       }
@@ -147,7 +131,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      li {
+      .my-timeline, li {
         display: block;
         background-color: #fff;
         padding: 7px 10px;
@@ -167,11 +151,6 @@
       .goals {
         margin-top: 10px;
         .theme {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          display: inline-block;
-          max-width: 150px;
           margin-bottom: -5px;
         }
         .glyphicon-ok {
@@ -182,6 +161,9 @@
           display: block;
           padding: 5px 10px;
           margin: 0 -10px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
         .goal.new > a {
           color: #999;
@@ -242,5 +224,121 @@
   }
   .sign-out-li > a {
     font-size: 1.3em;
+  }
+}
+
+nav.navbar, main {
+  -webkit-transition: -webkit-transform .15s cubic-bezier(.2,.3,.25,.9);
+  -moz-transition: -moz-transform .15s cubic-bezier(.2,.3,.25,.9);
+  transition: transform .15s cubic-bezier(.2,.3,.25,.9);
+}
+
+body.side-open {
+  overflow-x: hidden;
+  .overlay {
+    display: block;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1050;
+  }
+  nav.side-nav {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    z-index: 1050;
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  -webkit-transition: background-color .15s ease-out .0000001ms;
+  -moz-transition: background-color .15s ease-out .0000001ms;
+  transition: background-color .15s ease-out .0000001ms;
+}
+
+nav.side-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: white;
+  overflow-y: auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translateX(280px);
+  -moz-transform: translateX(280px);
+  -ms-transform: translateX(280px);
+  transform: translateX(280px);
+  -webkit-transition: -webkit-transform .15s cubic-bezier(.2,.3,.25,.9);
+  -moz-transition: -moz-transform .15s cubic-bezier(.2,.3,.25,.9);
+  transition: transform .15s cubic-bezier(.2,.3,.25,.9);
+  .contents {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    a {
+      color: #777 !important;
+    }
+    .header {
+      margin-bottom: 10px;
+      .mobile-login-as {
+        .my-page-link {
+          img {
+            display: inline;
+            height: 40px;
+            width: 40px;
+          }
+          span {
+            margin-left: 10px;
+            font-size: 18px;
+            text-decoration: none;
+            vertical-align: middle;
+          }
+        }
+        .my-page-link:active, .my-page-link:link, .my-page:visited {
+          text-decoration: none;
+        }
+        .my-page-link:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .menus {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 0;
+      padding-right: 0;
+      list-style: none;
+      margin-top: 0;
+      margin-bottom: 10px;
+      margin-left: 0;
+      .glyphicon {
+        vertical-align: text-top;
+      }
+      a:active, a:hover, a:link, a:visited {
+        text-decoration: none;
+        padding: .25rem 0;
+        display: block;
+        font-size: 16px;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .description {
+        margin-left: 10px;
+      }
+    }
   }
 }

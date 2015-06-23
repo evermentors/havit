@@ -1,5 +1,6 @@
 .container-left
-  = render partial: 'layouts/timeline/side_nav', locals: { selected_goal: 'none' }
+  .timeline-side-nav
+    = render partial: 'layouts/timeline/nav', locals: { current_group: current_character.group, selected_goal: 'none' }
 / .container-center class=(current_character.group.home? ? '' : 'with-group')
 .container-center
   = render @statuses

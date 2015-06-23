@@ -1,8 +1,8 @@
-.container.user-page
+.user-page
   .user-information
     .avatar-wrapper
       = image_tag avatar_url(@user)
-    h2.user-name = "#{@user.name}"
+    h4.user-name = "#{@user.name}님의 실천 내역"
   .user-statuses
     = render @statuses
 = paginate @statuses, window: 2

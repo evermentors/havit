@@ -1,10 +1,6 @@
 show_mobile_menu = () ->
-  $('.navigation-logo-mobile.signed-in > img').click () ->
-    menu = $(this).next()
-    if menu.hasClass('up')
-      menu.slideDown(-> menu.toggleClass('up down'))
-    else
-      menu.slideUp(-> menu.toggleClass('up down'))
+  $('.show-on-mobile .more-btn').click () ->
+    $('body').toggleClass('side-open')
 
 show_mobile_top_nav = () ->
   $('.group-and-goal-select').click () ->
@@ -12,12 +8,12 @@ show_mobile_top_nav = () ->
     if menu.hasClass('up')
       menu.slideDown(->
         menu.toggleClass('up down')
-        $('.group-and-goal-select .show-button').toggleClass('fa-chevron-down fa-chevron-up')
+        $('.group-and-goal-select .show-button').toggleClass('fa-angle-down fa-angle-up')
       )
     else
       menu.slideUp(->
         menu.toggleClass('up down')
-        $('.group-and-goal-select .show-button').toggleClass('fa-chevron-down fa-chevron-up')
+        $('.group-and-goal-select .show-button').toggleClass('fa-angle-down fa-angle-up')
       )
 
 $(document).on 'ready page:load', show_mobile_menu

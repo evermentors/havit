@@ -11,10 +11,10 @@ html
     == csrf_meta_tags
     == timeago_script_tag
   body
+    .overlay
     header
       == render 'layouts/navigation'
     main role="main" class="#{'need-login' unless user_signed_in?}"
-      .overlay
       .container
         / == render 'layouts/messages'
         == yield

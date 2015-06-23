@@ -15,6 +15,10 @@
   display: none;
 }
 
+.comment-main-body {
+  margin-left: 39px;
+}
+
 .comment_actions_div {
   position: absolute;
   right: 7px;
