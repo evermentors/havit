@@ -2,18 +2,20 @@
 nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      .navbar-toggle-div
-        button.navbar-toggle
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-      - if user_signed_in?
-        .navbar-group-select.dropdown
-          = render 'groups/select'
       = link_to image_tag("havit-logo-green.png"), main_app.root_path, class: 'navigation-logo'
-    .collapse.navbar-collapse
-      - if user_signed_in?
+      a.navigation-logo-mobile
+        = image_tag("favicon.ico")
+    - if user_signed_in?
+      .show-on-mobile
+        ul.nav.navbar-nav.navbar-right
+          li.search-btn
+            a.glyphicon.glyphicon-search
+          li.notifications-li.closed
+            .notification-btn.closed last-checked=current_user.last_checked_notification
+              span.glyphicon.glyphicon-bell
+              span.notifications-count.hidden
+            .notifications-container
+      .collapse.navbar-collapse
         ul.navbar-form.navbar-left
           == render 'search/form'
         ul.nav.navbar-nav.navbar-right
@@ -34,32 +36,8 @@ nav.navbar.navbar-default.navbar-fixed-top
             = link_to '', main_app.edit_user_registration_path, class: 'glyphicon glyphicon-cog'
           li.sign-out-li data-toggle='tooltip' data-placement='bottom' title='로그아웃'
             = link_to '', main_app.destroy_user_session_path, method: 'delete', class: 'glyphicon glyphicon-off'
-      - else
+    - else
+      .collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           li = link_to '로그인', new_user_session_path
           li = link_to '회원가입', new_user_registration_path
-
-- if user_signed_in?
-  nav.side-nav
-    .contents
-      .header
-        .mobile-login-as
-          a.my-page-link href=user_path(current_user)
-            = image_tag(current_user.gravatar_url)
-            span = current_user.name
-      ul.menus
-        li.mobile-notification
-          / = link_to '', main_app.edit_user_registration_path, class: 'glyphicon glyphicon-bell'
-          a href='#'
-            span.glyphicon.glyphicon-bell
-            span.description 알림
-        li.mobile-edit-account
-          a href=main_app.edit_user_registration_path
-            span.glyphicon.glyphicon-cog
-            span.description 계정 설정
-        li.mobile-sign-out
-          a href=main_app.destroy_user_session_path data-method='delete'
-            span.glyphicon.glyphicon-off
-            span.description 로그아웃
-      .mobile-search-form
-        == render 'search/form'
