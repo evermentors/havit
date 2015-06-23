@@ -16,5 +16,5 @@ html
     main role="main" class="#{'need-login' unless user_signed_in?}"
       .overlay
       .container
-        == render 'layouts/messages'
+        / == render 'layouts/messages'
         == yield
