@@ -1,0 +1,8 @@
+canvas.overall-stat total-dates=((goal.end_date - goal.created_at.to_date).to_i) today=((Date.current - goal.created_at.to_date).to_i) verified-num-dates=goal.verified_num_dates
+
+.info.overall-stat
+  .today
+    span = (Date.current - goal.created_at.to_date).to_i
+  .total
+    | /
+    span = (goal.end_date - goal.created_at.to_date).to_i

@@ -10,18 +10,14 @@ $nprogress-zindex: 10100;
 @import 'nprogress';
 
 @font-face {
-  font-family: 'Harlow Solid Italic';
-  src: url(font-path('harlow_solid_italic.eot'));
-  src: url(font-path('harlow_solid_italic.eot') + "?#iefix") format('embedded-opentype'),
-       url(font-path('harlow_solid_italic.svg') + '#Harlow Solid Italic') format('svg'),
-       url(font-path('harlow_solid_italic.woff')) format('woff'),
-       url(font-path('harlow_solid_italic.ttf')) format('truetype');
+  font-family: 'isocp2';
+  src: url(font-path('isocp2-webfont.eot'));
+  src: url(font-path('isocp2-webfont.eot') + "?#iefix") format('embedded-opentype'),
+       url(font-path('isocp2-webfont.svg') + '#isocp2') format('svg'),
+       url(font-path('isocp2-webfont.woff')) format('woff'),
+       url(font-path('isocp2-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
-}
-
-.havit-font {
-  font-family: 'Harlow Solid Italic';
 }
 
 // make all images responsive by default

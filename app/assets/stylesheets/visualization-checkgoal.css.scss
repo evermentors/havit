@@ -1,0 +1,33 @@
+.goal-visualization {
+  width: 100%;
+  padding: 7px 10px;
+  height: 300px;
+  background-color: white;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  border-radius: 6px;
+  text-align: center;
+
+  .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+}
+
+.goal-visualization.checkgoal {
+  .info.overall-stat {
+    font-family: isocp2;
+    margin-top: -175px;
+    text-align: center;
+    color: #999;
+    .today {
+      font-size: 60px;
+    }
+    .total {
+      font-size: 45px;
+      margin-top: -20px;
+    }
+  }
+}
