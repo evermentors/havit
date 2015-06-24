@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   gravtastic(default: 'mm')
 
   has_many :characters, dependent: :destroy
-  has_many :joined_groups, through: :characters, source: :group
-  has_many :goals, through: :characters
+  has_many :joined_groups, through: :characters, source: :group, dependent: :destroy
+  has_many :goals, through: :characters, dependent: :destroy
 
   has_many :likes, dependent: :destroy
   has_many :liked_statuses, through: :likes, source: :status
