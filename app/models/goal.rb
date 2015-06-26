@@ -33,12 +33,8 @@ class Goal < ActiveRecord::Base
     self.action_goals.order(created_at: :desc).first
   end
 
-  def verified_dates
-    self.statuses.pluck(:verified_at).uniq.reverse
-  end
-
-  def verified_num_dates
-    self.verified_dates.map{ |date| (date - self.created_at.to_date).to_i }
+  def verified_statuses
+    Hash[self.statuses.pluck(:verified_at, :id)]
   end
 end
 

@@ -52,11 +52,12 @@ img {
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
-  @extend .container;
   background-color: #eee;
+  padding-top: 51px; // accommodate the navbar
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100vh;
   width: 100%;
-  margin-top: 51px; // accommodate the navbar
-  padding: 0;
 }
 
 main.need-login {

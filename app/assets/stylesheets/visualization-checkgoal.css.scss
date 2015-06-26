@@ -1,7 +1,6 @@
 .goal-visualization {
   width: 100%;
   padding: 7px 10px;
-  height: 300px;
   background-color: white;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
@@ -12,22 +11,54 @@
     font-size: 15px;
     font-weight: bold;
     margin-top: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
 }
 
 .goal-visualization.checkgoal {
-  .info.overall-stat {
-    font-family: isocp2;
-    margin-top: -175px;
-    text-align: center;
-    color: #999;
-    .today {
-      font-size: 60px;
+  svg {
+    width: 200px;
+    height: 200px;
+    margin-top: 15px;
+    .days {
+      height: 10px;
+      width: 4px;
+      fill: hsl(0, 0%, 70%);
     }
-    .total {
-      font-size: 45px;
-      margin-top: -20px;
+    .before-start {
+      fill: hsl(0, 0%, 95%);
+    }
+    .future {
+      fill: hsl(0, 0%, 90%);
+    }
+    .verified {
+      fill: #40BD9C;
+    }
+    .today, .start-day, .end-day {
+      stroke-width: 1px;
+      width: 3px;
+    }
+    .today {
+      stroke: #EA297D;
+    }
+    .start-day, .end-day {
+      stroke: blue;
+    }
+    .verified:hover, .today:hover, .start-day:hover, .end-day:hover {
+      opacity: .5;
+      cursor: pointer;
+    }
+
+    .num-actions {
+      font-family: isocp2;
+      text-anchor: middle;
+      font-size: 40px;
+      fill: #40bd9c;
+    }
+    .month-text {
+      text-anchor: middle;
+      fill: #999;
+      font-size: 12px;
     }
   }
 }

@@ -27,7 +27,7 @@
     .title
       span.theme.color-havit => @goal.theme
       span 실천 통계
-    = render partial: "visualization/#{@goal.type.downcase}", locals: { goal: @goal }
+    = render partial: "visualization/#{@goal.type.downcase}/on_the_right", locals: { goal: @goal }
 
 = render 'statuses/photo_modal'
 
