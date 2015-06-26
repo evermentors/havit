@@ -1,4 +1,4 @@
-.group-and-goal-select[class=(defined?(@goal) ? 'with-goal' : '')]
+.group-and-goal-select
   .group
     - if params[:controller] == 'users'
       span.title #{User.find(params[:id]).name}님의 실천 내역
@@ -11,8 +11,3 @@
         span.title = defined?(@goal) ? "개인 목표" : "내 타임라인"
       - else
         span.title = current_character.group.name
-    span.fa.fa-angle-down.show-button
-  - if defined? @goal
-    .goal
-      = render partial: 'goals/type_icon', locals: { goal: @goal }
-      span.theme = @goal.theme

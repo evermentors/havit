@@ -9,6 +9,10 @@
     padding-top: 14px;
     padding-bottom: 9px;
     cursor: pointer;
+    @media (max-width: 767px) {
+      padding-top: 10px;
+      padding-bottom: 4px;
+    }
   }
   .notifications-container {
     background: rgba(255,255,255,.98);
@@ -22,7 +26,8 @@
     width: 300px;
     z-index: -1;
     @media (max-width: 767px) {
-      left: -275px;
+      left: -233px;
+      top: 50px;
     }
   }
 }

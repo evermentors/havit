@@ -3,9 +3,8 @@ nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
       = link_to image_tag("havit-logo-green.png"), main_app.root_path, class: 'navigation-logo'
-      a.navigation-logo-mobile href=main_app.root_path
-        / = image_tag("favicon.ico")
-        span.fa.fa-chevron-right
+      a.navigation-btn href=main_app.root_path
+        span.glyphicon.glyphicon-menu-right
     - if user_signed_in?
       .show-on-mobile
         ul.nav.navbar-nav.navbar-right

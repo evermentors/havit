@@ -9,7 +9,14 @@
   border-radius: 4px;
   background-color: rgb(255, 255, 255);
   color: hsl(0, 0%, 40%);
-
+  @media (max-width: 767px) {
+    border-radius: 0;
+    background-color: #f0f0f0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: #ECECEC;
+  }
   .icon {
     margin-right: 5px;
   }
@@ -88,6 +95,9 @@
       margin-right: -4px;
       cursor: pointer;
       font-size: 12px;
+      @media (max-width: 767px) {
+        color: hsl(0, 0%, 65%);
+      }
       .glyphicon-ok {
         margin-left: 4px;
       }
@@ -207,13 +217,21 @@
     margin: 5px 0;
     border-radius: 4px;
     border: 1px solid hsl(0, 0%, 92%);
+    @media (max-width: 767px) {
+      border: none;
+    }
     textarea {
       border-radius: 4px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
       box-shadow: none;
       border: none;
       background-color: #FFF;
       padding-left: 5px;
       padding-right: 5px;
+      @media (max-width: 767px) {
+        background-color: hsl(0, 0%, 98%);
+      }
     }
     textarea::-webkit-input-placeholder {
       color: #666;
@@ -256,6 +274,9 @@
         background-color: #FFF;
         border: none;
         line-height: 1.42857143;
+        @media (max-width: 767px) {
+          background-color: hsl(0, 0%, 98%);
+        }
       }
       .next-daily-goal-input {
         border-top-right-radius: 0;
@@ -264,6 +285,9 @@
         border: none;
         box-shadow: none;
         background-color: #FFF;
+        @media (max-width: 767px) {
+          background-color: hsl(0, 0%, 98%);
+        }
       }
       .next-daily-goal-input:focus::-webkit-input-placeholder {
         color:transparent;
@@ -278,23 +302,27 @@
         color:transparent;
       } /* IE 10+ */
     }
-    .photo-preview {
-      position: relative;
-      height: 200px;
-      max-width: 200px;
-      margin: 10px auto 0;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: top left;
-      border: 1px solid #ccc;
-      background-color: white;
-      .photo-remove-btn {
-        position: absolute;
-        right: 0;
-        top: 0;
-        opacity: .5;
-        cursor: pointer;
-      }
+  }
+  .photo-preview {
+    position: relative;
+    height: 250px;
+    max-width: 300px;
+    margin: 10px auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top left;
+    border: none;
+    background-color: white;
+    @media (max-width: 767px) {
+      height: 250px;
+      max-width: 100%;
+    }
+    .photo-remove-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      opacity: .5;
+      cursor: pointer;
     }
   }
   .status-footer {

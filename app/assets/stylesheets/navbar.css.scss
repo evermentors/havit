@@ -1,6 +1,7 @@
 .navbar {
   background-color: white;
   border-bottom: 1px solid #D3D3D3;
+  min-height: 42px;
 }
 
 .navbar-header {
@@ -9,14 +10,17 @@
     .navigation-logo {
       display: none;
     }
-    .navigation-logo-mobile {
+    .navigation-btn {
       cursor: pointer;
-      img {
-        display: inline;
-        height: 30px;
-        width: auto;
-        margin-top: 10px;
-        margin-left: 10px;
+      span {
+        font-size: 16px;
+        margin-top: -3px;
+        padding-top: 14px;
+        padding-bottom: 12px;
+        padding-left: 9px;
+        color: #cccccc;
+        vertical-align: text-top;
+        font-weight: bold;
       }
     }
   }
@@ -27,7 +31,7 @@
         width: auto;
       }
     }
-    .navigation-logo-mobile {
+    .navigation-btn {
       display: none;
     }
   }
@@ -45,16 +49,16 @@
         display: inline-block;
         a.glyphicon {
           font-size: 18px;
-          padding: 15px 8px;
+          padding: 11px 8px;
         }
       }
     }
     .group-and-goal-select {
-      margin-left: 45px;
+      margin-left: 15px;
       margin-right: 110px;
       cursor: pointer;
-      padding-top: 14px;
-      padding-bottom: 14px;
+      padding-top: 10px;
+      padding-bottom: 10px;
       .group {
         font-size: 16px;
         font-weight: bold;
@@ -65,24 +69,6 @@
       }
       .icon {
         margin-right: 7px;
-      }
-      .show-button {
-        font-size: 22px;
-        color: #999;
-        margin-left: 6px;
-        vertical-align: bottom;
-      }
-    }
-    .group-and-goal-select.with-goal {
-      padding-top: 4px;
-      padding-bottom: 1px;
-      .goal {
-        margin-top: 3px;
-        font-size: 14px;
-        color: #999;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
       }
     }
     .timeline-top-nav-on-mobile {
