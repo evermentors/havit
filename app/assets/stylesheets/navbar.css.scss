@@ -88,6 +88,7 @@
     }
     .timeline-top-nav-on-mobile {
       display: none;
+      outline: 0;
       position: absolute;
       top: 50px;
       left: 0;
@@ -95,10 +96,12 @@
       padding: 15px;
       margin: 0;
       list-style: none;
-      background: rgba(238, 238, 238, .85);
+      background: rgba(238, 238, 238, .9);
       border-bottom: 1px solid #BEBCBC;
       font-size: 13px;
       text-align: left;
+      overflow-y: scroll;
+      max-height: 80vh;
       ul {
         margin: 0;
         padding: 0;
@@ -115,8 +118,8 @@
         margin-right: 7px;
       }
       .joined-groups, .my-timeline {
-        margin-left: 50px;
-        margin-right: 50px;
+        margin-left: 30px;
+        margin-right: 30px;
       }
       li.active > .selectable {
         font-weight: bold;

@@ -15,6 +15,6 @@ html
     header
       == render 'layouts/navigation'
     main role="main" class="#{'need-login' unless user_signed_in?}"
-      .container
+      .container.main
         / == render 'layouts/messages'
         == yield

@@ -6,15 +6,13 @@ ul.joined-groups
     a.selectable href=root_url
       span.fa.fa-tasks.icon
       span.title 개인 목표
-    - if current_character.group.home?
-      = render partial: 'goals/my_goals_in_group', locals: { character: current_character, selected_goal: selected_goal }
+    = render partial: 'goals/my_goals_in_group', locals: { character: Character.home(current_user), selected_goal: selected_goal }
   - current_user.explicit_characters.each do |cha|
     li.joined-group[class="#{'active' if cha == current_character}"]
       a.selectable href=group_url(cha.group)
         span.fa.fa-group.icon
         span.title = cha.group.name
-      - if cha == current_character
-        = render partial: 'goals/my_goals_in_group', locals: { character: cha, selected_goal: selected_goal }
+      = render partial: 'goals/my_goals_in_group', locals: { character: cha, selected_goal: selected_goal }
   li.new-group
     / a href=new_group_url
     a

@@ -10,7 +10,7 @@ nav.navbar.navbar-default.navbar-fixed-top
         ul.nav.navbar-nav.navbar-right
           li.search-btn
             a.glyphicon.glyphicon-search href=search_path
-          li.notifications-li.closed
+          li.notifications-li.closed tabindex="-1"
             .notification-btn.closed last-checked=current_user.last_checked_notification
               span.glyphicon.glyphicon-bell
               span.notifications-count.hidden
@@ -18,8 +18,8 @@ nav.navbar.navbar-default.navbar-fixed-top
           li.more-btn
             a.glyphicon.glyphicon-menu-hamburger
         = render partial: 'groups/show_group_and_goal'
-        .timeline-top-nav-on-mobile.up
-          = render partial: 'layouts/timeline/nav', locals: { current_group: current_character.group, selected_goal: (defined?(@goal) ? @goal : 'none' ) }
+        .timeline-top-nav-on-mobile.up tabindex="-1"
+          = render partial: 'layouts/timeline/nav_mobile', locals: { selected_goal: (defined?(@goal) ? @goal : 'none' ) }
       .collapse.navbar-collapse
         ul.navbar-form.navbar-left
           == render 'search/form'
@@ -56,10 +56,6 @@ nav.navbar.navbar-default.navbar-fixed-top
             = image_tag avatar_url(current_user)
             span = current_user.name
       ul.menus
-        li.mobile-home
-          a href=main_app.root_path
-            span.glyphicon.glyphicon-home
-            span.description Havit 홈
         li.mobile-edit-account
           a href=main_app.edit_user_registration_path
             span.glyphicon.glyphicon-cog

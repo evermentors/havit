@@ -45,7 +45,11 @@ class User < ActiveRecord::Base
   end
 
   def explicitly_joined_groups
-    joined_groups - [Group.find_by_name('Universe')]
+    joined_groups.select { |group| not group.home? }
+  end
+
+  def explicit_characters
+    self.characters.select {|cha| not cha.group.home? }
   end
 
   private

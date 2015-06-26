@@ -1,5 +1,5 @@
 .goals
-  - current_character.goals.active.each do |goal|
+  - character.goals.active.each do |goal|
     .goal[class="#{'active' if goal == selected_goal}"]
       a href=goal_url(goal)
         = render partial: 'goals/type_icon', locals: { goal: goal }

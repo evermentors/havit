@@ -20,6 +20,11 @@ $nprogress-zindex: 10100;
   font-style: normal;
 }
 
+// disable scroll
+body.no-scroll {
+  overflow: hidden;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
