@@ -12,10 +12,9 @@ svg viewbox="0 0 100 100" class=month
       - elsif colorclass.include?('today')
         rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=calc[1] transform=calc[2] data-toggle='tooltip' data-placement='top' title="오늘"
       - elsif colorclass.include?('start-day')
-        rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=calc[1] transform=calc[2] data-toggle='tooltip' data-placement='top' title="실천 시작: #{day.strftime("%-m월 %-d일")} #{l day, format: '%A'}"
+        rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=(calc[1]-1.5) transform=calc[2] data-toggle='tooltip' data-placement='top' title="실천 시작: #{day.strftime("%-m월 %-d일")} #{l day, format: '%A'}"
       - elsif colorclass.include?('end-day')
-        rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=calc[1] transform=calc[2] data-toggle='tooltip' data-placement='top' title="실천 종료: #{day.strftime("%-m월 %-d일")} #{l day, format: '%A'}"
+        rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=(calc[1]-1.5) transform=calc[2] data-toggle='tooltip' data-placement='top' title="실천 종료: #{day.strftime("%-m월 %-d일")} #{l day, format: '%A'}"
       - else
         rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=calc[1] transform=calc[2]
-  text.num-actions x=50 y=50 #{verified_statuses.count}
-  text.month-text x=50 y=70 #{date.strftime("%y년 %-m월")}
+  text.month-text x=50 y=50 dy=".3em" #{date.strftime("%Y/%m")}

@@ -1,7 +1,6 @@
 .navbar {
   background-color: white;
-  -webkit-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.22);
-  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.22);
+  border-bottom: 1px solid #D3D3D3;
 }
 
 .navbar-header {
@@ -133,12 +132,13 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        border-bottom: 2px solid hsl(0, 0%, 80%);
       }
       .my-timeline, li {
         display: block;
         background-color: #fff;
         padding: 7px 10px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
         box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
         border-radius: 6px;

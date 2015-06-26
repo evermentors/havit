@@ -1,48 +1,16 @@
-%havit-white-button {
-  color: rgb(236, 84, 19);
-  border: 1px solid hsl(18, 85%, 50%);
-  background-color: #fff;
-}
-%havit-white-button-hover {
-  background-image: linear-gradient(#fff, rgba(236, 84, 19, .1));
-}
 %havit-color {
   color: #40BD9C;
-}
-%havit-border-bright {
-  border: 1px solid hsl(18, 85%, 60%);
-}
-%havit-border {
-  border: 1px solid hsl(18, 85%, 50%);
-}
-%havit-border-dark {
-  border: 1px solid hsl(18, 85%, 40%);
-}
-%havit-bg-bright {
-  background-color: hsl(18, 84%, 60%);
-  border-color: hsl(18, 84%, 50%);
-}
-%havit-bg {
-  background-color: hsl(18, 85%, 50%);
-  border-color: hsl(18, 85%, 40%);
-}
-%havit-bg-dark {
-  background-color: hsl(18, 86%, 40%);
-  border-color: hsl(18, 86%, 30%);
-}
-%has-border-top-bottom {
-  border-top: 1px solid #e7e7e7;
-  border-bottom: 1px solid #e7e7e7;
 }
 
 .card-container {
   position: relative;
-  border: 1px solid;
-  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
   padding-top: 16px;
-  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 10px;
   background-color: white;
-  border-radius: 5px;
   .modify-actions {
     display: none;
   }
@@ -62,7 +30,6 @@
   display: none;
 }
 .card-header {
-  padding: 0 15px;
   .card-group {
     position: absolute;
     left: 0;
@@ -95,7 +62,7 @@
   }
 }
 .card-message {
-  padding: 15px;
+  padding: 15px 0;
 }
 .card-photo {
   img {
@@ -110,7 +77,6 @@
   .next-goal {
     text-align: right;
     padding-top: 10px;
-    padding-right: 10px;
     opacity: 0.6;
     font-size: 85%;
     .goal-description {
@@ -124,10 +90,8 @@
 .card-actions {
   position: relative;
   height: 30px;
-  padding: 0 15px;
   margin-top: 5px;
   border-top: 1px solid #e1e2e3;
-  background-color: #f6f7f8;
   .like-form {
     position: relative;
     float: left;
@@ -183,134 +147,12 @@
 }
 .card-comments {
   margin: 0;
-  padding: 0 6px;
-  background-color: #f6f7f8;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .like-form {
   float:left
-}
-
-.list-group.edit-goal-card {
-  margin-bottom: 0;
-  border: 1px solid #CCC;
-  border-radius: 4px;
-
-  .list-group-item {
-    border:none;
-    margin-bottom:0;
-    .list-group-item-heading {
-      cursor: default;
-      color: #444;
-      font-size: 16px;
-    }
-  }
-  .list-group-item.group-select.open ~ .list-group-item {
-    opacity: 0.4;
-  }
-  .list-group-item.group-select {
-    color: rgb(234, 84, 19);
-    font-weight: bold;
-    border-bottom: 1px solid #e7e7e7;
-    padding: 0;
-    cursor: pointer;
-    .dropdown-toggle {
-      padding: 10px 15px;
-      .group-icon {
-        height: 15px;
-        float: left;
-        margin-top: 2.5px;
-        margin-right: 4px;
-      }
-      .group-title {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .caret {
-        position: absolute;
-        right: 10px;
-        top: 18px;
-      }
-    }
-    .dropdown-menu {
-      max-height: 300px;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      border: none;
-      border-radius: 0;
-      overflow-y: scroll;
-      li {
-        border-bottom: 1px solid #ccc;
-        .menuitem {
-          padding-top: 8px;
-          padding-bottom: 8px;
-          .group-name, .group-description {
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-          .group-description {
-            font-size: 11px;
-            color: #aaa;
-          }
-        }
-      }
-      .glyphicon-ok {
-        display: none;
-      }
-      .active {
-        position: relative;
-        .glyphicon-ok {
-          display: block;
-          position: absolute;
-          color: black;
-          font-size: 11px;
-          top: 11px;
-          left: 3px;
-        }
-        a {
-          background-color: #fff;
-          color: #333333;
-          font-weight: bold;
-        }
-        a:hover, a:focus {
-          background-color: #f5f5f5;
-        }
-      }
-      .create-new-group {
-        position: relative;
-        .glyphicon-plus {
-          position: absolute;
-          font-size: 11px;
-          top: 11px;
-          left: 4px;
-        }
-      }
-    }
-  }
-  .list-group-item.group-select:hover, .list-group-item.group-select.open {
-    background-color: #DDDDDD;
-  }
-  .list-group-item.weekly {
-    @extend %has-border-top-bottom;
-  }
-  .list-group-item-text {
-    color: #555;
-  }
-
-  .list-group-item.old {
-    background-color: #FFFCE4;
-    .list-group-item-heading, .list-group-item-text {
-      font-style: italic;
-      color: gray;
-    }
-    .list-group-item-text:before {
-      content: '(오래된 목표) '
-    }
-  }
 }
 
 // set-goal-card
