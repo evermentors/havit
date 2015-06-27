@@ -3,8 +3,13 @@ nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
       = link_to image_tag("havit-logo-green.png"), main_app.root_path, class: 'navigation-logo'
-      a.navigation-btn href=main_app.root_path
-        span.glyphicon.glyphicon-menu-right
+      - if ['statuses', 'groups', 'goals'].include?(params[:controller])
+        a.navigation-btn-mobile
+          span.glyphicon.glyphicon-menu-right
+      - else
+        a.navigation-btn-mobile href="javascript:history.back()"
+          span.glyphicon.glyphicon-menu-left
+
     - if user_signed_in?
       .show-on-mobile
         ul.nav.navbar-nav.navbar-right
@@ -17,9 +22,8 @@ nav.navbar.navbar-default.navbar-fixed-top
             .notifications-container
           li.more-btn
             a.glyphicon.glyphicon-menu-hamburger
-        = render partial: 'groups/show_group_and_goal'
+        = render partial: 'layouts/nav_header'
         .timeline-top-nav-on-mobile.up tabindex="-1"
-          = render partial: 'layouts/timeline/nav_mobile', locals: { selected_goal: (defined?(@goal) ? @goal : 'none' ) }
       .collapse.navbar-collapse
         ul.navbar-form.navbar-left
           == render 'search/form'
@@ -48,7 +52,9 @@ nav.navbar.navbar-default.navbar-fixed-top
           li = link_to '회원가입', new_user_registration_path
 
 - if user_signed_in?
-  nav.side-nav
+  nav.side-nav-left
+    = render partial: 'layouts/timeline/nav_mobile', locals: { selected_goal: (defined?(@goal) ? @goal : 'none' ) }
+  nav.side-nav-right
     .contents
       .header
         .mobile-login-as

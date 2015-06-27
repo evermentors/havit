@@ -60,10 +60,31 @@
     @media (max-width: 767px) {
       margin: 0;
       .theme {
-        font-size: 16px;
+        font-size: 14px;
+      }
+      .theme.fixed {
+        position: fixed;
+        left: 0;
+        right: 0;
+        background: rgba(240, 240, 240, .9);
+        top: 43px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        z-index: 1000;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 0.5s;
+        -moz-transition-duration: 0.5s;
+        -o-transition-duration: 0.5s;
+        transition-duration: 0.5s;
       }
       .detail, .action-goal {
         font-size: 14px;
+      }
+      .detail.fixed {
+        margin-top: 25px;
       }
     }
   }
@@ -330,6 +351,10 @@
       display: inline-table;
       vertical-align: middle;
       width: 130px;
+      border: 1px solid white;
+      @media (max-width: 767px) {
+        border: none;
+      }
       .status-photo-wrapper {
         position: relative;
         height: 32px;
@@ -368,19 +393,32 @@
         }
       }
     }
-    .status-photo:hover {
-      .status-photo-link:hover {
-        text-decoration: none;
-      }
-    }
     .submit-btn {
       display: inline-table;
       vertical-align: middle;
       float: right;
       padding-left: 8px;
       padding-right: 8px;
+      border: 1px solid white;
+      @media (max-width: 767px) {
+        border: none;
+      }
       .glyphicon-ok {
         margin-right: 5px;
+      }
+    }
+    .status-photo:hover, .status-photo:focus, .status-photo:active, .submit-btn:hover, .submit-btn:active, .submit-btn:focus {
+      color: #40bd9c;
+      border-radius: 4px;
+      text-decoration: none;
+      outline: 0;
+      border: 1px solid #40bd9c;
+      a {
+        text-decoration: none;
+      }
+      @media (max-width: 767px) {
+        border: none;
+        background-color: #fafafa;
       }
     }
   }

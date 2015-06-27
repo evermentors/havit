@@ -35,13 +35,14 @@
     margin: -10px -15px 0;
     padding: 0;
     background-color: #F9F9F9;
+    max-width: 110%;
   }
 }
 
 .container-right {
   position: fixed;
   top: 61px;
-  right: 46px;
+  right: 140px;
   width: 224px;
   @media (max-width: 1199px) {
     display: none;
