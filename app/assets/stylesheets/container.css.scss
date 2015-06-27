@@ -32,21 +32,17 @@
   margin-left: 224px;
   padding-top: 10px;
   @media (max-width: 767px) {
-    margin-left: 0;
-  }
-}
-
-.container-center.with-group {
-  padding-top: 30px;
-  .card-container {
-    margin-bottom: 50px;
+    margin: -10px -15px 0;
+    padding: 0;
+    background-color: #F9F9F9;
+    max-width: 110%;
   }
 }
 
 .container-right {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: fixed;
+  top: 61px;
+  right: 140px;
   width: 224px;
   @media (max-width: 1199px) {
     display: none;

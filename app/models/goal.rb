@@ -32,6 +32,10 @@ class Goal < ActiveRecord::Base
   def last_action_goal
     self.action_goals.order(created_at: :desc).first
   end
+
+  def verified_statuses
+    Hash[self.statuses.pluck(:verified_at, :id)]
+  end
 end
 
 class CheckGoal < Goal

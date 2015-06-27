@@ -1,44 +1,6 @@
 %havit-color {
   color: #40BD9C;
 }
-%havit-border-bright {
-  border: 1px solid hsl(18, 85%, 60%);
-}
-%havit-border {
-  border: 1px solid hsl(18, 85%, 50%);
-}
-%havit-border-dark {
-  border: 1px solid hsl(18, 85%, 40%);
-}
-%havit-bg-bright {
-  background-color: hsl(18, 84%, 60%);
-  border-color: hsl(18, 84%, 50%);
-}
-%havit-bg {
-  background-color: hsl(18, 85%, 50%);
-  border-color: hsl(18, 85%, 40%);
-}
-%havit-bg-dark {
-  background-color: hsl(18, 86%, 40%);
-  border-color: hsl(18, 86%, 30%);
-}
-
-// Used only when there is no montly goal
-.no-monthly-goal {
-  position:relative;
-  margin-top:10px;
-  .panel-title {
-    margin-right: 40px;
-  }
-  textarea {
-    min-height:70px;
-  }
-  .submit-btn {
-    position:absolute;
-    right:5px;
-    top:5px;
-  }
-}
 
 .goal-text {
   @extend %havit-color;

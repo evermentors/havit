@@ -1,0 +1,8 @@
+- verified_statuses = goal.verified_statuses
+= render partial: 'visualization/checkgoal/circle_calendar', locals: { date: Date.current, month: 'this-month', goal: goal, verified_statuses: verified_statuses.select{ |date, id| date.month == Date.current.month } }
+
+- if goal.created_at.month <= 1.month.ago.month
+  = render partial: 'visualization/checkgoal/circle_calendar', locals: { date: 1.month.ago.to_date, month: 'prev-month', goal: goal, verified_statuses: verified_statuses.select{ |date, id| date.month == 1.month.ago.month }  }
+
+- if goal.created_at.month <= 2.months.ago.month
+  = render partial: 'visualization/checkgoal/circle_calendar', locals: { date: 2.months.ago.to_date, month: 'prev-prev-month', goal: goal, verified_statuses: verified_statuses.select{ |date, id| date.month == 2.months.ago.month }  }

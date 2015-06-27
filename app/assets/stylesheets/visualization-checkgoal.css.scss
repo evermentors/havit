@@ -1,0 +1,53 @@
+.goal-visualization {
+  width: 100%;
+  padding: 7px 10px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #DDDDDD;
+  .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.goal-visualization.checkgoal {
+  svg {
+    width: 190px;
+    height: 190px;
+    margin-top: 15px;
+    .days {
+      height: 10px;
+      width: 4px;
+      fill: #C5C5C5;
+    }
+    .before-start {
+      fill: #F0F0F0;
+    }
+    .future {
+      fill: #D6EAE0;
+    }
+    .verified {
+      fill: #40BD9C;
+    }
+    .today {
+      fill: #F24D8B;
+    }
+    .start-day, .end-day {
+      height: 13px;
+    }
+    .verified:hover, .today:hover, .start-day:hover, .end-day:hover {
+      opacity: .5;
+      cursor: pointer;
+    }
+    .month-text {
+      font-family: isocp2;
+      text-anchor: middle;
+      font-size: 16px;
+      fill: #B6B6B6;
+      font-weight: bold;
+    }
+  }
+}

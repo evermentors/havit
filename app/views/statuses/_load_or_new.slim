@@ -43,17 +43,17 @@
       placeholder: "미입력시 '#{goal.last_action_goal.description}'#{korean_postposition(goal.last_action_goal.description, :이가)} 자동 등록됩니다.",
       class: 'form-control next-daily-goal-input',
       autocomplete: 'off'
-    .photo-preview.hidden
-      span.photo-remove-btn.glyphicon.glyphicon-remove data-toggle='tooltip' title='실천 인증샷 삭제'
+  .photo-preview.hidden
+    span.photo-remove-btn.glyphicon.glyphicon-remove data-toggle='tooltip' title='실천 인증 사진 삭제'
 
   .status-footer
-    .status-photo.btn-havit-white
+    .status-photo
       .status-photo-wrapper
         a.status-photo-link
           .photo-upload-wrapper
             span.glyphicon.glyphicon-camera
             = file_field_tag 'status[photo]', accept: 'image/png,image/gif,image/jpeg', class: 'hidden-file-input'
-          span.photo-upload-description 실천 인증샷 추가
-    button.btn.btn-havit-white.submit-btn type='submit'
+          span.photo-upload-description 실천 인증 사진
+    button.btn.btn-link.color-havit.submit-btn type='submit'
       span.glyphicon.glyphicon-ok
       ' 인증 완료!

@@ -1,6 +1,6 @@
 .container-left
   .timeline-side-nav
-    = render partial: 'layouts/timeline/nav', locals: { current_group: current_character.group, selected_goal: 'none' }
+    = render partial: 'layouts/timeline/nav', locals: { selected_goal: 'none' }
 
 .container-center
   .goal-info
@@ -11,7 +11,9 @@
       .temp #tag1
       .temp #tag2
     .goal-description
-      .theme = @goal.theme
+      .theme
+        = render partial: 'goals/type_icon', locals: { goal: @goal }
+        span = @goal.theme
       .detail = @goal.description
       .action-goal
         '실천 목표:
@@ -23,6 +25,11 @@
   = render @statuses
 
 .container-right
+  .goal-visualization[class=@goal.type.downcase]
+    .title
+      span.theme.color-havit => @goal.theme
+      span 실천 통계
+    = render partial: "visualization/#{@goal.type.downcase}/on_the_right", locals: { goal: @goal }
 
 = render 'statuses/photo_modal'
 

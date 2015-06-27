@@ -1,0 +1,20 @@
+svg viewbox="0 0 100 100" class=month
+  - radius = 43
+  - width = 4
+  - height = 10
+  g transform="translate(-#{width/2}, -#{height/2})"
+    - (date.beginning_of_month..date.end_of_month).each_with_index do |day, daynum|
+      - calc = calculate_rect(date, daynum, [50,50], radius, width, height)
+      - colorclass = colorclass_of_day(day, goal, verified_statuses)
+      - if colorclass.include?('verified')
+        a xlink:href="/statuses/#{verified_statuses[day]}"
+          rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=calc[1] transform=calc[2] data-toggle='tooltip' data-placement='top' title="#{day.strftime("%-m월 %-d일")} #{l day, format: '%A'}"
+      - elsif colorclass.include?('today')
+        rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=calc[1] transform=calc[2] data-toggle='tooltip' data-placement='top' title="오늘"
+      - elsif colorclass.include?('start-day')
+        rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=(calc[1]-1.5) transform=calc[2] data-toggle='tooltip' data-placement='top' title="실천 시작: #{day.strftime("%-m월 %-d일")} #{l day, format: '%A'}"
+      - elsif colorclass.include?('end-day')
+        rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=(calc[1]-1.5) transform=calc[2] data-toggle='tooltip' data-placement='top' title="실천 종료: #{day.strftime("%-m월 %-d일")} #{l day, format: '%A'}"
+      - else
+        rect.days class=colorclass rx="2.5" ry="2.5" x=calc[0] y=calc[1] transform=calc[2]
+  text.month-text x=50 y=50 dy=".3em" #{date.strftime("%Y/%m")}

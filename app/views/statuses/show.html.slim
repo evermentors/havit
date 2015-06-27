@@ -1,2 +1,17 @@
-= render @status
+- if current_user == @status.character.user
+  .container-left
+    .timeline-side-nav
+      = render partial: 'layouts/timeline/nav', locals: { current_group: current_character.group, selected_goal: @status.goal }
+
+.container-center
+  = render @status
+
+- if current_user == @status.character.user
+  .container-right
+    .goal-visualization[class=@status.goal.type.downcase]
+      .title
+        span.theme.color-havit => @status.goal.theme
+        span 실천 통계
+      = render partial: "visualization/#{@status.goal.type.downcase}/on_the_right", locals: { goal: @status.goal }
+
 = render 'statuses/photo_modal'

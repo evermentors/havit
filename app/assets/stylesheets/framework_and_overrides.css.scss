@@ -10,18 +10,19 @@ $nprogress-zindex: 10100;
 @import 'nprogress';
 
 @font-face {
-  font-family: 'Harlow Solid Italic';
-  src: url(font-path('harlow_solid_italic.eot'));
-  src: url(font-path('harlow_solid_italic.eot') + "?#iefix") format('embedded-opentype'),
-       url(font-path('harlow_solid_italic.svg') + '#Harlow Solid Italic') format('svg'),
-       url(font-path('harlow_solid_italic.woff')) format('woff'),
-       url(font-path('harlow_solid_italic.ttf')) format('truetype');
+  font-family: 'isocp2';
+  src: url(font-path('isocp2-webfont.eot'));
+  src: url(font-path('isocp2-webfont.eot') + "?#iefix") format('embedded-opentype'),
+       url(font-path('isocp2-webfont.svg') + '#isocp2') format('svg'),
+       url(font-path('isocp2-webfont.woff')) format('woff'),
+       url(font-path('isocp2-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-.havit-font {
-  font-family: 'Harlow Solid Italic';
+// disable scroll
+body.no-scroll {
+  overflow: hidden;
 }
 
 // make all images responsive by default
@@ -56,11 +57,12 @@ img {
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
-  @extend .container;
   background-color: #eee;
+  padding-top: 51px; // accommodate the navbar
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100vh;
   width: 100%;
-  margin-top: 51px; // accommodate the navbar
-  padding: 0;
 }
 
 main.need-login {

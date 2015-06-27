@@ -12,4 +12,5 @@ class Character < ActiveRecord::Base
   scope :in_group, -> (user, group) { where(user: user, group: group) }
   scope :admin, -> (group) { where(group: group, is_admin: true).take }
   scope :notified, -> { where(notify: true) }
+  scope :home, -> (user) { where(user: user, group: Group.find_by_name('Universe')).take }
 end
