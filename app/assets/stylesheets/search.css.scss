@@ -1,8 +1,7 @@
-.container > .search-form {
-  width: 100%;
-  padding-right: 40px;
+.search-result-container > .search-form {
+  width: 300px;
   padding-top: 10px;
-  margin-bottom: -10px;
+  margin-left: 10px;
 }
 
 .search-form {
@@ -56,6 +55,12 @@
     }
     .active {
       color: #ec5413;
+    }
+  }
+  .search-results {
+    @media (max-width: 767px) {
+      margin-left: 10px;
+      margin-right: 20px;
     }
   }
   .search-results.show-not-joined {

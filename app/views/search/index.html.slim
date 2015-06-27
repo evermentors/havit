@@ -1,8 +1,7 @@
-- if browser.mobile?
-  == render partial: 'search/form'
-
-.search-result-container
-  .search-results.container-center.show-all
+.search-result-container.container-center
+  - if browser.mobile?
+    == render partial: 'search/form'
+  .search-results.show-all
     .search-result-description
       - if defined? @index
         | Havit에 있는 모든 그룹의 목록입니다. 원하는 그룹을 찾아 보세요!
