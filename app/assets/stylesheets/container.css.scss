@@ -1,3 +1,10 @@
+.container.main {
+  @media (max-width: 767px) {
+    padding: 0;
+    background-color: #F9F9F9;
+  }
+}
+
 .container-header {
   position:relative;
   margin-top:10px;
@@ -32,10 +39,9 @@
   margin-left: 224px;
   padding-top: 10px;
   @media (max-width: 767px) {
-    margin: -10px -15px 0;
     padding: 0;
-    background-color: #F9F9F9;
-    max-width: 110%;
+    margin: 0 auto;
+    max-width: 100%;
   }
 }
 

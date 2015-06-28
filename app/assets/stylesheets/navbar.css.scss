@@ -4,6 +4,13 @@
   min-height: 42px;
 }
 
+.navbar-header.need-login {
+  @media (max-width: 767px) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
 .navbar-header {
   @media (max-width: 767px) {
     float: left;
@@ -21,6 +28,10 @@
         color: #cccccc;
         vertical-align: text-top;
         font-weight: bold;
+      }
+      img {
+        height: 40px;
+        width: auto;
       }
     }
   }
@@ -113,11 +124,15 @@ nav.navbar, main {
 }
 
 body.side-open {
-  overflow-x: hidden;
   .overlay {
     display: block;
     background-color: rgba(0,0,0,.2);
     z-index: 1050;
+    overflow: hidden;
+  }
+  nav.navbar, main {
+    position: fixed;
+    overflow: hidden;
   }
 }
 body.side-open.left {
@@ -129,6 +144,7 @@ body.side-open.left {
     border-left: 1px solid #aaa;
   }
   nav.side-nav-left {
+    overflow-y: scroll;
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
     -ms-transform: translateX(0);
@@ -138,6 +154,7 @@ body.side-open.left {
 }
 body.side-open.right {
   nav.side-nav-right {
+    overflow-y: scroll;
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
     -ms-transform: translateX(0);
@@ -218,6 +235,7 @@ nav.side-nav-left {
     text-overflow: ellipsis;
     white-space: nowrap;
     background-color: hsl(0, 0%, 60%);
+    color: white;
   }
   .my-timeline {
     color: gray;
@@ -232,7 +250,6 @@ nav.side-nav-left {
 
   .new-group {
     a {
-      color: #999;
       cursor: not-allowed;
       .glyphicon-plus {
         font-size: 11px;
@@ -244,7 +261,7 @@ nav.side-nav-left {
 
   .goals {
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 13px;
     margin-left: 14px;
     .theme {
       margin-bottom: -5px;
@@ -263,6 +280,7 @@ nav.side-nav-left {
       color: #999;
     }
     .goal.new > a {
+      font-size: 12px;
       margin-bottom: 3px;
       cursor: not-allowed;
     }

@@ -1,8 +1,8 @@
 .user-page {
   .user-information {
-    height: 50px;
-    margin-top: 20px;
-    margin-bottom: -40px;
+    height: 40px;
+    margin-top: 10px;
+    text-align: center;
     img {
       display: inline;
       float: left;
@@ -12,6 +12,5 @@
     }
   }
   .user-statuses {
-    margin-top: 50px;
   }
 }

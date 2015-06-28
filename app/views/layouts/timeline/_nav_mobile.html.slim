@@ -17,7 +17,7 @@ ul.joined-groups
       = render partial: 'goals/my_goals_in_group', locals: { character: cha, selected_goal: selected_goal }
   li.new-group
     / a href=new_group_url
-    a
+    a.selectable
       span.fa.fa-group
       span.glyphicon.glyphicon-plus.icon
       span.title 새 그룹 만들기 (준비중)
