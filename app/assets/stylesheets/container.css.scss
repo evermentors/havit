@@ -46,10 +46,13 @@
 }
 
 .container-right {
-  position: fixed;
-  top: 61px;
-  right: 140px;
-  width: 224px;
+  position: absolute;
+  top: 10px;
+  left: 934px;
+  // position: fixed;
+  // top: 61px;
+  // right: 140px;
+  // width: 224px;
   @media (max-width: 1199px) {
     display: none;
   }
