@@ -23,7 +23,7 @@
     margin-right: 7px;
   }
   li.active > .selectable {
-    font-weight: bold;
+    // font-weight: bold;
     border-bottom: 2px solid #40BD9C;
     color: #000;
   }
@@ -103,7 +103,7 @@
     .goal.active {
       a {
         @extend %havit-color;
-        font-weight: bold;
+        // font-weight: bold;
       }
       .progress-bar {
         @extend %havit-bg;
