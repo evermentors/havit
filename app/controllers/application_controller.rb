@@ -25,14 +25,6 @@ class ApplicationController < ActionController::Base
     @universe ||= Group.find_by_name('Universe')
   end
 
-  def url (character=current_character)
-    if character.group == universe
-      root_url
-    else
-      group_url(character.group)
-    end
-  end
-
   def set_locale
     I18n.locale = I18n.default_locale
   end

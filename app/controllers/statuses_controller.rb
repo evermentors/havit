@@ -44,12 +44,12 @@ class StatusesController < ApplicationController
 
           view_context.notify_to_group(@status)
         end
-        redirect_to url
+        redirect_to goal_url(target_goal)
       else
-        redirect_to url, notice: 'error: next action goal on new status'
+        redirect_to goal_url(target_goal), notice: 'error: next action goal on new status'
       end
     else
-      redirect_to url, notice: 'error: new status'
+      redirect_to goal_url(target_goal), notice: 'error: new status'
     end
   end
 
@@ -66,7 +66,7 @@ class StatusesController < ApplicationController
   def destroy
     @status.destroy
     respond_to do |format|
-      format.html { redirect_to url, notice: '실천 인증이 성공적으로 삭제되었습니다.' }
+      format.html { redirect_to goal_url(@status.goal) }
       format.json { head :no_content }
     end
   end
