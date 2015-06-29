@@ -4,10 +4,10 @@
   font-weight: normal;
   font-style: normal;
 
-  margin-top: 0;
+  margin-top: 2px;
   margin-bottom: 0;
 
-  padding: 5px 10px;
+  padding: 5px 0;
   color: #000;
 }
 
@@ -21,7 +21,7 @@
 
 .comment_actions_div {
   position: absolute;
-  right: 7px;
+  right: 0;
   top: 8px;
 }
 
@@ -44,13 +44,17 @@
 
 .comment_body {
   padding-top: 3px;
-  padding-right: 30px;
+  padding-right: 35px;
+}
+
+.comment-form {
+  margin-left: 40px;
 }
 
 .comment_form_actions {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 0;
 }
 .comment_form_actions > .btn-link {
   display: block;

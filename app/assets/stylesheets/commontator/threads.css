@@ -20,7 +20,13 @@
 }
 
 .thread_reply {
-  padding: 5px;
+  padding: 0;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.thread_new_comment_link > .btn-link {
+  padding: 0;
 }
 
 /* Modified from:
@@ -39,7 +45,7 @@ http://www.strangerstudios.com/sandbox/pagination/diggstyle.php */
 	padding: 2px 5px 2px 5px;
 	margin-right: 4px;
 	border: 1px solid #999;
-	
+
 	text-decoration: none;
 	color: #666;
 }

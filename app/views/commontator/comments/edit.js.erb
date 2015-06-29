@@ -4,7 +4,7 @@ $("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_body_div > .comment-form
 $("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_body_div > .comment-main-body").hide();
 var textarea = $("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_body_div > .comment-form .comment_form_field > textarea");
 var orig_val = textarea.val();
-textarea.focus().val('').val(orig_val);
+textarea.focus().val('').val(orig_val).autosize();
 $("<%= @modal_class %> #comment_<%= @comment.id.to_s %>_div").addClass('editing')
 
 <%= javascript_proc %>

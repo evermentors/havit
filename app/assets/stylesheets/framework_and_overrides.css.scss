@@ -20,6 +20,21 @@ $nprogress-zindex: 10100;
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'nanumbarun';
+  src: url(font-path('NanumBarunGothic.eot'));
+  src: url(font-path('NanumBarunGothic.eot?#iefix')) format('embedded-opentype'),
+       url(font-path('NanumBarunGothic.woff2')) format('woff2'),
+       url(font-path('NanumBarunGothic.woff')) format('woff'),
+       url(font-path('NanumBarunGothic.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'NanumBarunGothic';
+}
+
 // disable scroll
 body.no-scroll {
   overflow: hidden;

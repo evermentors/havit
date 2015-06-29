@@ -21,9 +21,9 @@
       cursor: pointer;
       span {
         font-size: 16px;
-        margin-top: -3px;
-        padding-top: 14px;
-        padding-bottom: 12px;
+        margin-top: -4px;
+        padding-top: 15px;
+        padding-bottom: 13px;
         padding-left: 9px;
         color: #cccccc;
         vertical-align: text-top;
@@ -58,16 +58,21 @@
       margin: 0;
       li {
         display: inline-block;
+        cursor: pointer;
         a.glyphicon {
           font-size: 18px;
-          padding: 11px 8px;
+          padding: 12px 10px 11px;
+          top: 0;
+        }
+        a:hover, a:active, a:focus {
+          background-color: #E2E2E2;
         }
       }
     }
     .mobile-nav-header {
       margin-left: 15px;
       margin-right: 110px;
-      padding-top: 10px;
+      padding-top: 11px;
       padding-bottom: 10px;
       font-size: 16px;
       font-weight: bold;
@@ -93,27 +98,33 @@
   }
 }
 
-.nav.navbar-nav.navbar-right {
-  a:hover {
-    background-color: #E2E2E2;
-  }
-  li > a {
-    padding-left: 8px;
-    padding-right: 8px;
-    cursor: pointer;
-    top: 0;
-  }
-  .new-goal-or-group {
-    font-size: 1.2em;
-    .glyphicon-plus {
-      top:0;
+.collapse.navbar-collapse {
+  .nav.navbar-nav.navbar-right {
+    a:hover {
+      background-color: #E2E2E2;
     }
-  }
-  .edit-account-li > a {
-    font-size: 1.5em;
-  }
-  .sign-out-li > a {
-    font-size: 1.3em;
+    li > a {
+      padding-left: 8px;
+      padding-right: 8px;
+      cursor: pointer;
+      top: 0;
+    }
+    .new-goal-or-group > a, .edit-account-li > a, .sign-out-li > a {
+      padding-top: 15px;
+      padding-bottom: 16px;
+    }
+    .new-goal-or-group {
+      font-size: 1.2em;
+      .glyphicon-plus {
+        top:0;
+      }
+    }
+    .edit-account-li > a {
+      font-size: 1.5em;
+    }
+    .sign-out-li > a {
+      font-size: 1.3em;
+    }
   }
 }
 
@@ -213,7 +224,7 @@ nav.side-nav-left {
     list-style: none;
   }
   a {
-    color: #666;
+    color: #999;
   }
   a:hover, a:focus, a:active {
     text-decoration: none;
@@ -277,7 +288,6 @@ nav.side-nav-left {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      color: #999;
     }
     .goal.new > a {
       font-size: 12px;
