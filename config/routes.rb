@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, constraints: { id: /.*/ }
 
-  resources :characters
-
   resources :groups do
     member do
       post :join
@@ -30,24 +28,9 @@ Rails.application.routes.draw do
   resources :goals, only: [:show, :create, :new]
   get "goals/:id/:date", action: :on, as: :on, controller: :goals
 
-  resources :monthly_goals, only: [:edit, :update, :destroy]
-
-  resources :weekly_goals, only: [:create, :edit, :update, :destroy]
-
-  resources :daily_goals, only: [:create, :edit, :update, :destroy]
-
   resources :statuses, only: [:show, :create, :update, :destroy] do
     resources :likes, only: [:create]
     resource :like, only: [:destroy]
-  end
-
-  resources :weekly_retrospects do
-    collection do
-      constraints year: /\d{4}/, month: /(0?[1-9]|1[012])/ do
-        get "/:year/:month", action: :monthly, as: :monthly
-        # get "/:year", action: :yearly, as: :yearly
-      end
-    end
   end
 
   get "/search", to: "search#index"
